@@ -29,7 +29,7 @@ export const PasswordInputComponent = ({
       <div>
         <input
           id={labelRefer}
-          type={isSeeingPassword ? "password" : "text"}
+          type={isSeeingPassword ? "text" : "password"}
           {...rest}
         />
         <button
@@ -37,7 +37,7 @@ export const PasswordInputComponent = ({
             setIsSeeingPassword(!isSeeingPassword);
           }}
         >
-          {isSeeingPassword ? <AiFillEye /> : <AiFillEyeInvisible />}
+          {isSeeingPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
         </button>
       </div>
     </StyledDiv>
