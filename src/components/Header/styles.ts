@@ -23,6 +23,7 @@ export const Header = styled.header`
   align-items: center;
   padding-left: 100px;
   background-color: var(--color-secondary);
+  border-bottom: 2px solid var(--color-black-mode);
   box-shadow: 0px 10px 10px 3px #fce79a;
   z-index: 1001;
 
@@ -61,15 +62,21 @@ export const LinkSpace = styled.div`
   justify-content: space-evenly;
   align-items: center;
   padding-right: 100px;
+
+  & > a {
+    text-decoration: none;
+  }
 `;
 
-export const Links = styled(Link)`
+export const Links = styled.button`
   width: 120px;
   height: 40px;
   background-color: transparent;
   display: flex;
   justify-content: center;
   align-items: center;
+  text-decoration: none;
+  border: none;
   text-decoration: none;
   color: var(--color-black-mode);
   font-family: var(--font-primary-nunito);
