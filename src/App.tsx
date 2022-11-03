@@ -3,11 +3,14 @@ import { InputComponent, PasswordInputComponent } from "./components/Inputs";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import { Dashboard } from "./pages/Dashboard";
 import { useState } from "react";
+import RoutesMain from "./routes";
 
 function App() {
-  const [isDashboard, setIsDashboard] = useState<boolean>(true);
-
-  return <>{isDashboard ? <Dashboard /> : <LandingPage />}</>;
+  return (
+    <>
+      <RoutesMain />
+    </>
+  );
 }
 
 export default App;

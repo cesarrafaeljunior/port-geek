@@ -7,8 +7,12 @@ interface IDashboardContext {
   token: string | null;
   userId: string | null;
   portfolioInfo: IPortfolioInfo;
-  isShowModal: boolean;
-  setIsShowModal: React.Dispatch<React.SetStateAction<boolean>>;
+  isShowModalForm: boolean;
+  setIsShowModalForm: React.Dispatch<React.SetStateAction<boolean>>;
+  isShowModalFormEdit: boolean;
+  setIsShowModalFormEdit: React.Dispatch<React.SetStateAction<boolean>>;
+  isShowModalDelete: boolean;
+  setIsShowModalDelete: React.Dispatch<React.SetStateAction<boolean>>;
   deletePort: () => void;
 }
 
@@ -26,7 +30,10 @@ export const DashboardProvider = () => {
   const navigate = useNavigate();
   const token: string | null = localStorage.getItem("@PortGeek:token");
   const userId: string | null = localStorage.getItem("@PortGeek:uuid");
-  const [isShowModal, setIsShowModal] = useState<boolean>(false);
+  const [isShowModalForm, setIsShowModalForm] = useState<boolean>(false);
+  const [isShowModalFormEdit, setIsShowModalFormEdit] =
+    useState<boolean>(false);
+  const [isShowModalDelete, setIsShowModalDelete] = useState<boolean>(false);
   const [portfolioInfo, setPortfolioInfo] = useState<IPortfolioInfo>(
     {} as IPortfolioInfo
   );
@@ -53,7 +60,7 @@ export const DashboardProvider = () => {
       headers: { Authorization: `Bearer ${token}` },
     }).then(() => {
       toast.success("Portfolio deletado com sucesso!");
-      setIsShowModal(false);
+      setIsShowModalForm(false);
     });
   }
 
@@ -63,8 +70,12 @@ export const DashboardProvider = () => {
         token,
         userId,
         portfolioInfo,
-        isShowModal,
-        setIsShowModal,
+        isShowModalForm,
+        setIsShowModalForm,
+        isShowModalFormEdit,
+        setIsShowModalFormEdit,
+        isShowModalDelete,
+        setIsShowModalDelete,
         deletePort,
       }}
     >

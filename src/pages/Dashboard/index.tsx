@@ -14,10 +14,20 @@ import imgPortfolio2 from "../../assets/img/1092.png";
 import imgPortfolio3 from "../../assets/img/5215985.png";
 import backGroundBtn from "../../assets/img/backgroundBtn.png";
 import logo from "../../assets/logo/logo-removebg-preview 1.png";
+import { ModalDelete } from "../../components/ModalDelete";
 
 export const Dashboard = () => {
-  const { token, userId, portfolioInfo, isShowModal, setIsShowModal } =
-    useContext(DashboardContext);
+  const {
+    token,
+    userId,
+    portfolioInfo,
+    isShowModalForm,
+    setIsShowModalForm,
+    isShowModalFormEdit,
+    setIsShowModalFormEdit,
+    isShowModalDelete,
+    setIsShowModalDelete,
+  } = useContext(DashboardContext);
 
   return (
     <Container>
@@ -56,7 +66,7 @@ export const Dashboard = () => {
           )} */}
           <div className="buttons">
             <IconEdit />
-            <IconTrash />
+            <IconTrash onClick={() => setIsShowModalDelete(true)} />
             <IconShare
               onClick={() => {
                 toast.success("Link copiado com sucesso!");
@@ -72,6 +82,7 @@ export const Dashboard = () => {
           <img className="background-btn" src={backGroundBtn} alt="" />
         </div>
       </div>
+      {isShowModalDelete && <ModalDelete />}
     </Container>
   );
 };
