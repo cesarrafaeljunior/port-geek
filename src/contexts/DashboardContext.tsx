@@ -1,11 +1,15 @@
 import { Api } from "../librarys/services/api";
-import { useState, useEffect, createContext } from "react";
+import React, { useState, useEffect, createContext } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 interface IDashboardContext {
   token: string | null;
   userId: string | null;
   portfolioInfo: IPortfolioInfo;
+  isShowModal: boolean;
+  setIsShowModal: React.Dispatch<React.SetStateAction<boolean>>;
+  deletePort: () => void;
 }
 
 interface IPortfolioInfo {
@@ -22,6 +26,7 @@ export const DashboardProvider = () => {
   const navigate = useNavigate();
   const token: string | null = localStorage.getItem("@PortGeek:token");
   const userId: string | null = localStorage.getItem("@PortGeek:uuid");
+  const [isShowModal, setIsShowModal] = useState<boolean>(false);
   const [portfolioInfo, setPortfolioInfo] = useState<IPortfolioInfo>(
     {} as IPortfolioInfo
   );
@@ -43,8 +48,26 @@ export const DashboardProvider = () => {
         });
   }, [token, userId, navigate, portfolioInfo]);
 
+  function deletePort() {
+    Api.delete(`/portfolio/${portfolioInfo.id}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    }).then(() => {
+      toast.success("Portfolio deletado com sucesso!");
+      setIsShowModal(false);
+    });
+  }
+
   return (
-    <DashboardContext.Provider value={{ token, userId, portfolioInfo }}>
+    <DashboardContext.Provider
+      value={{
+        token,
+        userId,
+        portfolioInfo,
+        isShowModal,
+        setIsShowModal,
+        deletePort,
+      }}
+    >
       <Outlet />
     </DashboardContext.Provider>
   );

@@ -7,7 +7,7 @@ const RoutesMain = () => (
   <Routes>
     <Route index element={<LandingPage />} />
     <Route element={<DashboardProvider />}>
-      <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="dashboard" element={<Dashboard />} />
     </Route>
     <Route path="*" element={<Navigate to="/" />} />
   </Routes>
