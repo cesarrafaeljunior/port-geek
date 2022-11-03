@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { ShowProps } from "./Header";
 
 /****************************************
 
@@ -24,20 +24,26 @@ export const Header = styled.header`
   padding-left: 100px;
   background-color: var(--color-secondary);
   border-bottom: 2px solid var(--color-black-mode);
-  box-shadow: 0px 10px 10px 3px #fce79a;
   z-index: 1001;
 
-  @media screen and (min-width: 480px) {
+  @media screen and (max-width: 480px) {
+    padding-left: 0;
   }
-  @media screen and (min-width: 600px) {
+  @media screen and (max-width: 600px) {
+    padding-left: 0;
   }
-  @media screen and (min-width: 768px) {
+  @media screen and (max-width: 768px) {
+    padding-left: 0;
   }
-  @media screen and (min-width: 1024px) {
+  @media screen and (max-width: 1024px) {
+    padding-left: 0;
   }
-  @media screen and (min-width: 1200px) {
+  @media screen and (max-width: 1200px) {
+    padding-left: 0;
   }
   @media screen and (max-width: 1920px) {
+    justify-content: space-between;
+    width: 100%;
   }
 `;
 
@@ -55,16 +61,120 @@ export const ImageSpace = styled.div`
   }
 `;
 
-export const LinkSpace = styled.div`
+export const LinkSpace = styled.div<ShowProps>`
   width: 400px;
   height: 100%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   padding-right: 100px;
+  transform: ${({ show }) => (show ? "translateX(-100%)" : "translateX(0%)")};
 
   & > a {
     text-decoration: none;
+  }
+
+  @media screen and (max-width: 480px) {
+    padding-right: 0;
+    width: 200px;
+    height: 50%;
+    background-color: var(--color-navigation);
+    border: 1px solid var(--color-quartenary);
+    position: fixed;
+    top: 5%;
+    left: 0%;
+    flex-flow: column nowrap;
+    z-index: 1001;
+
+    & > button {
+      color: var(--color-white-mode);
+    }
+
+    & > a > button {
+      color: var(--color-white-mode);
+    }
+  }
+  @media screen and (max-width: 600px) {
+    padding-right: 0;
+    width: 200px;
+    height: 50%;
+    background-color: var(--color-navigation);
+    border: 1px solid var(--color-quartenary);
+    position: fixed;
+    top: 5%;
+    left: 0%;
+    flex-flow: column nowrap;
+    z-index: 1001;
+
+    & > button {
+      color: var(--color-white-mode);
+    }
+
+    & > a > button {
+      color: var(--color-white-mode);
+    }
+  }
+  @media screen and (max-width: 768px) {
+    padding-right: 0;
+    width: 200px;
+    height: 50%;
+    background-color: var(--color-navigation);
+    border: 1px solid var(--color-quartenary);
+    position: fixed;
+    top: 5%;
+    left: 0%;
+    flex-flow: column nowrap;
+    z-index: 1001;
+
+    & > button {
+      color: var(--color-white-mode);
+    }
+
+    & > a > button {
+      color: var(--color-white-mode);
+    }
+  }
+  @media screen and (max-width: 1024px) {
+    padding-right: 0;
+    width: 200px;
+    height: 50%;
+    background-color: var(--color-navigation);
+    border: 1px solid var(--color-quartenary);
+    position: fixed;
+    top: 5%;
+    left: 0%;
+    flex-flow: column nowrap;
+    z-index: 1001;
+
+    & > button {
+      color: var(--color-white-mode);
+    }
+
+    & > a > button {
+      color: var(--color-white-mode);
+    }
+  }
+  @media screen and (max-width: 1200px) {
+    padding-right: 0;
+    width: 200px;
+    height: 50%;
+    background-color: var(--color-navigation);
+    border: 1px solid var(--color-quartenary);
+    position: fixed;
+    top: 5%;
+    left: 0%;
+    flex-flow: column nowrap;
+    z-index: 1001;
+
+    & > button {
+      color: var(--color-white-mode);
+    }
+
+    & > a > button {
+      color: var(--color-white-mode);
+    }
+  }
+  @media screen and (max-width: 1920px) {
   }
 `;
 
@@ -90,3 +200,31 @@ export const Links = styled.button`
   }
 `;
 /*------------------------- Skip line -------------------------*/
+
+export const NavBarMenuBtn = styled.button`
+  width: 50px;
+  height: 40px;
+  position: fixed;
+  top: 5%;
+  left: 85%;
+  background-color: var(--color-grey-2);
+  border-radius: var(--radius-8);
+  z-index: 1001;
+
+  & > svg {
+    transform: scale(1.5);
+  }
+
+  @media screen and (min-width: 480px) {
+    display: block;
+  }
+  @media screen and (max-width: 768px) {
+  }
+  @media screen and (max-width: 1024px) {
+  }
+  @media screen and (min-width: 1200px) {
+    display: none;
+  }
+  @media screen and (max-width: 1920px) {
+  }
+`;
