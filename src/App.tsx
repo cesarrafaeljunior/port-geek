@@ -1,11 +1,12 @@
 import { InputComponent, PasswordInputComponent } from "./components/Inputs";
 
+import LandingPage from "./pages/LandingPage/LandingPage";
+
 function App() {
   return (
-    <div className="App">
-      <InputComponent labelRefer={"q"} labelText={"b"} />
-      <PasswordInputComponent labelRefer={"p"} labelText={"a"} />
-    </div>
+    <>
+      <LandingPage />
+    </>
   );
 }
 
