@@ -7,8 +7,8 @@ const GlobalStyle = createGlobalStyle`
     Author: Lucas Mitori Oliveira Okumura
     contact: lucas.mitori@hotmail.com
     cel: (11) 9-7749-2121
-    Name: Entrega - Kenziehub - Parte 1 (Cadastro e Login)
-    Description: Atividade Avaliativa
+    Name: Final Project
+    Description: Projeto Front-end
     ~ *   Root CSS - Global styles   * ~
 
             Version: 1.0
@@ -37,6 +37,7 @@ const GlobalStyle = createGlobalStyle`
     --button-color-red: #EB4946;
 
     --color-shadow-box: rgba(0, 0, 0, 0.05);
+    --color-shadow-box-01: #ff8000;
     --color-black-mode: #000000;
     --color-white-mode: #FFFFFF;
     --color-transparent: #00000090;
