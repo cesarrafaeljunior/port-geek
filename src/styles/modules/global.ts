@@ -17,22 +17,17 @@ const GlobalStyle = createGlobalStyle`
 
   :root{
     /* Colors */
-    --color-primary: #BA110C;
-    --color-secondary: #fce79a;
-    --color-tertiary: #730039;
-    --color-quartenary: #CBA135;
-    --color-quinternary: #1D1D1F;
+    --color-primary: #FFCF5C;
 
     --color-feedback-negative: #E83F5B;
     --color-feedback-warning: #ffcd07;
     --color-feedback-success: #3FE864;
     --color-feedback-info: #155bcb;
 
-    --color-grey-0: #F8F9FA;
-    --color-grey-1: #BEBEBE;
-    --color-grey-2: #909090;
-    --color-grey-3: #212529;
-    --color-grey-4: #121214;
+    --color-grey-0: #F5F5F5;
+    --color-grey-1: #ECECEC;
+    --color-grey-2: #565656;
+    --color-grey-3: #121214;
     --color-grey-opacity: rgba(33, 37, 41, 0.5);
     
     --color-navigation: #22252A;
@@ -58,35 +53,32 @@ const GlobalStyle = createGlobalStyle`
 
     --font-primary-nunito: 'Nunito';
     --font-secondary-inter: 'Inter';
-    --font-tertiary-roboto: 'Roboto';
-    --font-quartenary-andika: 'Andika';
 
-    
     /*  Text Sizes */
-    --font-grand-60: 60px;
-    --font-grand-58: 58px;
-    --font-grand-56: 56px;
-    --font-grand-54: 54px;
-    --font-grand-52: 52px;
-    --font-grand-50: 50px;
-    --font-title-48: 48px;
-    --font-title-46: 46px;
-    --font-title-44: 44px;
-    --font-title-42: 42px;
-    --font-title-40: 40px;
-    --font-subtitle-38: 38px;
-    --font-subtitle-36: 36px;
-    --font-subtitle-34: 34px;
-    --font-subtitle-32: 32px;
-    --font-subtitle-30: 30px;
-    --font-subtitle-28: 28px;
-    --font-subtitle-24: 24px;
-    --font-subtitle-20: 20px;
-    --font-subtitle-18: 18px;
-    --font-text-16: 16px;
-    --font-text-14: 14px;
-    --font-text-12: 12px;
-    --font-text-10: 10px;
+    --font-grand-60: 3.875rem;
+    --font-grand-58: 3.75rem;
+    --font-grand-56: 3.625rem;
+    --font-grand-54: 3.5rem;
+    --font-grand-52: 3.25rem;
+    --font-grand-50: 3.125rem;
+    --font-title-48: 3rem;
+    --font-title-46: 2.875rem;
+    --font-title-44: 2.75rem;
+    --font-title-42: 2.625rem;
+    --font-title-40: 2.5rem;
+    --font-subtitle-38: 2.375rem;
+    --font-subtitle-36: 2.25rem;
+    --font-subtitle-34: 2.125rem;
+    --font-subtitle-32: 2rem;
+    --font-subtitle-30: 1.875rem;
+    --font-subtitle-28: 1.75rem;
+    --font-subtitle-24: 1.5rem;
+    --font-subtitle-20: 1.25rem;
+    --font-subtitle-18: 1.125rem;
+    --font-text-16: 1rem;
+    --font-text-14: 0.875rem;
+    --font-text-12: 0.75rem;
+    --font-text-10: 0.625rem;
 
     /* Line-Height */
 
@@ -131,7 +123,7 @@ const GlobalStyle = createGlobalStyle`
     small, strike, strong, sub, sup, tt, var,
     b, u, i, center,
     dl, dt, dd, ol, ul, li,
-    fieldset, form, label, legend,
+    fieldset, form, input, textarea, label, legend,
     table, caption, tbody, tfoot, thead, tr, th, td,
     article, aside, canvas, details, embed, 
     figure, figcaption, footer, header, hgroup, 
@@ -144,6 +136,15 @@ const GlobalStyle = createGlobalStyle`
         font: inherit;
         vertical-align: baseline;
     }
+
+    textarea {
+        resize: none;
+    }
+
+    button {
+        cursor: pointer;
+    }
+
     /* HTML5 display-role reset for older browsers */
     article, aside, details, figcaption, figure, 
     footer, header, hgroup, menu, nav, section {
