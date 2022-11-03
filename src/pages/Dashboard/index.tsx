@@ -12,7 +12,7 @@ import { toast } from "react-toastify";
 import imgPortfolio1 from "../../assets/img/05_resume_template.png";
 import imgPortfolio2 from "../../assets/img/1092.png";
 import imgPortfolio3 from "../../assets/img/5215985.png";
-import backGroundBtn from "../../assets/img/Purple Illustration Simple Creative Chat With People Application Instagram Post (2).png";
+import backGroundBtn from "../../assets/img/backgroundBtn.png";
 import logo from "../../assets/logo/logo-removebg-preview 1.png";
 
 export const Dashboard = () => {
@@ -22,19 +22,23 @@ export const Dashboard = () => {
   return (
     <Container>
       <header>
-        <img className="logo" src={logo} alt="" />
+        <div className="div-header">
+          <img className="logo" src={logo} alt="" />
 
-        <div className="container-user">
-          <span>César Rafael</span>
-          <Link
-            to={"/"}
-            onClick={() => {
-              window.localStorage.clear();
-              toast.success("Logout Successfully!");
-            }}
-          >
-            Logout
-          </Link>
+          <div className="container-user">
+            <span>César Rafael</span>
+            <div className="div-link">
+              <Link
+                to={"/"}
+                onClick={() => {
+                  window.localStorage.clear();
+                  toast.success("Logout Successfully!");
+                }}
+              >
+                Logout
+              </Link>
+            </div>
+          </div>
         </div>
       </header>
 
@@ -53,7 +57,14 @@ export const Dashboard = () => {
           <div className="buttons">
             <IconEdit />
             <IconTrash />
-            <IconShare />
+            <IconShare
+              onClick={() => {
+                toast.success("Link copiado com sucesso!");
+                navigator.clipboard.writeText(
+                  `${window.location.href}portfolio/${portfolioInfo.id}`
+                );
+              }}
+            />
           </div>
         </div>
         <div className="container-final">

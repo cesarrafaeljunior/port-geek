@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import backGroundBtn from "../../assets/img/backgroundBtn.png";
 import {
   FcEditImage,
   FcEmptyTrash,
@@ -66,23 +67,44 @@ export const Container = styled.div`
 
   header {
     display: flex;
-    align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
     gap: 60rem;
     position: fixed;
-    height: 90px;
+    height: 6rem;
+
+    @media (max-width: 768px) {
+      height: 8rem;
+      align-items: center;
+    }
+
+    .div-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+
+      @media (max-width: 768px) {
+        flex-direction: column;
+        justify-content: unset;
+      }
+    }
 
     background-color: var(--color-primary);
     width: 100%;
-    max-width: 100%;
     .logo {
       margin-left: 10rem;
+      @media (max-width: 768px) {
+        margin-left: 0;
+      }
     }
     .container-user {
       display: flex;
       align-items: center;
       gap: 40px;
-      background-color: red;
+      margin-right: 5rem;
+      @media (max-width: 768px) {
+        margin-right: 0;
+      }
 
       span {
         color: var(--color-grey-3);
@@ -98,6 +120,13 @@ export const Container = styled.div`
     gap: 10rem;
     margin-top: 10rem;
 
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+
     .portfolio {
       display: flex;
       flex-direction: column;
@@ -107,6 +136,10 @@ export const Container = styled.div`
       padding: 10px;
       width: 50%;
       background-color: var(--color-grey-2);
+
+      @media (max-width: 768px) {
+        width: 90%;
+      }
 
       .mini-port {
         width: 80%;
@@ -127,25 +160,31 @@ export const Container = styled.div`
       justify-content: center;
       position: relative;
       width: 50%;
-
+      margin-bottom: 6rem;
+      /* background-image: url(${backGroundBtn});
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain; */
+      @media (max-width: 768px) {
+        width: 90%;
+      }
       .background-btn {
-        position: absolute;
-        top: 0;
         width: 100%;
-        z-index: 0;
+
+        @media (max-width: 768px) {
+          display: none;
+        }
       }
     }
   }
 `;
 
 export const ButtonNewLayout = styled.button`
-  width: 140px;
+  width: 40%;
   height: 40px;
-  z-index: 1;
-
+  position: absolute;
+  bottom: 32%;
   margin-left: 4rem;
-  margin-top: 2rem;
-
   border: transparent;
   border-radius: var(--radius-8);
 
@@ -156,5 +195,10 @@ export const ButtonNewLayout = styled.button`
 
   :hover {
     background-color: var(--color-grey-2);
+  }
+
+  @media (max-width: 768px) {
+    top: 0;
+    margin-left: 0;
   }
 `;
