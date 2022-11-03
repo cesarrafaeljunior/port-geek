@@ -53,10 +53,7 @@ const GlobalStyle = createGlobalStyle`
 
     --font-primary-nunito: 'Nunito';
     --font-secondary-inter: 'Inter';
-    --font-tertiary-roboto: 'Roboto';
-    --font-quartenary-andika: 'Andika';
 
-    
     /*  Text Sizes */
     --font-grand-60: 3.875rem;
     --font-grand-58: 3.75rem;
@@ -126,7 +123,7 @@ const GlobalStyle = createGlobalStyle`
     small, strike, strong, sub, sup, tt, var,
     b, u, i, center,
     dl, dt, dd, ol, ul, li,
-    fieldset, form, label, legend,
+    fieldset, form, input, textarea, label, legend,
     table, caption, tbody, tfoot, thead, tr, th, td,
     article, aside, canvas, details, embed, 
     figure, figcaption, footer, header, hgroup, 
@@ -138,6 +135,10 @@ const GlobalStyle = createGlobalStyle`
         font-size: 100%;
         font: inherit;
         vertical-align: baseline;
+    }
+
+    textarea {
+        resize: none;
     }
 
     button {
