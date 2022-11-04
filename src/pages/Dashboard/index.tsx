@@ -28,7 +28,7 @@ export const Dashboard = () => {
     isShowModalDelete,
     setIsShowModalDelete,
   } = useContext(DashboardContext);
-  console.log(portfolioInfo.id);
+  // console.log(portfolioInfo.id);
   return (
     <Container>
       <header>
@@ -53,18 +53,17 @@ export const Dashboard = () => {
       </header>
 
       <div className="container-secondary">
-        {portfolioInfo.id ? (
+        {portfolioInfo && portfolioInfo.id ? (
           <div className="portfolio">
-            <img className="mini-port" src={imgPortfolio1} alt="" />
-            {/* {portfolioInfo.selectedLayout === "layout1" && (
-            <img src={imgPortfolio1} alt="" />
-          )}
-          {portfolioInfo.selectedLayout === "layout2" && (
-            <img src={imgPortfolio2} alt="" />
-          )}
-          {portfolioInfo.selectedLayout === "layout3" && (
-            <img src={imgPortfolio3} alt="" />
-          )} */}
+            {portfolioInfo.selectedLayout === "layout1" && (
+              <img className="mini-port" src={imgPortfolio1} alt="" />
+            )}
+            {portfolioInfo.selectedLayout === "layout2" && (
+              <img className="mini-port" src={imgPortfolio2} alt="" />
+            )}
+            {portfolioInfo.selectedLayout === "layout3" && (
+              <img className="mini-port" src={imgPortfolio3} alt="" />
+            )}
             <div className="buttons">
               <IconEdit />
               <IconTrash onClick={() => setIsShowModalDelete(true)} />
