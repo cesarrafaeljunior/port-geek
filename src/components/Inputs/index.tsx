@@ -1,11 +1,12 @@
 import { InputHTMLAttributes, useState } from "react";
-import { StyledDiv } from "./styled";
+import { StyledDiv, StyledDivPassword } from "./styled";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { UseFormRegister } from "react-hook-form";
 
-interface iInput extends InputHTMLAttributes<HTMLInputElement> {
+interface IInput extends InputHTMLAttributes<HTMLInputElement> {
   labelRefer: string;
   labelText: string;
+  bordercolor?: string;
   register: UseFormRegister<any>;
   registerkey: string;
 }
@@ -13,12 +14,13 @@ interface iInput extends InputHTMLAttributes<HTMLInputElement> {
 export const InputComponent = ({
   labelRefer,
   labelText,
+  bordercolor,
   register,
   registerkey,
   ...rest
 }: iInput) => {
   return (
-    <StyledDiv>
+    <StyledDiv bordercolor={bordercolor}>
       <label htmlFor={labelRefer}>{labelText}</label>
       <input id={labelRefer} {...register(registerkey)} {...rest} />
     </StyledDiv>
@@ -28,13 +30,14 @@ export const InputComponent = ({
 export const PasswordInputComponent = ({
   labelRefer,
   labelText,
+  bordercolor,
   register,
   ...rest
-}: iInput) => {
+}: IInput) => {
   const [isSeeingPassword, setIsSeeingPassword] = useState<boolean>(false);
 
   return (
-    <StyledDiv>
+    <StyledDivPassword bordercolor={bordercolor}>
       <label htmlFor={labelRefer}>{labelText}</label>
       <div>
         <input
@@ -44,6 +47,7 @@ export const PasswordInputComponent = ({
           {...rest}
         />
         <button
+          className="button-see-password"
           onClick={() => {
             setIsSeeingPassword(!isSeeingPassword);
           }}
@@ -51,6 +55,6 @@ export const PasswordInputComponent = ({
           {isSeeingPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
         </button>
       </div>
-    </StyledDiv>
+    </StyledDivPassword>
   );
 };
