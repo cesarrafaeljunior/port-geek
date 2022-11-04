@@ -14,6 +14,8 @@ interface IDashboardContext {
   isShowModalDelete: boolean;
   setIsShowModalDelete: React.Dispatch<React.SetStateAction<boolean>>;
   deletePort: () => void;
+  setPortCreateAuth: React.Dispatch<React.SetStateAction<boolean>>;
+  portCreateAuth: boolean;
 }
 
 interface IPortfolioInfo {
@@ -28,12 +30,14 @@ export const DashboardContext = createContext<IDashboardContext>(
 
 export const DashboardProvider = () => {
   const navigate = useNavigate();
+  const [portCreateAuth, setPortCreateAuth] = useState<boolean>(false);
   const token: string | null = localStorage.getItem("@PortGeek:token");
   const userId: string | null = localStorage.getItem("@PortGeek:uuid");
   const [isShowModalForm, setIsShowModalForm] = useState<boolean>(false);
   const [isShowModalFormEdit, setIsShowModalFormEdit] =
     useState<boolean>(false);
   const [isShowModalDelete, setIsShowModalDelete] = useState<boolean>(false);
+
   const [portfolioInfo, setPortfolioInfo] = useState<IPortfolioInfo>(
     {} as IPortfolioInfo
   );
@@ -77,6 +81,8 @@ export const DashboardProvider = () => {
         isShowModalDelete,
         setIsShowModalDelete,
         deletePort,
+        portCreateAuth,
+        setPortCreateAuth,
       }}
     >
       <Outlet />

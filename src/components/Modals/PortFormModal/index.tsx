@@ -1,8 +1,16 @@
-import * as yup from "yup";
 import { useForm } from "react-hook-form";
-import { useRef } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import PortFormModalStyled from "./styles";
+import {
+  iPortDataOrganized,
+  PortifolioContext,
+} from "../../../contexts/PortifolioContext";
+import { useContext } from "react";
+import { DashboardContext } from "../../../contexts/DashboardContext";
+import * as yup from "yup";
+import layout1 from "../../../assets/img/Layout-1.png";
+import layout2 from "../../../assets/img/Layout-2.png";
+import layout3 from "../../../assets/img/Layout-3.png";
 
 interface iPortFormModal {
   name: string;
@@ -26,36 +34,7 @@ interface iPortFormModal {
   telephone: string;
   training: string;
   zipCode: string;
-}
-
-interface iPortModalOrganized {
-  addres: {
-    city: string;
-    country: string;
-    street: string;
-    zipCode: string;
-  };
-  project: {
-    projectDeploy_url: string;
-    projectImage_url: string;
-    projectRepository_url: string;
-    project_description: string;
-    project_title: string;
-  };
-  user_profile: {
-    aboutYou: string;
-    age: string;
-    birthDate: string;
-    email: string;
-    experience: string;
-    genre: string;
-    github_url: string;
-    linkedin_url: string;
-    name: string;
-    skills: string;
-    telephone: string;
-    training: string;
-  };
+  selected_layout: string;
 }
 
 const schema = yup.object({});
@@ -63,14 +42,15 @@ const schema = yup.object({});
 const PortFormModal = () => {
   const {
     register,
-    getValues,
     handleSubmit,
     formState: { errors },
   } = useForm<iPortFormModal>({
     resolver: yupResolver(schema),
   });
 
-  function dataOrganize(data: iPortFormModal): iPortModalOrganized {
+  const { portCreateAuth } = useContext(DashboardContext);
+  const { sendPortifolio } = useContext(PortifolioContext);
+  function dataOrganize(data: iPortFormModal): iPortDataOrganized {
     let data2 = { ...data, adress: {}, user_profile: {}, project: {} } as any;
     for (let key in data) {
       switch (key) {
@@ -158,6 +138,10 @@ const PortFormModal = () => {
           data2.project.project_title = data[key];
           delete data2.project_title;
           break;
+        case "selected_layout":
+          data2.project.selected_layout = data[key];
+          delete data2.selected_layout;
+          break;
       }
     }
     return data2;
@@ -173,14 +157,19 @@ const PortFormModal = () => {
     inputAge.min = String(maxAge - 1);
   }
 
-  function sendPortfolio(data: iPortFormModal) {
+  function onSubmit(data: iPortFormModal) {
     const portfolio = dataOrganize(data);
     console.log(portfolio);
+    // sendPortifolio(portfolio);
+  }
+
+  if (!portCreateAuth) {
+    return null;
   }
 
   return (
     <PortFormModalStyled>
-      <form onSubmit={handleSubmit(sendPortfolio)}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <h2>Insira os dados para gerar o layout</h2>
         <div>
           <input
@@ -365,9 +354,48 @@ const PortFormModal = () => {
           />
           <span></span>
         </div>
-        <div className="formButtons">
-          <button>Retornar</button>
-          <button type="submit">Confirmar</button>
+        <div className="formLayouts">
+          <p>Selecione seu Layout</p>
+          <div className="layouts">
+            <div className="layoutContent">
+              <label>
+                <img src={layout1} alt="layout 1" />
+                <input
+                  type="radio"
+                  value={"layout-1"}
+                  {...register("selected_layout")}
+                  defaultChecked
+                />
+              </label>
+              <span></span>
+            </div>
+            <div className="layoutContent">
+              <label>
+                <img src={layout2} alt="layout 2" />
+                <input
+                  type="radio"
+                  value={"layout-2"}
+                  {...register("selected_layout")}
+                />
+              </label>
+              <span></span>
+            </div>
+            <div className="layoutContent">
+              <label>
+                <img src={layout3} alt="layout 3" />
+                <input
+                  type="radio"
+                  value={"layout-3"}
+                  {...register("selected_layout")}
+                />
+              </label>
+              <span></span>
+            </div>
+          </div>
+          <div className="formButtons">
+            <button>Retornar</button>
+            <button type="submit">Confirmar</button>
+          </div>
         </div>
       </form>
     </PortFormModalStyled>

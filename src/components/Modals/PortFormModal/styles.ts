@@ -64,6 +64,11 @@ const PortFormModalStyled = styled.div`
       color: #b6b6b6;
     }
 
+    textarea {
+      resize: none;
+      height: 150px;
+    }
+
     .flex {
       /* PENSAR MELHOR SOBRE */
       display: flex;
@@ -76,10 +81,36 @@ const PortFormModalStyled = styled.div`
         }
       }
     }
+    .formLayouts {
+      p {
+        text-align: center;
+        font-size: var(--font-text-16);
+        font-weight: var(--font-weight-600);
+      }
+    }
 
-    textarea {
-      resize: none;
-      height: 150px;
+    .layouts {
+      display: flex;
+      overflow-x: scroll;
+      min-height: 380px;
+      gap: 18px;
+      .layoutContent {
+        display: flex;
+        flex-direction: column;
+        padding: 12px;
+
+        label {
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+
+          img {
+            width: 200px;
+            height: 300px;
+            box-shadow: 2px 4px 12px black;
+          }
+        }
+      }
     }
 
     *::-webkit-scrollbar,
