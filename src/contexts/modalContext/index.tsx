@@ -9,11 +9,11 @@ interface iModalProvider {
 interface IModalProviderData {
     isOpenModalLogin: boolean,
     isOpenModalRegister: boolean,
-    setIsOpenModalLogin: (state: boolean) => void,
-    setIsOpenModalRegister: (state: boolean) => void,
+    setIsOpenModalLogin: (value: boolean) => void,
+    setIsOpenModalRegister: (value: boolean) => void,
 }
 
-export  function ModalProvider({ children }: iModalProvider): JSX.Element {
+export  function ModalProvider({ children }: iModalProvider) {
     const [isOpenModalLogin, setIsOpenModalLogin] = useState<boolean>(false)
     const [isOpenModalRegister, setIsOpenModalRegister] = useState<boolean>(false)
 

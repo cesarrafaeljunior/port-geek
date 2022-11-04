@@ -2,8 +2,12 @@ import "../../utils/i18n";
 import { useTranslation } from "react-i18next";
 import { Header, ImageSpace, Links, LinkSpace } from "./styles";
 import logo from "../../assets/logo/logo.png";
+import { useContext } from "react";
+import { ModalContext } from "../../contexts/modalContext";
+
 
 const HeaderSpace = () => {
+  const { setIsOpenModalLogin } = useContext(ModalContext);
   const { t } = useTranslation();
   return (
     <>
@@ -13,7 +17,7 @@ const HeaderSpace = () => {
         </ImageSpace>
         <LinkSpace>
           <Links to={"/"}>About us</Links>
-          <Links to={"/"}>Login</Links>
+          <button onClick={()=>setIsOpenModalLogin(true)}>Login</button>
         </LinkSpace>
       </Header>
     </>

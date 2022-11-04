@@ -32,7 +32,7 @@ const LandingPage = () => {
               <input
                 type="text"
                 name="email"
-                id="email"
+                id="email1"
                 placeholder="Enter your email"
               />
               <button

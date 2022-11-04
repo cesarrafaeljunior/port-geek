@@ -6,7 +6,6 @@ import { useForm } from "react-hook-form";
 import { InputComponent, PasswordInputComponent } from "../Inputs";
 import { ButtonComponent } from "../Buttons";
 import { UserContext } from "../../contexts/userContext";
-import { ModalContext } from "../../contexts/modalContext";
 import { iRegisterData } from "../../services/postRegister";
 import { registerSchema } from "../../schemas/userSchema";
 
@@ -43,7 +42,7 @@ export function Modal({ setModal }: iModal): JSX.Element {
 
   return (
     <Container>
-      <div ref={modalRef}>
+      < Contem ref={modalRef}>
         <Header>
           <h1>SignUp</h1>
           <MdOutlineClose onClick={() => setModal(false)} />
@@ -52,9 +51,9 @@ export function Modal({ setModal }: iModal): JSX.Element {
         <Main>
           <Form onSubmit={handleSubmit(handleRegister)}>
             <InputComponent
-              labelRefer="nome"
-              labelText="nome"
-              placeholder="Digite aqui seu nome"
+              labelRefer="Name"
+              labelText="Name"
+              placeholder="Enter your name"
               autoComplete="username"
               register={register}
               registerkey={"name"}
@@ -63,8 +62,8 @@ export function Modal({ setModal }: iModal): JSX.Element {
 
             <InputComponent
               labelRefer="email"
-              labelText="email"
-              placeholder="Digite aqui seu email"
+              labelText="Email"
+              placeholder="Enter your name"
               autoComplete="email"
               register={register}
               registerkey={"email"}
@@ -75,7 +74,7 @@ export function Modal({ setModal }: iModal): JSX.Element {
               labelRefer="password"
               labelText="password"
               type="password"
-              placeholder="Digite aqui sua senha"
+              placeholder="Enter your password"
               autoComplete="new-password"
               register={register}
               registerkey={"password"}
@@ -85,10 +84,10 @@ export function Modal({ setModal }: iModal): JSX.Element {
             )}
 
             <PasswordInputComponent
-              labelRefer="password1"
-              labelText="password1"
+              labelRefer="Confirm Password"
+              labelText="Confirm Password"
               type="password"
-              placeholder="Digite novamente sua senha"
+              placeholder="Enter your password"
               autoComplete="new-password"
               register={register}
               registerkey={"confirmPassword"}
@@ -97,10 +96,10 @@ export function Modal({ setModal }: iModal): JSX.Element {
               <p className="error">{errors.confirmPassword?.message}</p>
             )}
 
-            <ButtonComponent type="submit">Cadastrar</ButtonComponent>
+            <ButtonComponent type="submit">Submit</ButtonComponent>
           </Form>
         </Main>
-      </div>
+      </Contem>
     </Container>
   );
 }

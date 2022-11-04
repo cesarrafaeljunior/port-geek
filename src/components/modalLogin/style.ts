@@ -8,14 +8,17 @@ export const Container = styled.section`
     min-height: 100vh;
     position: fixed;
     background-color: rgba(18, 18, 20, 0.5);
+    top: 0;
+    left:0;
 `
 
 export const Contem = styled.div`
     width: 90%;
-    max-width: 369px;
-    background-color: var(--grey-3);
+    max-width: 50.8rem;
+    background-color: var(--color-white-mode);
     border-radius: 4px;
     overflow: hidden;
+    height: 52rem;
 `
 
 export const Header = styled.header`

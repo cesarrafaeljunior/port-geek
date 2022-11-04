@@ -6,14 +6,16 @@ export const Container = styled.section`
     align-items: center;
     width: 100%;
     min-height: 100vh;
-    position: fixed;
+    position: fixed; 
     background-color: rgba(18, 18, 20, 0.5);
+    top: 0;
+    left:0;
 `
 
 export const Contem = styled.div`
     width: 90%;
-    max-width: 369px;
-    background-color: var(--grey-3);
+    max-width: 45rem;
+    background-color:var(--color-white-mode) ;
     border-radius: 4px;
     overflow: hidden;
 `
@@ -25,9 +27,14 @@ export const Header = styled.header`
     background-color: var(--grey-2);
     padding: .875rem 1.25rem;
     svg {
-        font-size: 18px;
+        font-weight: 700;
+        font-size: 96px;
         color: var(--grey-1);
         cursor: pointer;
+    }
+    h1{
+        font-weight: 700;
+        font-size: 64px;
     }
 `
 

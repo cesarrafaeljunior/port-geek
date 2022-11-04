@@ -13,7 +13,7 @@ interface iModal {
   setModal: (state: boolean) => void;
 }
 
-export function Modal({ setModal }: iModal): JSX.Element {
+export function ModalLogin({ setModal }: iModal): JSX.Element {
   const modalRef = createRef<HTMLDivElement>();
   const { handleLogin, isValidate } = useContext(UserContext);
 
@@ -46,6 +46,7 @@ export function Modal({ setModal }: iModal): JSX.Element {
           <h1>SignUp</h1>
           <MdOutlineClose onClick={() => setModal(false)} />
         </Header>
+        <Main>
         <Form onSubmit={handleSubmit(handleLogin)}>
           <InputComponent
             labelRefer="Email"
@@ -70,6 +71,7 @@ export function Modal({ setModal }: iModal): JSX.Element {
 
           <ButtonComponent type="submit">Submit</ButtonComponent>
         </Form>
+        </Main>
       </Contem>
     </Container>
   );
