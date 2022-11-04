@@ -89,11 +89,6 @@ export const Dashboard = () => {
                 ? "var(--color-grey-2)"
                 : "var(--color-grey-3)"
             }
-            hoverBtn={
-              portfolioInfo && portfolioInfo.id
-                ? "var(--color-grey-2)"
-                : "var(--color-grey-2)"
-            }
             cursorPointer={
               portfolioInfo && portfolioInfo.id ? "unset" : "pointer"
             }

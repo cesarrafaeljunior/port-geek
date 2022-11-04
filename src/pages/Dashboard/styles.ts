@@ -4,14 +4,14 @@ import backGroundBtn from "../../assets/img/backgroundBtn.png";
 import { FcEditImage, FcEmptyTrash, FcShare } from "react-icons/fc";
 
 interface IStyledProps {
-  backgroundColor?: string;
-  cursorPointer?: string;
-  hoverBtn?: string;
+  backgroundColor: string;
+  cursorPointer: string;
 }
 
 export const IconTrash = styled(FcEmptyTrash)`
   width: 1.823rem;
   height: 1.75rem;
+
   cursor: pointer;
 
   :hover {
@@ -24,6 +24,7 @@ export const IconTrash = styled(FcEmptyTrash)`
 export const IconEdit = styled(FcEditImage)`
   width: 1.823rem;
   height: 1.75rem;
+
   cursor: pointer;
 
   :hover {
@@ -36,6 +37,7 @@ export const IconEdit = styled(FcEditImage)`
 export const IconShare = styled(FcShare)`
   width: 1.823rem;
   height: 1.75rem;
+
   cursor: pointer;
 
   :hover {
@@ -47,6 +49,7 @@ export const IconShare = styled(FcShare)`
 
 export const LinkStyle = styled(Link)`
   text-decoration: none;
+
   color: var(--color-grey-3);
 
   :hover {
@@ -55,8 +58,6 @@ export const LinkStyle = styled(Link)`
 `;
 
 export const Container = styled.div`
-  min-width: 100%;
-  min-height: 100vh;
   font-family: var(--font-secondary-inter);
 
   display: flex;
@@ -64,15 +65,23 @@ export const Container = styled.div`
   align-items: center;
   gap: 10px;
 
+  min-width: 100%;
+  min-height: 100vh;
+
   background-color: var(--color-grey-1);
 
   header {
+    z-index: 1;
+    position: fixed;
+
     display: flex;
     justify-content: center;
     gap: 60rem;
-    position: fixed;
+
+    width: 100%;
     height: 6rem;
-    z-index: 1;
+
+    background-color: var(--color-primary);
 
     @media (max-width: 768px) {
       height: 8rem;
@@ -91,10 +100,9 @@ export const Container = styled.div`
       }
     }
 
-    background-color: var(--color-primary);
-    width: 100%;
     .logo {
       margin-left: 10rem;
+
       @media (max-width: 768px) {
         margin-left: 0;
       }
@@ -103,13 +111,16 @@ export const Container = styled.div`
       display: flex;
       align-items: center;
       gap: 40px;
+
       margin-right: 5rem;
+
       @media (max-width: 768px) {
         margin-right: 0;
       }
 
       span {
         color: var(--color-grey-3);
+
         font-weight: var(--font-weight-600);
       }
     }
@@ -118,10 +129,12 @@ export const Container = styled.div`
   .container-secondary {
     display: flex;
     justify-content: space-between;
+    gap: 10rem;
+
     width: 1200px;
     max-width: 100%;
+
     padding: 10px;
-    gap: 10rem;
     margin-top: 10rem;
 
     @media (max-width: 768px) {
@@ -129,12 +142,14 @@ export const Container = styled.div`
       align-items: center;
       justify-content: center;
       gap: 1rem;
+
       margin-top: 8rem;
     }
 
     .div-alert {
       display: flex;
       align-items: center;
+
       @media (max-width: 768px) {
         margin-top: 10rem;
       }
@@ -156,9 +171,12 @@ export const Container = styled.div`
       align-items: center;
       justify-content: center;
       gap: 1rem;
+
       padding: 10px;
+
       width: 600px;
       height: 60%;
+
       background-color: var(--color-grey-2);
 
       @media (max-width: 768px) {
@@ -168,6 +186,7 @@ export const Container = styled.div`
       .mini-port {
         width: 90%;
         height: auto;
+
         margin-top: 1rem;
       }
 
@@ -175,30 +194,31 @@ export const Container = styled.div`
         display: flex;
         align-items: center;
         justify-content: space-between;
+
         width: 80%;
       }
     }
 
     .container-final {
+      position: relative;
+
       display: flex;
       align-items: center;
       justify-content: center;
-      position: relative;
-      /* width: 100%; */
+
       margin-bottom: 6rem;
-      /* background-image: url(${backGroundBtn});
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: contain; */
+
       @media (max-width: 768px) {
         width: 90%;
       }
+
       .background-btn {
         width: 500px;
-        /* max-width: 100%; */
+
         @media (max-width: 907px) {
           width: 400px;
         }
+
         @media (max-width: 768px) {
           display: none;
         }
@@ -208,12 +228,12 @@ export const Container = styled.div`
 `;
 
 export const ButtonNewLayout = styled.button<IStyledProps>`
-  width: 140px;
-
-  height: 40px;
   position: absolute;
+  width: 140px;
+  height: 40px;
   bottom: 32%;
   margin-left: 4rem;
+
   border: transparent;
   border-radius: var(--radius-8);
 
@@ -221,9 +241,11 @@ export const ButtonNewLayout = styled.button<IStyledProps>`
   color: var(--color-grey-0);
 
   font-weight: var(--font-weight-600);
+
   cursor: ${(props) => props.cursorPointer};
+
   :hover {
-    background-color: ${(props) => props.hoverBtn};
+    background-color: var(--color-grey-2);
   }
 
   @media (max-width: 768px) {
