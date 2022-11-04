@@ -28,6 +28,9 @@ import AnchorLink from "react-anchor-link-smooth-scroll";
 import lucasMitoriImg from "../../assets/members/lucasmitori.png";
 import cesarRafaelImg from "../../assets/members/cesarrafael.jpg";
 import lucasCruzImg from "../../assets/members/lucascruz.jpg";
+import henriqueSadimImg from "../../assets/members/henriqueSadim.jpeg";
+import AriImg from "../../assets/members/Ari.jpg";
+import jallesImg from "../../assets/members/jalles.jpg";
 
 const LandingPage = () => {
   const { t } = useTranslation();
@@ -129,25 +132,25 @@ const LandingPage = () => {
               </MemberCardInfo>
             </MemberCard>
             <MemberCard>
-              <MemberCardImg>
-                <img src={lucasMitoriImg} alt="Lucas Mitori" />
+              <MemberCardImg href="http://www.linkedin.com/in/arimoncaojr">
+                <img src={AriImg} alt="Ariosvaldo Rodrigues" />
               </MemberCardImg>
               <MemberCardInfo>
                 <h1>Lucas Mitori - Front-end Designer</h1>
-                <h2>Quality Assurance</h2>
+                <h2>Scrum Master - SM</h2>
               </MemberCardInfo>
             </MemberCard>
             <MemberCard>
-              <MemberCardImg>
-                <img src={lucasMitoriImg} alt="Lucas Mitori" />
+              <MemberCardImg href="https://www.linkedin.com/in/henrique-sandim-14992023a/">
+                <img src={henriqueSadimImg} alt="Henrique Sadim" />
               </MemberCardImg>
               <MemberCardInfo>
-                <h1>Lucas Mitori - Front-end Designer</h1>
-                <h2>Quality Assurance</h2>
+                <h1>Henrique Sadim - Front-end Designer</h1>
+                <h2>Tech Leader - TL</h2>
               </MemberCardInfo>
             </MemberCard>
             <MemberCard>
-              <MemberCardImg>
+              <MemberCardImg href="https://www.linkedin.com/in/lucas-okumura-2446a478/">
                 <img src={lucasMitoriImg} alt="Lucas Mitori" />
               </MemberCardImg>
               <MemberCardInfo>
@@ -156,7 +159,7 @@ const LandingPage = () => {
               </MemberCardInfo>
             </MemberCard>
             <MemberCard>
-              <MemberCardImg>
+              <MemberCardImg href="http://www.linkedin.com/in/lucas-cruz-de-souza-0b73b6205">
                 <img src={lucasCruzImg} alt="Lucas Cruz" />
               </MemberCardImg>
               <MemberCardInfo>
@@ -165,12 +168,12 @@ const LandingPage = () => {
               </MemberCardInfo>
             </MemberCard>
             <MemberCard>
-              <MemberCardImg>
-                <img src={lucasMitoriImg} alt="Lucas Mitori" />
+              <MemberCardImg href="https://www.linkedin.com/in/jallesbatista/">
+                <img src={jallesImg} alt="Jalles Batista" />
               </MemberCardImg>
               <MemberCardInfo>
-                <h1>Lucas Mitori - Front-end Designer</h1>
-                <h2>Quality Assurance</h2>
+                <h1>Jalles Batista - Front-end Designer</h1>
+                <h2>Quality Assurance - QA</h2>
               </MemberCardInfo>
             </MemberCard>
           </GroupMemberSpace>
