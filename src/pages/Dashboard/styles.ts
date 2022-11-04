@@ -1,12 +1,13 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import backGroundBtn from "../../assets/img/backgroundBtn.png";
-import {
-  FcEditImage,
-  FcEmptyTrash,
-  FcFullTrash,
-  FcShare,
-} from "react-icons/fc";
+import { FcEditImage, FcEmptyTrash, FcShare } from "react-icons/fc";
+
+interface IStyledProps {
+  backgroundColor?: string;
+  cursorPointer?: string;
+  hoverBtn?: string;
+}
 
 export const IconTrash = styled(FcEmptyTrash)`
   width: 1.823rem;
@@ -206,7 +207,7 @@ export const Container = styled.div`
   }
 `;
 
-export const ButtonNewLayout = styled.button`
+export const ButtonNewLayout = styled.button<IStyledProps>`
   width: 140px;
 
   height: 40px;
@@ -216,13 +217,13 @@ export const ButtonNewLayout = styled.button`
   border: transparent;
   border-radius: var(--radius-8);
 
-  background-color: var(--color-grey-3);
+  background-color: ${(props) => props.backgroundColor};
   color: var(--color-grey-0);
 
   font-weight: var(--font-weight-600);
-
+  cursor: ${(props) => props.cursorPointer};
   :hover {
-    background-color: var(--color-grey-2);
+    background-color: ${(props) => props.hoverBtn};
   }
 
   @media (max-width: 768px) {

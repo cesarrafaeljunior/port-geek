@@ -83,7 +83,31 @@ export const Dashboard = () => {
           </div>
         )}
         <div className="container-final">
-          <ButtonNewLayout type="button">Create Portfolio</ButtonNewLayout>
+          <ButtonNewLayout
+            backgroundColor={
+              portfolioInfo && portfolioInfo.id
+                ? "var(--color-grey-2)"
+                : "var(--color-grey-3)"
+            }
+            hoverBtn={
+              portfolioInfo && portfolioInfo.id
+                ? "var(--color-grey-2)"
+                : "var(--color-grey-2)"
+            }
+            cursorPointer={
+              portfolioInfo && portfolioInfo.id ? "unset" : "pointer"
+            }
+            type="button"
+            onClick={() => {
+              portfolioInfo &&
+                portfolioInfo.id &&
+                toast.warning(
+                  "You need to delete the current Portfolio to create a new one!"
+                );
+            }}
+          >
+            Create Portfolio
+          </ButtonNewLayout>
           <img className="background-btn" src={backGroundBtn} alt="" />
         </div>
       </div>
