@@ -15,6 +15,8 @@ import imgPortfolio3 from "../../assets/img/5215985.png";
 import backGroundBtn from "../../assets/img/backgroundBtn.png";
 import logo from "../../assets/logo/logo-removebg-preview 1.png";
 import { ModalDelete } from "../../components/ModalDelete";
+import PortfolioProvider from "../../contexts/PortifolioContext";
+import PortFormModal from "../../components/Modals/PortFormModal";
 
 export const Dashboard = () => {
   const {
@@ -27,6 +29,7 @@ export const Dashboard = () => {
     setIsShowModalFormEdit,
     isShowModalDelete,
     setIsShowModalDelete,
+    setPortCreateAuth,
   } = useContext(DashboardContext);
 
   return (
@@ -78,10 +81,18 @@ export const Dashboard = () => {
           </div>
         </div>
         <div className="container-final">
-          <ButtonNewLayout type="button">Criar Portfolio</ButtonNewLayout>
+          <ButtonNewLayout
+            onClick={() => setPortCreateAuth(true)}
+            type="button"
+          >
+            Criar Portfolio
+          </ButtonNewLayout>
           <img className="background-btn" src={backGroundBtn} alt="" />
         </div>
       </div>
+      <PortfolioProvider>
+        <PortFormModal />
+      </PortfolioProvider>
       {isShowModalDelete && <ModalDelete />}
     </Container>
   );

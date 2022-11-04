@@ -15,12 +15,13 @@ const PortFormModalStyled = styled.div`
   }
 
   form {
+    position: relative;
     margin: 50px 0;
     overflow-y: scroll;
     width: 90%;
     max-height: 100vh;
     background-color: white;
-    padding: 24px 32px;
+    padding: 24px 24px;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -28,6 +29,7 @@ const PortFormModalStyled = styled.div`
     max-width: 450px;
 
     h2 {
+      margin-top: 12px;
       text-align: center;
       font-weight: var(--font-weight-700);
       font-size: var(--font-subtitle-20);
@@ -36,10 +38,6 @@ const PortFormModalStyled = styled.div`
     input,
     select,
     textarea {
-      border: 0;
-      box-sizing: border-box;
-      outline: none;
-      /* REMOVER */
       width: 100%;
       padding: 12px 10px;
       background-color: #eaeaea;
@@ -68,6 +66,43 @@ const PortFormModalStyled = styled.div`
       resize: none;
       height: 150px;
     }
+    button {
+      transition: 0.3s;
+    }
+    button:active {
+      scale: 0.9;
+    }
+    .button-close {
+      position: absolute;
+      top: 10px;
+      right: 5px;
+      font-size: 32px;
+      font-weight: 600;
+      background-color: transparent;
+      transition: 0.5s;
+    }
+    .button-close:hover {
+      color: var(--color-primary);
+    }
+
+    .formButtons {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      .button-default {
+        padding: 10px;
+        color: white;
+        font-size: var(--font-text-14);
+        font-weight: var(--font-weight-600);
+        border-radius: var(--radius-10);
+        background-color: black;
+      }
+      .button-default:hover {
+        color: black;
+        background-color: var(--color-primary);
+      }
+    }
 
     .flex {
       /* PENSAR MELHOR SOBRE */
@@ -86,14 +121,15 @@ const PortFormModalStyled = styled.div`
         text-align: center;
         font-size: var(--font-text-16);
         font-weight: var(--font-weight-600);
+        margin-bottom: 8px;
       }
     }
-
     .layouts {
       display: flex;
       overflow-x: scroll;
       min-height: 380px;
       gap: 18px;
+      position: relative;
       .layoutContent {
         display: flex;
         flex-direction: column;
@@ -102,12 +138,23 @@ const PortFormModalStyled = styled.div`
         label {
           display: flex;
           flex-direction: column;
+          align-items: center;
           gap: 20px;
+          cursor: pointer;
 
           img {
             width: 200px;
             height: 300px;
             box-shadow: 2px 4px 12px black;
+            transition: 0.5s;
+          }
+          img:active {
+            scale: 0.95;
+          }
+          input {
+            cursor: pointer;
+            width: 16px;
+            height: 16px;
           }
         }
       }
@@ -130,6 +177,12 @@ const PortFormModalStyled = styled.div`
     *::-webkit-scrollbar-thumb:hover,
     ::-webkit-scrollbar-thumb:hover {
       background: #b6b6b6;
+    }
+  }
+
+  @media (min-width: 768px) {
+    form {
+      padding: 24px 32px;
     }
   }
 `;

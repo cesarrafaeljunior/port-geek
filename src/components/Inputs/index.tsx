@@ -18,7 +18,7 @@ export const InputComponent = ({
   register,
   registerkey,
   ...rest
-}: iInput) => {
+}: IInput) => {
   return (
     <StyledDiv bordercolor={bordercolor}>
       <label htmlFor={labelRefer}>{labelText}</label>

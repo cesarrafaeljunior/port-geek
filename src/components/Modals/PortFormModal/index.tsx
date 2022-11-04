@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import PortFormModalStyled from "./styles";
+import { CgClose } from "react-icons/cg";
 import {
   iPortDataOrganized,
   PortifolioContext,
@@ -48,7 +49,7 @@ const PortFormModal = () => {
     resolver: yupResolver(schema),
   });
 
-  const { portCreateAuth } = useContext(DashboardContext);
+  const { portCreateAuth, setPortCreateAuth } = useContext(DashboardContext);
   const { sendPortifolio } = useContext(PortifolioContext);
   function dataOrganize(data: iPortFormModal): iPortDataOrganized {
     let data2 = { ...data, adress: {}, user_profile: {}, project: {} } as any;
@@ -170,6 +171,13 @@ const PortFormModal = () => {
   return (
     <PortFormModalStyled>
       <form onSubmit={handleSubmit(onSubmit)}>
+        <button
+          type="button"
+          className="button-close"
+          onClick={() => setPortCreateAuth(false)}
+        >
+          <CgClose />
+        </button>
         <h2>Insira os dados para gerar o layout</h2>
         <div>
           <input
@@ -393,8 +401,16 @@ const PortFormModal = () => {
             </div>
           </div>
           <div className="formButtons">
-            <button>Retornar</button>
-            <button type="submit">Confirmar</button>
+            <button
+              type="button"
+              className="button-default"
+              onClick={() => setPortCreateAuth(false)}
+            >
+              Retornar
+            </button>
+            <button type="submit" className="button-default">
+              Confirmar
+            </button>
           </div>
         </div>
       </form>
