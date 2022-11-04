@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import backGroundBtn from "../../assets/img/backgroundBtn.png";
 import { FcEditImage, FcEmptyTrash, FcShare } from "react-icons/fc";
 
 interface IStyledProps {
