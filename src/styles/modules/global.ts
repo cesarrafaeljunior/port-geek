@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import "react-toastify/dist/ReactToastify.css";
 
 const GlobalStyle = createGlobalStyle`
 
@@ -7,8 +8,8 @@ const GlobalStyle = createGlobalStyle`
     Author: Lucas Mitori Oliveira Okumura
     contact: lucas.mitori@hotmail.com
     cel: (11) 9-7749-2121
-    Name: Entrega - Kenziehub - Parte 1 (Cadastro e Login)
-    Description: Atividade Avaliativa
+    Name: Final Project
+    Description: Projeto Front-end
     ~ *   Root CSS - Global styles   * ~
 
             Version: 1.0
@@ -37,6 +38,7 @@ const GlobalStyle = createGlobalStyle`
     --button-color-red: #EB4946;
 
     --color-shadow-box: rgba(0, 0, 0, 0.05);
+    --color-shadow-box-01: #ff8000;
     --color-black-mode: #000000;
     --color-white-mode: #FFFFFF;
     --color-transparent: #00000090;
@@ -53,10 +55,7 @@ const GlobalStyle = createGlobalStyle`
 
     --font-primary-nunito: 'Nunito';
     --font-secondary-inter: 'Inter';
-    --font-tertiary-roboto: 'Roboto';
-    --font-quartenary-andika: 'Andika';
 
-    
     /*  Text Sizes */
     --font-grand-60: 3.875rem;
     --font-grand-58: 3.75rem;
@@ -126,7 +125,7 @@ const GlobalStyle = createGlobalStyle`
     small, strike, strong, sub, sup, tt, var,
     b, u, i, center,
     dl, dt, dd, ol, ul, li,
-    fieldset, form, label, legend,
+    fieldset, form, input, textarea, label, legend,
     table, caption, tbody, tfoot, thead, tr, th, td,
     article, aside, canvas, details, embed, 
     figure, figcaption, footer, header, hgroup, 
@@ -138,6 +137,10 @@ const GlobalStyle = createGlobalStyle`
         font-size: 100%;
         font: inherit;
         vertical-align: baseline;
+    }
+
+    textarea {
+        resize: none;
     }
 
     button {
