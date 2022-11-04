@@ -5,6 +5,7 @@ import { FcEditImage, FcEmptyTrash, FcShare } from "react-icons/fc";
 interface IStyledProps {
   backgroundColor: string;
   cursorPointer: string;
+  setScale: string;
 }
 
 export const IconTrash = styled(FcEmptyTrash)`
@@ -242,6 +243,12 @@ export const ButtonNewLayout = styled.button<IStyledProps>`
   font-weight: var(--font-weight-600);
 
   cursor: ${(props) => props.cursorPointer};
+
+  transition: 0.5s;
+
+  :active {
+    scale: ${(props) => props.setScale};
+  }
 
   :hover {
     background-color: var(--color-grey-2);

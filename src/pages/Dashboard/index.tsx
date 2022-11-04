@@ -92,6 +92,7 @@ export const Dashboard = () => {
             cursorPointer={
               portfolioInfo && portfolioInfo.id ? "unset" : "pointer"
             }
+            setScale={portfolioInfo && portfolioInfo.id ? "unset" : "0.95"}
             type="button"
             onClick={() => {
               portfolioInfo &&

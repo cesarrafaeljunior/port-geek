@@ -9,6 +9,14 @@ export const Container = styled.div`
   min-height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
 
+  button {
+    transition: 0.5s;
+  }
+
+  button:active {
+    scale: 0.95;
+  }
+
   .modal {
     display: flex;
     align-items: center;
