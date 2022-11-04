@@ -28,7 +28,7 @@ export const Dashboard = () => {
     isShowModalDelete,
     setIsShowModalDelete,
   } = useContext(DashboardContext);
-  console.log(portfolioInfo);
+  console.log(portfolioInfo.id);
   return (
     <Container>
       <header>
@@ -72,7 +72,7 @@ export const Dashboard = () => {
                 onClick={() => {
                   toast.success("Link copiado com sucesso!");
                   navigator.clipboard.writeText(
-                    `${window.location.href}portfolio/${portfolioInfo}`
+                    `${window.location.href}/portfolio/${portfolioInfo.id}`
                   );
                 }}
               />

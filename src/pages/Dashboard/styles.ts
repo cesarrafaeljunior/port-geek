@@ -71,6 +71,7 @@ export const Container = styled.div`
     gap: 60rem;
     position: fixed;
     height: 6rem;
+    z-index: 1;
 
     @media (max-width: 768px) {
       height: 8rem;
