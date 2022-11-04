@@ -25,6 +25,9 @@ export const Header = styled.header`
   background-color: var(--color-secondary);
   border-bottom: 2px solid var(--color-black-mode);
   z-index: 1001;
+  position: fixed;
+  top: 0;
+  left: 0;
 
   @media screen and (max-width: 480px) {
     padding-left: 0;
@@ -81,7 +84,7 @@ export const LinkSpace = styled.div<ShowProps>`
     background-color: var(--color-navigation);
     border: 1px solid var(--color-quartenary);
     position: fixed;
-    top: 5%;
+    top: 15%;
     left: 0%;
     flex-flow: column nowrap;
     z-index: 1001;
@@ -160,11 +163,13 @@ export const LinkSpace = styled.div<ShowProps>`
     height: 50%;
     background-color: var(--color-navigation);
     border: 1px solid var(--color-quartenary);
+    border-radius: 0 0 0 var(--radius-8);
     position: fixed;
-    top: 5%;
-    left: 0%;
+    top: 118px;
+    left: 100%;
     flex-flow: column nowrap;
     z-index: 1001;
+    transition: 0.8s ease-in-out;
 
     & > button {
       color: var(--color-white-mode);

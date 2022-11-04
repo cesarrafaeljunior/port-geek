@@ -35,7 +35,7 @@ const HeaderSpace = () => {
         </ImageSpace>
         <LinkSpace show={show}>
           <AnchorLink href="#section-about">
-            <Links>About us</Links>
+            <Links onClick={() => openMenu()}>About us</Links>
           </AnchorLink>
           <Links>Login</Links>
         </LinkSpace>
