@@ -37,26 +37,27 @@ export const DashboardProvider = () => {
   const [portfolioInfo, setPortfolioInfo] = useState<IPortfolioInfo>(
     {} as IPortfolioInfo
   );
-  console.log(portfolioInfo);
 
   useEffect(() => {
-    // token &&
-    Api.get(`/portfolio?userId=10`)
-      .then(({ data }) => {
-        const newData = data.map((element: IPortfolioInfo): IPortfolioInfo => {
-          const newObject = {
-            userId: element.userId,
-            selectedLayout: element.selectedLayout,
-            id: element.id,
-          };
-          return newObject;
+    token &&
+      Api.get(`/portfolio?userId=${idUser}`)
+        .then(({ data }) => {
+          const newData = data.map(
+            (element: IPortfolioInfo): IPortfolioInfo => {
+              const newObject = {
+                userId: element.userId,
+                selectedLayout: element.selectedLayout,
+                id: element.id,
+              };
+              return newObject;
+            }
+          );
+          setPortfolioInfo(newData[0]);
+        })
+        .catch((err) => {
+          window.localStorage.clear();
+          navigate("/");
         });
-        setPortfolioInfo(newData[0]);
-      })
-      .catch((err) => {
-        window.localStorage.clear();
-        navigate("/");
-      });
   }, [token, navigate, idUser]);
 
   function deletePort() {

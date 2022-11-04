@@ -28,7 +28,7 @@ export const Dashboard = () => {
     isShowModalDelete,
     setIsShowModalDelete,
   } = useContext(DashboardContext);
-  // console.log(portfolioInfo.id);
+
   return (
     <Container>
       <header>
