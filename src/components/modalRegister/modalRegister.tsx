@@ -96,7 +96,7 @@ export function Modal({ setModal }: iModal): JSX.Element {
               <p className="error">{errors.confirmPassword?.message}</p>
             )}
 
-            <ButtonComponent type="submit">Submit</ButtonComponent>
+            <ButtonComponent type="submit" backgroundcolor={""} lettercolor={""} hovercolor={""}>Submit</ButtonComponent>
           </Form>
         </Main>
       </Contem>

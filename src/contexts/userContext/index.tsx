@@ -24,7 +24,7 @@ interface iUserProvider {
 export function UserProvider({ children }: iUserProvider): JSX.Element {
     const [user, setUser] = useState<iAPIData>({} as iAPIData)
     const [isValidate, setisValidate] = useState<boolean>(false)
-    const {setIsOpenModalRegister} = useContext(ModalContext)
+    const {setIsOpenModalLogin} = useContext(ModalContext)
     const navigate = useNavigate()
 
     const handleRegister = (data: iRegisterData) => {
@@ -34,9 +34,10 @@ export function UserProvider({ children }: iUserProvider): JSX.Element {
         postRegister(data)
         .then(() => {
             successToast('Usuário cadastrado!')
-            navigate('/', {replace: true})
+            setIsOpenModalLogin(true)
+            
         })
-        .catch(() => errorToast('Ocorreu um erro!'))
+        .catch((err) =>{err && errorToast('Ocorreu um erro!')} )
         .finally(() => setisValidate(false))
     }
 

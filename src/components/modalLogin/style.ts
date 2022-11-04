@@ -14,11 +14,11 @@ export const Container = styled.section`
 
 export const Contem = styled.div`
     width: 90%;
-    max-width: 50.8rem;
+    max-width: 45rem;
     background-color: var(--color-white-mode);
     border-radius: 4px;
     overflow: hidden;
-    height: 52rem;
+    
 `
 
 export const Header = styled.header`

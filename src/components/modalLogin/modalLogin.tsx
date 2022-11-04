@@ -69,7 +69,7 @@ export function ModalLogin({ setModal }: iModal): JSX.Element {
           />
           {errors.password && <p className="error">{errors.email?.message}</p>}
 
-          <ButtonComponent type="submit">Submit</ButtonComponent>
+          <ButtonComponent type="submit" backgroundcolor={""} lettercolor={""} hovercolor={""}>Submit</ButtonComponent>
         </Form>
         </Main>
       </Contem>
