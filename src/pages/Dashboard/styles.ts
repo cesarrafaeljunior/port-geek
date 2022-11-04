@@ -116,7 +116,9 @@ export const Container = styled.div`
   .container-secondary {
     display: flex;
     justify-content: space-between;
-    width: 70%;
+    width: 1200px;
+    max-width: 100%;
+    padding: 10px;
     gap: 10rem;
     margin-top: 10rem;
 
@@ -125,6 +127,25 @@ export const Container = styled.div`
       align-items: center;
       justify-content: center;
       gap: 1rem;
+      margin-top: 8rem;
+    }
+
+    .div-alert {
+      display: flex;
+      align-items: center;
+      @media (max-width: 768px) {
+        margin-top: 10rem;
+      }
+
+      p {
+        text-align: center;
+        font-size: var(--font-subtitle-24);
+        font-weight: var(--font-weight-700);
+
+        @media (max-width: 768px) {
+          font-size: var(--font-subtitle-20);
+        }
+      }
     }
 
     .portfolio {
@@ -134,7 +155,8 @@ export const Container = styled.div`
       justify-content: center;
       gap: 1rem;
       padding: 10px;
-      width: 50%;
+      width: 600px;
+      height: 60%;
       background-color: var(--color-grey-2);
 
       @media (max-width: 768px) {
@@ -142,7 +164,8 @@ export const Container = styled.div`
       }
 
       .mini-port {
-        width: 80%;
+        width: 90%;
+        height: auto;
         margin-top: 1rem;
       }
 
@@ -159,7 +182,7 @@ export const Container = styled.div`
       align-items: center;
       justify-content: center;
       position: relative;
-      width: 50%;
+      /* width: 100%; */
       margin-bottom: 6rem;
       /* background-image: url(${backGroundBtn});
       background-repeat: no-repeat;
@@ -169,8 +192,11 @@ export const Container = styled.div`
         width: 90%;
       }
       .background-btn {
-        width: 100%;
-
+        width: 500px;
+        /* max-width: 100%; */
+        @media (max-width: 907px) {
+          width: 400px;
+        }
         @media (max-width: 768px) {
           display: none;
         }
@@ -180,7 +206,8 @@ export const Container = styled.div`
 `;
 
 export const ButtonNewLayout = styled.button`
-  width: 40%;
+  width: 140px;
+
   height: 40px;
   position: absolute;
   bottom: 32%;

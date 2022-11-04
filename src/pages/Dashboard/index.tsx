@@ -19,7 +19,7 @@ import { ModalDelete } from "../../components/ModalDelete";
 export const Dashboard = () => {
   const {
     token,
-    userId,
+    idUser,
     portfolioInfo,
     isShowModalForm,
     setIsShowModalForm,
@@ -28,7 +28,7 @@ export const Dashboard = () => {
     isShowModalDelete,
     setIsShowModalDelete,
   } = useContext(DashboardContext);
-
+  console.log(portfolioInfo);
   return (
     <Container>
       <header>
@@ -53,9 +53,10 @@ export const Dashboard = () => {
       </header>
 
       <div className="container-secondary">
-        <div className="portfolio">
-          <img className="mini-port" src={imgPortfolio1} alt="" />
-          {/* {portfolioInfo.selectedLayout === "layout1" && (
+        {portfolioInfo.id ? (
+          <div className="portfolio">
+            <img className="mini-port" src={imgPortfolio1} alt="" />
+            {/* {portfolioInfo.selectedLayout === "layout1" && (
             <img src={imgPortfolio1} alt="" />
           )}
           {portfolioInfo.selectedLayout === "layout2" && (
@@ -64,21 +65,26 @@ export const Dashboard = () => {
           {portfolioInfo.selectedLayout === "layout3" && (
             <img src={imgPortfolio3} alt="" />
           )} */}
-          <div className="buttons">
-            <IconEdit />
-            <IconTrash onClick={() => setIsShowModalDelete(true)} />
-            <IconShare
-              onClick={() => {
-                toast.success("Link copiado com sucesso!");
-                navigator.clipboard.writeText(
-                  `${window.location.href}portfolio/${portfolioInfo.id}`
-                );
-              }}
-            />
+            <div className="buttons">
+              <IconEdit />
+              <IconTrash onClick={() => setIsShowModalDelete(true)} />
+              <IconShare
+                onClick={() => {
+                  toast.success("Link copiado com sucesso!");
+                  navigator.clipboard.writeText(
+                    `${window.location.href}portfolio/${portfolioInfo}`
+                  );
+                }}
+              />
+            </div>
           </div>
-        </div>
+        ) : (
+          <div className="div-alert">
+            <p>You don't have created a Portfolio yet!</p>
+          </div>
+        )}
         <div className="container-final">
-          <ButtonNewLayout type="button">Criar Portfolio</ButtonNewLayout>
+          <ButtonNewLayout type="button">Create Portfolio</ButtonNewLayout>
           <img className="background-btn" src={backGroundBtn} alt="" />
         </div>
       </div>

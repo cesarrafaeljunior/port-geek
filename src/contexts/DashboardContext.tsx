@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 
 interface IDashboardContext {
   token: string | null;
-  userId: string | null;
+  idUser: string | null;
   portfolioInfo: IPortfolioInfo;
   isShowModalForm: boolean;
   setIsShowModalForm: React.Dispatch<React.SetStateAction<boolean>>;
@@ -29,7 +29,7 @@ export const DashboardContext = createContext<IDashboardContext>(
 export const DashboardProvider = () => {
   const navigate = useNavigate();
   const token: string | null = localStorage.getItem("@PortGeek:token");
-  const userId: string | null = localStorage.getItem("@PortGeek:uuid");
+  const idUser: string | null = localStorage.getItem("@PortGeek:uuid");
   const [isShowModalForm, setIsShowModalForm] = useState<boolean>(false);
   const [isShowModalFormEdit, setIsShowModalFormEdit] =
     useState<boolean>(false);
@@ -37,23 +37,29 @@ export const DashboardProvider = () => {
   const [portfolioInfo, setPortfolioInfo] = useState<IPortfolioInfo>(
     {} as IPortfolioInfo
   );
+  // console.log(portfolioInfo);
 
   useEffect(() => {
     token &&
-      Api.get<IPortfolioInfo>(`/portfolio?userId=${userId}`)
-        .then((res) => {
-          const objectRes = {
-            userId: res.data.userId,
-            selectedLayout: res.data.selectedLayout,
-            id: res.data.id,
-          };
-          setPortfolioInfo(objectRes);
+      Api.get(`/portfolio?userId=${idUser}`)
+        .then(({ data }) => {
+          const newData = data.map(
+            (element: IPortfolioInfo): IPortfolioInfo => {
+              const newObject = {
+                userId: element.userId,
+                selectedLayout: element.selectedLayout,
+                id: element.id,
+              };
+              return newObject;
+            }
+          );
+          setPortfolioInfo(newData[0]);
         })
         .catch((err) => {
           window.localStorage.clear();
           navigate("/");
         });
-  }, [token, userId, navigate, portfolioInfo]);
+  }, [token, navigate, idUser, portfolioInfo.id]);
 
   function deletePort() {
     Api.delete(`/portfolio/${portfolioInfo.id}`, {
@@ -68,7 +74,7 @@ export const DashboardProvider = () => {
     <DashboardContext.Provider
       value={{
         token,
-        userId,
+        idUser,
         portfolioInfo,
         isShowModalForm,
         setIsShowModalForm,
