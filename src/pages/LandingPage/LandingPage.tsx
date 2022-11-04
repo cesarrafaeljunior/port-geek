@@ -10,14 +10,12 @@ import {
   Border,
   BtnDiv,
 } from "./styles";
-import { useContext } from "react"
-import { ModalContext } from "../../contexts/modalContext"
+import { useContext } from "react";
+import { ModalContext } from "../../contexts/modalContext";
 import HeaderSpace from "../../components/Header/Header";
 
-
-
 const LandingPage = () => {
-  const {setIsOpenModalRegister} = useContext(ModalContext)
+  const { setIsOpenModalRegister } = useContext(ModalContext);
   const { t } = useTranslation();
   return (
     <>
@@ -37,7 +35,14 @@ const LandingPage = () => {
                 id="email"
                 placeholder="Enter your email"
               />
-              <button onClick={(e) =>{e.preventDefault(); setIsOpenModalRegister(true)}}>Sign up</button>
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  setIsOpenModalRegister(true);
+                }}
+              >
+                Sign up
+              </button>
             </form>
           </BtnDiv>
         </DescriptionSection>
