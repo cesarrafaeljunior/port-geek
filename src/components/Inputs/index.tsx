@@ -1,15 +1,21 @@
 import { InputHTMLAttributes, useState } from "react";
-import { StyledDiv } from "./styled";
+import { StyledDiv, StyledDivPassword } from "./styled";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 
-interface iInput extends InputHTMLAttributes<HTMLInputElement> {
+interface IInput extends InputHTMLAttributes<HTMLInputElement> {
   labelRefer: string;
   labelText: string;
+  bordercolor?: string;
 }
 
-export const InputComponent = ({ labelRefer, labelText, ...rest }: iInput) => {
+export const InputComponent = ({
+  labelRefer,
+  labelText,
+  bordercolor,
+  ...rest
+}: IInput) => {
   return (
-    <StyledDiv>
+    <StyledDiv bordercolor={bordercolor}>
       <label htmlFor={labelRefer}>{labelText}</label>
       <input id={labelRefer} {...rest} />
     </StyledDiv>
@@ -19,12 +25,13 @@ export const InputComponent = ({ labelRefer, labelText, ...rest }: iInput) => {
 export const PasswordInputComponent = ({
   labelRefer,
   labelText,
+  bordercolor,
   ...rest
-}: iInput) => {
+}: IInput) => {
   const [isSeeingPassword, setIsSeeingPassword] = useState<boolean>(false);
 
   return (
-    <StyledDiv>
+    <StyledDivPassword bordercolor={bordercolor}>
       <label htmlFor={labelRefer}>{labelText}</label>
       <div>
         <input
@@ -33,6 +40,7 @@ export const PasswordInputComponent = ({
           {...rest}
         />
         <button
+          className="button-see-password"
           onClick={() => {
             setIsSeeingPassword(!isSeeingPassword);
           }}
@@ -40,6 +48,6 @@ export const PasswordInputComponent = ({
           {isSeeingPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
         </button>
       </div>
-    </StyledDiv>
+    </StyledDivPassword>
   );
 };
