@@ -16,7 +16,6 @@ export const ModalDelete = () => {
             onClick={() => {
               deletePort();
               setIsShowModalDelete(false);
-              toast.success("Portfolio deleted!");
             }}
           >
             Yes

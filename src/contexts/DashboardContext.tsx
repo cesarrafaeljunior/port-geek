@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 interface IDashboardContext {
   token: string | null;
   idUser: string | null;
-  portfolioInfo: IPortfolioInfo;
+  portfolioInfo: IPortfolioInfo | null;
   isShowModalForm: boolean;
   setIsShowModalForm: React.Dispatch<React.SetStateAction<boolean>>;
   isShowModalFormEdit: boolean;
@@ -34,38 +34,39 @@ export const DashboardProvider = () => {
   const [isShowModalFormEdit, setIsShowModalFormEdit] =
     useState<boolean>(false);
   const [isShowModalDelete, setIsShowModalDelete] = useState<boolean>(false);
-  const [portfolioInfo, setPortfolioInfo] = useState<IPortfolioInfo>(
+  const [portfolioInfo, setPortfolioInfo] = useState<IPortfolioInfo | null>(
     {} as IPortfolioInfo
   );
-
+  console.log(portfolioInfo);
   useEffect(() => {
-    token &&
-      Api.get(`/portfolio?userId=${idUser}`)
-        .then(({ data }) => {
-          const newData = data.map(
-            (element: IPortfolioInfo): IPortfolioInfo => {
-              const newObject = {
-                userId: element.userId,
-                selectedLayout: element.selectedLayout,
-                id: element.id,
-              };
-              return newObject;
-            }
-          );
-          setPortfolioInfo(newData[0]);
-        })
-        .catch((err) => {
-          window.localStorage.clear();
-          navigate("/");
+    // token &&
+    Api.get(`/portfolio?userId=4`)
+      .then(({ data }) => {
+        const newData = data.map((element: IPortfolioInfo): IPortfolioInfo => {
+          const newObject = {
+            userId: element.userId,
+            selectedLayout: element.selectedLayout,
+            id: element.id,
+          };
+          return newObject;
         });
+        setPortfolioInfo(newData[0]);
+      })
+      .catch((err) => {
+        window.localStorage.clear();
+        navigate("/");
+      });
   }, [token, navigate, idUser]);
 
   function deletePort() {
-    Api.delete(`/portfolio/${portfolioInfo.id}`, {
-      headers: { Authorization: `Bearer ${token}` },
-    }).then(() => {
-      toast.success("Portfolio deletado com sucesso!");
+    Api.delete(`/portfolio/${portfolioInfo && portfolioInfo.id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }).then((res) => {
+      res && toast.success("Portfolio deletado com sucesso!");
       setIsShowModalForm(false);
+      setPortfolioInfo(null);
     });
   }
 
