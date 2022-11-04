@@ -1,9 +1,22 @@
-import { ButtonHTMLAttributes } from "react";
+import { iStyledButton, StyledButton } from "./styled";
 
-interface IButton extends ButtonHTMLAttributes<HTMLButtonElement> {
-  children: React.ReactNode;
-}
-
-export const ButtonComponent = ({ children, ...rest }: IButton) => {
-  return <button {...rest}>{children}</button>;
+export const ButtonComponent = ({
+  children,
+  backgroundcolor,
+  lettercolor,
+  hovercolor,
+  buttonsize,
+  ...rest
+}: iStyledButton) => {
+  return (
+    <StyledButton
+      backgroundcolor={backgroundcolor}
+      lettercolor={lettercolor}
+      hovercolor={hovercolor}
+      buttonsize={buttonsize}
+      {...rest}
+    >
+      {children}
+    </StyledButton>
+  );
 };
