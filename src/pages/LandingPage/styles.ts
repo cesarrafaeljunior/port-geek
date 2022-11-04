@@ -1,9 +1,8 @@
 import styled from "styled-components";
 import animatedLogo from "../../assets/img/teste.svg";
-import descriptionImg from "../../assets/img/wallpaper08.jpg";
+import descriptionImg from "../../assets/img/wallpaper12.jpg";
 import AsideImg from "../../assets/img/wallpaper11.jpg";
 import aboutImage from "../../assets/img/about-02.png";
-import groupImage from "../../assets/img/wallpaper04.jpg";
 import groupSection from "../../assets/img/wallpaper04.jpg";
 
 /****************************************
@@ -21,31 +20,32 @@ import groupSection from "../../assets/img/wallpaper04.jpg";
 
 export const HomeSection = styled.main`
   width: 100%;
-  height: 110vh;
+  height: 90vh;
   display: flex;
   flex-flow: row nowrap;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: flex-start;
   background-color: #c2e0f9;
+  margin-top: 120px;
 
   @media screen and (max-width: 480px) {
-    height: 200vh;
+    height: 180vh;
     flex-flow: column nowrap;
   }
   @media screen and (max-width: 600px) {
-    height: 200vh;
+    height: 180vh;
     flex-flow: column nowrap;
   }
   @media screen and (max-width: 768px) {
-    height: 200vh;
+    height: 180vh;
     flex-flow: column nowrap;
   }
   @media screen and (max-width: 1024px) {
-    height: 200vh;
+    height: 180vh;
     flex-flow: column nowrap;
   }
   @media screen and (max-width: 1200px) {
-    height: 200vh;
+    height: 180vh;
     flex-flow: column nowrap;
   }
   @media screen and (max-width: 1920px) {
@@ -76,28 +76,26 @@ export const DescriptionSection = styled.section`
     width: 60%;
     height: 20%;
     margin-bottom: 50px;
-    text-shadow: 0 -1px 4px var(--color-white-mode),
-      0 -2px 10px var(--color-quartenary),
-      0 -10px 20px var(--color-shadow-box-01), 0 -18px 40px var(--color-primary);
   }
 
   @media screen and (max-width: 480px) {
     width: 100%;
-    height: 100vh;
+    height: 70vh;
     justify-content: space-evenly;
-    padding-top: 30px;
+    padding-top: 10px;
 
     & > h1 {
-      width: 80%;
+      font-size: var(--font-subtitle-24);
+      width: 90%;
       height: 26%;
       margin: 0;
     }
   }
   @media screen and (max-width: 600px) {
     width: 100%;
-    height: 100vh;
+    height: 90vh;
     justify-content: space-evenly;
-    padding-top: 30px;
+    padding-top: 10px;
 
     & > h1 {
       width: 80%;
@@ -107,9 +105,9 @@ export const DescriptionSection = styled.section`
   }
   @media screen and (max-width: 768px) {
     width: 100%;
-    height: 100vh;
+    height: 90vh;
     justify-content: space-evenly;
-    padding-top: 30px;
+    padding-top: 10px;
 
     & > h1 {
       width: 80%;
@@ -119,9 +117,9 @@ export const DescriptionSection = styled.section`
   }
   @media screen and (max-width: 1024px) {
     width: 100%;
-    height: 100vh;
+    height: 90vh;
     justify-content: space-evenly;
-    padding-top: 30px;
+    padding-top: 10px;
 
     & > h1 {
       width: 80%;
@@ -131,7 +129,7 @@ export const DescriptionSection = styled.section`
   }
   @media screen and (max-width: 1200px) {
     width: 100%;
-    height: 100vh;
+    height: 90vh;
     justify-content: space-evenly;
     padding-top: 30px;
 
@@ -166,6 +164,9 @@ export const TypingEffect = styled.div`
   }
 
   @media screen and (max-width: 480px) {
+    & > h2 {
+      font-size: var(--font-subtitle-20);
+    }
   }
   @media screen and (max-width: 600px) {
   }
@@ -202,7 +203,7 @@ export const AsideSpace = styled.aside`
 
   @media screen and (max-width: 480px) {
     width: 100%;
-    height: 100vh;
+    height: 900vh;
 
     & > h1 {
       margin-top: 30px;
@@ -212,7 +213,7 @@ export const AsideSpace = styled.aside`
   }
   @media screen and (max-width: 600px) {
     width: 100%;
-    height: 100vh;
+    height: 90vh;
 
     & > h1 {
       margin-top: 30px;
@@ -222,7 +223,7 @@ export const AsideSpace = styled.aside`
   }
   @media screen and (max-width: 768px) {
     width: 100%;
-    height: 100vh;
+    height: 90vh;
 
     & > h1 {
       margin-top: 30px;
@@ -232,7 +233,7 @@ export const AsideSpace = styled.aside`
   }
   @media screen and (max-width: 1024px) {
     width: 100%;
-    height: 100vh;
+    height: 900vh;
 
     & > h1 {
       margin-top: 30px;
@@ -242,7 +243,7 @@ export const AsideSpace = styled.aside`
   }
   @media screen and (max-width: 1200px) {
     width: 100%;
-    height: 100vh;
+    height: 90vh;
 
     & > h1 {
       margin-top: 30px;
@@ -292,7 +293,7 @@ export const AnimatedLogo = styled.div`
 
 export const Border = styled.div`
   position: absolute;
-  height: 80vh;
+  height: 60vh;
   top: 25%;
   left: 50%;
   bottom: 0;
@@ -319,7 +320,7 @@ export const Border = styled.div`
 
 export const TransitionAbout = styled.button`
   position: absolute;
-  top: 105vh;
+  top: 90vh;
   left: 47%;
   width: 100px;
   display: flex;
@@ -328,27 +329,39 @@ export const TransitionAbout = styled.button`
   border: none;
   background-color: transparent;
 
-  @media screen and (max-width: 480px) {
-    top: 200vh;
+  @media (min-width: 340px) {
+    top: 185vh;
     left: 37%;
   }
-  @media screen and (max-width: 600px) {
-    top: 200vh;
-    left: 37%;
+  @media (min-width: 480px) {
+    top: 180vh;
+    left: 40%;
   }
-  @media screen and (max-width: 768px) {
-    top: 200vh;
-    left: 37%;
+  @media (min-width: 600px) {
+    top: 180vh;
+    left: 43%;
   }
-  @media screen and (max-width: 1024px) {
-    top: 200vh;
-    left: 37%;
+  @media (min-width: 768px) {
+    top: 180vh;
+    left: 45%;
   }
-  @media screen and (max-width: 1200px) {
-    top: 200vh;
-    left: 37%;
+  @media (min-width: 1024px) {
+    top: 180vh;
+    left: 47%;
   }
-  @media screen and (max-width: 1920px) {
+  @media (min-width: 1200px) {
+    top: 90vh;
+    left: 46%;
+  }
+  @media (min-width: 1366px) {
+    top: 90vh;
+    left: 46.5%;
+  }
+  @media (min-width: 1500px) {
+    top: 90vh;
+    left: 47.5%;
+  }
+  @media (max-width: 1920px) {
   }
 `;
 
@@ -488,16 +501,16 @@ export const BtnDiv = styled.div`
     height: 100px;
 
     & > form {
-      flex-flow: column nowrap;
+      flex-flow: row nowrap;
     }
 
     & > form > input {
-      width: 100%;
+      width: 68%;
       height: 45px;
     }
 
     & > form > button {
-      width: 80%;
+      width: 28%;
       height: 45px;
     }
   }
@@ -506,16 +519,16 @@ export const BtnDiv = styled.div`
     height: 100px;
 
     & > form {
-      flex-flow: column nowrap;
+      flex-flow: row nowrap;
     }
 
     & > form > input {
-      width: 100%;
+      width: 68%;
       height: 45px;
     }
 
     & > form > button {
-      width: 80%;
+      width: 28%;
       height: 45px;
     }
   }
@@ -532,27 +545,27 @@ export const AboutSection = styled.main`
   background-color: royalblue;
 
   @media screen and (max-width: 480px) {
-    height: 200vh;
+    height: 180vh;
     width: 100%;
     flex-flow: column nowrap;
   }
   @media screen and (max-width: 600px) {
-    height: 200vh;
+    height: 180vh;
     width: 100%;
     flex-flow: column nowrap;
   }
   @media screen and (max-width: 768px) {
-    height: 200vh;
+    height: 180vh;
     width: 100%;
     flex-flow: column nowrap;
   }
   @media screen and (max-width: 1024px) {
-    height: 200vh;
+    height: 180vh;
     width: 100%;
     flex-flow: column nowrap;
   }
   @media screen and (max-width: 1200px) {
-    height: 200vh;
+    height: 180vh;
     width: 100%;
     flex-flow: column nowrap;
   }
@@ -590,7 +603,7 @@ export const CompanionSection = styled.section`
 
   @media screen and (max-width: 480px) {
     width: 100%;
-    height: 100vh;
+    height: 90vh;
     padding-top: 30px;
 
     & > h1 {
@@ -599,7 +612,7 @@ export const CompanionSection = styled.section`
   }
   @media screen and (max-width: 600px) {
     width: 100%;
-    height: 100vh;
+    height: 90vh;
     padding-top: 30px;
 
     & > h1 {
@@ -608,7 +621,7 @@ export const CompanionSection = styled.section`
   }
   @media screen and (max-width: 768px) {
     width: 100%;
-    height: 100vh;
+    height: 90vh;
     padding-top: 30px;
 
     & > h1 {
@@ -617,7 +630,7 @@ export const CompanionSection = styled.section`
   }
   @media screen and (max-width: 1024px) {
     width: 100%;
-    height: 100vh;
+    height: 90vh;
     padding-top: 30px;
 
     & > h1 {
@@ -626,7 +639,7 @@ export const CompanionSection = styled.section`
   }
   @media screen and (max-width: 1200px) {
     width: 100%;
-    height: 100vh;
+    height: 90vh;
     padding-top: 30px;
 
     & > h1 {
@@ -655,13 +668,13 @@ export const AboutDescriptionSpace = styled.aside`
     margin-top: 100px;
     font-size: var(--font-subtitle-28);
     font-family: var(--font-secondary-inter);
-    font-weight: var(--font-weight-600);
+    font-weight: var(--font-weight-700);
     color: var(--color-grey-4);
     letter-spacing: 2px;
   }
 
   & > p {
-    margin-top: 100px;
+    margin-top: 50px;
     font-family: var(--font-secondary-inter);
     font-size: var(--font-subtitle-20);
     font-weight: var(--font-weight-400);
@@ -681,65 +694,65 @@ export const AboutDescriptionSpace = styled.aside`
 
   @media screen and (max-width: 480px) {
     width: 100%;
-    height: 100vh;
+    height: 90vh;
 
     & > p {
-      width: 80%;
+      width: 90%;
       height: 60%;
       font-size: var(--font-text-16);
     }
   }
   @media screen and (max-width: 600px) {
     width: 100%;
-    height: 100vh;
+    height: 90vh;
 
     & > p {
-      width: 80%;
+      width: 90%;
       height: 60%;
       font-size: var(--font-text-16);
     }
   }
   @media screen and (max-width: 768px) {
     width: 100%;
-    height: 100vh;
+    height: 90vh;
 
     & > p {
-      width: 80%;
+      width: 90%;
       height: 60%;
       font-size: var(--font-text-16);
     }
   }
   @media screen and (max-width: 1024px) {
     width: 100%;
-    height: 100vh;
+    height: 90vh;
 
     & > p {
-      width: 80%;
+      width: 90%;
       height: 60%;
       font-size: var(--font-text-16);
     }
   }
   @media screen and (max-width: 1200px) {
     width: 100%;
-    height: 100vh;
+    height: 90vh;
 
     & > p {
-      width: 80%;
+      width: 90%;
       height: 60%;
       font-size: var(--font-text-16);
     }
   }
   @media screen and (max-width: 1920px) {
     & > p {
-      width: 70%;
+      width: 90%;
     }
   }
 `;
 
 export const SecondBorder = styled.div`
   position: absolute;
-  height: 80vh;
-  top: 140%;
+  height: 70vh;
+  top: 120%;
   left: 50%;
   bottom: 0;
   border-left: 2px solid var(--color-quinternary);
@@ -766,7 +779,7 @@ export const SecondBorder = styled.div`
 
 export const TransitionHome = styled.button`
   position: absolute;
-  top: 125vh;
+  top: 105vh;
   left: 47%;
   width: 100px;
   display: flex;
@@ -775,27 +788,39 @@ export const TransitionHome = styled.button`
   border: none;
   background-color: transparent;
 
-  @media screen and (max-width: 480px) {
-    top: 215vh;
+  @media (min-width: 340px) {
+    top: 195vh;
     left: 37%;
   }
-  @media screen and (max-width: 600px) {
-    top: 215vh;
-    left: 37%;
+  @media (min-width: 480px) {
+    top: 195vh;
+    left: 40%;
   }
-  @media screen and (max-width: 768px) {
-    top: 215vh;
-    left: 37%;
+  @media (min-width: 600px) {
+    top: 195vh;
+    left: 43%;
   }
-  @media screen and (max-width: 1024px) {
-    top: 215vh;
-    left: 37%;
+  @media (min-width: 768px) {
+    top: 195vh;
+    left: 45%;
   }
-  @media screen and (max-width: 1200px) {
-    top: 215vh;
-    left: 37%;
+  @media (min-width: 1024px) {
+    top: 195vh;
+    left: 47%;
   }
-  @media screen and (max-width: 1920px) {
+  @media (min-width: 1200px) {
+    top: 110vh;
+    left: 46%;
+  }
+  @media (min-width: 1366px) {
+    top: 110vh;
+    left: 46.5%;
+  }
+  @media (min-width: 1500px) {
+    top: 110vh;
+    left: 47.5%;
+  }
+  @media (max-width: 1920px) {
   }
 `;
 
@@ -803,15 +828,13 @@ export const GroupMemberSpace = styled.div`
   width: 80%;
   height: 90%;
   margin-top: 20px;
-  background-image: url(${groupImage});
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+  background-color: var(--blur-effect-02);
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-start;
   align-items: center;
   border: 2px solid var(--color-grey-4);
+  border-radius: var(--radius-8);
   overflow: auto;
 
   @media screen and (max-width: 480px) {
