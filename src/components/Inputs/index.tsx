@@ -29,6 +29,7 @@ export const PasswordInputComponent = ({
   labelRefer,
   labelText,
   register,
+  registerkey,
   ...rest
 }: iInput) => {
   const [isSeeingPassword, setIsSeeingPassword] = useState<boolean>(false);
@@ -40,7 +41,7 @@ export const PasswordInputComponent = ({
         <input
           id={labelRefer}
           type={isSeeingPassword ? "text" : "password"}
-          {...register}
+          {...register(registerkey)}
           {...rest}
         />
         <button
