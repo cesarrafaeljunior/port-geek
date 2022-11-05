@@ -5,8 +5,8 @@ import { toast } from "react-toastify";
 
 interface IDashboardContext {
   token: string | null;
-  userId: string | null;
-  portfolioInfo: IPortfolioInfo;
+  idUser: string | null;
+  portfolioInfo: IPortfolioInfo | null;
   isShowModalForm: boolean;
   setIsShowModalForm: React.Dispatch<React.SetStateAction<boolean>>;
   isShowModalFormEdit: boolean;
@@ -17,9 +17,9 @@ interface IDashboardContext {
 }
 
 interface IPortfolioInfo {
-  userId: number;
-  selectedLayout: string;
-  id: number;
+  userId?: number;
+  selectedLayout?: string;
+  id?: number;
 }
 
 export const DashboardContext = createContext<IDashboardContext>(
@@ -29,38 +29,46 @@ export const DashboardContext = createContext<IDashboardContext>(
 export const DashboardProvider = () => {
   const navigate = useNavigate();
   const token: string | null = localStorage.getItem("@PortGeek:token");
-  const userId: string | null = localStorage.getItem("@PortGeek:uuid");
+  const idUser: string | null = localStorage.getItem("@PortGeek:uuid");
   const [isShowModalForm, setIsShowModalForm] = useState<boolean>(false);
   const [isShowModalFormEdit, setIsShowModalFormEdit] =
     useState<boolean>(false);
   const [isShowModalDelete, setIsShowModalDelete] = useState<boolean>(false);
-  const [portfolioInfo, setPortfolioInfo] = useState<IPortfolioInfo>(
+  const [portfolioInfo, setPortfolioInfo] = useState<IPortfolioInfo | null>(
     {} as IPortfolioInfo
   );
-
+  console.log(portfolioInfo);
   useEffect(() => {
     token &&
-      Api.get<IPortfolioInfo>(`/portfolio?userId=${userId}`)
-        .then((res) => {
-          const objectRes = {
-            userId: res.data.userId,
-            selectedLayout: res.data.selectedLayout,
-            id: res.data.id,
-          };
-          setPortfolioInfo(objectRes);
+      Api.get(`/portfolio?userId=${idUser}`)
+        .then(({ data }) => {
+          const newData = data.map(
+            (element: IPortfolioInfo): IPortfolioInfo => {
+              const newObject = {
+                userId: element.userId,
+                selectedLayout: element.selectedLayout,
+                id: element.id,
+              };
+              return newObject;
+            }
+          );
+          setPortfolioInfo(newData[0]);
         })
         .catch((err) => {
           window.localStorage.clear();
           navigate("/");
         });
-  }, [token, userId, navigate, portfolioInfo]);
+  }, [token, navigate, idUser]);
 
   function deletePort() {
-    Api.delete(`/portfolio/${portfolioInfo.id}`, {
-      headers: { Authorization: `Bearer ${token}` },
-    }).then(() => {
-      toast.success("Portfolio deletado com sucesso!");
+    Api.delete(`/portfolio/${portfolioInfo && portfolioInfo.id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }).then((res) => {
+      res && toast.success("Portfolio deletado com sucesso!");
       setIsShowModalForm(false);
+      setPortfolioInfo(null);
     });
   }
 
@@ -68,7 +76,7 @@ export const DashboardProvider = () => {
     <DashboardContext.Provider
       value={{
         token,
-        userId,
+        idUser,
         portfolioInfo,
         isShowModalForm,
         setIsShowModalForm,
