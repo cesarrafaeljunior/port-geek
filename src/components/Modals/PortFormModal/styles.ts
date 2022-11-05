@@ -27,6 +27,7 @@ const PortFormModalStyled = styled.div`
     flex-direction: column;
     gap: 20px;
     max-width: 450px;
+    animation: openFromTop 0.5s ease-in;
 
     h2 {
       margin-top: 12px;
@@ -183,6 +184,17 @@ const PortFormModalStyled = styled.div`
   @media (min-width: 768px) {
     form {
       padding: 24px 32px;
+    }
+  }
+
+  @keyframes openFromTop {
+    from {
+      transform: translateY(-50px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0px);
+      opacity: 1;
     }
   }
 `;

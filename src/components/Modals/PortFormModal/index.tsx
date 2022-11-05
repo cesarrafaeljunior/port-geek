@@ -22,7 +22,7 @@ interface iPortFormModal {
   country: string;
   email: string;
   experience: string;
-  genre: string;
+  gender: string;
   github_url: string;
   linkedin_url: string;
   projectDeploy_url: string;
@@ -95,9 +95,9 @@ const PortFormModal = () => {
           data2.user_profile.experience = data[key];
           delete data2.experience;
           break;
-        case "genre":
-          data2.user_profile.genre = data[key];
-          delete data2.genre;
+        case "gender":
+          data2.user_profile.gender = data[key];
+          delete data2.gender;
           break;
         case "training":
           data2.user_profile.training = data[key];
@@ -178,7 +178,7 @@ const PortFormModal = () => {
         >
           <CgClose />
         </button>
-        <h2>Insira os dados para gerar o layout</h2>
+        <h2>Enter data to generate layout</h2>
         <div>
           <input
             placeholder="Enter your full name"
@@ -214,8 +214,8 @@ const PortFormModal = () => {
         <div className="flex">
           <div>
             <span></span>
-            <select id="" {...register("genre")}>
-              <option value="">Genre</option>
+            <select id="" {...register("gender")}>
+              <option value="">Gender</option>
               <option value="Male">Male</option>
               <option value="Feminine">Feminine</option>
               <option value="Other">Other</option>
@@ -238,7 +238,11 @@ const PortFormModal = () => {
             <span></span>
           </div>
           <div>
-            <input placeholder="Cep" type="number" {...register("zipCode")} />
+            <input
+              placeholder="zipCode"
+              type="number"
+              {...register("zipCode")}
+            />
             <span></span>
           </div>
         </div>
@@ -270,7 +274,7 @@ const PortFormModal = () => {
         </div>
         <div>
           <input
-            placeholder="Github profile"
+            placeholder="Github profile(URL)"
             type="url"
             {...register("github_url")}
           />
@@ -278,7 +282,7 @@ const PortFormModal = () => {
         </div>
         <div>
           <input
-            placeholder="Linkedin Profile"
+            placeholder="Linkedin Profile(URL)"
             type="url"
             {...register("linkedin_url")}
           />
@@ -363,7 +367,7 @@ const PortFormModal = () => {
           <span></span>
         </div>
         <div className="formLayouts">
-          <p>Selecione seu Layout</p>
+          <p>Select your layout</p>
           <div className="layouts">
             <div className="layoutContent">
               <label>
@@ -406,10 +410,10 @@ const PortFormModal = () => {
               className="button-default"
               onClick={() => setPortCreateAuth(false)}
             >
-              Retornar
+              Return
             </button>
             <button type="submit" className="button-default">
-              Confirmar
+              Confirm
             </button>
           </div>
         </div>
