@@ -61,7 +61,7 @@ const LandingPage = () => {
         </DescriptionSection>
         <Border />
         <TransitionAbout>
-          <AnchorLink href="#section-about">
+          <AnchorLink href="#section-about" offset={100}>
             <IconContext.Provider
               value={{
                 color: "var(--color-grey-4)",
@@ -108,7 +108,7 @@ const LandingPage = () => {
         </AboutDescriptionSpace>
         <SecondBorder />
         <TransitionHome>
-          <AnchorLink href="#section-home">
+          <AnchorLink href="#section-home" offset={100}>
             <IconContext.Provider
               value={{
                 color: "var(--color-grey-4)",
