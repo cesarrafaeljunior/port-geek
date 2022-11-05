@@ -13,7 +13,7 @@ import imgPortfolio1 from "../../assets/img/05_resume_template.png";
 import imgPortfolio2 from "../../assets/img/1092.png";
 import imgPortfolio3 from "../../assets/img/5215985.png";
 import backGroundBtn from "../../assets/img/backgroundBtn.png";
-import logo from "../../assets/logo/logo-removebg-preview 1.png";
+import logo from "../../assets/logo/logo.png";
 import { ModalDelete } from "../../components/ModalDelete";
 
 export const Dashboard = () => {

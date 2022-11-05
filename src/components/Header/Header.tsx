@@ -6,6 +6,7 @@ import AnchorLink from "react-anchor-link-smooth-scroll";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IconContext } from "react-icons";
 import { useState } from "react";
+import { ButtonComponent } from "../Buttons";
 
 export interface ShowProps {
   show: boolean;
@@ -35,9 +36,20 @@ const HeaderSpace = () => {
         </ImageSpace>
         <LinkSpace show={show}>
           <AnchorLink href="#section-about">
-            <Links onClick={() => openMenu()}>About us</Links>
+            <ButtonComponent
+              onClick={() => openMenu()}
+              backgroundcolor={"transparent"}
+              lettercolor={"var(--color-white-mode)"}
+            >
+              About us
+            </ButtonComponent>
           </AnchorLink>
-          <Links>Login</Links>
+          <ButtonComponent
+            backgroundcolor={"transparent"}
+            lettercolor={"var(--color-white-mode)"}
+          >
+            Login
+          </ButtonComponent>
         </LinkSpace>
       </Header>
     </>

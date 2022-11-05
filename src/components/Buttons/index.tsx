@@ -1,4 +1,4 @@
-import { iStyledButton, StyledButton } from "./styled";
+import { IStyledButton, StyledButton } from "./styled";
 
 export const ButtonComponent = ({
   children,
@@ -6,14 +6,16 @@ export const ButtonComponent = ({
   lettercolor,
   hovercolor,
   buttonsize,
+  fontsize,
   ...rest
-}: iStyledButton) => {
+}: IStyledButton) => {
   return (
     <StyledButton
       backgroundcolor={backgroundcolor}
       lettercolor={lettercolor}
       hovercolor={hovercolor}
       buttonsize={buttonsize}
+      fontsize={fontsize}
       {...rest}
     >
       {children}
