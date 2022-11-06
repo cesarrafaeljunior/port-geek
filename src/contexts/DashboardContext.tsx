@@ -40,7 +40,6 @@ export const DashboardProvider = () => {
     {} as IPortfolioInfo
   );
   const [nameUser, setNameUser] = useState<string>("");
-  console.log(nameUser);
 
   useEffect(() => {
     token &&
