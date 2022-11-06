@@ -68,7 +68,7 @@ export const DashboardProvider = () => {
     token &&
       Api.get(`/users/${idUser}`, {
         headers: {
-          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFyaW1vbmNhb2pyQGhvdG1haWwuY29tIiwiaWF0IjoxNjY3NzQyOTU4LCJleHAiOjE2Njc3NDY1NTgsInN1YiI6IjIifQ.zWYJeZxhlL-bUKI8iv_7WYfvu-wRsQjW64Bflna7zwY`,
+          Authorization: `Bearer ${token}`,
         },
       })
         .then(({ data }) => {
