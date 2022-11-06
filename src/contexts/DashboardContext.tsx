@@ -13,13 +13,14 @@ interface IDashboardContext {
   setIsShowModalFormEdit: React.Dispatch<React.SetStateAction<boolean>>;
   isShowModalDelete: boolean;
   setIsShowModalDelete: React.Dispatch<React.SetStateAction<boolean>>;
+  nameUser: string;
   deletePort: () => void;
 }
 
 interface IPortfolioInfo {
-  userId?: number;
-  selectedLayout?: string;
-  id?: number;
+  userId: number;
+  selectedLayout: string;
+  id: number;
 }
 
 export const DashboardContext = createContext<IDashboardContext>(
@@ -30,6 +31,7 @@ export const DashboardProvider = () => {
   const navigate = useNavigate();
   const token: string | null = localStorage.getItem("@PortGeek:token");
   const idUser: string | null = localStorage.getItem("@PortGeek:uuid");
+
   const [isShowModalForm, setIsShowModalForm] = useState<boolean>(false);
   const [isShowModalFormEdit, setIsShowModalFormEdit] =
     useState<boolean>(false);
@@ -37,7 +39,9 @@ export const DashboardProvider = () => {
   const [portfolioInfo, setPortfolioInfo] = useState<IPortfolioInfo | null>(
     {} as IPortfolioInfo
   );
-  console.log(portfolioInfo);
+  const [nameUser, setNameUser] = useState<string>("");
+  console.log(nameUser);
+
   useEffect(() => {
     token &&
       Api.get(`/portfolio?userId=${idUser}`)
@@ -59,6 +63,22 @@ export const DashboardProvider = () => {
           navigate("/");
         });
   }, [token, navigate, idUser]);
+
+  useEffect(() => {
+    token &&
+      Api.get(`/users/${idUser}`, {
+        headers: {
+          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFyaW1vbmNhb2pyQGhvdG1haWwuY29tIiwiaWF0IjoxNjY3NzQyOTU4LCJleHAiOjE2Njc3NDY1NTgsInN1YiI6IjIifQ.zWYJeZxhlL-bUKI8iv_7WYfvu-wRsQjW64Bflna7zwY`,
+        },
+      })
+        .then(({ data }) => {
+          setNameUser(data.name);
+        })
+        .catch((err) => {
+          window.localStorage.clear();
+          navigate("/");
+        });
+  }, [token, idUser, navigate]);
 
   function deletePort() {
     Api.delete(`/portfolio/${portfolioInfo && portfolioInfo.id}`, {
@@ -84,6 +104,7 @@ export const DashboardProvider = () => {
         setIsShowModalFormEdit,
         isShowModalDelete,
         setIsShowModalDelete,
+        nameUser,
         deletePort,
       }}
     >
