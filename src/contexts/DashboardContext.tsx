@@ -75,13 +75,13 @@ export const DashboardProvider = () => {
         const { data } = response;
         setPortfolioInfo(data[0]);
       } catch (error) {
-        window.localStorage.clear();
+        window.localStorage.removeItem("@PortGeek:token");
         navigate("/");
       }
     }
 
-    getPort();
-  }, [user, navigate]);
+    token && getPort();
+  }, [token, user, navigate]);
 
   useEffect(() => {
     async function getUser() {
@@ -92,16 +92,12 @@ export const DashboardProvider = () => {
         const { data } = response;
         setNameUser(data.name);
       } catch (error) {
-        error && window.localStorage.clear();
+        error && window.localStorage.removeItem("@PortGeek:token");
         navigate("/");
       }
     }
     token && getUser();
   }, [token, user, navigate]);
-
-  // async function deletePort() {
-
-  // }
 
   async function deletePort() {
     try {
@@ -111,8 +107,8 @@ export const DashboardProvider = () => {
       toast.success("Portfolio deletado com sucesso!");
       setIsShowModalDelete(false);
       setPortfolioInfo(null);
-    } catch (err) {
-      err && toast.error("Something wrong!");
+    } catch (error) {
+      error && toast.error("Something wrong!");
     }
   }
 
