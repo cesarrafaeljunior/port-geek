@@ -1,8 +1,8 @@
-import { FormationStyled } from "./style";
+import { FormationStyled, iUserFormation } from "./style";
 
-export const Formation = () => {
+export const Formation = ({ fontSize, color, fontSizeP }: iUserFormation) => {
   return (
-    <FormationStyled>
+    <FormationStyled fontSize={fontSize} color={color} fontSizeP={fontSizeP}>
       <h2>Formação</h2>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, neque.

@@ -1,8 +1,8 @@
-import { AboutStyled } from "./style";
+import { AboutStyled, iUserAbout } from "./style";
 
-export const About = () => {
+export const About = ({ fontSize, color, fontSizeP }: iUserAbout) => {
   return (
-    <AboutStyled>
+    <AboutStyled fontSize={fontSize} color={color} fontSizeP={fontSizeP}>
       <h2>Sobre mim</h2>
       <p>
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe, a ea

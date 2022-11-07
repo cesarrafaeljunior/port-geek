@@ -12,21 +12,19 @@ export const ThirthLayout = () => {
   return (
     <ContainerThirthLayout>
       <header>
-        <UserIcon
-          width={120}
-          height={120}
-          borderR={50}
-          border={"borderUserIcon"}
-        />
-        <UserInfos />
-        <Contacts />
+        <UserIcon width={8} height={8} borderR={50} border={"borderUserIcon"} />
+        <UserInfos fontSize={2} color={"--titleLayout"} fontSizeP={1} />
+        <section>
+          <About fontSize={2} color={"--titleLayout"} fontSizeP={1} />
+          <Skills />
+        </section>
       </header>
       <main></main>
+      <Contacts />
 
-      <About />
-      <Experience />
-      <Formation />
-      <Skills />
+      <Experience fontSize={2} color={"--titleLayout"} fontSizeP={1} />
+      <Formation fontSize={2} color={"--titleLayout"} fontSizeP={1} />
+
       <Project />
     </ContainerThirthLayout>
   );

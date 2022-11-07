@@ -1,8 +1,8 @@
-import { ExperienceStyled } from "./style";
+import { ExperienceStyled, iUserExperience } from "./style";
 
-export const Experience = () => {
+export const Experience = ({ fontSize, color, fontSizeP }: iUserExperience) => {
   return (
-    <ExperienceStyled>
+    <ExperienceStyled fontSize={fontSize} color={color} fontSizeP={fontSizeP}>
       <h2>Experiência</h2>
       <p>
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum ipsa eaque

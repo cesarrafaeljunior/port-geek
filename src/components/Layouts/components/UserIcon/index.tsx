@@ -8,6 +8,7 @@ export const UserIcon = ({ width, height, borderR, border }: IconUserTP) => {
       height={height}
       borderR={borderR}
       border={border}
+      className="Container__UserIcon"
     >
       <figure>
         <img src={cesarImg} alt="Icone do Usuário" />

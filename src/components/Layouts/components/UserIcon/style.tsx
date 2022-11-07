@@ -9,8 +9,8 @@ export interface IconUserTP {
 
 export const UserIconStyled = styled.div<IconUserTP>`
   img {
-    width: ${({ width }) => `${width}px`};
-    height: ${({ height }) => `${height}px`};
+    width: ${({ width }) => `${width}em`};
+    height: ${({ height }) => `${height}em`};
     object-fit: cover;
     border-radius: ${({ borderR }) => `${borderR}%`};
     border: ${({ border }) => `solid 2px var(--${border})`};

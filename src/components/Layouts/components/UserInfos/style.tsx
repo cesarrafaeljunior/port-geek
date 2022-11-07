@@ -1,8 +1,20 @@
 import styled from "styled-components";
 
-export const UserInfosStyled = styled.section`
+export interface iUserInfos {
+  fontSize: number;
+  fontSizeP: number;
+  color: string;
+}
+
+export const UserInfosStyled = styled.section<iUserInfos>`
   h1 {
-    font-size: 20px;
+    font-size: ${({ fontSize }) => `${fontSize}em`};
+    color: ${({ color }) => `var(${color})`};
+    font-weight: 700;
   }
-  border: solid 1px red;
+  p {
+    font-size: ${({ fontSizeP }) => `${fontSizeP}em`};
+    font-weight: 500;
+    color: ${({ color }) => `var(${color})`};
+  }
 `;
