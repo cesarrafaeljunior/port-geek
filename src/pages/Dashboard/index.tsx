@@ -15,6 +15,8 @@ import imgPortfolio3 from "../../assets/img/5215985.png";
 import backGroundBtn from "../../assets/img/backgroundBtn.png";
 import logo from "../../assets/logo/logo.png";
 import { ModalDelete } from "../../components/ModalDelete";
+import PortfolioProvider from "../../contexts/PortifolioContext";
+import PortFormModal from "../../components/Modals/PortFormModal";
 import { Navigate } from "react-router-dom";
 
 export const Dashboard = () => {
@@ -28,6 +30,7 @@ export const Dashboard = () => {
     setIsShowModalFormEdit,
     isShowModalDelete,
     setIsShowModalDelete,
+    setPortCreateAuth,
     nameUser,
   } = useContext(DashboardContext);
 
@@ -112,6 +115,9 @@ export const Dashboard = () => {
             </div>
           </div>
           {isShowModalDelete && <ModalDelete />}
+          <PortfolioProvider>
+            <PortFormModal />
+          </PortfolioProvider>
         </Container>
       ) : (
         <Navigate to={"/"} />
