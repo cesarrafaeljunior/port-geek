@@ -15,6 +15,8 @@ interface iUserContext {
     handleRegister: (data: iRegisterData) => void,
     isValidate: boolean,
     setisValidate: (state: boolean) => void,
+    emaiDefault: string,
+    setEmailDefault:(state: string) => void,
 }
 
 interface iUserProvider {
@@ -23,8 +25,10 @@ interface iUserProvider {
 
 export function UserProvider({ children }: iUserProvider): JSX.Element {
     const [user, setUser] = useState<iAPIData>({} as iAPIData)
+    console.log(user.id)
     const [isValidate, setisValidate] = useState<boolean>(false)
     const {setIsOpenModalLogin} = useContext(ModalContext)
+    const [emaiDefault,setEmailDefault]= useState<string>("")
     const navigate = useNavigate()
 
     const handleRegister = (data: iRegisterData) => {
@@ -48,8 +52,8 @@ export function UserProvider({ children }: iUserProvider): JSX.Element {
         .then((response) => {
             successToast('Login realizado!')
             setUser(response.data.user)
-            localStorage.setItem('@Port-geek:token', response.data.token)
-            api.defaults.headers.common['Authorization'] = `Bearer ${response.data.token}`
+            localStorage.setItem('@PortGeek:token', response.data.accessToken)
+            api.defaults.headers.common['Authorization'] = `Bearer ${response.data.accessToken}`
             navigate('/dashboard', {replace: true})
         })
         .catch(() => errorToast('Usuário não encontrado!'))
@@ -57,7 +61,7 @@ export function UserProvider({ children }: iUserProvider): JSX.Element {
     }
     
     return(
-        <UserContext.Provider value={{ user, handleLogin,  handleRegister,  isValidate, setisValidate }}>
+        <UserContext.Provider value={{ user, handleLogin,  handleRegister,  isValidate, setisValidate,setEmailDefault,emaiDefault }}>
             {children}
         </UserContext.Provider>
     )

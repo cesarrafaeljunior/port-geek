@@ -33,17 +33,34 @@ import jallesImg from "../../assets/members/jalles.jpg";
 import { DashboardContext } from "../../contexts/DashboardContext";
 import { Navigate } from "react-router-dom";
 import { ButtonComponent } from "../../components/Buttons";
+import { iRegisterData } from "../../services/postRegister";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
+import { registerSchema } from "../../schemas/userSchema";
+import { UserContext } from "../../contexts/userContext";
+import { type } from "os";
 import {
   MemberCard,
   MemberCardImg,
   MemberCardInfo,
 } from "../../components/MemberCard/styles";
 
+
 const LandingPage = () => {
   const { t } = useTranslation();
   const { token } = useContext(DashboardContext);
   const { setIsOpenModalRegister } = useContext(ModalContext);
-
+  const {setEmailDefault,handleRegister}= useContext(UserContext)
+  const {
+    register,
+    reset,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<iRegisterData>({
+    resolver: yupResolver(registerSchema),
+  });
+  
+  
   return (
     <>
       {token ? (
@@ -57,23 +74,25 @@ const LandingPage = () => {
                 Imagine being able to show you with 100% of your potential and
                 skills, Port Geek can offer this to you!
               </h1>
-
               <ShowCase></ShowCase>
               <BtnDiv>
-                <form>
-                  <input
-                    type="text"
-                    name="email"
-                    id="email"
-                    placeholder="Enter your email"
-                  />
-                  <ButtonComponent
-                    backgroundcolor={"var(--color-grey-3)"}
-                    lettercolor={"var(--color-white-mode)"}
-                    onClick={(event) => {
-                      event.preventDefault();
-                      setIsOpenModalRegister(true);
-                    }}
+              <form onSubmit={handleSubmit(handleRegister)}>
+                <input
+                  type="text"
+                  placeholder="Enter your email"
+                  {...register("email")}
+                  onChange = {(e)=>setEmailDefault(e.target.value)}
+                />
+                <ButtonComponent type="submit"
+                  backgroundcolor={"var(--color-grey-3)"}
+                  lettercolor={"var(--color-white-mode)"}
+                  onClick={(event) => {
+                      event.preventDefault()
+                      setIsOpenModalRegister(true)
+                      reset()
+
+                    }
+                  }
                   >
                     Sign up
                   </ButtonComponent>
@@ -115,7 +134,6 @@ const LandingPage = () => {
               <AnimatedLogo />
             </AsideSpace>
           </HomeSection>
-
           <AboutSection id="section-about">
             <AboutDescriptionSpace>
               <h1>About us</h1>
