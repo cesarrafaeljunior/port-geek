@@ -47,7 +47,8 @@ import {
 const LandingPage = () => {
   const { t } = useTranslation();
   const { token } = useContext(DashboardContext);
-  const {setEmailDefault,handleRegister,setIsOpenModalRegister}= useContext(UserContext)
+  const { setEmailDefault, handleRegister, setIsOpenModalRegister } =
+    useContext(UserContext);
   const {
     register,
     reset,
@@ -74,7 +75,6 @@ const LandingPage = () => {
               <BtnDiv>
                 <form onSubmit={handleSubmit(handleRegister)}>
                   <input
-                    type="text"
                     placeholder="Enter your email"
                     {...register("email")}
                     onChange={(e) => setEmailDefault(e.target.value)}

@@ -1,4 +1,4 @@
-import { Api } from "../librarys/services/api";
+import { api } from "../services/api";
 import React, { useState, useEffect, createContext, useContext } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -56,9 +56,10 @@ export const DashboardContext = createContext<IDashboardContext>(
 
 export const DashboardProvider = () => {
   const navigate = useNavigate();
-  const { user } = useContext(UserContext);
+  // const { user } = useContext(UserContext);
   const [portCreateAuth, setPortCreateAuth] = useState<boolean>(false);
   const token: string | null = localStorage.getItem("@PortGeek:token");
+  const idUser: string | null = localStorage.getItem("@PortGeek:id");
   const [isShowModalFormEdit, setIsShowModalFormEdit] =
     useState<boolean>(false);
   const [isShowModalDelete, setIsShowModalDelete] = useState<boolean>(false);
@@ -69,51 +70,48 @@ export const DashboardProvider = () => {
   const [nameUser, setNameUser] = useState<string>("");
 
   useEffect(() => {
-    token &&
-      Api.get(`/portfolio?userId=${user.id}`)
-        .then(({ data }) => {
-          setPortfolioInfo(data[0]);
-        })
-        .catch((err) => {
-          window.localStorage.clear();
-          navigate("/");
-        });
-  }, [token, user, navigate]);
+    async function getPort() {
+      try {
+        const response = await api.get(`/portfolio?userId=${idUser}`);
+        const { data } = response;
+        setPortfolioInfo(data[0]);
+      } catch (error) {
+        window.localStorage.removeItem("@PortGeek:token");
+        navigate("/");
+      }
+    }
+
+    getPort();
+  }, [idUser, navigate]);
 
   useEffect(() => {
-    token &&
-      Api.get(`/users/${user.id}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-        .then(({ data }) => {
-          setNameUser(data.name);
-        })
-        .catch((err) => {
-          window.localStorage.clear();
-          navigate("/");
+    async function getUser() {
+      try {
+        const response = await api.get(`/users/${idUser}`, {
+          headers: { Authorization: `Bearer ${token}` },
         });
-  }, [token, user, navigate]);
-
-  function deletePort() {
-    Api.delete(`/portfolio/${portfolioInfo && portfolioInfo.id}`).then(
-      (res) => {
-        res && toast.success("Portfolio deletado com sucesso!");
-        setIsShowModalDelete(false);
-        setPortfolioInfo(null);
+        const { data } = response;
+        setNameUser(data.name);
+      } catch (error) {
+        window.localStorage.removeItem("@PortGeek:token");
+        navigate("/");
       }
-    );
-  }
+    }
+    getUser();
+  }, [token, idUser, navigate]);
 
-  // const newInfosPort = (newInfos: IPortfolioInfo) => {
-  //   Api.patch(`/portfolio/${portfolioInfo && portfolioInfo.id}`, {
-  //     ...newInfos,
-  //   })
-  //     .then((res) => {
-  //       res && toast.success("Portfolio edit with success!");
-  //       setPortCreateAuth(false);
-  //     })
-  //     .catch((err) => err && toast.error("Something Wrong!"));
-  // };
+  async function deletePort() {
+    try {
+      await api.delete(`/portfolio/${portfolioInfo && portfolioInfo.id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      toast.success("Portfolio deletado com sucesso!");
+      setIsShowModalDelete(false);
+      setPortfolioInfo(null);
+    } catch (error) {
+      error && toast.error("Something wrong!");
+    }
+  }
 
   return (
     <DashboardContext.Provider
