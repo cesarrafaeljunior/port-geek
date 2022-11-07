@@ -15,6 +15,7 @@ interface iModal {
 
 export function Modal({ setModal }: iModal): JSX.Element {
   const modalRef = createRef<HTMLDivElement>();
+  const { handleRegister, emaiDefault } = useContext(UserContext);
 
   const {
     register,
@@ -22,9 +23,9 @@ export function Modal({ setModal }: iModal): JSX.Element {
     formState: { errors },
   } = useForm<iRegisterData>({
     resolver: yupResolver(registerSchema),
+    defaultValues:{email:emaiDefault }
   });
 
-  const { handleRegister, isValidate } = useContext(UserContext);
 
   useEffect(() => {
     const handleOnClick = (event: MouseEvent) => {
