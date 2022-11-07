@@ -14,18 +14,27 @@ export const ThirthLayout = () => {
       <header>
         <UserIcon width={8} height={8} borderR={50} border={"borderUserIcon"} />
         <UserInfos fontSize={2} color={"--titleLayout"} fontSizeP={1} />
-        <section>
-          <About fontSize={2} color={"--titleLayout"} fontSizeP={1} />
-          <Skills />
+        <section className="Section__Header">
+          <About fontSize={1.5} color={"--titleLayout"} fontSizeP={1} />
+          <div className="Division"></div>
+          <Skills fontSize={1.5} color={"--titleLayout"} fontSizeP={1} />
         </section>
       </header>
-      <main></main>
-      <Contacts />
-
-      <Experience fontSize={2} color={"--titleLayout"} fontSizeP={1} />
-      <Formation fontSize={2} color={"--titleLayout"} fontSizeP={1} />
-
-      <Project />
+      <main>
+        <Contacts />
+        <section className="Section__Main">
+          <Experience fontSize={1.5} color={"--colorParagraph"} fontSizeP={1} />
+          <Formation fontSize={1.5} color={"--colorParagraph"} fontSizeP={1} />
+          <Project
+            width={10.5}
+            heigth={3}
+            fontSize={0.875}
+            color={"white"}
+            borderColor={"--backgroundHeader"}
+            bgColor={"--backgroundHeader"}
+          />
+        </section>
+      </main>
     </ContainerThirthLayout>
   );
 };

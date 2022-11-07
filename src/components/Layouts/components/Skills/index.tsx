@@ -1,9 +1,9 @@
-import { SkillsStyled } from "./style";
+import { iUserSkills, SkillsStyled } from "./style";
 
-export const Skills = () => {
+export const Skills = ({ fontSize, color, fontSizeP }: iUserSkills) => {
   return (
-    <SkillsStyled>
-      <h2>Habilidades</h2>
+    <SkillsStyled fontSize={fontSize} color={color} fontSizeP={fontSizeP}>
+      <h2 className="Border--Bottom">Habilidades</h2>
       <p>
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae
         doloribus excepturi ducimus, sequi mollitia facere ut atque? Consequatur

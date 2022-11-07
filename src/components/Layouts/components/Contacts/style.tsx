@@ -12,8 +12,13 @@ export const ContactsStyled = styled.section`
 
   padding: 1.25em;
 
+  @media (min-width: 768px) {
+    justify-content: center;
+  }
+
   li {
     width: 46%;
+    max-width: 205px;
     height: 3.125em;
     display: flex;
     gap: 0.313em;

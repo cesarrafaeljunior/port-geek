@@ -49,6 +49,7 @@ const GlobalStyle = createGlobalStyle`
     --backgroundHeader: #09002D;
     --borderUserIcon: #A52F2F;
     --titleLayout: #E4E1E1;
+    --colorParagraph: #09002D;
     
     /* Size Elements */
     --button-height-default: 48px;
