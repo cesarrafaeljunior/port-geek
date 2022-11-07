@@ -28,7 +28,7 @@ export interface iPortDataOrganized {
   user_profile: {
     aboutYou: string;
     age: string;
-    birthDate: string;
+    birthDate: string | any;
     email: string;
     experience: string;
     genre: string;

@@ -25,15 +25,43 @@ const PortFormModalStyled = styled.div`
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 16px;
     max-width: 450px;
-    animation: openFromTop 0.5s ease-in;
+    animation: openFromTop 0.5s ease;
 
     h2 {
       margin-top: 12px;
       text-align: center;
       font-weight: var(--font-weight-700);
       font-size: var(--font-subtitle-20);
+    }
+    .formInput {
+      position: relative;
+
+      span {
+        position: absolute;
+        top: -8px;
+        left: 14px;
+        background-color: white;
+        padding: 2px 4px;
+        border-radius: var(--radius-4);
+        color: var(--color-feedback-negative);
+        font-size: var(--font-text-12);
+        font-weight: var(--font-weight-700);
+      }
+      .label {
+        color: black;
+      }
+    }
+
+    input[type="number"] {
+      -webkit-appearance: textfield;
+      -moz-appearance: textfield;
+      appearance: textfield;
+    }
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
     }
 
     input,
@@ -45,16 +73,17 @@ const PortFormModalStyled = styled.div`
       border-radius: 8px;
       font-size: var(--font-text-16);
       border: 2px solid transparent;
+      transition: 0.3s;
     }
     input:focus,
     select:focus,
     textarea:focus {
       border: 2px solid var(--color-primary);
     }
-
-    input:invalid,
-    select:invalid,
-    textarea:invalid {
+    .invalid {
+      border: 2px solid var(--color-feedback-negative);
+    }
+    .invalid:focus {
       border: 2px solid var(--color-feedback-negative);
     }
 
@@ -62,11 +91,11 @@ const PortFormModalStyled = styled.div`
     textarea::placeholder {
       color: #b6b6b6;
     }
-
     textarea {
       resize: none;
       height: 150px;
     }
+
     button {
       transition: 0.3s;
     }
@@ -103,19 +132,15 @@ const PortFormModalStyled = styled.div`
         color: black;
         background-color: var(--color-primary);
       }
+      .button-default.confirm:hover {
+        background-color: var(--color-feedback-success);
+      }
     }
 
     .flex {
-      /* PENSAR MELHOR SOBRE */
       display: flex;
-      gap: 8px;
-      div {
-        position: relative;
-        width: 100%;
-        select {
-          position: absolute;
-        }
-      }
+      flex-direction: column;
+      gap: 12px;
     }
     .formLayouts {
       p {
@@ -146,7 +171,7 @@ const PortFormModalStyled = styled.div`
           img {
             width: 200px;
             height: 300px;
-            box-shadow: 2px 4px 12px black;
+            box-shadow: 2px 4px 12px var(--blur-effect-02);
             transition: 0.5s;
           }
           img:active {
@@ -184,12 +209,23 @@ const PortFormModalStyled = styled.div`
   @media (min-width: 768px) {
     form {
       padding: 24px 32px;
+      .flex {
+        flex-direction: row;
+
+        div {
+          position: relative;
+          width: 100%;
+          select {
+            position: absolute;
+          }
+        }
+      }
     }
   }
 
   @keyframes openFromTop {
     from {
-      transform: translateY(-50px);
+      transform: translateY(-80px);
       opacity: 0;
     }
     to {
