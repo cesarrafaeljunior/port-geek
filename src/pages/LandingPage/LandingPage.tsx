@@ -31,22 +31,28 @@ import lucasCruzImg from "../../assets/members/lucascruz.jpg";
 import henriqueSadimImg from "../../assets/members/henriqueSadim.jpeg";
 import AriImg from "../../assets/members/Ari.jpg";
 import jallesImg from "../../assets/members/jalles.jpg";
+import { DashboardContext } from "../../contexts/DashboardContext";
+import { useContext } from "react";
+import { Navigate } from "react-router-dom";
 
 const LandingPage = () => {
   const { t } = useTranslation();
+  const { token, idUser } = useContext(DashboardContext);
   return (
     <>
-      <HeaderSpace />
+      {token && idUser ? (
+        <Navigate to={"dashboard"} />
+      ) : (
+        <>
+          <HeaderSpace />
+          <HomeSection id="section-home">
+            <DescriptionSection>
+              <h1>
+                Imagine being able to show you with 100% of your potential and
+                skills, Port Geek can offer this to you!
+              </h1>
 
-      <HomeSection id="section-home">
-        <DescriptionSection>
-          <h1>
-            Imagine being able to show you with 100% of your potential and
-            skills, Port Geek can offer this to you!
-          </h1>
-
-          <ShowCase></ShowCase>
-
+              <ShowCase></ShowCase
           <BtnDiv>
             <form>
               <input
