@@ -7,7 +7,6 @@ import { InputComponent, PasswordInputComponent } from "../Inputs";
 import { ButtonComponent } from "../Buttons";
 import { UserContext } from "../../contexts/userContext";
 import { loginSchema } from "../../schemas/userSchema";
-import { ModalContext } from "../../contexts/modalContext";
 import { iUserLogin } from "../../services/postLogin";
 interface iModal {
   setModal: (state: boolean) => void;

@@ -6,7 +6,7 @@ import {postLogin,  iUserLogin } from "../../services/postLogin";
 import {postRegister,  iRegisterData } from "../../services/postRegister";
 import { iAPIData } from './../../services/getProfile';
 import { useContext } from "react"
-import { ModalContext } from "../../contexts/modalContext"
+import { truncate } from "fs";
 export const UserContext = createContext<iUserContext>({} as iUserContext)
 
 interface iUserContext {
@@ -17,6 +17,10 @@ interface iUserContext {
     setisValidate: (state: boolean) => void,
     emaiDefault: string,
     setEmailDefault:(state: string) => void,
+    isOpenModalLogin: boolean,
+    isOpenModalRegister: boolean,
+    setIsOpenModalLogin: (value: boolean) => void,
+    setIsOpenModalRegister: (value: boolean) => void,
 }
 
 interface iUserProvider {
@@ -25,25 +29,35 @@ interface iUserProvider {
 
 export function UserProvider({ children }: iUserProvider): JSX.Element {
     const [user, setUser] = useState<iAPIData>({} as iAPIData)
-    console.log(user.id)
+
     const [isValidate, setisValidate] = useState<boolean>(false)
-    const {setIsOpenModalLogin} = useContext(ModalContext)
     const [emaiDefault,setEmailDefault]= useState<string>("")
+    const [isOpenModalLogin, setIsOpenModalLogin] = useState<boolean>(false)
+    const [isOpenModalRegister, setIsOpenModalRegister] = useState<boolean>(false)
     const navigate = useNavigate()
 
-    const handleRegister = (data: iRegisterData) => {
+
+    const handleRegister  = async (data: iRegisterData) => {
         delete data.confirmPassword
         setisValidate(true)
-
-        postRegister(data)
-        .then(() => {
-            successToast('Usuário cadastrado!')
-            setIsOpenModalLogin(true)
+        
+        try {
+                await postRegister(data)
             
-        })
-        .catch((err) =>{err && errorToast('Ocorreu um erro!')} )
-        .finally(() => setisValidate(false))
-    }
+                successToast('Usuário cadastrado!')
+                setIsOpenModalRegister(false)
+                setIsOpenModalLogin(true)
+                    
+                
+            } catch (error) {
+                errorToast('Ocorreu um erro!')
+            }
+
+        
+
+            setisValidate(false)
+            
+        }
 
     const handleLogin = (data: iUserLogin) => {
         setisValidate(true)
@@ -55,13 +69,14 @@ export function UserProvider({ children }: iUserProvider): JSX.Element {
             localStorage.setItem('@PortGeek:token', response.data.accessToken)
             api.defaults.headers.common['Authorization'] = `Bearer ${response.data.accessToken}`
             navigate('/dashboard', {replace: true})
+            setIsOpenModalLogin(false)
         })
         .catch(() => errorToast('Usuário não encontrado!'))
         .finally(() =>setisValidate(false))
     }
     
     return(
-        <UserContext.Provider value={{ user, handleLogin,  handleRegister,  isValidate, setisValidate,setEmailDefault,emaiDefault }}>
+        <UserContext.Provider value={{ user, handleLogin,  handleRegister,  isValidate, setisValidate,setEmailDefault,emaiDefault,isOpenModalLogin,isOpenModalRegister,setIsOpenModalLogin,setIsOpenModalRegister }}>
             {children}
         </UserContext.Provider>
     )

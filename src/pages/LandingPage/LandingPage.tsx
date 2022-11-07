@@ -19,7 +19,6 @@ import {
   ShowCase,
 } from "./styles";
 import { useContext } from "react";
-import { ModalContext } from "../../contexts/modalContext";
 import HeaderSpace from "../../components/Header/Header";
 import { IconContext } from "react-icons";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
@@ -43,8 +42,7 @@ import { type } from "os";
 const LandingPage = () => {
   const { t } = useTranslation();
   const { token, idUser } = useContext(DashboardContext);
-  const { setIsOpenModalRegister } = useContext(ModalContext);
-  const {setEmailDefault,handleRegister}= useContext(UserContext)
+  const {setEmailDefault,handleRegister,setIsOpenModalRegister,isOpenModalRegister}= useContext(UserContext)
   const {
     register,
     reset,
@@ -79,8 +77,8 @@ const LandingPage = () => {
                   backgroundcolor={"var(--color-grey-3)"}
                   lettercolor={"var(--color-white-mode)"}
                   onClick={(event) => {
-                      event.preventDefault()
-                      setIsOpenModalRegister(true)
+                    event.preventDefault()
+                    setIsOpenModalRegister(true)
                       reset()
 
                     }

@@ -9,13 +9,15 @@ import { UserContext } from "../../contexts/userContext";
 import { iRegisterData } from "../../services/postRegister";
 import { registerSchema } from "../../schemas/userSchema";
 
+
 interface iModal {
   setModal: (state: boolean) => void;
 }
 
 export function Modal({ setModal }: iModal): JSX.Element {
   const modalRef = createRef<HTMLDivElement>();
-  const { handleRegister, emaiDefault } = useContext(UserContext);
+  const { handleRegister, emaiDefault,setIsOpenModalRegister,setIsOpenModalLogin } = useContext(UserContext);
+ 
 
   const {
     register,
@@ -50,7 +52,14 @@ export function Modal({ setModal }: iModal): JSX.Element {
         </Header>
 
         <Main>
-          <Form onSubmit={handleSubmit(handleRegister)}>
+          <Form onSubmit={handleSubmit(handleRegister)}
+            
+            
+            // setIsOpenModalRegister(false)
+            // setIsOpenModalLogin(true)
+      
+          
+          >
             <InputComponent
               labelRefer="Name"
               labelText="Name"
