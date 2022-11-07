@@ -20,6 +20,9 @@ const GlobalStyle = createGlobalStyle`
     /* Colors */
     --color-primary: #FFCF5C;
     --color-secondary: #BA110C;
+    --color-tertiary: #730039;
+    --color-quartenary: #CBA135;
+    --color-quinternary: #1D1D1F;
 
     --color-feedback-negative: #E83F5B;
     --color-feedback-warning: #ffcd07;
