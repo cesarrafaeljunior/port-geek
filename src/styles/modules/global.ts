@@ -45,6 +45,9 @@ const GlobalStyle = createGlobalStyle`
     --color-transparent: #00000090;
     --color-transparent-01: rgba( 255, 255, 255, 0.18 );
 
+    /*LayoutsColor*/
+    --backgroundHeader: #09002D;
+    --borderUserIcon: #A52F2F;
     
     /* Size Elements */
     --button-height-default: 48px;
@@ -57,7 +60,7 @@ const GlobalStyle = createGlobalStyle`
 
     /* Font Family */
     --font-primary-nunito: 'Nunito';
-    --font-secondary-inter: 'Inter';
+    --font-secondary-inter: 'Inter',sans-serif;
 
     /*  Text Sizes */
     --font-grand-60: 3.875rem;
@@ -139,6 +142,7 @@ const GlobalStyle = createGlobalStyle`
         font-size: 100%;
         font: inherit;
         vertical-align: baseline;
+        font-family: var(--font-secondary-inter);
     }
 
     textarea {
