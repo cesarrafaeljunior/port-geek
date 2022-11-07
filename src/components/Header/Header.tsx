@@ -2,18 +2,18 @@ import "../../utils/i18n";
 import { useTranslation } from "react-i18next";
 import { Header, ImageSpace, Links, LinkSpace, NavBarMenuBtn } from "./styles";
 import logo from "../../assets/logo/logo.png";
+import { useContext,useState } from "react";
+import { ModalContext } from "../../contexts/modalContext";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IconContext } from "react-icons";
-import { useState } from "react";
 import { ButtonComponent } from "../Buttons";
 
-export interface ShowProps {
-  show: boolean;
-}
 
 const HeaderSpace = () => {
+  const { setIsOpenModalLogin } = useContext(ModalContext);
   const [show, setShow] = useState(false);
+
 
   const { t } = useTranslation();
   function openMenu() {
@@ -47,6 +47,7 @@ const HeaderSpace = () => {
           <ButtonComponent
             backgroundcolor={"transparent"}
             lettercolor={"var(--color-white-mode)"}
+            onClick={()=>setIsOpenModalLogin(true)}
           >
             Login
           </ButtonComponent>
