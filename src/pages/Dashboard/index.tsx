@@ -22,15 +22,13 @@ import { Navigate } from "react-router-dom";
 export const Dashboard = () => {
   const {
     token,
-    idUser,
     portfolioInfo,
-    isShowModalForm,
-    setIsShowModalForm,
+    portCreateAuth,
+    setPortCreateAuth,
     isShowModalFormEdit,
     setIsShowModalFormEdit,
     isShowModalDelete,
     setIsShowModalDelete,
-    setPortCreateAuth,
     nameUser,
   } = useContext(DashboardContext);
 
@@ -61,18 +59,18 @@ export const Dashboard = () => {
 
           <div className="container-secondary">
             {portfolioInfo && portfolioInfo.id ? (
-              <div className="portfolio">
-                {portfolioInfo.selectedLayout === "layout1" && (
+              <main>
+                {portfolioInfo.selectedLayout === "layout-1" && (
                   <img className="mini-port" src={imgPortfolio1} alt="" />
                 )}
-                {portfolioInfo.selectedLayout === "layout2" && (
+                {portfolioInfo.selectedLayout === "layout-2" && (
                   <img className="mini-port" src={imgPortfolio2} alt="" />
                 )}
-                {portfolioInfo.selectedLayout === "layout3" && (
+                {portfolioInfo.selectedLayout === "layout-3" && (
                   <img className="mini-port" src={imgPortfolio3} alt="" />
                 )}
                 <div className="buttons">
-                  <IconEdit />
+                  <IconEdit onClick={() => setPortCreateAuth(true)} />
                   <IconTrash onClick={() => setIsShowModalDelete(true)} />
                   <IconShare
                     onClick={() => {
@@ -83,7 +81,7 @@ export const Dashboard = () => {
                     }}
                   />
                 </div>
-              </div>
+              </main>
             ) : (
               <div className="div-alert">
                 <p>You don't have created a Portfolio yet!</p>
@@ -102,11 +100,11 @@ export const Dashboard = () => {
                 setScale={portfolioInfo && portfolioInfo.id ? "unset" : "0.95"}
                 type="button"
                 onClick={() => {
-                  portfolioInfo &&
-                    portfolioInfo.id &&
-                    toast.warning(
-                      "You need to delete the current Portfolio to create a new one!"
-                    );
+                  portfolioInfo && portfolioInfo.id
+                    ? toast.warning(
+                        "You need to delete the current Portfolio to create a new one!"
+                      )
+                    : setPortCreateAuth(true);
                 }}
               >
                 Create Portfolio
@@ -115,6 +113,7 @@ export const Dashboard = () => {
             </div>
           </div>
           {isShowModalDelete && <ModalDelete />}
+          {portCreateAuth && <PortFormModal />}
           <PortfolioProvider>
             <PortFormModal />
           </PortfolioProvider>
