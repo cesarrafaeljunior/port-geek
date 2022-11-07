@@ -2,15 +2,15 @@ import "../../utils/i18n";
 import { useTranslation } from "react-i18next";
 import { Header, ImageSpace, Links, LinkSpace, NavBarMenuBtn } from "./styles";
 import logo from "../../assets/logo/logo.png";
-import { useContext, useState } from "react";
-import { ModalContext } from "../../contexts/modalContext";
+import { useContext,useState } from "react";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IconContext } from "react-icons";
 import { ButtonComponent } from "../Buttons";
+import { UserContext } from "../../contexts/userContext";
 
 const HeaderSpace = () => {
-  const { setIsOpenModalLogin } = useContext(ModalContext);
+  const { setIsOpenModalLogin } = useContext(UserContext);
   const [show, setShow] = useState(false);
 
   const { t } = useTranslation();

@@ -19,7 +19,6 @@ import {
   ShowCase,
 } from "./styles";
 import { useContext } from "react";
-import { ModalContext } from "../../contexts/modalContext";
 import HeaderSpace from "../../components/Header/Header";
 import { IconContext } from "react-icons";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
@@ -48,8 +47,7 @@ import {
 const LandingPage = () => {
   const { t } = useTranslation();
   const { token } = useContext(DashboardContext);
-  const { setIsOpenModalRegister } = useContext(ModalContext);
-  const { setEmailDefault, handleRegister } = useContext(UserContext);
+  const {setEmailDefault,handleRegister,setIsOpenModalRegister}= useContext(UserContext)
   const {
     register,
     reset,
