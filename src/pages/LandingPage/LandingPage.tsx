@@ -33,8 +33,24 @@ import lucasCruzImg from "../../assets/members/lucascruz.jpg";
 import henriqueSadimImg from "../../assets/members/henriqueSadim.jpeg";
 import AriImg from "../../assets/members/Ari.jpg";
 import jallesImg from "../../assets/members/jalles.jpg";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
+import { registerSchema } from "../../schemas/userSchema";
+import { iRegisterData } from "../../services/postRegister";
+import { UserContext } from "../../contexts/userContext";
 
 const LandingPage = () => {
+  const { handleRegister,setEmailDefault} = useContext(UserContext)
+  const {
+    register,
+    reset,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<iRegisterData>({
+    resolver: yupResolver(registerSchema),
+    
+  });
+
   const { setIsOpenModalRegister } = useContext(ModalContext);
   const { t } = useTranslation();
   return (
@@ -51,17 +67,18 @@ const LandingPage = () => {
           <ShowCase></ShowCase>
 
           <BtnDiv>
-            <form>
+            <form onSubmit={handleSubmit(handleRegister)}>
               <input
                 type="text"
-                name="email"
-                id="email1"
                 placeholder="Enter your email"
+                {...register("email")}
+                onChange = {(e)=>setEmailDefault(e.target.value)}
               />
-              <button
+              <button type="submit"
                 onClick={(e) => {
                   e.preventDefault();
                   setIsOpenModalRegister(true);
+                  reset();
                 }}
               >
                 Sign up
