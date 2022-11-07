@@ -7,6 +7,7 @@ import { ModalContext } from "../../contexts/modalContext";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IconContext } from "react-icons";
+import { ButtonComponent } from "../Buttons";
 
 
 const HeaderSpace = () => {
@@ -35,9 +36,21 @@ const HeaderSpace = () => {
         </ImageSpace>
         <LinkSpace show={show}>
           <AnchorLink href="#section-about">
-            <button onClick={() => openMenu()}>About us</button>
+            <ButtonComponent
+              onClick={() => openMenu()}
+              backgroundcolor={"transparent"}
+              lettercolor={"var(--color-white-mode)"}
+            >
+              About us
+            </ButtonComponent>
           </AnchorLink>
-          <button onClick={()=>setIsOpenModalLogin(true)}>Login</button>
+          <ButtonComponent
+            backgroundcolor={"transparent"}
+            lettercolor={"var(--color-white-mode)"}
+            onClick={()=>setIsOpenModalLogin(true)}
+          >
+            Login
+          </ButtonComponent>
         </LinkSpace>
       </Header>
     </>

@@ -72,7 +72,7 @@ export const DescriptionSection = styled.section`
     font-weight: var(--font-weight-700);
     letter-spacing: 2px;
     line-height: var(--font-line-height-32);
-    color: var(--color-grey-4);
+    color: var(--color-grey-3);
     width: 60%;
     height: 20%;
     margin-bottom: 50px;
@@ -155,7 +155,7 @@ export const TypingEffect = styled.div`
     font-size: var(--font-subtitle-24);
     font-family: var(--font-secondary-inter);
     font-weight: var(--font-weight-400);
-    color: var(--color-grey-4);
+    color: var(--color-grey-3);
   }
 
   b {
@@ -198,7 +198,7 @@ export const AsideSpace = styled.aside`
     font-size: var(--font-subtitle-28);
     font-family: var(--font-secondary-inter);
     font-weight: var(--font-weight-600);
-    color: var(--color-grey-4);
+    color: var(--color-grey-3);
   }
 
   @media screen and (max-width: 480px) {
@@ -297,7 +297,7 @@ export const Border = styled.div`
   top: 25%;
   left: 50%;
   bottom: 0;
-  border-left: 2px solid var(--color-quinternary);
+  border-left: 2px solid var(--color-grey-3);
 
   @media screen and (max-width: 480px) {
     display: none;
@@ -369,7 +369,7 @@ export const ShowCase = styled.div`
   width: 80%;
   height: 50%;
   background-color: var(--blur-effect-02);
-  border: 2px solid var(--color-quartenary);
+  border: 2px solid var(--color-primary);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -409,19 +409,10 @@ export const BtnDiv = styled.div`
   & > form > input {
     width: 68%;
     height: 40px;
-    border: 1px solid var(--color-secondary);
+    border: 1px solid var(--color-primary);
     border-radius: var(--radius-8);
     padding-left: 20px;
     background-color: var(--color-grey-1);
-  }
-
-  & > form > button {
-    width: 28%;
-    height: 40px;
-    border: 1px solid var(--color-secondary);
-    background-color: var(--color-grey-3);
-    color: var(--color-white-mode);
-    border-radius: var(--radius-8);
   }
 
   @media screen and (max-width: 480px) {
@@ -585,7 +576,7 @@ export const CompanionSection = styled.section`
   background-position: center;
   background-size: cover;
   padding-top: 100px;
-  border-top: 2px solid var(--color-grey-4);
+  border-top: 2px solid var(--color-grey-3);
 
   & > h1 {
     font-size: var(--font-subtitle-28);
@@ -593,7 +584,7 @@ export const CompanionSection = styled.section`
     font-weight: var(--font-weight-700);
     letter-spacing: 2px;
     line-height: var(--font-line-height-32);
-    color: var(--color-grey-4);
+    color: var(--color-grey-3);
     width: 50%;
     height: 5%;
     display: flex;
@@ -662,14 +653,14 @@ export const AboutDescriptionSpace = styled.aside`
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  border-top: 2px solid var(--color-grey-4);
+  border-top: 2px solid var(--color-grey-3);
 
   & > h1 {
     margin-top: 100px;
     font-size: var(--font-subtitle-28);
     font-family: var(--font-secondary-inter);
     font-weight: var(--font-weight-700);
-    color: var(--color-grey-4);
+    color: var(--color-grey-3);
     letter-spacing: 2px;
   }
 
@@ -820,8 +811,6 @@ export const TransitionHome = styled.button`
     top: 110vh;
     left: 47.5%;
   }
-  @media (max-width: 1920px) {
-  }
 `;
 
 export const GroupMemberSpace = styled.div`
@@ -833,7 +822,7 @@ export const GroupMemberSpace = styled.div`
   flex-flow: column nowrap;
   justify-content: flex-start;
   align-items: center;
-  border: 2px solid var(--color-grey-4);
+  border: 2px solid var(--color-grey-3);
   border-radius: var(--radius-8);
   overflow: auto;
 
@@ -851,126 +840,6 @@ export const GroupMemberSpace = styled.div`
   }
   @media screen and (max-width: 1200px) {
     width: 90%;
-  }
-  @media screen and (max-width: 1920px) {
-  }
-`;
-export const MemberCard = styled.div`
-  width: 90%;
-  height: 90px;
-  margin-top: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: var(--blur-effect-01);
-  border: 2px solid var(--color-quartenary);
-  border-radius: var(--radius-8);
-`;
-
-export const MemberCardImg = styled.a`
-  width: 15%;
-  height: 90%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-left: 2%;
-
-  & > img {
-    width: 90%;
-    height: 90%;
-    border-radius: var(--radius-half);
-    border: 2px solid var(--color-grey-4);
-  }
-
-  @media screen and (max-width: 480px) {
-    width: 30%;
-    transform: scale(0.7);
-  }
-  @media screen and (max-width: 600px) {
-    width: 20px;
-    transform: scale(0.8);
-    background-color: red;
-  }
-  @media screen and (max-width: 768px) {
-    width: 20px;
-    transform: scale(0.9);
-  }
-  @media screen and (max-width: 1024px) {
-    width: 20px;
-    transform: scale(0.7);
-  }
-  @media screen and (max-width: 1200px) {
-    width: 100px;
-    transform: scale(0.9);
-  }
-  @media screen and (max-width: 1920px) {
-  }
-`;
-export const MemberCardInfo = styled.div`
-  width: 70%;
-  height: 100%;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: space-evenly;
-  align-items: flex-start;
-
-  & > h1 {
-    font-size: var(--font-subtitle-20);
-    font-family: var(--font-secondary-inter);
-    font-weight: var(--font-weight-600);
-    color: var(--color-grey-4);
-  }
-  & > h2 {
-    font-size: var(--font-text-16);
-    font-family: var(--font-secondary-inter);
-    font-weight: var(--font-weight-400);
-    color: var(--color-grey-0);
-  }
-
-  @media screen and (max-width: 480px) {
-    & > h1 {
-      font-size: var(--font-text-16);
-    }
-
-    & > h2 {
-      font-size: var(--font-text-14);
-    }
-  }
-  @media screen and (max-width: 600px) {
-    & > h1 {
-      font-size: var(--font-text-16);
-    }
-
-    & > h2 {
-      font-size: var(--font-text-14);
-    }
-  }
-  @media screen and (max-width: 768px) {
-    & > h1 {
-      font-size: var(--font-text-16);
-    }
-
-    & > h2 {
-      font-size: var(--font-text-14);
-    }
-  }
-  @media screen and (max-width: 1024px) {
-    & > h1 {
-      font-size: var(--font-text-16);
-    }
-
-    & > h2 {
-      font-size: var(--font-text-14);
-    }
-  }
-  @media screen and (max-width: 1200px) {
-    & > h1 {
-      font-size: var(--font-text-16);
-    }
-
-    & > h2 {
-      font-size: var(--font-text-14);
-    }
   }
   @media screen and (max-width: 1920px) {
   }

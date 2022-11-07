@@ -45,12 +45,12 @@ export const PasswordInputComponent = ({
           id={labelRefer}
           type={isSeeingPassword ? "text" : "password"}
           {...register(registerkey)}
-
           {...rest}
         />
-        <button type="button"
+        <button
           className="button-see-password"
-          onClick={() => {
+          type="button"
+          onClick={() => {            
             setIsSeeingPassword(!isSeeingPassword);
           }}
         >

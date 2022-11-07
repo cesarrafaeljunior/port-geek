@@ -9,7 +9,6 @@ function App() {
   const {isOpenModalRegister,setIsOpenModalRegister,isOpenModalLogin,setIsOpenModalLogin} = useContext(ModalContext)
   return (
     <>
-      
       {isOpenModalRegister && <Modal  setModal={setIsOpenModalRegister}/>}
       {isOpenModalLogin && <ModalLogin setModal={setIsOpenModalLogin}/>}
       <RoutesMain />
