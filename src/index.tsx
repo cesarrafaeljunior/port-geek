@@ -3,6 +3,8 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import GlobalStyle from "./styles/modules/global";
+import{ UserProvider }from './contexts/userContext';
+import{ ModalProvider }from './contexts/modalContext';
 import { ToastContainer } from "react-toastify";
 
 const root = ReactDOM.createRoot(
@@ -10,16 +12,22 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <GlobalStyle />
-    <ToastContainer
-      autoClose={1000}
-      toastStyle={{
-        background: "var(--color-grey-0)",
-        color: "var(--color-grey-3)",
-      }}
+  <BrowserRouter>
+      <UserProvider>
+          <ModalProvider>
+              <GlobalStyle />
+              <App />
+  <GlobalStyle />
+  <ToastContainer
+    autoClose={1000}
+    toastStyle={{
+      background: "var(--color-grey-0)",
+      color: "var(--color-grey-3)",
+    }}
     />
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </React.StrictMode>
+          </ModalProvider>
+      </UserProvider>
+  </BrowserRouter>
+</React.StrictMode>
+   
 );

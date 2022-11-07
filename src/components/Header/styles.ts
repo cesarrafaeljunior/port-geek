@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { ShowProps } from "./Header";
 
 /****************************************
 
@@ -13,7 +12,9 @@ import { ShowProps } from "./Header";
             Version: 1.0
 
 ****************************************/
-
+interface ShowProps {
+  show: boolean;
+}
 export const Header = styled.header`
   width: 100%;
   height: 120px;

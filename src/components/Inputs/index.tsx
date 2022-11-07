@@ -22,7 +22,7 @@ export const InputComponent = ({
   return (
     <StyledDiv bordercolor={bordercolor}>
       <label htmlFor={labelRefer}>{labelText}</label>
-      {/* <input id={labelRefer} {...register(registerkey)} {...rest} /> */}
+      <input id={labelRefer} {...register(registerkey)} {...rest} />
     </StyledDiv>
   );
 };
@@ -32,6 +32,7 @@ export const PasswordInputComponent = ({
   labelText,
   bordercolor,
   register,
+  registerkey,
   ...rest
 }: IInput) => {
   const [isSeeingPassword, setIsSeeingPassword] = useState<boolean>(false);
@@ -43,13 +44,13 @@ export const PasswordInputComponent = ({
         <input
           id={labelRefer}
           type={isSeeingPassword ? "text" : "password"}
-          // {...register(registerkey)}
+          {...register(registerkey)}
           {...rest}
         />
         <button
           className="button-see-password"
           type="button"
-          onClick={() => {
+          onClick={() => {            
             setIsSeeingPassword(!isSeeingPassword);
           }}
         >

@@ -18,6 +18,8 @@ import {
   GroupMemberSpace,
   ShowCase,
 } from "./styles";
+import { useContext } from "react";
+import { ModalContext } from "../../contexts/modalContext";
 import HeaderSpace from "../../components/Header/Header";
 import { IconContext } from "react-icons";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
@@ -29,7 +31,6 @@ import henriqueSadimImg from "../../assets/members/henriqueSadim.jpeg";
 import AriImg from "../../assets/members/Ari.jpg";
 import jallesImg from "../../assets/members/jalles.jpg";
 import { DashboardContext } from "../../contexts/DashboardContext";
-import { useContext } from "react";
 import { Navigate } from "react-router-dom";
 import { ButtonComponent } from "../../components/Buttons";
 import { MemberCard, MemberCardImg, MemberCardInfo } from "../../components/MemberCard/styles";
@@ -37,6 +38,8 @@ import { MemberCard, MemberCardImg, MemberCardInfo } from "../../components/Memb
 const LandingPage = () => {
   const { t } = useTranslation();
   const { token, idUser } = useContext(DashboardContext);
+  const { setIsOpenModalRegister } = useContext(ModalContext);
+  
   return (
     <>
       {token && idUser ? (
@@ -63,6 +66,11 @@ const LandingPage = () => {
                 <ButtonComponent
                   backgroundcolor={"var(--color-grey-3)"}
                   lettercolor={"var(--color-white-mode)"}
+                  onClick={(event) => {
+                      event.preventDefault()
+                      setIsOpenModalRegister(true)
+                    }
+                  }
                 >
                   Sign up
                 </ButtonComponent>
