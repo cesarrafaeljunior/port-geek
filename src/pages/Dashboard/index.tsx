@@ -22,7 +22,6 @@ import { Navigate } from "react-router-dom";
 export const Dashboard = () => {
   const {
     token,
-    idUser,
     portfolioInfo,
     portCreateAuth,
     setPortCreateAuth,

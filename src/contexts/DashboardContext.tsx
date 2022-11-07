@@ -1,11 +1,11 @@
 import { Api } from "../librarys/services/api";
-import React, { useState, useEffect, createContext } from "react";
+import React, { useState, useEffect, createContext, useContext } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { UserContext } from "./userContext";
 
 interface IDashboardContext {
   token: string | null;
-  idUser: string | null;
   portfolioInfo: IPortfolioInfo | null;
   isShowModalFormEdit: boolean;
   setIsShowModalFormEdit: React.Dispatch<React.SetStateAction<boolean>>;
@@ -56,9 +56,9 @@ export const DashboardContext = createContext<IDashboardContext>(
 
 export const DashboardProvider = () => {
   const navigate = useNavigate();
+  const { user } = useContext(UserContext);
   const [portCreateAuth, setPortCreateAuth] = useState<boolean>(false);
   const token: string | null = localStorage.getItem("@PortGeek:token");
-  const idUser: string | null = localStorage.getItem("@PortGeek:uuid");
   const [isShowModalFormEdit, setIsShowModalFormEdit] =
     useState<boolean>(false);
   const [isShowModalDelete, setIsShowModalDelete] = useState<boolean>(false);
@@ -70,7 +70,7 @@ export const DashboardProvider = () => {
 
   useEffect(() => {
     token &&
-      Api.get(`/portfolio?userId=${idUser}`)
+      Api.get(`/portfolio?userId=${user.id}`)
         .then(({ data }) => {
           setPortfolioInfo(data[0]);
         })
@@ -78,11 +78,11 @@ export const DashboardProvider = () => {
           window.localStorage.clear();
           navigate("/");
         });
-  }, [token, navigate, idUser]);
+  }, [token, user, navigate]);
 
   useEffect(() => {
     token &&
-      Api.get(`/users/${idUser}`)
+      Api.get(`/users/${user.id}`)
         .then(({ data }) => {
           setNameUser(data.name);
         })
@@ -90,7 +90,7 @@ export const DashboardProvider = () => {
           window.localStorage.clear();
           navigate("/");
         });
-  }, [token, idUser, navigate]);
+  }, [token, user, navigate]);
 
   function deletePort() {
     Api.delete(`/portfolio/${portfolioInfo && portfolioInfo.id}`).then(
@@ -117,7 +117,6 @@ export const DashboardProvider = () => {
     <DashboardContext.Provider
       value={{
         token,
-        idUser,
         portfolioInfo,
         isShowModalFormEdit,
         setIsShowModalFormEdit,

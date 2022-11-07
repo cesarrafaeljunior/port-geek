@@ -41,12 +41,12 @@ import {
 
 const LandingPage = () => {
   const { t } = useTranslation();
-  const { token, idUser } = useContext(DashboardContext);
+  const { token } = useContext(DashboardContext);
   const { setIsOpenModalRegister } = useContext(ModalContext);
 
   return (
     <>
-      {token && idUser ? (
+      {token ? (
         <Navigate to={"dashboard"} />
       ) : (
         <>
