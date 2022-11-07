@@ -24,13 +24,12 @@ export const Dashboard = () => {
     token,
     idUser,
     portfolioInfo,
-    isShowModalForm,
-    setIsShowModalForm,
+    portCreateAuth,
+    setPortCreateAuth,
     isShowModalFormEdit,
     setIsShowModalFormEdit,
     isShowModalDelete,
     setIsShowModalDelete,
-    setPortCreateAuth,
     nameUser,
   } = useContext(DashboardContext);
 
@@ -102,11 +101,11 @@ export const Dashboard = () => {
                 setScale={portfolioInfo && portfolioInfo.id ? "unset" : "0.95"}
                 type="button"
                 onClick={() => {
-                  portfolioInfo &&
-                    portfolioInfo.id &&
-                    toast.warning(
-                      "You need to delete the current Portfolio to create a new one!"
-                    );
+                  portfolioInfo && portfolioInfo.id
+                    ? toast.warning(
+                        "You need to delete the current Portfolio to create a new one!"
+                      )
+                    : setPortCreateAuth(true);
                 }}
               >
                 Create Portfolio
@@ -115,6 +114,7 @@ export const Dashboard = () => {
             </div>
           </div>
           {isShowModalDelete && <ModalDelete />}
+          {portCreateAuth && <PortFormModal />}
           <PortfolioProvider>
             <PortFormModal />
           </PortfolioProvider>
