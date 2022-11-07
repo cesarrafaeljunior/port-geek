@@ -5,7 +5,7 @@ import {
   SetStateAction,
   useState,
 } from "react";
-import { Api } from "../librarys/services/api";
+import { api } from "../services/api";
 
 interface PortifolioProviderProps {
   children: ReactNode;
@@ -53,7 +53,7 @@ const PortfolioProvider = ({ children }: PortifolioProviderProps) => {
   const sendPortifolio = async (data: iPortDataOrganized) => {
     const data2 = { ...data, userId: 1 };
     try {
-      const response = await Api.post("/portfolio", data2);
+      const response = await api.post("/portfolio", data2);
       console.log(await response);
     } catch (error) {
       console.log(error);

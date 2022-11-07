@@ -1,4 +1,4 @@
-import { Api } from "../librarys/services/api";
+import { api } from "../services/api";
 import React, { useState, useEffect, createContext, useContext } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -69,39 +69,51 @@ export const DashboardProvider = () => {
   const [nameUser, setNameUser] = useState<string>("");
 
   useEffect(() => {
-    token &&
-      Api.get(`/portfolio?userId=${user.id}`)
-        .then(({ data }) => {
-          setPortfolioInfo(data[0]);
-        })
-        .catch((err) => {
-          window.localStorage.clear();
-          navigate("/");
-        });
-  }, [token, user, navigate]);
+    async function getPort() {
+      try {
+        const response = await api.get(`/portfolio?userId=${user.id}`);
+        const { data } = response;
+        setPortfolioInfo(data[0]);
+      } catch (error) {
+        window.localStorage.clear();
+        navigate("/");
+      }
+    }
+
+    getPort();
+  }, [user, navigate]);
 
   useEffect(() => {
-    token &&
-      Api.get(`/users/${user.id}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-        .then(({ data }) => {
-          setNameUser(data.name);
-        })
-        .catch((err) => {
-          window.localStorage.clear();
-          navigate("/");
+    async function getUser() {
+      try {
+        const response = await api.get(`/users/${user.id}`, {
+          headers: { Authorization: `Bearer ${token}` },
         });
+        const { data } = response;
+        setNameUser(data.name);
+      } catch (error) {
+        error && window.localStorage.clear();
+        navigate("/");
+      }
+    }
+    token && getUser();
   }, [token, user, navigate]);
 
-  function deletePort() {
-    Api.delete(`/portfolio/${portfolioInfo && portfolioInfo.id}`).then(
-      (res) => {
-        res && toast.success("Portfolio deletado com sucesso!");
-        setIsShowModalDelete(false);
-        setPortfolioInfo(null);
-      }
-    );
+  // async function deletePort() {
+
+  // }
+
+  async function deletePort() {
+    try {
+      await api.delete(`/portfolio/${portfolioInfo && portfolioInfo.id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      toast.success("Portfolio deletado com sucesso!");
+      setIsShowModalDelete(false);
+      setPortfolioInfo(null);
+    } catch (err) {
+      err && toast.error("Something wrong!");
+    }
   }
 
   // const newInfosPort = (newInfos: IPortfolioInfo) => {
