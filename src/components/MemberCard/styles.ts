@@ -34,7 +34,6 @@ export const MemberCardImg = styled.a`
   @media screen and (max-width: 600px) {
     width: 20px;
     transform: scale(0.8);
-    background-color: red;
   }
   @media screen and (max-width: 768px) {
     width: 20px;

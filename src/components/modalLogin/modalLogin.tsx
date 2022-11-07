@@ -43,34 +43,43 @@ export function ModalLogin({ setModal }: iModal): JSX.Element {
     <Container>
       <Contem ref={modalRef}>
         <Header>
-          <h1>SignUp</h1>
+          <h1>Login</h1>
           <MdOutlineClose onClick={() => setModal(false)} />
         </Header>
         <Main>
-        <Form onSubmit={handleSubmit(handleLogin)}>
-          <InputComponent
-            labelRefer="Email"
-            labelText="email"
-            placeholder="Digite seu email"
-            autoComplete="email"
-            register={register}
-            registerkey={"email"}
-          />
-          {errors.email && <p className="error">{errors.email?.message}</p>}
+          <Form onSubmit={handleSubmit(handleLogin)}>
+            <InputComponent
+              labelRefer="Email"
+              labelText="email"
+              placeholder="Digite seu email"
+              autoComplete="email"
+              register={register}
+              registerkey={"email"}
+            />
+            {errors.email && <p className="error">{errors.email?.message}</p>}
 
-          <PasswordInputComponent
-            labelRefer="password"
-            labelText="password"
-            type="password"
-            placeholder="Digite sua senha"
-            autoComplete="current-password"
-            register={register}
-            registerkey={"password"}
-          />
-          {errors.password && <p className="error">{errors.email?.message}</p>}
+            <PasswordInputComponent
+              labelRefer="password"
+              labelText="password"
+              type="password"
+              placeholder="Digite sua senha"
+              autoComplete="current-password"
+              register={register}
+              registerkey={"password"}
+            />
+            {errors.password && (
+              <p className="error">{errors.email?.message}</p>
+            )}
 
-          <ButtonComponent type="submit" backgroundcolor={""} lettercolor={""} hovercolor={""}>Submit</ButtonComponent>
-        </Form>
+            <ButtonComponent
+              type="submit"
+              backgroundcolor={"var(--color-grey-3)"}
+              lettercolor={"var(--color-white-mode)"}
+              hovercolor={"var(--color-grey-2)"}
+            >
+              Submit
+            </ButtonComponent>
+          </Form>
         </Main>
       </Contem>
     </Container>
