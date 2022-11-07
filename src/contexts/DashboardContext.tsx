@@ -35,10 +35,10 @@ interface IPortfolioInfo {
   user_profile: {
     aboutYou: string;
     age: string;
-    birthDate: string | any;
+    birthDate: string;
     email: string;
     experience: string;
-    genre: string;
+    gender: string;
     github_url: string;
     linkedin_url: string;
     name: string;
@@ -47,7 +47,7 @@ interface IPortfolioInfo {
     training: string;
   };
   selectedLayout: string;
-  id: number;
+  id?: number;
 }
 
 export const DashboardContext = createContext<IDashboardContext>(
@@ -101,6 +101,17 @@ export const DashboardProvider = () => {
       }
     );
   }
+
+  const newInfosPort = (newInfos: IPortfolioInfo) => {
+    Api.patch(`/portfolio/${portfolioInfo && portfolioInfo.id}`, {
+      ...newInfos,
+    })
+      .then((res) => {
+        res && toast.success("Portfolio edit with success!");
+        setPortCreateAuth(false);
+      })
+      .catch((err) => err && toast.error("Something Wrong!"));
+  };
 
   return (
     <DashboardContext.Provider

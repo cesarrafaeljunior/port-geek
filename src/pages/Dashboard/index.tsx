@@ -61,17 +61,17 @@ export const Dashboard = () => {
           <div className="container-secondary">
             {portfolioInfo && portfolioInfo.id ? (
               <main>
-                {portfolioInfo.selectedLayout === "layout1" && (
+                {portfolioInfo.selectedLayout === "layout-1" && (
                   <img className="mini-port" src={imgPortfolio1} alt="" />
                 )}
-                {portfolioInfo.selectedLayout === "layout2" && (
+                {portfolioInfo.selectedLayout === "layout-2" && (
                   <img className="mini-port" src={imgPortfolio2} alt="" />
                 )}
-                {portfolioInfo.selectedLayout === "layout3" && (
+                {portfolioInfo.selectedLayout === "layout-3" && (
                   <img className="mini-port" src={imgPortfolio3} alt="" />
                 )}
                 <div className="buttons">
-                  <IconEdit />
+                  <IconEdit onClick={() => setPortCreateAuth(true)} />
                   <IconTrash onClick={() => setIsShowModalDelete(true)} />
                   <IconShare
                     onClick={() => {

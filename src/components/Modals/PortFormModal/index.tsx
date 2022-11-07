@@ -105,6 +105,8 @@ const schema = yup.object({
 });
 
 const PortFormModal = () => {
+  const { portCreateAuth, setPortCreateAuth, portfolioInfo } =
+    useContext(DashboardContext);
   const {
     register,
     handleSubmit,
@@ -112,9 +114,9 @@ const PortFormModal = () => {
     formState: { errors },
   } = useForm<iPortFormModal>({
     resolver: yupResolver(schema),
+    defaultValues: { name: "teste" },
   });
-
-  const { portCreateAuth, setPortCreateAuth } = useContext(DashboardContext);
+  console.log(portfolioInfo);
   const { sendPortifolio } = useContext(PortifolioContext);
 
   function dataOrganize(data: iPortFormModal): iPortDataOrganized {
