@@ -19,6 +19,10 @@ const GlobalStyle = createGlobalStyle`
   :root{
     /* Colors */
     --color-primary: #FFCF5C;
+    --color-secondary: #BA110C;
+    --color-tertiary: #730039;
+    --color-quartenary: #CBA135;
+    --color-quinternary: #1D1D1F;
 
     --color-feedback-negative: #E83F5B;
     --color-feedback-warning: #ffcd07;
@@ -51,8 +55,10 @@ const GlobalStyle = createGlobalStyle`
     --button-height-little: 32px;
     --container-width: 1200px;
 
-    /* Font Family */
+    /* Padding */
+    --padding-8: 8px;
 
+    /* Font Family */
     --font-primary-nunito: 'Nunito';
     --font-secondary-inter: 'Inter';
 
@@ -83,7 +89,6 @@ const GlobalStyle = createGlobalStyle`
     --font-text-10: 0.625rem;
 
     /* Line-Height */
-
     --font-line-height-40: 40px;
     --font-line-height-38: 38px;
     --font-line-height-32: 32px;

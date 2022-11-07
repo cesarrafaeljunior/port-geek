@@ -16,9 +16,6 @@ import {
   SecondBorder,
   TransitionHome,
   GroupMemberSpace,
-  MemberCard,
-  MemberCardInfo,
-  MemberCardImg,
   ShowCase,
 } from "./styles";
 import HeaderSpace from "../../components/Header/Header";
@@ -31,40 +28,53 @@ import lucasCruzImg from "../../assets/members/lucascruz.jpg";
 import henriqueSadimImg from "../../assets/members/henriqueSadim.jpeg";
 import AriImg from "../../assets/members/Ari.jpg";
 import jallesImg from "../../assets/members/jalles.jpg";
+import { DashboardContext } from "../../contexts/DashboardContext";
+import { useContext } from "react";
+import { Navigate } from "react-router-dom";
+import { ButtonComponent } from "../../components/Buttons";
+import { MemberCard, MemberCardImg, MemberCardInfo } from "../../components/MemberCard/styles";
 
 const LandingPage = () => {
   const { t } = useTranslation();
+  const { token, idUser } = useContext(DashboardContext);
   return (
     <>
-      <HeaderSpace />
+      {token && idUser ? (
+        <Navigate to={"dashboard"} />
+      ) : (
+        <>
+          <HeaderSpace />
+          <HomeSection id="section-home">
+            <DescriptionSection>
+              <h1>
+                Imagine being able to show you with 100% of your potential and
+                skills, Port Geek can offer this to you!
+              </h1>
 
-      <HomeSection id="section-home">
-        <DescriptionSection>
-          <h1>
-            Imagine being able to show you with 100% of your potential and
-            skills, Port Geek can offer this to you!
-          </h1>
-
-          <ShowCase></ShowCase>
-
-          <BtnDiv>
-            <form>
-              <input
-                type="text"
-                name="email"
-                id="email"
-                placeholder="Enter your email"
-              />
-              <button>Sign up</button>
-            </form>
-          </BtnDiv>
-        </DescriptionSection>
+              <ShowCase></ShowCase>
+            <BtnDiv>
+              <form>
+                <input
+                  type="text"
+                  name="email"
+                  id="email"
+                  placeholder="Enter your email"
+                />
+                <ButtonComponent
+                  backgroundcolor={"var(--color-grey-3)"}
+                  lettercolor={"var(--color-white-mode)"}
+                >
+                  Sign up
+                </ButtonComponent>
+              </form>
+            </BtnDiv>
+          </DescriptionSection>
         <Border />
         <TransitionAbout>
-          <AnchorLink href="#section-about">
+          <AnchorLink href="#section-about" offset={100}>
             <IconContext.Provider
               value={{
-                color: "var(--color-grey-4)",
+                color: "var(--color-grey-3)",
                 size: "7em",
               }}
             >
@@ -93,9 +103,9 @@ const LandingPage = () => {
           </TypingEffect>
           <AnimatedLogo />
         </AsideSpace>
-      </HomeSection>
+          </HomeSection>
 
-      <AboutSection id="section-about">
+        <AboutSection id="section-about">
         <AboutDescriptionSpace>
           <h1>About us</h1>
           <p>
@@ -108,10 +118,10 @@ const LandingPage = () => {
         </AboutDescriptionSpace>
         <SecondBorder />
         <TransitionHome>
-          <AnchorLink href="#section-home">
+          <AnchorLink href="#section-home" offset={100}>
             <IconContext.Provider
               value={{
-                color: "var(--color-grey-4)",
+                color: "var(--color-grey-3)",
                 size: "7em",
               }}
             >
@@ -120,9 +130,9 @@ const LandingPage = () => {
           </AnchorLink>
         </TransitionHome>
         <CompanionSection>
-          <h1>Group Members</h1>
+          <h2>Group Members</h2>
           <GroupMemberSpace>
-            <MemberCard>
+          <MemberCard>
               <MemberCardImg href="https://www.linkedin.com/in/cesarrafaeldevstudent">
                 <img src={cesarRafaelImg} alt="Cesar Rafael" />
               </MemberCardImg>
@@ -178,9 +188,12 @@ const LandingPage = () => {
             </MemberCard>
           </GroupMemberSpace>
         </CompanionSection>
-      </AboutSection>
+        </AboutSection>
+      </>
+      )
+    }
     </>
-  );
-};
+  )
+}
 
-export default LandingPage;
+export default LandingPage

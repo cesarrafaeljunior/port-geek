@@ -22,7 +22,7 @@ export const Header = styled.header`
   justify-content: space-between;
   align-items: center;
   padding-left: 100px;
-  background-color: var(--color-secondary);
+  background-color: var(--color-primary);
   border-bottom: 2px solid var(--color-black-mode);
   z-index: 1001;
   position: fixed;
@@ -73,8 +73,14 @@ export const LinkSpace = styled.div<ShowProps>`
   padding-right: 100px;
   transform: ${({ show }) => (show ? "translateX(-100%)" : "translateX(0%)")};
 
-  & > a {
-    text-decoration: none;
+  & > button,
+  a {
+    width: 50%;
+  }
+
+  & button:hover,
+  a:hover {
+    text-decoration: underline;
   }
 
   @media screen and (max-width: 480px) {
@@ -195,14 +201,7 @@ export const Links = styled.button`
   text-decoration: none;
   color: var(--color-black-mode);
   font-family: var(--font-primary-nunito);
-  font-size: var(--font-subtitle-20);
   font-weight: var(--font-weight-600);
-
-  &:hover {
-    background-color: var(--color-grey-3);
-    border-radius: var(--radius-8);
-    color: var(--color-white-mode);
-  }
 `;
 /*------------------------- Skip line -------------------------*/
 
