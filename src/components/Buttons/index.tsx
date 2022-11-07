@@ -1,3 +1,4 @@
+import React from "react";
 import { IStyledButton, StyledButton } from "./styled";
 
 export const ButtonComponent = ({
