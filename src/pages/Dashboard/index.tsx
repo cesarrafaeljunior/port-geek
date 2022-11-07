@@ -58,7 +58,7 @@ export const Dashboard = () => {
 
           <div className="container-secondary">
             {portfolioInfo && portfolioInfo.id ? (
-              <div className="portfolio">
+              <main>
                 {portfolioInfo.selectedLayout === "layout1" && (
                   <img className="mini-port" src={imgPortfolio1} alt="" />
                 )}
@@ -80,7 +80,7 @@ export const Dashboard = () => {
                     }}
                   />
                 </div>
-              </div>
+              </main>
             ) : (
               <div className="div-alert">
                 <p>You don't have created a Portfolio yet!</p>
