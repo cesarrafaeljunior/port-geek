@@ -17,6 +17,7 @@ const PortFormModalStyled = styled.div`
   form {
     position: relative;
     margin: 50px 0;
+    margin-top: 10rem;
     overflow-y: scroll;
     width: 90%;
     max-height: 100vh;

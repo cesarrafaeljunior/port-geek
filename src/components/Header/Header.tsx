@@ -9,11 +9,9 @@ import { IconContext } from "react-icons";
 import { ButtonComponent } from "../Buttons";
 import { UserContext } from "../../contexts/userContext";
 
-
 const HeaderSpace = () => {
   const { setIsOpenModalLogin } = useContext(UserContext);
   const [show, setShow] = useState(false);
-
 
   const { t } = useTranslation();
   function openMenu() {
@@ -35,22 +33,10 @@ const HeaderSpace = () => {
           <img src={logo} alt="Port Geek" />
         </ImageSpace>
         <LinkSpace show={show}>
-          <AnchorLink href="#section-about">
-            <ButtonComponent
-              onClick={() => openMenu()}
-              backgroundcolor={"transparent"}
-              lettercolor={"var(--color-white-mode)"}
-            >
-              About us
-            </ButtonComponent>
+          <AnchorLink href="#section-about" offset={100}>
+            <Links onClick={() => openMenu()}>About us</Links>
           </AnchorLink>
-          <ButtonComponent
-            backgroundcolor={"transparent"}
-            lettercolor={"var(--color-white-mode)"}
-            onClick={()=>setIsOpenModalLogin(true)}
-          >
-            Login
-          </ButtonComponent>
+          <Links onClick={() => setIsOpenModalLogin(true)}>Login</Links>
         </LinkSpace>
       </Header>
     </>

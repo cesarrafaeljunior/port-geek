@@ -1,6 +1,6 @@
 import { createContext, ReactNode, useState } from "react";
-import { useNavigate } from 'react-router-dom'
-import { successToast,errorToast } from "../../toast/toast";
+import { useNavigate } from "react-router-dom";
+import { successToast, errorToast } from "../../toast/toast";
 import { api } from "../../services/api";
 import {postLogin,  iUserLogin } from "../../services/postLogin";
 import {postRegister,  iRegisterData } from "../../services/postRegister";
@@ -24,7 +24,7 @@ interface iUserContext {
 }
 
 interface iUserProvider {
-    children: ReactNode
+  children: ReactNode;
 }
 
 export function UserProvider({ children }: iUserProvider): JSX.Element {
@@ -59,8 +59,8 @@ export function UserProvider({ children }: iUserProvider): JSX.Element {
             
         }
 
-    const handleLogin = (data: iUserLogin) => {
-        setisValidate(true)
+  const handleLogin = (data: iUserLogin) => {
+    setisValidate(true);
 
         postLogin(data)
         .then((response) => {

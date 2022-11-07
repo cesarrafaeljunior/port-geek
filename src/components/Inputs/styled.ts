@@ -8,24 +8,34 @@ export const StyledDiv = styled.div<IStyledDiv>`
   display: flex;
   flex-direction: column;
   gap: var(--gap-8);
+  font-family: var(--font-primary-nunito);
+  font-size: var(--font-subtitle-18);
+  width: 100%;
+  /* margin-bottom: 10px */
 
-  max-width: 100px;
+  & > label {
+    font-weight: var(--font-weight-600);
+    margin-bottom: 10px;
+  }
 
   & input {
-    box-sizing: border-box;
-
     width: 100%;
-
     padding: var(--padding-8);
-    padding-right: var(--padding-24);
-
     background-color: var(--color-grey-0);
     color: var(--color-grey-3);
-
-    border: ${(props) =>
-        props.bordercolor ? props.bordercolor : "var(--border-size-2)"}
-      solid transparent;
+    border: 1px solid var(--color-grey-3);
     border-radius: var(--radius-6);
+
+    &::placeholder {
+      font-family: var(--font-secondary-inter);
+      font-size: var(--font-text-16);
+      color: var(--color-grey-3);
+      padding: 0 10px;
+    }
+
+    &:focus {
+      border: 1px solid var(--color-secondary);
+    }
   }
 `;
 

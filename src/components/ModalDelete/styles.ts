@@ -44,6 +44,7 @@ export const Container = styled.div`
         border-radius: var(--radius-4);
         background-color: var(--color-grey-3);
         color: var(--color-grey-0);
+        padding: 5px;
 
         :hover {
           background-color: var(--color-grey-2);
