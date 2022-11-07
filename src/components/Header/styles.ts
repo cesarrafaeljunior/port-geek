@@ -66,25 +66,21 @@ export const ImageSpace = styled.div`
 `;
 
 export const LinkSpace = styled.div<ShowProps>`
-  width: 400px;
+  width: 200px;
   height: 100%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   padding-right: 100px;
+  background-color: red;
   transform: ${({ show }) => (show ? "translateX(-100%)" : "translateX(0%)")};
+  transition: 0.8s ease-in-out;
 
-  & > button,
-  a {
-    width: 50%;
+  & > a {
+    text-decoration: none;
   }
 
-  & button:hover,
-  a:hover {
-    text-decoration: underline;
-  }
-
-  @media screen and (max-width: 480px) {
+  @media screen and (min-width: 480px) {
     padding-right: 0;
     width: 200px;
     height: 50%;
@@ -95,16 +91,8 @@ export const LinkSpace = styled.div<ShowProps>`
     left: 0%;
     flex-flow: column nowrap;
     z-index: 1001;
-
-    & > button {
-      color: var(--color-white-mode);
-    }
-
-    & > a > button {
-      color: var(--color-white-mode);
-    }
   }
-  @media screen and (max-width: 600px) {
+  @media screen and (min-width: 600px) {
     padding-right: 0;
     width: 200px;
     height: 50%;
@@ -115,16 +103,8 @@ export const LinkSpace = styled.div<ShowProps>`
     left: 0%;
     flex-flow: column nowrap;
     z-index: 1001;
-
-    & > button {
-      color: var(--color-white-mode);
-    }
-
-    & > a > button {
-      color: var(--color-white-mode);
-    }
   }
-  @media screen and (max-width: 768px) {
+  @media screen and (min-width: 768px) {
     padding-right: 0;
     width: 200px;
     height: 50%;
@@ -135,16 +115,8 @@ export const LinkSpace = styled.div<ShowProps>`
     left: 0%;
     flex-flow: column nowrap;
     z-index: 1001;
-
-    & > button {
-      color: var(--color-white-mode);
-    }
-
-    & > a > button {
-      color: var(--color-white-mode);
-    }
   }
-  @media screen and (max-width: 1024px) {
+  @media screen and (min-width: 1024px) {
     padding-right: 0;
     width: 200px;
     height: 50%;
@@ -155,16 +127,9 @@ export const LinkSpace = styled.div<ShowProps>`
     left: 0%;
     flex-flow: column nowrap;
     z-index: 1001;
-
-    & > button {
-      color: var(--color-white-mode);
-    }
-
-    & > a > button {
-      color: var(--color-white-mode);
-    }
+    transform: none;
   }
-  @media screen and (max-width: 1200px) {
+  @media screen and (min-width: 1200px) {
     padding-right: 0;
     width: 200px;
     height: 50%;
@@ -176,33 +141,33 @@ export const LinkSpace = styled.div<ShowProps>`
     left: 100%;
     flex-flow: column nowrap;
     z-index: 1001;
-    transition: 0.8s ease-in-out;
-
-    & > button {
-      color: var(--color-white-mode);
-    }
-
-    & > a > button {
-      color: var(--color-white-mode);
-    }
+    transform: none;
   }
-  @media screen and (max-width: 1920px) {
+  @media screen and (min-width: 1920px) {
+    transform: none;
   }
 `;
 
 export const Links = styled.button`
   width: 120px;
   height: 40px;
-  background-color: transparent;
+  background-color: var(--color-grey-3);
   display: flex;
   justify-content: center;
   align-items: center;
   text-decoration: none;
-  border: none;
-  text-decoration: none;
-  color: var(--color-black-mode);
+  border: 1px solid var(--color-grey-3);
+  color: var(--color-white-mode);
   font-family: var(--font-primary-nunito);
   font-weight: var(--font-weight-600);
+  border-radius: var(--radius-8);
+
+  &:focus {
+    background-color: var(--color-grey-2);
+    color: var(--color-white-mode);
+    border: 1px solid var(--color-white-mode);
+    border-radius: var(--radius-8);
+  }
 `;
 /*------------------------- Skip line -------------------------*/
 
