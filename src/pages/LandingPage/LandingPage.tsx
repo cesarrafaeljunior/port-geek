@@ -45,12 +45,11 @@ import {
   MemberCardInfo,
 } from "../../components/MemberCard/styles";
 
-
 const LandingPage = () => {
   const { t } = useTranslation();
   const { token } = useContext(DashboardContext);
   const { setIsOpenModalRegister } = useContext(ModalContext);
-  const {setEmailDefault,handleRegister}= useContext(UserContext)
+  const { setEmailDefault, handleRegister } = useContext(UserContext);
   const {
     register,
     reset,
@@ -59,8 +58,7 @@ const LandingPage = () => {
   } = useForm<iRegisterData>({
     resolver: yupResolver(registerSchema),
   });
-  
-  
+
   return (
     <>
       {token ? (
@@ -76,23 +74,22 @@ const LandingPage = () => {
               </h1>
               <ShowCase></ShowCase>
               <BtnDiv>
-              <form onSubmit={handleSubmit(handleRegister)}>
-                <input
-                  type="text"
-                  placeholder="Enter your email"
-                  {...register("email")}
-                  onChange = {(e)=>setEmailDefault(e.target.value)}
-                />
-                <ButtonComponent type="submit"
-                  backgroundcolor={"var(--color-grey-3)"}
-                  lettercolor={"var(--color-white-mode)"}
-                  onClick={(event) => {
-                      event.preventDefault()
-                      setIsOpenModalRegister(true)
-                      reset()
-
-                    }
-                  }
+                <form onSubmit={handleSubmit(handleRegister)}>
+                  <input
+                    type="text"
+                    placeholder="Enter your email"
+                    {...register("email")}
+                    onChange={(e) => setEmailDefault(e.target.value)}
+                  />
+                  <ButtonComponent
+                    type="submit"
+                    backgroundcolor={"var(--color-grey-3)"}
+                    lettercolor={"var(--color-white-mode)"}
+                    onClick={(event) => {
+                      event.preventDefault();
+                      setIsOpenModalRegister(true);
+                      reset();
+                    }}
                   >
                     Sign up
                   </ButtonComponent>

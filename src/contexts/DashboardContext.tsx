@@ -82,7 +82,9 @@ export const DashboardProvider = () => {
 
   useEffect(() => {
     token &&
-      Api.get(`/users/${user.id}`)
+      Api.get(`/users/${user.id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
         .then(({ data }) => {
           setNameUser(data.name);
         })
@@ -102,16 +104,16 @@ export const DashboardProvider = () => {
     );
   }
 
-  const newInfosPort = (newInfos: IPortfolioInfo) => {
-    Api.patch(`/portfolio/${portfolioInfo && portfolioInfo.id}`, {
-      ...newInfos,
-    })
-      .then((res) => {
-        res && toast.success("Portfolio edit with success!");
-        setPortCreateAuth(false);
-      })
-      .catch((err) => err && toast.error("Something Wrong!"));
-  };
+  // const newInfosPort = (newInfos: IPortfolioInfo) => {
+  //   Api.patch(`/portfolio/${portfolioInfo && portfolioInfo.id}`, {
+  //     ...newInfos,
+  //   })
+  //     .then((res) => {
+  //       res && toast.success("Portfolio edit with success!");
+  //       setPortCreateAuth(false);
+  //     })
+  //     .catch((err) => err && toast.error("Something Wrong!"));
+  // };
 
   return (
     <DashboardContext.Provider
