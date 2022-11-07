@@ -56,9 +56,10 @@ export const DashboardContext = createContext<IDashboardContext>(
 
 export const DashboardProvider = () => {
   const navigate = useNavigate();
-  const { user } = useContext(UserContext);
+  // const { user } = useContext(UserContext);
   const [portCreateAuth, setPortCreateAuth] = useState<boolean>(false);
   const token: string | null = localStorage.getItem("@PortGeek:token");
+  const idUser: string | null = localStorage.getItem("@PortGeek:id");
   const [isShowModalFormEdit, setIsShowModalFormEdit] =
     useState<boolean>(false);
   const [isShowModalDelete, setIsShowModalDelete] = useState<boolean>(false);
@@ -71,7 +72,7 @@ export const DashboardProvider = () => {
   useEffect(() => {
     async function getPort() {
       try {
-        const response = await api.get(`/portfolio?userId=${user.id}`);
+        const response = await api.get(`/portfolio?userId=${idUser}`);
         const { data } = response;
         setPortfolioInfo(data[0]);
       } catch (error) {
@@ -80,13 +81,13 @@ export const DashboardProvider = () => {
       }
     }
 
-    token && getPort();
-  }, [token, user, navigate]);
+    getPort();
+  }, [idUser, navigate]);
 
   useEffect(() => {
     async function getUser() {
       try {
-        const response = await api.get(`/users/${user.id}`, {
+        const response = await api.get(`/users/${idUser}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         const { data } = response;
@@ -96,8 +97,8 @@ export const DashboardProvider = () => {
         navigate("/");
       }
     }
-    token && getUser();
-  }, [token, user, navigate]);
+    getUser();
+  }, [token, idUser, navigate]);
 
   async function deletePort() {
     try {
