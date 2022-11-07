@@ -92,7 +92,7 @@ export const DashboardProvider = () => {
         const { data } = response;
         setNameUser(data.name);
       } catch (error) {
-        error && window.localStorage.removeItem("@PortGeek:token");
+        window.localStorage.removeItem("@PortGeek:token");
         navigate("/");
       }
     }
@@ -111,17 +111,6 @@ export const DashboardProvider = () => {
       error && toast.error("Something wrong!");
     }
   }
-
-  // const newInfosPort = (newInfos: IPortfolioInfo) => {
-  //   Api.patch(`/portfolio/${portfolioInfo && portfolioInfo.id}`, {
-  //     ...newInfos,
-  //   })
-  //     .then((res) => {
-  //       res && toast.success("Portfolio edit with success!");
-  //       setPortCreateAuth(false);
-  //     })
-  //     .catch((err) => err && toast.error("Something Wrong!"));
-  // };
 
   return (
     <DashboardContext.Provider
