@@ -14,7 +14,7 @@ export const ThirthLayout = ({portfInfos}: ILayout) => {
 
   return (
     <ContainerThirthLayout>
-      <header>
+      {/* <header>
         <UserIcon width={8} height={8} borderR={50} border={"borderUserIcon"} />
         <UserInfos
             fontSize={1.5}
@@ -54,7 +54,7 @@ export const ThirthLayout = ({portfInfos}: ILayout) => {
             bgColor={"--backgroundHeader"}
           />
         </section>
-      </main>
+      </main> */}
     </ContainerThirthLayout>
   );
 };

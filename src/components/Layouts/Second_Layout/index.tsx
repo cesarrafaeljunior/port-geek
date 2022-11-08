@@ -13,11 +13,16 @@ import ExperienceIcon from "../../../assets/logo/Experience.png";
 import AboutIcon from "../../../assets/logo/About.png";
 import FormationIcon from "../../../assets/logo/Formation.png";
 import ProjectIcon from "../../../assets/logo/Project.png";
+<<<<<<< HEAD
 import { ILayout } from "../../../pages/Layout";
 
 export const SecondLayout = ({portfInfos}: ILayout) => {
   const {user_profile, adress, project} = portfInfos
   
+=======
+
+export const SecondLayout = () => {
+>>>>>>> e31182e6f507d7380be409be34e31251a859b62b
   return (
     <ContainerSecondLayout>
       <header>
@@ -26,6 +31,7 @@ export const SecondLayout = ({portfInfos}: ILayout) => {
         </section>
 
         <section className="Section__Infos__Header">
+<<<<<<< HEAD
           <UserInfos 
             fontSize={1.5}
             fontSizeP={1} 
@@ -40,6 +46,10 @@ export const SecondLayout = ({portfInfos}: ILayout) => {
             userEmail={user_profile.email}
             phoneNumber={user_profile.telephone}
           />
+=======
+          <UserInfos fontSize={2} color={"--titleLayout"} fontSizeP={1} />
+          <Contacts />
+>>>>>>> e31182e6f507d7380be409be34e31251a859b62b
         </section>
       </header>
       <main>
@@ -58,12 +68,16 @@ export const SecondLayout = ({portfInfos}: ILayout) => {
             <figure>
               <img src={AboutIcon} alt="About Icon" />
             </figure>
+<<<<<<< HEAD
             <About 
               fontSize={1.5}
               color={"--font-color"}
               fontSizeP={1}
               aboutYou={user_profile.aboutYou}
             />
+=======
+            <About fontSize={1.5} color={"--font-color"} fontSizeP={1} />
+>>>>>>> e31182e6f507d7380be409be34e31251a859b62b
 
             <figure>
               <img src={FormationIcon} alt="Formation Icon" />
