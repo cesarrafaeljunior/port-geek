@@ -165,7 +165,7 @@ export const Container = styled.div`
       }
     }
 
-    .portfolio {
+    main {
       display: flex;
       flex-direction: column;
       align-items: center;

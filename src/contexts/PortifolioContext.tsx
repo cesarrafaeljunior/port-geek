@@ -5,7 +5,7 @@ import {
   SetStateAction,
   useState,
 } from "react";
-import { Api } from "../librarys/services/api";
+import { api } from "../services/api";
 
 interface PortifolioProviderProps {
   children: ReactNode;
@@ -86,12 +86,7 @@ const PortfolioProvider = ({ children }: PortifolioProviderProps) => {
   const sendPortifolio = async (data: iPortDataOrganized) => {
     const data2 = { ...data, userId: 1 };
     try {
-      const response = await Api.post("/portfolio", data2, {
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImtlbnppbmhvQG1haWwuY29tIiwiaWF0IjoxNjY3NTY2OTI3LCJleHAiOjE2Njc1NzA1MjcsInN1YiI6IjEifQ.MfAGHS67Z8FyAC-OdXsWl-cYLF7be7Mp6PeSXw6I9rQ",
-        },
-      });
+      const response = await api.post("/portfolio", data2);
       console.log(await response);
     } catch (error) {
       console.log(error);
