@@ -1,22 +1,41 @@
 import "../../utils/i18n";
 import { useTranslation } from "react-i18next";
-import { Header, ImageSpace, Links, LinkSpace, NavBarMenuBtn } from "./styles";
+import {
+  BrazilButton,
+  Header,
+  ImageSpace,
+  Links,
+  LinkSpace,
+  NavBarMenuBtn,
+  UsaButton,
+} from "./styles";
 import logo from "../../assets/logo/logo.png";
 import { useContext, useState } from "react";
 import { ModalContext } from "../../contexts/modalContext";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IconContext } from "react-icons";
-import { ButtonComponent } from "../Buttons";
+import { GeneralContext } from "../../contexts/GeneralContext";
 
 const HeaderSpace = () => {
   const { setIsOpenModalLogin } = useContext(ModalContext);
   const [show, setShow] = useState(false);
-
-  const { t } = useTranslation();
   function openMenu() {
     setShow((current) => !current);
   }
+
+  const { setCurrentLanguage } = useContext(GeneralContext);
+
+  const { t, i18n } = useTranslation();
+
+  const changeLanguage = (value: any) => {
+    i18n
+      .changeLanguage(value)
+      .then(() => {
+        setCurrentLanguage(value);
+      })
+      .catch((err) => console.log(err));
+  };
   return (
     <>
       <Header>
@@ -34,9 +53,11 @@ const HeaderSpace = () => {
         </ImageSpace>
         <LinkSpace show={show}>
           <AnchorLink href="#section-about" offset={100}>
-            <Links onClick={() => openMenu()}>About us</Links>
+            <Links onClick={() => openMenu()}>{t("About us")}</Links>
           </AnchorLink>
           <Links onClick={() => setIsOpenModalLogin(true)}>Login</Links>
+          <UsaButton onClick={() => changeLanguage("en")} />
+          <BrazilButton onClick={() => changeLanguage("pt")} />
         </LinkSpace>
       </Header>
     </>
