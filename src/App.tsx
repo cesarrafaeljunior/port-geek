@@ -1,9 +1,9 @@
 import { useContext } from "react";
+import { UserContext } from "./contexts/userContext";
 import { Modal } from "./components/modalRegister/modalRegister";
 import { ModalLogin } from "./components/modalLogin/modalLogin";
 import RoutesMain from "./routes";
-import { UserProvider } from "./contexts/userContext";
-import { UserContext } from "./contexts/userContext";
+import GeneralProvider from "./contexts/GeneralContext";
 
 function App() {
   const {
@@ -15,11 +15,11 @@ function App() {
 
   return (
     <>
-      {isOpenModalRegister && <Modal setModal={setIsOpenModalRegister} />}
-      {isOpenModalLogin && <ModalLogin setModal={setIsOpenModalLogin} />}
-      <UserProvider>
+      <GeneralProvider>
+        {isOpenModalRegister && <Modal setModal={setIsOpenModalRegister} />}
+        {isOpenModalLogin && <ModalLogin setModal={setIsOpenModalLogin} />}
         <RoutesMain />
-      </UserProvider>
+      </GeneralProvider>
     </>
   );
 }

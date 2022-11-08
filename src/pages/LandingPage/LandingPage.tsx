@@ -17,6 +17,7 @@ import {
   TransitionHome,
   GroupMemberSpace,
   ShowCase,
+  ImageCarouselDiv,
 } from "./styles";
 import { useContext } from "react";
 import HeaderSpace from "../../components/Header/Header";
@@ -29,6 +30,13 @@ import lucasCruzImg from "../../assets/members/lucascruz.jpg";
 import henriqueSadimImg from "../../assets/members/henriqueSadim.jpeg";
 import AriImg from "../../assets/members/Ari.jpg";
 import jallesImg from "../../assets/members/jalles.jpg";
+
+import portfolio01 from "../../assets/img/05_resume_template.png";
+import portfolio02 from "../../assets/img/1092.png";
+import portfolio03 from "../../assets/img/5215985.png";
+
+import teste from "../../assets/icons/iconBrazil.png";
+
 import { DashboardContext } from "../../contexts/DashboardContext";
 import { Navigate } from "react-router-dom";
 import { ButtonComponent } from "../../components/Buttons";
@@ -43,6 +51,8 @@ import {
   MemberCardImg,
   MemberCardInfo,
 } from "../../components/MemberCard/styles";
+import Carousel from "react-bootstrap/Carousel";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const LandingPage = () => {
   const { t } = useTranslation();
@@ -68,10 +78,29 @@ const LandingPage = () => {
           <HomeSection id="section-home">
             <DescriptionSection>
               <h1>
-                Imagine being able to show you with 100% of your potential and
-                skills, Port Geek can offer this to you!
+                {t(
+                  "Imagine being able to show you with 100% of your potential and skills, Port Geek can offer this to you!"
+                )}
               </h1>
-              <ShowCase></ShowCase>
+              <ShowCase>
+                <Carousel className="Carousel">
+                  <Carousel.Item interval={2000}>
+                    <ImageCarouselDiv>
+                      <img src={portfolio01} alt="portfolio 01" />
+                    </ImageCarouselDiv>
+                  </Carousel.Item>
+                  <Carousel.Item interval={2000}>
+                    <ImageCarouselDiv>
+                      <img src={portfolio02} alt="portfolio 02" />
+                    </ImageCarouselDiv>
+                  </Carousel.Item>
+                  <Carousel.Item interval={2000}>
+                    <ImageCarouselDiv>
+                      <img src={portfolio01} alt="portfolio 03" />
+                    </ImageCarouselDiv>
+                  </Carousel.Item>
+                </Carousel>
+              </ShowCase>
               <BtnDiv>
                 <form onSubmit={handleSubmit(handleRegister)}>
                   <input
@@ -89,7 +118,7 @@ const LandingPage = () => {
                       reset();
                     }}
                   >
-                    Sign up
+                    {t("Sign up")}
                   </ButtonComponent>
                 </form>
               </BtnDiv>
@@ -108,7 +137,7 @@ const LandingPage = () => {
               </AnchorLink>
             </TransitionAbout>
             <AsideSpace>
-              <h1>A new way to show who you are.</h1>
+              <h1>{t("A new way to show who you are.")}</h1>
               <TypingEffect>
                 <h2>
                   {t("To make you a")}{" "}
@@ -131,14 +160,11 @@ const LandingPage = () => {
           </HomeSection>
           <AboutSection id="section-about">
             <AboutDescriptionSpace>
-              <h1>About us</h1>
+              <h1>{t("About us")}</h1>
               <p>
-                We are students from Kenzie Academy Brazil and we would like to
-                present our final Front-end project for you all. Developed by
-                our team, our project was inspired by a deeply necessity of
-                helping our developer community into creating their first
-                portolio in hands with the objetive to get their first job.
-                Below we present our team:
+                {t(
+                  "We are students from Kenzie Academy Brazil and we would like to present our final Front-end project for you all. Developed by our team, our project was inspired by a deeply necessity of helping our developer community into creating their first portolio in hands with the objetive to get their first job. Below we present our team:"
+                )}
               </p>
             </AboutDescriptionSpace>
             <SecondBorder />
@@ -155,14 +181,14 @@ const LandingPage = () => {
               </AnchorLink>
             </TransitionHome>
             <CompanionSection>
-              <h1>Group Members</h1>
+              <h1>{t("Group Members")}</h1>
               <GroupMemberSpace>
                 <MemberCard>
                   <MemberCardImg href="https://www.linkedin.com/in/cesarrafaeldevstudent">
                     <img src={cesarRafaelImg} alt="Cesar Rafael" />
                   </MemberCardImg>
                   <MemberCardInfo>
-                    <h1>César Rafael - Front-end Designer</h1>
+                    <h1>César Rafael - Front-end Developer</h1>
                     <h2>Product Owner - PO</h2>
                   </MemberCardInfo>
                 </MemberCard>
@@ -171,7 +197,7 @@ const LandingPage = () => {
                     <img src={AriImg} alt="Ariosvaldo Rodrigues" />
                   </MemberCardImg>
                   <MemberCardInfo>
-                    <h1>Lucas Mitori - Front-end Designer</h1>
+                    <h1>Lucas Mitori - Front-end Developer</h1>
                     <h2>Scrum Master - SM</h2>
                   </MemberCardInfo>
                 </MemberCard>
@@ -180,7 +206,7 @@ const LandingPage = () => {
                     <img src={henriqueSadimImg} alt="Henrique Sadim" />
                   </MemberCardImg>
                   <MemberCardInfo>
-                    <h1>Henrique Sadim - Front-end Designer</h1>
+                    <h1>Henrique Sadim - Front-end Developer</h1>
                     <h2>Tech Leader - TL</h2>
                   </MemberCardInfo>
                 </MemberCard>
@@ -189,7 +215,7 @@ const LandingPage = () => {
                     <img src={lucasMitoriImg} alt="Lucas Mitori" />
                   </MemberCardImg>
                   <MemberCardInfo>
-                    <h1>Lucas Mitori - Front-end Designer</h1>
+                    <h1>Lucas Mitori - Front-end Developer</h1>
                     <h2>Quality Assurance - QA</h2>
                   </MemberCardInfo>
                 </MemberCard>
@@ -198,7 +224,7 @@ const LandingPage = () => {
                     <img src={lucasCruzImg} alt="Lucas Cruz" />
                   </MemberCardImg>
                   <MemberCardInfo>
-                    <h1>Lucas Cruz - Front-end Designer</h1>
+                    <h1>Lucas Cruz - Front-end Developer</h1>
                     <h2>Quality Assurance - QA</h2>
                   </MemberCardInfo>
                 </MemberCard>
@@ -207,7 +233,7 @@ const LandingPage = () => {
                     <img src={jallesImg} alt="Jalles Batista" />
                   </MemberCardImg>
                   <MemberCardInfo>
-                    <h1>Jalles Batista - Front-end Designer</h1>
+                    <h1>Jalles Batista - Front-end Developer</h1>
                     <h2>Quality Assurance - QA</h2>
                   </MemberCardInfo>
                 </MemberCard>
