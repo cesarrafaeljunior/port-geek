@@ -49,6 +49,39 @@ export const PortifolioContext = createContext<iPortifolioContext>(
   {} as iPortifolioContext
 );
 
+// interface IPortfolioInfo {
+//   // userId: number;
+//   // id: number;
+//   adress: {
+//     city: string;
+//     country: string;
+//     street: string;
+//     zipCode: string;
+//   };
+//   project: {
+//     projectDeploy_url: string;
+//     projectImage_url: string;
+//     projectRepository_url: string;
+//     project_description: string;
+//     project_title: string;
+//     selected_layout: string;
+//   };
+//   user_profile: {
+//     aboutYou: string;
+//     age: string;
+//     birthDate: string | any;
+//     email: string;
+//     experience: string;
+//     gender: string;
+//     github_url: string;
+//     linkedin_url: string;
+//     name: string;
+//     skills: string;
+//     telephone: string;
+//     training: string;
+//   };
+// }
+
 const PortfolioProvider = ({ children }: PortifolioProviderProps) => {
   const sendPortifolio = async (data: iPortDataOrganized) => {
     const data2 = { ...data, userId: 1 };

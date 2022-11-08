@@ -51,14 +51,18 @@ import {
   MemberCardImg,
   MemberCardInfo,
 } from "../../components/MemberCard/styles";
-import Carousel from "react-bootstrap/Carousel";
-import "bootstrap/dist/css/bootstrap.min.css";
+import { Modal } from "../../components/modalRegister/modalRegister";
+import { ModalLogin } from "../../components/modalLogin/modalLogin";
 
 const LandingPage = () => {
   const { t } = useTranslation();
   const { token } = useContext(DashboardContext);
-  const { setEmailDefault, handleRegister, setIsOpenModalRegister } =
-    useContext(UserContext);
+  const {
+    setEmailDefault,
+    handleRegister,
+    setIsOpenModalRegister,
+    isOpenModalRegister,
+  } = useContext(UserContext);
   const {
     register,
     reset,
@@ -67,6 +71,11 @@ const LandingPage = () => {
   } = useForm<iRegisterData>({
     resolver: yupResolver(registerSchema),
   });
+
+  const cathValue = () => {
+    const input = document.querySelector("#emailLanding") as HTMLInputElement;
+    setEmailDefault(input.value);
+  };
 
   return (
     <>
@@ -83,31 +92,24 @@ const LandingPage = () => {
                 )}
               </h1>
               <ShowCase>
-                <Carousel className="Carousel">
-                  <Carousel.Item interval={2000}>
-                    <ImageCarouselDiv>
-                      <img src={portfolio01} alt="portfolio 01" />
-                    </ImageCarouselDiv>
-                  </Carousel.Item>
-                  <Carousel.Item interval={2000}>
-                    <ImageCarouselDiv>
-                      <img src={portfolio02} alt="portfolio 02" />
-                    </ImageCarouselDiv>
-                  </Carousel.Item>
-                  <Carousel.Item interval={2000}>
-                    <ImageCarouselDiv>
-                      <img src={portfolio01} alt="portfolio 03" />
-                    </ImageCarouselDiv>
-                  </Carousel.Item>
-                </Carousel>
+                <ImageCarouselDiv>
+                  <img src={portfolio01} alt="portfolio 01" />
+                </ImageCarouselDiv>
+
+                <ImageCarouselDiv>
+                  <img src={portfolio02} alt="portfolio 02" />
+                </ImageCarouselDiv>
+
+                <ImageCarouselDiv>
+                  <img src={portfolio01} alt="portfolio 03" />
+                </ImageCarouselDiv>
               </ShowCase>
               <BtnDiv>
                 <form onSubmit={handleSubmit(handleRegister)}>
                   <input
-                    type="text"
+                    id="emailLanding"
                     placeholder="Enter your email"
                     {...register("email")}
-                    onChange={(e) => setEmailDefault(e.target.value)}
                   />
                   <ButtonComponent
                     type="submit"
@@ -116,6 +118,7 @@ const LandingPage = () => {
                     onClick={(event) => {
                       event.preventDefault();
                       setIsOpenModalRegister(true);
+                      cathValue();
                       reset();
                     }}
                   >
@@ -241,6 +244,8 @@ const LandingPage = () => {
               </GroupMemberSpace>
             </CompanionSection>
           </AboutSection>
+          {isOpenModalRegister && <Modal setModal={setIsOpenModalRegister} />}
+          <ModalLogin />
         </>
       )}
     </>

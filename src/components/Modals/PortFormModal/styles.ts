@@ -9,7 +9,7 @@ const PortFormModalStyled = styled.div`
   background-color: var(--blur-effect-02);
   display: flex;
   justify-content: center;
-
+  z-index: 1;
   * {
     font-family: var(--font-secondary-inter);
   }
@@ -17,7 +17,6 @@ const PortFormModalStyled = styled.div`
   form {
     position: relative;
     margin: 50px 0;
-    margin-top: 10rem;
     overflow-y: scroll;
     width: 90%;
     max-height: 100vh;

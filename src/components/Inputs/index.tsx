@@ -50,7 +50,7 @@ export const PasswordInputComponent = ({
         <button
           className="button-see-password"
           type="button"
-          onClick={() => {            
+          onClick={() => {
             setIsSeeingPassword(!isSeeingPassword);
           }}
         >
