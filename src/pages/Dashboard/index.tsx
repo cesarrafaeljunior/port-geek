@@ -63,7 +63,7 @@ export const Dashboard = () => {
       </header>
 
       <div className="container-secondary">
-        {portfolioInfo && portfolioInfo.id ? (
+        {portfolioInfo?.id ? (
           <main>
             {portfolioInfo.selectedLayout === "layout-1" && (
               <img className="mini-port" src={imgPortfolio1} alt="" />
@@ -93,17 +93,13 @@ export const Dashboard = () => {
         <div className="container-final">
           <ButtonNewLayout
             backgroundColor={
-              portfolioInfo && portfolioInfo.id
-                ? "var(--color-grey-2)"
-                : "var(--color-grey-3)"
+              portfolioInfo?.id ? "var(--color-grey-2)" : "var(--color-grey-3)"
             }
-            cursorPointer={
-              portfolioInfo && portfolioInfo.id ? "unset" : "pointer"
-            }
-            setScale={portfolioInfo && portfolioInfo.id ? "unset" : "0.95"}
+            cursorPointer={portfolioInfo?.id ? "unset" : "pointer"}
+            setScale={portfolioInfo?.id ? "unset" : "0.95"}
             type="button"
             onClick={() => {
-              portfolioInfo && portfolioInfo.id
+              portfolioInfo?.id
                 ? toast.warning(
                     "You need to delete the current Portfolio to create a new one!"
                   )
