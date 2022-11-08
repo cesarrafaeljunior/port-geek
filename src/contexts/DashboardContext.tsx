@@ -5,11 +5,9 @@ import { toast } from "react-toastify";
 import { UserContext } from "./userContext";
 
 interface IDashboardContext {
-  token: string | null;
   portfolioInfo: IPortfolioInfo | null;
   isShowModalDelete: boolean;
   setIsShowModalDelete: React.Dispatch<React.SetStateAction<boolean>>;
-  nameUser: string;
   deletePort: () => void;
   setPortCreateAuth: React.Dispatch<React.SetStateAction<boolean>>;
   portCreateAuth: boolean;
@@ -59,14 +57,13 @@ export const DashboardProvider = () => {
   // const { user } = useContext(UserContext);
   const [portCreateAuth, setPortCreateAuth] = useState<boolean>(false);
   const [editPortAuth, setEditPortAuth] = useState<boolean>(false);
-  const token: string | null = localStorage.getItem("@PortGeek:token");
   const idUser: string | null = localStorage.getItem("@PortGeek:id");
   const [isShowModalDelete, setIsShowModalDelete] = useState<boolean>(false);
 
   const [portfolioInfo, setPortfolioInfo] = useState<IPortfolioInfo | null>(
     {} as IPortfolioInfo
   );
-  const [nameUser, setNameUser] = useState<string>("");
+  // const [nameUser, setNameUser] = useState<string>("");
 
   useEffect(() => {
     async function getPort() {
@@ -83,27 +80,23 @@ export const DashboardProvider = () => {
     getPort();
   }, [idUser, navigate]);
 
-  useEffect(() => {
-    async function getUser() {
-      try {
-        const response = await api.get(`/users/${idUser}`, {
-          headers: { Authorization: `Bearer ${token}` },
-        });
-        const { data } = response;
-        setNameUser(data.name);
-      } catch (error) {
-        window.localStorage.removeItem("@PortGeek:token");
-        navigate("/");
-      }
-    }
-    getUser();
-  }, [token, idUser, navigate]);
+  // useEffect(() => {
+  //   async function getUser() {
+  //     try {
+  //       const response = await api.get(`/users/${idUser}`);
+  //       const { data } = response;
+  //       setNameUser(data.name);
+  //     } catch (error) {
+  //       window.localStorage.removeItem("@PortGeek:token");
+  //       navigate("/");
+  //     }
+  //   }
+  //   getUser();
+  // }, [token, idUser, navigate]);
 
   async function deletePort() {
     try {
-      await api.delete(`/portfolio/${portfolioInfo && portfolioInfo.id}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      await api.delete(`/portfolio/${portfolioInfo && portfolioInfo.id}`);
       toast.success("Portfolio deletado com sucesso!");
       setIsShowModalDelete(false);
       setPortfolioInfo(null);
@@ -115,11 +108,9 @@ export const DashboardProvider = () => {
   return (
     <DashboardContext.Provider
       value={{
-        token,
         portfolioInfo,
         isShowModalDelete,
         setIsShowModalDelete,
-        nameUser,
         deletePort,
         portCreateAuth,
         setPortCreateAuth,
