@@ -15,11 +15,10 @@ interface IContacts {
 export const Contacts = ({githubLink, linkedInLink, userEmail, phoneNumber}: IContacts) => {
   return (
     <ContactsStyled className="Container__Contacts">
-      <li>Contatos</li>
       <li>
         <a href={githubLink} target="_blank" rel="noreferrer">
           <figure>
-              <BsGithub className="Contact__Icon Github" />
+            <BsGithub className="Contact__Icon Github" />
           </figure>
           <p>Github</p>
         </a>
@@ -27,7 +26,7 @@ export const Contacts = ({githubLink, linkedInLink, userEmail, phoneNumber}: ICo
       <li>
         <a href={linkedInLink} target="_blank" rel="noreferrer">
           <figure>
-              <BsLinkedin className="Contact__Icon Linkedin" />
+            <BsLinkedin className="Contact__Icon Linkedin" />
           </figure>
           <p>Linkedin</p>
         </a>
@@ -35,7 +34,7 @@ export const Contacts = ({githubLink, linkedInLink, userEmail, phoneNumber}: ICo
       <li>
         <a href={`mailto:${userEmail}`} target="_blank" rel="noreferrer">
           <figure>
-              <MdEmail className="Contact__Icon Email" />
+            <MdEmail className="Contact__Icon Email" />
           </figure>
           <p>{userEmail}</p>
         </a>
@@ -43,7 +42,7 @@ export const Contacts = ({githubLink, linkedInLink, userEmail, phoneNumber}: ICo
       <li>
         <a href={`tel:${phoneNumber}`} target="_blank" rel="noreferrer">
           <figure>
-              <BsWhatsapp className="Contact__Icon Whatsapp" />
+            <BsWhatsapp className="Contact__Icon Whatsapp" />
           </figure>
           <p>{phoneNumber}</p>
         </a>

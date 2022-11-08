@@ -1,6 +1,10 @@
 import { FormationStyled, iUserFormation } from "./style";
 
-export const Formation = ({ fontSize, color, fontSizeP }: iUserFormation) => {
+interface IFormation extends iUserFormation {
+  formationDescription: string;
+}
+
+export const Formation = ({ fontSize, color, fontSizeP, formationDescription }: IFormation) => {
   return (
     <FormationStyled
       fontSize={fontSize}
@@ -9,12 +13,7 @@ export const Formation = ({ fontSize, color, fontSizeP }: iUserFormation) => {
       className="Container__Formation"
     >
       <h2 className="Title__Formation">Formação</h2>
-      <p className="Paragraph__Formation">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, neque.
-        Incidunt earum enim vitae nemo libero ex voluptates laudantium ea,
-        consectetur aspernatur esse hic fugiat minus corrupti dicta. Culpa,
-        odit!
-      </p>
+      <p className="Paragraph__Formation">{formationDescription}</p>
     </FormationStyled>
   );
 };

@@ -1,6 +1,11 @@
 import { iButtons, ProjectStyled } from "./style";
 import ProjectIcon from "../../../../assets/img/1092.png";
 
+interface IProject extends iButtons {
+  deployLink: string;
+  repositoryLink: string;
+}
+
 export const Project = ({
   width,
   heigth,
@@ -8,7 +13,9 @@ export const Project = ({
   color,
   bgColor,
   borderColor,
-}: iButtons) => {
+  deployLink,
+  repositoryLink
+}: IProject) => {
   return (
     <ProjectStyled
       width={width}
@@ -27,8 +34,8 @@ export const Project = ({
           </figure>
         </div>
         <div className="Buttons__Box">
-          <button type="button">Deploy do projeto</button>
-          <button type="button">Repositório do projeto</button>
+          <a href={deployLink}>Deploy do projeto</a>
+          <a href={repositoryLink}>Repositório do projeto</a>
           <button type="button">Descrição do projeto</button>
         </div>
       </div>
