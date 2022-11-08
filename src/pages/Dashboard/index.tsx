@@ -9,9 +9,9 @@ import {
 import { DashboardContext } from "../../contexts/DashboardContext";
 import { useContext } from "react";
 import { toast } from "react-toastify";
-import imgPortfolio1 from "../../assets/img/05_resume_template.png";
-import imgPortfolio2 from "../../assets/img/1092.png";
-import imgPortfolio3 from "../../assets/img/5215985.png";
+import imgPortfolio1 from "../../assets/img/Layout-1.png";
+import imgPortfolio2 from "../../assets/img/Layout-2.png";
+import imgPortfolio3 from "../../assets/img/Layout-3.png";
 import backGroundBtn from "../../assets/img/backgroundBtn.png";
 import logo from "../../assets/logo/logo.png";
 import { ModalDelete } from "../../components/ModalDelete";
@@ -56,6 +56,7 @@ export const Dashboard = () => {
               >
                 Logout
               </Link>
+              <div></div>
             </div>
           </div>
         </div>
