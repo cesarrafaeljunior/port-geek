@@ -53,12 +53,18 @@ import {
 } from "../../components/MemberCard/styles";
 import Carousel from "react-bootstrap/Carousel";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Modal } from "../../components/modalRegister/modalRegister";
+import { ModalLogin } from "../../components/modalLogin/modalLogin";
 
 const LandingPage = () => {
   const { t } = useTranslation();
   const { token } = useContext(DashboardContext);
-  const { setEmailDefault, handleRegister, setIsOpenModalRegister } =
-    useContext(UserContext);
+  const {
+    setEmailDefault,
+    handleRegister,
+    setIsOpenModalRegister,
+    isOpenModalRegister,
+  } = useContext(UserContext);
   const {
     register,
     reset,
@@ -240,6 +246,8 @@ const LandingPage = () => {
               </GroupMemberSpace>
             </CompanionSection>
           </AboutSection>
+          {isOpenModalRegister && <Modal setModal={setIsOpenModalRegister} />}
+          <ModalLogin />
         </>
       )}
     </>

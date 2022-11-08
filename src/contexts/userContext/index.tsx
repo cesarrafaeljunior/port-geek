@@ -13,8 +13,6 @@ interface iUserContext {
   user: iAPIData;
   handleLogin: (data: iUserLogin) => void;
   handleRegister: (data: iRegisterData) => void;
-  isValidate: boolean;
-  setisValidate: (state: boolean) => void;
   emaiDefault: string;
   setEmailDefault: (state: string) => void;
   isOpenModalLogin: boolean;
@@ -29,8 +27,6 @@ interface iUserProvider {
 
 export function UserProvider({ children }: iUserProvider): JSX.Element {
   const [user, setUser] = useState<iAPIData>({} as iAPIData);
-
-  const [isValidate, setisValidate] = useState<boolean>(false);
   const [emaiDefault, setEmailDefault] = useState<string>("");
   const [isOpenModalLogin, setIsOpenModalLogin] = useState<boolean>(false);
   const [isOpenModalRegister, setIsOpenModalRegister] =
@@ -39,7 +35,6 @@ export function UserProvider({ children }: iUserProvider): JSX.Element {
 
   const handleRegister = async (data: iRegisterData) => {
     delete data.confirmPassword;
-    setisValidate(true);
 
     try {
       await postRegister(data);
@@ -50,13 +45,9 @@ export function UserProvider({ children }: iUserProvider): JSX.Element {
     } catch (error) {
       errorToast("Ocorreu um erro!");
     }
-
-    setisValidate(false);
   };
 
   const handleLogin = (data: iUserLogin) => {
-    setisValidate(true);
-
     postLogin(data)
       .then((response) => {
         successToast("Login realizado!");
@@ -69,8 +60,7 @@ export function UserProvider({ children }: iUserProvider): JSX.Element {
         navigate("/dashboard", { replace: true });
         setIsOpenModalLogin(false);
       })
-      .catch(() => errorToast("Usuário não encontrado!"))
-      .finally(() => setisValidate(false));
+      .catch(() => errorToast("Usuário não encontrado!"));
   };
 
   return (
@@ -79,8 +69,7 @@ export function UserProvider({ children }: iUserProvider): JSX.Element {
         user,
         handleLogin,
         handleRegister,
-        isValidate,
-        setisValidate,
+
         setEmailDefault,
         emaiDefault,
         isOpenModalLogin,

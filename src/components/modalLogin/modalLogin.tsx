@@ -8,13 +8,11 @@ import { ButtonComponent } from "../Buttons";
 import { UserContext } from "../../contexts/userContext";
 import { loginSchema } from "../../schemas/userSchema";
 import { iUserLogin } from "../../services/postLogin";
-interface iModal {
-  setModal: (state: boolean) => void;
-}
 
-export function ModalLogin({ setModal }: iModal): JSX.Element {
+export function ModalLogin() {
   const modalRef = createRef<HTMLDivElement>();
-  const { handleLogin, isValidate } = useContext(UserContext);
+  const { handleLogin, isOpenModalLogin, setIsOpenModalLogin } =
+    useContext(UserContext);
 
   const {
     register,
@@ -24,26 +22,30 @@ export function ModalLogin({ setModal }: iModal): JSX.Element {
     resolver: yupResolver(loginSchema),
   });
 
-  useEffect(() => {
-    const handleOnClick = (event: MouseEvent) => {
-      if (!modalRef.current?.contains(event.target as Element)) {
-        setModal(false);
-      }
-    };
+  // useEffect(() => {
+  //   const handleOnClick = (event: MouseEvent) => {
+  //     if (!modalRef.current?.contains(event.target as Element)) {
+  //       setIsOpenModalLogin(false);
+  //     }
+  //   };
 
-    document.addEventListener("mousedown", handleOnClick);
+  //   document.addEventListener("mousedown", handleOnClick);
 
-    return () => {
-      document.removeEventListener("mousedown", handleOnClick);
-    };
-  }, []);
+  //   return () => {
+  //     document.removeEventListener("mousedown", handleOnClick);
+  //   };
+  // }, []);
+
+  if (!isOpenModalLogin) {
+    return null;
+  }
 
   return (
     <Container>
       <Contem ref={modalRef}>
         <Header>
           <h1>Login</h1>
-          <MdOutlineClose onClick={() => setModal(false)} />
+          <MdOutlineClose onClick={() => setIsOpenModalLogin(false)} />
         </Header>
         <Main>
           <Form onSubmit={handleSubmit(handleLogin)}>

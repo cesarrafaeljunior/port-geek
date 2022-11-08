@@ -1,25 +1,27 @@
 import { useContext } from "react";
-import { UserContext } from "./contexts/userContext";
-import { Modal } from "./components/modalRegister/modalRegister";
-import { ModalLogin } from "./components/modalLogin/modalLogin";
+import { UserProvider } from "./contexts/userContext";
+
 import RoutesMain from "./routes";
 import GeneralProvider from "./contexts/GeneralContext";
+import GlobalStyle from "./styles/modules/global";
+import { ToastContainer } from "react-toastify";
 
 function App() {
-  const {
-    isOpenModalRegister,
-    setIsOpenModalRegister,
-    isOpenModalLogin,
-    setIsOpenModalLogin,
-  } = useContext(UserContext);
-
   return (
     <>
       <GeneralProvider>
-        {isOpenModalRegister && <Modal setModal={setIsOpenModalRegister} />}
-        {isOpenModalLogin && <ModalLogin setModal={setIsOpenModalLogin} />}
-        <RoutesMain />
+        <UserProvider>
+          <RoutesMain />
+        </UserProvider>
       </GeneralProvider>
+      <GlobalStyle />
+      <ToastContainer
+        autoClose={1000}
+        toastStyle={{
+          background: "var(--color-grey-0)",
+          color: "var(--color-grey-3)",
+        }}
+      />
     </>
   );
 }
