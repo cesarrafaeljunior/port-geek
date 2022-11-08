@@ -45,6 +45,10 @@ export const ContainerModalDescription = styled.div<iModalDescription>`
       top: 10px;
       right: 20px;
       cursor: pointer;
+      &:hover {
+        filter: brightness(1.3);
+        transform: scale(1.2);
+      }
     }
     h2 {
       font-size: 22px;

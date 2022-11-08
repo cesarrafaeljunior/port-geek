@@ -16,32 +16,32 @@ import ProjectIcon from "../../../assets/logo/Project.png";
 import { ILayout } from "../../../pages/Layout";
 import { ModalDescription } from "../components/ModalDescription";
 
-export const SecondLayout = ({portfInfos}: ILayout) => {
-  const {user_profile, adress, project} = portfInfos
+export const SecondLayout = ({ portfInfos }: ILayout) => {
+  const { user_profile, adress, project } = portfInfos;
 
   return (
     <ContainerSecondLayout>
-      <ModalDescription
+      {/* <ModalDescription
         bgColor={"--colorPrimaryL2"}
         color={"--titleLayout2"}
         borderColor={"--colorSecundaryL2"}
-      />
+      /> */}
       <header>
         <section className="Section__User__Header">
           <UserIcon width={8} height={8} borderR={50} border={"none"} />
         </section>
 
         <section className="Section__Infos__Header">
-          <UserInfos 
+          <UserInfos
             fontSize={1.5}
-            fontSizeP={1} 
-            color={"red"} 
+            fontSizeP={1}
+            color={"red"}
             personName={user_profile.name}
             birthDate={user_profile.birthDate}
             adress={adress}
           />
-          <Contacts 
-            githubLink={user_profile.github_url} 
+          <Contacts
+            githubLink={user_profile.github_url}
             linkedInLink={user_profile.linkedin_url}
             userEmail={user_profile.email}
             phoneNumber={user_profile.telephone}
@@ -54,19 +54,19 @@ export const SecondLayout = ({portfInfos}: ILayout) => {
             <figure>
               <img src={SkillsIcon} alt="Skills Icon" />
             </figure>
-            <Skills 
-              fontSize={1.5} 
-              color={"--font-color"} 
-              fontSizeP={1} 
+            <Skills
+              fontSize={1.5}
+              color={"--font-color"}
+              fontSizeP={1}
               skillDescription={user_profile.skills}
             />
             <figure>
               <img src={ExperienceIcon} alt="Experience Icon" />
             </figure>
-            <Experience 
-              fontSize={1.5} 
-              color={"--font-color"} 
-              fontSizeP={1} 
+            <Experience
+              fontSize={1.5}
+              color={"--font-color"}
+              fontSizeP={1}
               experienceDescription={user_profile.experience}
             />
           </div>
@@ -74,7 +74,7 @@ export const SecondLayout = ({portfInfos}: ILayout) => {
             <figure>
               <img src={AboutIcon} alt="About Icon" />
             </figure>
-            <About 
+            <About
               fontSize={1.5}
               color={"--font-color"}
               fontSizeP={1}
@@ -84,10 +84,10 @@ export const SecondLayout = ({portfInfos}: ILayout) => {
             <figure>
               <img src={FormationIcon} alt="Formation Icon" />
             </figure>
-            <Formation 
-              fontSize={1.5} 
-              color={"--font-color"} 
-              fontSizeP={1} 
+            <Formation
+              fontSize={1.5}
+              color={"--font-color"}
+              fontSizeP={1}
               formationDescription={user_profile.training}
             />
           </div>

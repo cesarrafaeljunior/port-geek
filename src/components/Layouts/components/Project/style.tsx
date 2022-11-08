@@ -28,6 +28,22 @@ export const ProjectStyled = styled.section<iButtons>`
       height: 100%;
     }
   }
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    text-align: center;
+    width: ${({ width }) => `${width}em`};
+    height: ${({ heigth }) => `${heigth}em`};
+
+    font-size: ${({ fontSize }) => `${fontSize}em`};
+    font-weight: bold;
+    color: ${({ color }) => color};
+    background-color: ${({ bgColor }) => `var(${bgColor})`};
+    border: ${({ borderColor }) => `var(${borderColor})`};
+    border-radius: 8px;
+  }
   button {
     width: ${({ width }) => `${width}em`};
     height: ${({ heigth }) => `${heigth}em`};

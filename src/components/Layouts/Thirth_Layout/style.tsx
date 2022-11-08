@@ -68,6 +68,9 @@ export const ContainerThirthLayout = styled.div`
           border-bottom: solid 1px var(--colorSecundaryL3);
           width: max-content;
         }
+        p {
+          min-height: 16.313em;
+        }
       }
 
       .Division {
@@ -128,7 +131,7 @@ export const ContainerThirthLayout = styled.div`
       .Project__Title {
         background-color: var(--colorPrimaryL3);
       }
-      
+
       .Container__Project {
         .Project__Flex--Box {
           display: flex;
@@ -172,7 +175,6 @@ export const ContainerThirthLayout = styled.div`
   @media (min-width: 1024px) {
     flex-direction: row;
     header {
-      width: 70%;
       justify-content: flex-start;
     }
     .Container__UserIcon {
@@ -212,7 +214,11 @@ export const ContainerThirthLayout = styled.div`
     }
 
     .Section__Main {
-      min-width: 95%;
+      min-width: 100%;
+      section {
+        min-height: 170px;
+      }
+
       .Title__Experience {
         position: absolute;
         top: 18em;
@@ -223,16 +229,20 @@ export const ContainerThirthLayout = styled.div`
         text-align: center;
       }
       .Paragraph__Experience {
-        margin-left: 100px;
         text-align: center;
         max-width: 500px;
       }
+
       .Container__Formation {
-        width: 100%;
+        width: 116%;
         margin-top: 85px;
         .Title__Formation {
           width: 230px;
           text-align: center;
+        }
+        .Paragraph__Formation {
+          margin: 0;
+          min-height: 200px;
         }
       }
       .Container__Project {
@@ -251,6 +261,13 @@ export const ContainerThirthLayout = styled.div`
           }
         }
         button {
+          &:hover {
+            background-color: white;
+            color: var(--colorPrimaryL3);
+            border: solid 1px var(--colorPrimaryL3);
+          }
+        }
+        a {
           &:hover {
             background-color: white;
             color: var(--colorPrimaryL3);
