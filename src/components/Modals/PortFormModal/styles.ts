@@ -13,7 +13,6 @@ const PortFormModalStyled = styled.div`
   * {
     font-family: var(--font-secondary-inter);
   }
-
   form {
     position: relative;
     margin: 50px 0;

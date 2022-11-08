@@ -25,10 +25,9 @@ export const Dashboard = () => {
     portfolioInfo,
     portCreateAuth,
     setPortCreateAuth,
-    isShowModalFormEdit,
-    setIsShowModalFormEdit,
     isShowModalDelete,
     setIsShowModalDelete,
+    setEditPortAuth,
     nameUser,
   } = useContext(DashboardContext);
 
@@ -70,7 +69,7 @@ export const Dashboard = () => {
                   <img className="mini-port" src={imgPortfolio3} alt="" />
                 )}
                 <div className="buttons">
-                  <IconEdit onClick={() => setPortCreateAuth(true)} />
+                  <IconEdit onClick={() => setEditPortAuth(true)} />
                   <IconTrash onClick={() => setIsShowModalDelete(true)} />
                   <IconShare
                     onClick={() => {

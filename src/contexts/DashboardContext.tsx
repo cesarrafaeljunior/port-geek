@@ -7,14 +7,14 @@ import { UserContext } from "./userContext";
 interface IDashboardContext {
   token: string | null;
   portfolioInfo: IPortfolioInfo | null;
-  isShowModalFormEdit: boolean;
-  setIsShowModalFormEdit: React.Dispatch<React.SetStateAction<boolean>>;
   isShowModalDelete: boolean;
   setIsShowModalDelete: React.Dispatch<React.SetStateAction<boolean>>;
   nameUser: string;
   deletePort: () => void;
   setPortCreateAuth: React.Dispatch<React.SetStateAction<boolean>>;
   portCreateAuth: boolean;
+  editPortAuth: boolean;
+  setEditPortAuth: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 interface IPortfolioInfo {
@@ -58,10 +58,9 @@ export const DashboardProvider = () => {
   const navigate = useNavigate();
   // const { user } = useContext(UserContext);
   const [portCreateAuth, setPortCreateAuth] = useState<boolean>(false);
+  const [editPortAuth, setEditPortAuth] = useState<boolean>(false);
   const token: string | null = localStorage.getItem("@PortGeek:token");
   const idUser: string | null = localStorage.getItem("@PortGeek:id");
-  const [isShowModalFormEdit, setIsShowModalFormEdit] =
-    useState<boolean>(false);
   const [isShowModalDelete, setIsShowModalDelete] = useState<boolean>(false);
 
   const [portfolioInfo, setPortfolioInfo] = useState<IPortfolioInfo | null>(
@@ -118,14 +117,14 @@ export const DashboardProvider = () => {
       value={{
         token,
         portfolioInfo,
-        isShowModalFormEdit,
-        setIsShowModalFormEdit,
         isShowModalDelete,
         setIsShowModalDelete,
         nameUser,
         deletePort,
         portCreateAuth,
         setPortCreateAuth,
+        editPortAuth,
+        setEditPortAuth,
       }}
     >
       <Outlet />
