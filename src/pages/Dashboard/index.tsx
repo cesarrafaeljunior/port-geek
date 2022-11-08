@@ -32,6 +32,12 @@ export const Dashboard = () => {
     nameUser,
   } = useContext(DashboardContext);
 
+  const baseLink: string = window.location.href;
+  const shareLink: string = `${baseLink.slice(
+    0,
+    baseLink.length - 9
+  )}portfolio/${portfolioInfo?.id}`;
+
   return (
     <>
       {token ? (
@@ -76,9 +82,7 @@ export const Dashboard = () => {
                   <IconShare
                     onClick={() => {
                       toast.success("Link copiado com sucesso!");
-                      navigator.clipboard.writeText(
-                        `${window.location.href}/portfolio/${portfolioInfo.id}`
-                      );
+                      navigator.clipboard.writeText(`${shareLink}`);
                     }}
                   />
                 </div>
