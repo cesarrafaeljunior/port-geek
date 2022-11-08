@@ -31,9 +31,9 @@ import henriqueSadimImg from "../../assets/members/henriqueSadim.jpeg";
 import AriImg from "../../assets/members/Ari.jpg";
 import jallesImg from "../../assets/members/jalles.jpg";
 
-import portfolio01 from "../../assets/img/05_resume_template.png";
-import portfolio02 from "../../assets/img/1092.png";
-import portfolio03 from "../../assets/img/5215985.png";
+import portfolio01 from "../../assets/img/portfolio01.png";
+import portfolio02 from "../../assets/img/portfolio02.png";
+import portfolio03 from "../../assets/img/portfolio03.png";
 
 import teste from "../../assets/icons/iconBrazil.png";
 
@@ -51,8 +51,8 @@ import {
   MemberCardImg,
   MemberCardInfo,
 } from "../../components/MemberCard/styles";
-import Carousel from "react-bootstrap/Carousel";
-import "bootstrap/dist/css/bootstrap.min.css";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const LandingPage = () => {
   const { t } = useTranslation();
@@ -83,22 +83,24 @@ const LandingPage = () => {
                 )}
               </h1>
               <ShowCase>
-                <Carousel className="Carousel">
-                  <Carousel.Item interval={2000}>
-                    <ImageCarouselDiv>
-                      <img src={portfolio01} alt="portfolio 01" />
-                    </ImageCarouselDiv>
-                  </Carousel.Item>
-                  <Carousel.Item interval={2000}>
-                    <ImageCarouselDiv>
-                      <img src={portfolio02} alt="portfolio 02" />
-                    </ImageCarouselDiv>
-                  </Carousel.Item>
-                  <Carousel.Item interval={2000}>
-                    <ImageCarouselDiv>
-                      <img src={portfolio01} alt="portfolio 03" />
-                    </ImageCarouselDiv>
-                  </Carousel.Item>
+                <Carousel
+                  className="CarouselCenter"
+                  autoPlay={true}
+                  interval={2000}
+                  infiniteLoop={true}
+                  showThumbs={false}
+                >
+                  <ImageCarouselDiv>
+                    <img src={portfolio01} alt="portfolio 01" />
+                  </ImageCarouselDiv>
+
+                  <ImageCarouselDiv>
+                    <img src={portfolio02} alt="portfolio 02" />
+                  </ImageCarouselDiv>
+
+                  <ImageCarouselDiv>
+                    <img src={portfolio03} alt="portfolio 03" />
+                  </ImageCarouselDiv>
                 </Carousel>
               </ShowCase>
               <BtnDiv>
@@ -197,7 +199,7 @@ const LandingPage = () => {
                     <img src={AriImg} alt="Ariosvaldo Rodrigues" />
                   </MemberCardImg>
                   <MemberCardInfo>
-                    <h1>Lucas Mitori - Front-end Developer</h1>
+                    <h1>Ariosvaldo - Front-end Developer</h1>
                     <h2>Scrum Master - SM</h2>
                   </MemberCardInfo>
                 </MemberCard>
