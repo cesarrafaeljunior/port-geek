@@ -365,6 +365,21 @@ export const TransitionAbout = styled.button`
   }
 `;
 
+export const ImageCarouselDiv = styled.div`
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & > img {
+    width: 26%;
+    height: 26%;
+    transform: scale(0.8);
+  }
+`;
+
 export const ShowCase = styled.div`
   width: 80%;
   height: 50%;
