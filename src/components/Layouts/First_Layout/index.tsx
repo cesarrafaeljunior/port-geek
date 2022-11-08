@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { ILayout } from "../../../pages/Layout";
 import { IPortifolioInfos } from "../../../requests/portfRequest";
 import { About } from "../components/About";
 import { Contacts } from "../components/Contacts";
@@ -10,11 +11,8 @@ import { UserIcon } from "../components/UserIcon";
 import { UserInfos } from "../components/UserInfos";
 import { BodyFirstLayout, ContainerFirstLayout, HeaderFirstLayout } from "./styles";
 
-interface IFirstLayout {
-  portfInfos: IPortifolioInfos
-}
 
-export const FirstLayout = ({ portfInfos }: IFirstLayout) => {
+export const FirstLayout = ({ portfInfos }: ILayout) => {
   const [isSeeingInfos, setIsSeeingInfos] = useState<boolean>(false)
 
   const {user_profile, adress, project} = portfInfos
@@ -53,11 +51,40 @@ export const FirstLayout = ({ portfInfos }: IFirstLayout) => {
           </button>
       </HeaderFirstLayout>
       <BodyFirstLayout>
-        <About fontSize={1.5} color={"--font-color"} fontSizeP={1} aboutYou={user_profile.aboutYou}/>
-        <Skills fontSize={1.5} color={"--font-color"} fontSizeP={1} />
-        <Formation fontSize={1.5} color={"--font-color"} fontSizeP={1} /> 
-        <Experience fontSize={1.5} color={"--font-color"} fontSizeP={1} />
-        <Project fontSize={1.5} color={"--font-color"} width={0} heigth={0} bgColor={""} borderColor={""} />
+        <About 
+          fontSize={1.5}
+          color={"--font-color"}
+          fontSizeP={1}
+          aboutYou={user_profile.aboutYou}
+        />
+        <Skills 
+          fontSize={1.5} 
+          color={"--font-color"} 
+          fontSizeP={1} 
+          skillDescription={user_profile.skills}
+        />
+        <Formation 
+          fontSize={1.5}
+          color={"--font-color"}
+          fontSizeP={1} 
+          formationDescription={user_profile.training}
+        /> 
+        <Experience 
+          fontSize={1.5}
+          color={"--font-color"}
+          fontSizeP={1}
+          experienceDescription={user_profile.experience}
+        />
+        <Project 
+          fontSize={1.5} 
+          color={"--font-color"} 
+          width={0} 
+          heigth={0} 
+          bgColor={""} 
+          borderColor={""} 
+          deployLink={project.projectDeploy_url}
+          repositoryLink={project.projectRepository_url}
+        />
       </BodyFirstLayout>
     </ContainerFirstLayout>
   );

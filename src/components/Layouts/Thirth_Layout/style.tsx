@@ -128,6 +128,7 @@ export const ContainerThirthLayout = styled.div`
       .Project__Title {
         background-color: var(--backgroundHeader);
       }
+      
       .Container__Project {
         .Project__Flex--Box {
           display: flex;
@@ -191,6 +192,7 @@ export const ContainerThirthLayout = styled.div`
       .Header__Infos__User {
         align-self: flex-start;
         margin-left: 6em;
+        text-align: inherit;
       }
       .Adress__Infos {
         margin-left: 6em;
