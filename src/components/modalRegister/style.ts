@@ -53,6 +53,13 @@ export const Form = styled.form`
   label > .error {
     color: var(--negative);
   }
+
+  & > p {
+    color: var(--color-secondary);
+    font-family: var(--font-primary-nunito);
+    font-weight: var(--font-weight-600);
+    font-size: var(--font-text-16);
+  }
   .button-wrapper {
     display: flex;
     justify-content: space-between;
