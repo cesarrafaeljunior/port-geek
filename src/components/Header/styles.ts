@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import IconBrazil from "../../assets/icons/iconBrazil.png";
+import IconUSA from "../../assets/icons/iconUSA.png";
 
 /****************************************
 
@@ -67,84 +69,49 @@ export const ImageSpace = styled.div`
 
 export const LinkSpace = styled.div<ShowProps>`
   width: 200px;
-  height: 100%;
+  height: 50%;
   display: flex;
+  flex-flow: column nowrap;
   justify-content: space-evenly;
   align-items: center;
-  padding-right: 100px;
-  background-color: red;
+  background-color: var(--color-navigation);
+  border: 1px solid var(--color-quartenary);
   transform: ${({ show }) => (show ? "translateX(-100%)" : "translateX(0%)")};
   transition: 0.8s ease-in-out;
+  z-index: 1001;
+  position: fixed;
+  top: 15%;
+  left: 100%;
 
   & > a {
     text-decoration: none;
   }
 
   @media screen and (min-width: 480px) {
-    padding-right: 0;
-    width: 200px;
-    height: 50%;
-    background-color: var(--color-navigation);
-    border: 1px solid var(--color-quartenary);
-    position: fixed;
-    top: 15%;
-    left: 0%;
-    flex-flow: column nowrap;
-    z-index: 1001;
   }
   @media screen and (min-width: 600px) {
-    padding-right: 0;
-    width: 200px;
-    height: 50%;
-    background-color: var(--color-navigation);
-    border: 1px solid var(--color-quartenary);
-    position: fixed;
-    top: 5%;
-    left: 0%;
-    flex-flow: column nowrap;
-    z-index: 1001;
   }
   @media screen and (min-width: 768px) {
-    padding-right: 0;
-    width: 200px;
-    height: 50%;
-    background-color: var(--color-navigation);
-    border: 1px solid var(--color-quartenary);
-    position: fixed;
-    top: 5%;
-    left: 0%;
-    flex-flow: column nowrap;
-    z-index: 1001;
   }
   @media screen and (min-width: 1024px) {
-    padding-right: 0;
-    width: 200px;
-    height: 50%;
-    background-color: var(--color-navigation);
-    border: 1px solid var(--color-quartenary);
-    position: fixed;
-    top: 5%;
-    left: 0%;
-    flex-flow: column nowrap;
-    z-index: 1001;
+    width: 500px;
+    height: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: transparent;
+    border: none;
     transform: none;
+    transition: none;
+    z-index: 1001;
+    position: relative;
+    top: 0%;
+    left: -10%;
   }
   @media screen and (min-width: 1200px) {
-    padding-right: 0;
-    width: 200px;
-    height: 50%;
-    background-color: var(--color-navigation);
-    border: 1px solid var(--color-quartenary);
-    border-radius: 0 0 0 var(--radius-8);
-    position: fixed;
-    top: 118px;
-    left: 100%;
-    flex-flow: column nowrap;
-    z-index: 1001;
-    transform: none;
   }
   @media screen and (min-width: 1920px) {
-    transform: none;
   }
 `;
 
@@ -169,6 +136,38 @@ export const Links = styled.button`
     border-radius: var(--radius-8);
   }
 `;
+export const BrazilButton = styled.button`
+  width: 80px;
+  height: 40px;
+  background-image: url(${IconBrazil});
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  text-decoration: none;
+  border: 1px solid var(--color-grey-3);
+  border-radius: var(--radius-8);
+
+  &:focus {
+    opacity: 0.4;
+    border: 2px solid var(--color-tertiary);
+  }
+`;
+export const UsaButton = styled.button`
+  width: 80px;
+  height: 40px;
+  background-image: url(${IconUSA});
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  text-decoration: none;
+  border: 1px solid var(--color-grey-3);
+  border-radius: var(--radius-8);
+
+  &:focus {
+    opacity: 0.8;
+    border: 2px solid var(--color-tertiary);
+  }
+`;
 /*------------------------- Skip line -------------------------*/
 
 export const NavBarMenuBtn = styled.button`
@@ -190,10 +189,10 @@ export const NavBarMenuBtn = styled.button`
   }
   @media screen and (max-width: 768px) {
   }
-  @media screen and (max-width: 1024px) {
+  @media screen and (min-width: 1024px) {
+    display: none;
   }
   @media screen and (min-width: 1200px) {
-    display: none;
   }
   @media screen and (max-width: 1920px) {
   }
