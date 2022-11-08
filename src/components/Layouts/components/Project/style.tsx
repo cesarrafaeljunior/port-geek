@@ -10,12 +10,19 @@ export interface iButtons {
 }
 
 export const ProjectStyled = styled.section<iButtons>`
+  position: relative;
   .ProjectImage__Box {
     display: flex;
     width: 80%;
     height: max-content;
     max-width: 18.75em;
     border: solid 2px var(--borderUserIcon);
+    transition: all 0.3s;
+    &:hover {
+      cursor: pointer;
+
+      transform: scale(1.5);
+    }
     img {
       width: 100%;
       height: 100%;

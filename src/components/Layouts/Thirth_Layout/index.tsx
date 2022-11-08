@@ -26,8 +26,8 @@ export const ThirthLayout = () => {
           <Experience fontSize={1.5} color={"--colorParagraph"} fontSizeP={1} />
           <Formation fontSize={1.5} color={"--colorParagraph"} fontSizeP={1} />
           <Project
-            width={10.5}
-            heigth={3}
+            width={13}
+            heigth={3.5}
             fontSize={0.875}
             color={"white"}
             borderColor={"--backgroundHeader"}

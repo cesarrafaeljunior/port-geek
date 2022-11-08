@@ -33,6 +33,9 @@ export const ContactsStyled = styled.section`
       width: 1.6em;
       height: 1.6em;
       border-radius: 50%;
+      &:hover {
+        filter: brightness(1.3);
+      }
     }
     .Github {
       background-color: white;
@@ -48,5 +51,9 @@ export const ContactsStyled = styled.section`
     .Whatsapp {
       color: #51ce5e;
     }
+  }
+  p:hover {
+    cursor: pointer;
+    text-decoration: underline;
   }
 `;

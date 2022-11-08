@@ -4,7 +4,7 @@ export const ContainerThirthLayout = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 20px;
   background-color: #efefef;
@@ -101,6 +101,9 @@ export const ContainerThirthLayout = styled.div`
         padding-bottom: 1.875em;
 
         line-height: 1.9em;
+        @media (min-width: 1024px) {
+          gap: 0;
+        }
       }
 
       h2 {
@@ -118,7 +121,7 @@ export const ContainerThirthLayout = styled.div`
       .Paragraph__Formation {
         padding: 15px;
         color: white;
-        margin: 0 -16px 0 -16px;
+        margin: 0 -35px 0 -17px;
         background-color: var(--borderUserIcon);
       }
 
@@ -168,7 +171,7 @@ export const ContainerThirthLayout = styled.div`
   @media (min-width: 1024px) {
     flex-direction: row;
     header {
-      width: 40%;
+      width: 70%;
       justify-content: flex-start;
     }
     .Container__UserIcon {
@@ -207,16 +210,51 @@ export const ContainerThirthLayout = styled.div`
     }
 
     .Section__Main {
-      min-width: 100%;
+      min-width: 95%;
       .Title__Experience {
         position: absolute;
-        left: -55px;
+        top: 18em;
+        left: -90px;
         transform: rotate(-90deg);
-        margin-top: 50px;
+
+        width: 230px;
+        text-align: center;
+      }
+      .Paragraph__Experience {
+        margin-left: 100px;
+        text-align: center;
+        max-width: 500px;
       }
       .Container__Formation {
         width: 100%;
-        margin-top: 118px;
+        margin-top: 85px;
+        .Title__Formation {
+          width: 230px;
+          text-align: center;
+        }
+      }
+      .Container__Project {
+        margin-top: -20px;
+        gap: 25px;
+        .ProjectImage__Box {
+          figure {
+            width: 200px;
+            height: 200px;
+
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: fill;
+            }
+          }
+        }
+        button {
+          &:hover {
+            background-color: white;
+            color: var(--backgroundHeader);
+            border: solid 1px var(--backgroundHeader);
+          }
+        }
       }
     }
   }
