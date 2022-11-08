@@ -2,6 +2,7 @@ import { About } from "../components/About";
 import { Contacts } from "../components/Contacts";
 import { Experience } from "../components/Experience";
 import { Formation } from "../components/Formation";
+import { ModalDescription } from "../components/ModalDescription";
 import { Project } from "../components/Project";
 import { Skills } from "../components/Skills";
 import { UserIcon } from "../components/UserIcon";
@@ -11,6 +12,11 @@ import { ContainerThirthLayout } from "./style";
 export const ThirthLayout = () => {
   return (
     <ContainerThirthLayout>
+      <ModalDescription
+        bgColor={"--colorPrimaryL3"}
+        color={"--titleLayout"}
+        borderColor={"--colorSecundaryL3"}
+      />
       <header>
         <UserIcon width={8} height={8} borderR={50} border={"borderUserIcon"} />
         <UserInfos fontSize={2} color={"--titleLayout"} fontSizeP={1} />
@@ -23,15 +29,15 @@ export const ThirthLayout = () => {
       <main>
         <Contacts />
         <section className="Section__Main">
-          <Experience fontSize={1.5} color={"--colorParagraph"} fontSizeP={1} />
-          <Formation fontSize={1.5} color={"--colorParagraph"} fontSizeP={1} />
+          <Experience fontSize={1.5} color={"--colorPrimaryL3"} fontSizeP={1} />
+          <Formation fontSize={1.5} color={"--colorPrimaryL3"} fontSizeP={1} />
           <Project
             width={13}
             heigth={3.5}
             fontSize={0.875}
             color={"white"}
-            borderColor={"--backgroundHeader"}
-            bgColor={"--backgroundHeader"}
+            borderColor={"--colorPrimaryL3"}
+            bgColor={"--colorPrimaryL3"}
           />
         </section>
       </main>

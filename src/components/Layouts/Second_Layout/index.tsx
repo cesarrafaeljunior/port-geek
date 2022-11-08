@@ -13,10 +13,16 @@ import ExperienceIcon from "../../../assets/logo/Experience.png";
 import AboutIcon from "../../../assets/logo/About.png";
 import FormationIcon from "../../../assets/logo/Formation.png";
 import ProjectIcon from "../../../assets/logo/Project.png";
+import { ModalDescription } from "../components/ModalDescription";
 
 export const SecondLayout = () => {
   return (
     <ContainerSecondLayout>
+      <ModalDescription
+        bgColor={"--colorPrimaryL2"}
+        color={"--titleLayout2"}
+        borderColor={"--colorSecundaryL2"}
+      />
       <header>
         <section className="Section__User__Header">
           <UserIcon width={8} height={8} borderR={50} border={"none"} />
