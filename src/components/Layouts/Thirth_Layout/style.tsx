@@ -45,8 +45,10 @@ export const ContainerThirthLayout = styled.div`
       text-align: center;
     }
     .Adress__Infos {
+      width: 90%;
       display: flex;
-      gap: 4.375em;
+      flex-direction: column;
+      gap: 2.5em;
     }
 
     .Section__Header {
@@ -122,9 +124,10 @@ export const ContainerThirthLayout = styled.div`
       }
 
       .Paragraph__Formation {
+        min-width: 100%;
+        text-align: center;
         padding: 15px;
         color: white;
-        margin: 0 -35px 0 -17px;
         background-color: var(--colorSecundaryL3);
       }
 
@@ -156,7 +159,9 @@ export const ContainerThirthLayout = styled.div`
       }
     }
   }
-
+  .Container__Contacts {
+    flex-direction: column;
+  }
   @media (min-width: 768px) {
     .Container__UserIcon {
       align-self: flex-start;
@@ -169,6 +174,18 @@ export const ContainerThirthLayout = styled.div`
       left: 125px;
       z-index: 0;
       border: none;
+      .Adress__Infos {
+        flex-direction: row;
+      }
+    }
+    .Container__Contacts {
+      flex-direction: row;
+    }
+    .Header__Infos__User {
+      margin-left: 2em;
+    }
+    .Adress__Infos {
+      margin-left: 2em;
     }
   }
 
@@ -201,7 +218,7 @@ export const ContainerThirthLayout = styled.div`
         position: absolute;
 
         top: 3.75em;
-        right: 3.125em;
+        left: 13em;
       }
     }
 

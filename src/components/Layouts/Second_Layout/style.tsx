@@ -55,6 +55,9 @@ export const ContainerSecondLayout = styled.div`
           align-self: flex-end;
         }
       }
+      .Container__Contacts {
+        flex-direction: column;
+      }
     }
     @media (min-width: 768px) {
       flex-direction: row;
@@ -81,11 +84,12 @@ export const ContainerSecondLayout = styled.div`
           }
         }
         .Container__Contacts {
+          flex-direction: row;
+          justify-content: flex-start;
           li {
             width: 49%;
             max-width: none;
           }
-          justify-content: flex-start;
         }
       }
     }
