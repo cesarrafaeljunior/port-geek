@@ -15,11 +15,13 @@ interface IDashboardContext {
   editPortAuth: boolean;
   setEditPortAuth: React.Dispatch<React.SetStateAction<boolean>>;
   sendPortifolio: (data: iPortDataOrganized) => Promise<void>;
+  editPortfolio: (data: iPortDataOrganized) => Promise<void>;
 }
 
 export interface IPortfolioInfo {
   userId: number;
-  addres: {
+  id?: number;
+  adress: {
     city: string;
     country: string;
     street: string;
@@ -31,6 +33,7 @@ export interface IPortfolioInfo {
     projectRepository_url: string;
     project_description: string;
     project_title: string;
+    selected_layout: string;
   };
   user_profile: {
     aboutYou: string;
@@ -46,8 +49,6 @@ export interface IPortfolioInfo {
     telephone: string;
     training: string;
   };
-  selectedLayout: string;
-  id?: number;
 }
 
 export const DashboardContext = createContext<IDashboardContext>(
@@ -58,12 +59,11 @@ export const DashboardProvider = () => {
   const navigate = useNavigate();
   const [portCreateAuth, setPortCreateAuth] = useState<boolean>(false);
   const [editPortAuth, setEditPortAuth] = useState<boolean>(false);
-  const idUser: string | null = localStorage.getItem("@PortGeek:id");
+  const idUser: number | null = Number(localStorage.getItem("@PortGeek:id"));
   const [isShowModalDelete, setIsShowModalDelete] = useState<boolean>(false);
   const [portfolioInfo, setPortfolioInfo] = useState<IPortfolioInfo | null>(
     null
   );
-  // const [nameUser, setNameUser] = useState<string>("");
 
   useEffect(() => {
     async function getPort() {
@@ -78,21 +78,7 @@ export const DashboardProvider = () => {
     }
 
     getPort();
-  }, [idUser, navigate]);
-
-  // useEffect(() => {
-  //   async function getUser() {
-  //     try {
-  //       const response = await api.get(`/users/${idUser}`);
-  //       const { data } = response;
-  //       setNameUser(data.name);
-  //     } catch (error) {
-  //       window.localStorage.removeItem("@PortGeek:token");
-  //       navigate("/");
-  //     }
-  //   }
-  //   getUser();
-  // }, [token, idUser, navigate]);
+  }, []);
 
   async function deletePort() {
     try {
@@ -104,14 +90,26 @@ export const DashboardProvider = () => {
       error && toast.error("Something wrong!");
     }
   }
+  const editPortfolio = async (data: iPortDataOrganized) => {
+    try {
+      const response = await api.patch(`/portfolio/${portfolioInfo?.id}`, data);
+      console.log(await response);
+      toast.success("Portfolio successfully edited");
+      setPortfolioInfo(response.data);
+      setEditPortAuth(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const sendPortifolio = async (data: iPortDataOrganized) => {
-    const data2 = { ...data, userId: 1 };
+    const data2 = { ...data, userId: idUser };
     try {
       const response = await api.post("/portfolio", data2);
       console.log(await response);
       toast.success("Portfolio created successfully");
-      // setPortCreateAuth(false);
+      sendPortifolio(response.data);
+      setPortCreateAuth(false);
     } catch (error) {
       console.log(error);
     }
@@ -129,6 +127,7 @@ export const DashboardProvider = () => {
         editPortAuth,
         setEditPortAuth,
         sendPortifolio,
+        editPortfolio,
       }}
     >
       <Outlet />
