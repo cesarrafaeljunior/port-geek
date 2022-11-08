@@ -100,7 +100,7 @@ export const SecondLayout = ({ portfInfos }: ILayout) => {
           heigth={3.5}
           fontSize={0.875}
           color={"black"}
-          borderColor={"--titleLayout"}
+          borderColor={"--colorPrimaryL2"}
           bgColor={"--titleLayout"}
           deployLink={project.projectDeploy_url}
           repositoryLink={project.projectRepository_url}

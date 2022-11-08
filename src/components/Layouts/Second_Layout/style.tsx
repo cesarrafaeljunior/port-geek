@@ -24,7 +24,7 @@ export const ContainerSecondLayout = styled.div`
       }
       img {
         width: calc(100% + 5%);
-        height: 100%;
+
         border-radius: 0;
       }
     }
@@ -62,7 +62,11 @@ export const ContainerSecondLayout = styled.div`
         width: 40%;
         align-self: flex-start;
         .Container__UserIcon {
-          height: 224px;
+          img {
+            height: 100%;
+          }
+          min-height: 216px;
+          max-height: 216px;
         }
       }
       .Section__Infos__Header {
@@ -77,6 +81,10 @@ export const ContainerSecondLayout = styled.div`
           }
         }
         .Container__Contacts {
+          li {
+            width: 49%;
+            max-width: none;
+          }
           justify-content: flex-start;
         }
       }
@@ -90,6 +98,9 @@ export const ContainerSecondLayout = styled.div`
       align-items: center;
       justify-content: center;
       margin-bottom: 1.25em;
+      div {
+        min-width: 50%;
+      }
       figure {
         margin: 0 auto;
         margin-bottom: 10px;
@@ -146,6 +157,13 @@ export const ContainerSecondLayout = styled.div`
           justify-content: space-around;
           gap: 20px;
           button {
+            border: solid 1px black;
+            &:hover {
+              background-color: var(--colorPrimaryL2);
+              color: var(--colorSecundaryL2);
+            }
+          }
+          a {
             border: solid 1px black;
             &:hover {
               background-color: var(--colorPrimaryL2);
