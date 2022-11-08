@@ -2,16 +2,17 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import PortFormModalStyled from "./styles";
 import { CgClose } from "react-icons/cg";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import { DashboardContext } from "../../../contexts/DashboardContext";
 import layout1 from "../../../assets/img/Layout-1.png";
 import layout2 from "../../../assets/img/Layout-2.png";
 import layout3 from "../../../assets/img/Layout-3.png";
 import { schemaPortModal } from "../../../schemas/portSchema";
+import { string } from "yup";
 
 export interface iPortFormModal {
   name: string;
-  age: number;
+  age: string;
   birthDate: string;
   aboutYou: string;
   city: string;
@@ -35,7 +36,7 @@ export interface iPortFormModal {
 }
 
 export interface iPortDataOrganized {
-  addres: {
+  adress: {
     city: string;
     country: string;
     street: string;
@@ -47,6 +48,7 @@ export interface iPortDataOrganized {
     projectRepository_url: string;
     project_description: string;
     project_title: string;
+    selected_layout: string;
   };
   user_profile: {
     aboutYou: string;
@@ -64,13 +66,15 @@ export interface iPortDataOrganized {
   };
 }
 
-const PortFormModal = ({ portfolioInfo }: any) => {
+const PortFormModal = () => {
   const {
     portCreateAuth,
     setPortCreateAuth,
     editPortAuth,
     setEditPortAuth,
     sendPortifolio,
+    portfolioInfo,
+    editPortfolio,
   } = useContext(DashboardContext);
 
   const {
@@ -80,9 +84,39 @@ const PortFormModal = ({ portfolioInfo }: any) => {
     formState: { errors },
   } = useForm<iPortFormModal>({
     resolver: yupResolver(schemaPortModal),
-    defaultValues: { name: portfolioInfo?.user_profile.name },
   });
-  console.log(portfolioInfo?.user_profile.name);
+
+  useEffect(() => {
+    reset({
+      name: portfolioInfo?.user_profile.name,
+      age: portfolioInfo?.user_profile.age,
+      birthDate: portfolioInfo?.user_profile.birthDate
+        .split("/")
+        .reverse()
+        .join("-"),
+      aboutYou: portfolioInfo?.user_profile.aboutYou,
+      city: portfolioInfo?.adress.city,
+      country: portfolioInfo?.adress.country,
+      email: portfolioInfo?.user_profile.email,
+      experience: portfolioInfo?.user_profile.experience,
+      gender: portfolioInfo?.user_profile.gender,
+      github_url: portfolioInfo?.user_profile.github_url,
+      linkedin_url: portfolioInfo?.user_profile.linkedin_url,
+      projectDeploy_url: portfolioInfo?.project.projectDeploy_url,
+      projectImage_url: portfolioInfo?.project.projectImage_url,
+      projectRepository_url: portfolioInfo?.project.projectRepository_url,
+      project_description: portfolioInfo?.project.project_description,
+      project_title: portfolioInfo?.project.project_title,
+      skills: portfolioInfo?.user_profile.skills,
+      street: portfolioInfo?.adress.street,
+      telephone: portfolioInfo?.user_profile.telephone,
+      training: portfolioInfo?.user_profile.training,
+      zipCode: portfolioInfo?.adress.zipCode,
+      selected_layout: portfolioInfo?.project.selected_layout,
+    });
+    changeInputLayout();
+  }, [portfolioInfo]);
+
   const [age, setAge] = useState<number>(0);
 
   function dataOrganize(data: iPortFormModal): iPortDataOrganized {
@@ -185,6 +219,7 @@ const PortFormModal = ({ portfolioInfo }: any) => {
   }
 
   function setAgeValue(event: any) {
+    console.log(event.target.value);
     const birthArray = event.target.value.split("-");
     const date = new Date();
     const localDate = date.toLocaleDateString().split("/").reverse();
@@ -272,14 +307,27 @@ const PortFormModal = ({ portfolioInfo }: any) => {
     });
   }
 
+  function changeInputLayout() {
+    const inputsLayout = document.querySelectorAll(
+      ".layoutSelect"
+    ) as NodeListOf<HTMLInputElement>;
+    inputsLayout.forEach((input) => {
+      console.log({ input });
+      if (portfolioInfo?.project.selected_layout === String(input.value)) {
+        console.log(input.value);
+        input.checked = !input.checked;
+      }
+    });
+  }
+
   function onSubmit(data: iPortFormModal) {
     const portfolio = dataOrganize(data);
     console.log(portfolio);
     if (portCreateAuth) {
-      // sendPortifolio(portfolio);
+      sendPortifolio(portfolio);
     }
     if (editPortAuth) {
-      console.log("EDITAR");
+      editPortfolio(portfolio);
     }
   }
 
@@ -340,7 +388,7 @@ const PortFormModal = ({ portfolioInfo }: any) => {
               <input
                 placeholder="Age"
                 value={age}
-                type="number"
+                type="text"
                 {...register("age")}
                 readOnly
               />
@@ -633,6 +681,7 @@ const PortFormModal = ({ portfolioInfo }: any) => {
               <label>
                 <img src={layout1} alt="layout 1" />
                 <input
+                  className="layoutSelect"
                   type="radio"
                   value={"layout-1"}
                   {...register("selected_layout")}
@@ -645,6 +694,7 @@ const PortFormModal = ({ portfolioInfo }: any) => {
               <label>
                 <img src={layout2} alt="layout 2" />
                 <input
+                  className="layoutSelect"
                   type="radio"
                   value={"layout-2"}
                   {...register("selected_layout")}
@@ -656,6 +706,7 @@ const PortFormModal = ({ portfolioInfo }: any) => {
               <label>
                 <img src={layout3} alt="layout 3" />
                 <input
+                  className="layoutSelect"
                   type="radio"
                   value={"layout-3"}
                   {...register("selected_layout")}

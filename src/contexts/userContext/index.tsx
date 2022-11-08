@@ -68,7 +68,7 @@ export function UserProvider({ children }: iUserProvider): JSX.Element {
     async function getUser() {
       if (token) {
         try {
-          const idUser = localStorage.getItem("@PortGeek:id");
+          const idUser = Number(localStorage.getItem("@PortGeek:id"));
           const response = await api.get(`/users/${idUser}`);
           const { data } = response;
           // setNameUser(data.name);
