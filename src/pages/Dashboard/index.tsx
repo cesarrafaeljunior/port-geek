@@ -64,13 +64,13 @@ export const Dashboard = () => {
       <div className="container-secondary">
         {portfolioInfo?.id ? (
           <main>
-            {portfolioInfo.selectedLayout === "layout-1" && (
+            {portfolioInfo.project.selected_layout === "layout-1" && (
               <img className="mini-port" src={imgPortfolio1} alt="" />
             )}
-            {portfolioInfo.selectedLayout === "layout-2" && (
+            {portfolioInfo.project.selected_layout === "layout-2" && (
               <img className="mini-port" src={imgPortfolio2} alt="" />
             )}
-            {portfolioInfo.selectedLayout === "layout-3" && (
+            {portfolioInfo.project.selected_layout === "layout-3" && (
               <img className="mini-port" src={imgPortfolio3} alt="" />
             )}
             <div className="buttons">
@@ -98,7 +98,7 @@ export const Dashboard = () => {
             setScale={portfolioInfo?.id ? "unset" : "0.95"}
             type="button"
             onClick={() => {
-              portfolioInfo?.id
+              portfolioInfo
                 ? toast.warning(
                     "You need to delete the current Portfolio to create a new one!"
                   )
@@ -111,7 +111,7 @@ export const Dashboard = () => {
         </div>
       </div>
       <ModalDelete />
-      <PortFormModal portfolioInfo={portfolioInfo} />
+      <PortFormModal />
     </Container>
   );
 };
