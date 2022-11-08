@@ -2,19 +2,14 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import PortFormModalStyled from "./styles";
 import { CgClose } from "react-icons/cg";
-import {
-  iPortDataOrganized,
-  PortifolioContext,
-} from "../../../contexts/PortifolioContext";
-import { ReactNode, useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { DashboardContext } from "../../../contexts/DashboardContext";
-
 import layout1 from "../../../assets/img/Layout-1.png";
 import layout2 from "../../../assets/img/Layout-2.png";
 import layout3 from "../../../assets/img/Layout-3.png";
 import { schemaPortModal } from "../../../schemas/portSchema";
 
-interface iPortFormModal {
+export interface iPortFormModal {
   name: string;
   age: number;
   birthDate: string;
@@ -39,7 +34,45 @@ interface iPortFormModal {
   selected_layout: string;
 }
 
-const PortFormModal = () => {
+export interface iPortDataOrganized {
+  addres: {
+    city: string;
+    country: string;
+    street: string;
+    zipCode: string;
+  };
+  project: {
+    projectDeploy_url: string;
+    projectImage_url: string;
+    projectRepository_url: string;
+    project_description: string;
+    project_title: string;
+  };
+  user_profile: {
+    aboutYou: string;
+    age: string;
+    birthDate: string | any;
+    email: string;
+    experience: string;
+    genre: string;
+    github_url: string;
+    linkedin_url: string;
+    name: string;
+    skills: string;
+    telephone: string;
+    training: string;
+  };
+}
+
+const PortFormModal = ({ portfolioInfo }: any) => {
+  const {
+    portCreateAuth,
+    setPortCreateAuth,
+    editPortAuth,
+    setEditPortAuth,
+    sendPortifolio,
+  } = useContext(DashboardContext);
+
   const {
     register,
     handleSubmit,
@@ -47,11 +80,9 @@ const PortFormModal = () => {
     formState: { errors },
   } = useForm<iPortFormModal>({
     resolver: yupResolver(schemaPortModal),
+    defaultValues: { name: portfolioInfo?.user_profile.name },
   });
-
-  const { portCreateAuth, setPortCreateAuth, editPortAuth, setEditPortAuth } =
-    useContext(DashboardContext);
-  const { sendPortifolio } = useContext(PortifolioContext);
+  console.log(portfolioInfo?.user_profile.name);
   const [age, setAge] = useState<number>(0);
 
   function dataOrganize(data: iPortFormModal): iPortDataOrganized {
