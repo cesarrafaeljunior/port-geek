@@ -18,7 +18,7 @@ export const schemaPortModal = yup.object({
   city: yup
     .string()
     .required("City is required")
-    .matches(/[-]{1}[A-Z]{2}/g, "The format is City-STATE"),
+    .matches(/([-]{1}[A-Z]{2})/g, "The format is City-STATE"),
   country: yup.string().required("Country is required"),
   email: yup
     .string()
