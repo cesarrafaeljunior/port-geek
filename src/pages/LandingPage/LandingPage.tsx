@@ -57,7 +57,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 const LandingPage = () => {
   const { t } = useTranslation();
   const { token } = useContext(DashboardContext);
-  const {setEmailDefault,handleRegister,setIsOpenModalRegister}= useContext(UserContext)
+  const { setEmailDefault, handleRegister, setIsOpenModalRegister } =
+    useContext(UserContext);
   const {
     register,
     reset,
