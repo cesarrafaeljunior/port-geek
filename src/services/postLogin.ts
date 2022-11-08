@@ -9,7 +9,7 @@ export interface iUserLogin {
 
 interface iLoginData {
     user: iAPIData,
-    token: string
+    accessToken: string
 }
 
 export function postLogin(data: iUserLogin): AxiosPromise<iLoginData> {

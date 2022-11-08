@@ -9,12 +9,15 @@ import { UserContext } from "../../contexts/userContext";
 import { iRegisterData } from "../../services/postRegister";
 import { registerSchema } from "../../schemas/userSchema";
 
+
 interface iModal {
   setModal: (state: boolean) => void;
 }
 
 export function Modal({ setModal }: iModal): JSX.Element {
   const modalRef = createRef<HTMLDivElement>();
+  const { handleRegister, emaiDefault,setIsOpenModalRegister,setIsOpenModalLogin } = useContext(UserContext);
+ 
 
   const {
     register,
@@ -22,9 +25,9 @@ export function Modal({ setModal }: iModal): JSX.Element {
     formState: { errors },
   } = useForm<iRegisterData>({
     resolver: yupResolver(registerSchema),
+    defaultValues:{email:emaiDefault }
   });
 
-  const { handleRegister, isValidate } = useContext(UserContext);
 
   useEffect(() => {
     const handleOnClick = (event: MouseEvent) => {
@@ -49,7 +52,14 @@ export function Modal({ setModal }: iModal): JSX.Element {
         </Header>
 
         <Main>
-          <Form onSubmit={handleSubmit(handleRegister)}>
+          <Form onSubmit={handleSubmit(handleRegister)}
+            
+            
+            // setIsOpenModalRegister(false)
+            // setIsOpenModalLogin(true)
+      
+          
+          >
             <InputComponent
               labelRefer="Name"
               labelText="Name"
@@ -73,7 +83,6 @@ export function Modal({ setModal }: iModal): JSX.Element {
             <PasswordInputComponent
               labelRefer="password"
               labelText="password"
-              type="password"
               placeholder="Enter your password"
               autoComplete="new-password"
               register={register}

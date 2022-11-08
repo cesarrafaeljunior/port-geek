@@ -10,15 +10,17 @@ import {
   UsaButton,
 } from "./styles";
 import logo from "../../assets/logo/logo.png";
-import { useContext, useState } from "react";
-import { ModalContext } from "../../contexts/modalContext";
+import { useContext,useState } from "react";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IconContext } from "react-icons";
 import { GeneralContext } from "../../contexts/GeneralContext";
+import { ButtonComponent } from "../Buttons";
+import { UserContext } from "../../contexts/userContext";
+
 
 const HeaderSpace = () => {
-  const { setIsOpenModalLogin } = useContext(ModalContext);
+  const { setIsOpenModalLogin } = useContext(UserContext);
   const [show, setShow] = useState(false);
   function openMenu() {
     setShow((current) => !current);
