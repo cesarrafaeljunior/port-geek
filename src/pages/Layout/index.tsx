@@ -1,3 +1,4 @@
+import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
@@ -27,14 +28,11 @@ export const LayoutPage = () => {
     return <h1>loading</h1>
   }
 
-  console.log(portfInfos);
-  
-
   switch (portfInfos.selectedLayout) {
-    case "layout1":
-      return <FirstLayout />;
-    // case "layout-2":
-    //   return <Teste2 children={children} />;
+    case "layout-1":
+      return <FirstLayout portfInfos={portfInfos} />;
+    case "layout-2":
+      return <h1>Layout 2</h1>;
     case "layout-3":
       return <ThirthLayout />;
     default:

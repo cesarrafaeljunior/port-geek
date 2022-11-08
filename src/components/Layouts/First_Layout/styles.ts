@@ -10,12 +10,13 @@ interface IHeader {
 
 export const HeaderFirstLayout = styled.header<IHeader>`
     position: fixed;
-
-    min-height: 100vh;
-
+    z-index: 1;
     top: 0;
-    left: ${(props) => props.seeInfo ? "0" : "-180px"};
+    left: ${(props) => props.seeInfo ? "0" : "-240px"};
 
+    width: 280px;
+    min-height: 100vh;
+    
     transition: 1s ease;
 
     background-color: #0F3267;
@@ -37,7 +38,7 @@ export const HeaderFirstLayout = styled.header<IHeader>`
     }
 
     .div-infos {
-        width: 90%;
+        width: 250px;
 
         margin-left: 6px;
     }
@@ -46,14 +47,18 @@ export const HeaderFirstLayout = styled.header<IHeader>`
         position: absolute;
 
         top: 50%;
-         transform: translateY(-50%);
-        right: 0px;
+        transform: translateY(-50%);
+        right: 4px;
 
-        font-size: 2rem;
+        width: 30px;
+        height: 30px;
+        font-size: 100%;
 
         background: none;
         border: none;
         color: white;
+        
+        padding: 0;
     }
 
     @media (min-width: 800px) {
@@ -63,11 +68,11 @@ export const HeaderFirstLayout = styled.header<IHeader>`
             left: 0;
 
             width: 25%;
-            min-width: 200px;
+            min-width: 280px;
         }
 
         .show-user-infos {
-            display: none;
+            /* display: none; */
         }
     }
 `

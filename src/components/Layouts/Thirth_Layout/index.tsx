@@ -11,7 +11,7 @@ import { ContainerThirthLayout } from "./style";
 export const ThirthLayout = () => {
   return (
     <ContainerThirthLayout>
-      <header>
+      {/* <header>
         <UserIcon width={8} height={8} borderR={50} border={"borderUserIcon"} />
         <UserInfos fontSize={2} color={"--titleLayout"} fontSizeP={1} />
         <section className="Section__Header">
@@ -34,7 +34,7 @@ export const ThirthLayout = () => {
             bgColor={"--backgroundHeader"}
           />
         </section>
-      </main>
+      </main> */}
     </ContainerThirthLayout>
   );
 };

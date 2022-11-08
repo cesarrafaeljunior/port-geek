@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { IPortifolioInfos } from "../../../requests/portfRequest";
 import { About } from "../components/About";
 import { Contacts } from "../components/Contacts";
 import { Experience } from "../components/Experience";
@@ -9,8 +10,14 @@ import { UserIcon } from "../components/UserIcon";
 import { UserInfos } from "../components/UserInfos";
 import { BodyFirstLayout, ContainerFirstLayout, HeaderFirstLayout } from "./styles";
 
-export const FirstLayout = () => {
+interface IFirstLayout {
+  portfInfos: IPortifolioInfos
+}
+
+export const FirstLayout = ({ portfInfos }: IFirstLayout) => {
   const [isSeeingInfos, setIsSeeingInfos] = useState<boolean>(false)
+
+  const {user_profile, adress, project} = portfInfos
 
   return(
     <ContainerFirstLayout>
@@ -22,8 +29,20 @@ export const FirstLayout = () => {
               borderR={50}
               border={"borderUserIcon"}
           />
-          <Contacts />
-          <UserInfos fontSize={1.5} fontSizeP={1} color={"red"} />
+          <Contacts 
+            githubLink={user_profile.github_url} 
+            linkedInLink={user_profile.linkedin_url}
+            userEmail={user_profile.email}
+            phoneNumber={user_profile.telephone}
+          />
+          <UserInfos 
+            fontSize={1.5}
+            fontSizeP={1} 
+            color={"red"} 
+            personName={user_profile.name}
+            birthDate={user_profile.birthDate}
+            adress={adress}
+          />
         </div>
           <button 
             className="show-user-infos" 
@@ -34,7 +53,7 @@ export const FirstLayout = () => {
           </button>
       </HeaderFirstLayout>
       <BodyFirstLayout>
-        <About fontSize={1.5} color={"--font-color"} fontSizeP={1} />
+        <About fontSize={1.5} color={"--font-color"} fontSizeP={1} aboutYou={user_profile.aboutYou}/>
         <Skills fontSize={1.5} color={"--font-color"} fontSizeP={1} />
         <Formation fontSize={1.5} color={"--font-color"} fontSizeP={1} /> 
         <Experience fontSize={1.5} color={"--font-color"} fontSizeP={1} />

@@ -5,12 +5,19 @@ import { MdEmail } from "react-icons/md";
 
 import { ContactsStyled } from "./style";
 
-export const Contacts = () => {
+interface IContacts {
+  githubLink: string;
+  linkedInLink: string;
+  userEmail: string;
+  phoneNumber: string;
+}
+
+export const Contacts = ({githubLink, linkedInLink, userEmail, phoneNumber}: IContacts) => {
   return (
     <ContactsStyled className="Container__Contacts">
       <li>Contatos</li>
       <li>
-        <a href="">
+        <a href={githubLink} target="_blank" rel="noreferrer">
           <figure>
               <BsGithub className="Contact__Icon Github" />
           </figure>
@@ -18,7 +25,7 @@ export const Contacts = () => {
         </a>
       </li>
       <li>
-        <a href="">
+        <a href={linkedInLink} target="_blank" rel="noreferrer">
           <figure>
               <BsLinkedin className="Contact__Icon Linkedin" />
           </figure>
@@ -26,19 +33,19 @@ export const Contacts = () => {
         </a>
       </li>
       <li>
-        <a href="">
+        <a href={`mailto:${userEmail}`} target="_blank" rel="noreferrer">
           <figure>
               <MdEmail className="Contact__Icon Email" />
           </figure>
-          <p>Email</p>
+          <p>{userEmail}</p>
         </a>
       </li>
       <li>
-        <a href="">
+        <a href={`tel:${phoneNumber}`} target="_blank" rel="noreferrer">
           <figure>
               <BsWhatsapp className="Contact__Icon Whatsapp" />
           </figure>
-          <p>Numero de telefone</p>
+          <p>{phoneNumber}</p>
         </a>
       </li>
     </ContactsStyled>

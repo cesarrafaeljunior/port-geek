@@ -1,14 +1,15 @@
 import { AboutStyled, iUserAbout } from "./style";
 
-export const About = ({ fontSize, color, fontSizeP }: iUserAbout) => {
+interface IABout extends iUserAbout {
+  aboutYou: string;
+}
+
+export const About = ({ fontSize, color, fontSizeP, aboutYou }: IABout) => {
   return (
     <AboutStyled fontSize={fontSize} color={color} fontSizeP={fontSizeP}>
       <h2 className="Border--Bottom">Sobre mim</h2>
       <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe, a ea
-        possimus nisi necessitatibus maxime suscipit quo, dolorum odit cumque
-        ipsa blanditiis quibusdam qui expedita inventore illo repellat ad
-        laborum.
+        {aboutYou}
       </p>
     </AboutStyled>
   );
