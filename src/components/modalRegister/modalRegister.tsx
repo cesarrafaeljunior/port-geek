@@ -78,7 +78,7 @@ export function Modal({ setModal }: iModal) {
             <InputComponent
               labelRefer="email"
               labelText="Email"
-              placeholder="Enter your name"
+              placeholder="Enter your email"
               autoComplete="email"
               register={register}
               registerkey={"email"}
