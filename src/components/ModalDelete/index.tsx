@@ -1,6 +1,5 @@
 import { Container } from "./styles";
 import { useContext } from "react";
-import { toast } from "react-toastify";
 import { DashboardContext } from "../../contexts/DashboardContext";
 
 export const ModalDelete = () => {
