@@ -82,7 +82,7 @@ export const DashboardProvider = () => {
 
   async function deletePort() {
     try {
-      await api.delete(`/portfolio/${portfolioInfo && portfolioInfo.id}`);
+      await api.delete(`/portfolio/${portfolioInfo?.id}`);
       toast.success("Portfolio successfully deleted!");
       setIsShowModalDelete(false);
       setPortfolioInfo(null);
