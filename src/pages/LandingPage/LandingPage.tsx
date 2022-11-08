@@ -74,6 +74,11 @@ const LandingPage = () => {
     resolver: yupResolver(registerSchema),
   });
 
+  const cathValue = () => {
+    const input = document.querySelector("#emailLanding") as HTMLInputElement;
+    setEmailDefault(input.value);
+  };
+
   return (
     <>
       {token ? (
@@ -110,9 +115,9 @@ const LandingPage = () => {
               <BtnDiv>
                 <form onSubmit={handleSubmit(handleRegister)}>
                   <input
+                    id="emailLanding"
                     placeholder="Enter your email"
                     {...register("email")}
-                    onChange={(e) => setEmailDefault(e.target.value)}
                   />
                   <ButtonComponent
                     type="submit"
@@ -121,6 +126,7 @@ const LandingPage = () => {
                     onClick={(event) => {
                       event.preventDefault();
                       setIsOpenModalRegister(true);
+                      cathValue();
                       reset();
                     }}
                   >
