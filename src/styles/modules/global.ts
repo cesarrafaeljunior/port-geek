@@ -45,6 +45,8 @@ const GlobalStyle = createGlobalStyle`
     --color-transparent: #00000090;
     --color-transparent-01: rgba( 255, 255, 255, 0.18 );
 
+    --font-color: #000000;
+
     /*LayoutsColor*/
     --backgroundHeader: #09002D;
     --borderUserIcon: #A52F2F;
@@ -123,6 +125,7 @@ const GlobalStyle = createGlobalStyle`
     --gap-24: 24px;
     --gap-20: 20px; 
     --gap-16: 16px; 
+    --gap-8: 8px; 
     }
 
     html, body, div, span, applet, object, iframe,

@@ -6,7 +6,7 @@ export const UserInfos = ({ fontSize, color, fontSizeP }: iUserInfos) => {
       fontSize={fontSize}
       color={color}
       fontSizeP={fontSizeP}
-      className="Container__UserInfos"
+      className={"Container__UserInfos"}
     >
       <div className="Header__Infos__User">
         <h1>Nome do usuário</h1>

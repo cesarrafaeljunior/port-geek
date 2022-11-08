@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ContactsStyled = styled.section`
+export const ContactsStyled = styled.ul`
   list-style: none;
 
   width: 100%;
@@ -24,6 +24,16 @@ export const ContactsStyled = styled.section`
     gap: 0.313em;
     align-items: center;
     justify-content: flex-start;
+
+    & > a  {
+      display: flex;
+      align-items: center;
+      gap: var(--gap-8);
+
+      text-decoration: none;
+
+      color: unset;
+    }
   }
   figure {
     width: 1.563em;
