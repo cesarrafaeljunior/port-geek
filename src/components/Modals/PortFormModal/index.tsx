@@ -219,7 +219,6 @@ const PortFormModal = () => {
   }
 
   function setAgeValue(event: any) {
-    console.log(event.target.value);
     const birthArray = event.target.value.split("-");
     const date = new Date();
     const localDate = date.toLocaleDateString().split("/").reverse();
