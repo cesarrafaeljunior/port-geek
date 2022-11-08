@@ -21,6 +21,7 @@ interface iUserContext {
   setIsOpenModalLogin: (value: boolean) => void;
   setIsOpenModalRegister: (value: boolean) => void;
   loading: boolean;
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 interface iUserProvider {
@@ -98,6 +99,7 @@ export function UserProvider({ children }: iUserProvider): JSX.Element {
         isOpenModalRegister,
         setIsOpenModalLogin,
         setIsOpenModalRegister,
+        setLoading,
       }}
     >
       {children}

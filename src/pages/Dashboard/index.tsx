@@ -15,7 +15,6 @@ import imgPortfolio3 from "../../assets/img/Layout-3.png";
 import backGroundBtn from "../../assets/img/backgroundBtn.png";
 import logo from "../../assets/logo/logo.png";
 import { ModalDelete } from "../../components/ModalDelete";
-import PortfolioProvider from "../../contexts/PortifolioContext";
 import PortFormModal from "../../components/Modals/PortFormModal";
 
 import { UserContext } from "../../contexts/userContext";
@@ -111,11 +110,8 @@ export const Dashboard = () => {
           <img className="background-btn" src={backGroundBtn} alt="" />
         </div>
       </div>
-      {isShowModalDelete && <ModalDelete />}
-      {portCreateAuth && <PortFormModal />}
-      <PortfolioProvider>
-        <PortFormModal />
-      </PortfolioProvider>
+      <ModalDelete />
+      <PortFormModal portfolioInfo={portfolioInfo} />
     </Container>
   );
 };

@@ -1,7 +1,9 @@
 import { api } from "../services/api";
-import React, { useState, useEffect, createContext } from "react";
+import React, { useState, useEffect, createContext, useContext } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { iPortDataOrganized } from "../components/Modals/PortFormModal";
+import { UserContext } from "./userContext";
 
 interface IDashboardContext {
   portfolioInfo: IPortfolioInfo | null;
@@ -12,9 +14,10 @@ interface IDashboardContext {
   portCreateAuth: boolean;
   editPortAuth: boolean;
   setEditPortAuth: React.Dispatch<React.SetStateAction<boolean>>;
+  sendPortifolio: (data: iPortDataOrganized) => Promise<void>;
 }
 
-interface IPortfolioInfo {
+export interface IPortfolioInfo {
   userId: number;
   addres: {
     city: string;
@@ -57,9 +60,8 @@ export const DashboardProvider = () => {
   const [editPortAuth, setEditPortAuth] = useState<boolean>(false);
   const idUser: string | null = localStorage.getItem("@PortGeek:id");
   const [isShowModalDelete, setIsShowModalDelete] = useState<boolean>(false);
-
   const [portfolioInfo, setPortfolioInfo] = useState<IPortfolioInfo | null>(
-    {} as IPortfolioInfo
+    null
   );
   // const [nameUser, setNameUser] = useState<string>("");
 
@@ -95,13 +97,25 @@ export const DashboardProvider = () => {
   async function deletePort() {
     try {
       await api.delete(`/portfolio/${portfolioInfo && portfolioInfo.id}`);
-      toast.success("Portfolio deletado com sucesso!");
+      toast.success("Portfolio successfully deleted!");
       setIsShowModalDelete(false);
       setPortfolioInfo(null);
     } catch (error) {
       error && toast.error("Something wrong!");
     }
   }
+
+  const sendPortifolio = async (data: iPortDataOrganized) => {
+    const data2 = { ...data, userId: 1 };
+    try {
+      const response = await api.post("/portfolio", data2);
+      console.log(await response);
+      toast.success("Portfolio created successfully");
+      // setPortCreateAuth(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <DashboardContext.Provider
@@ -114,6 +128,7 @@ export const DashboardProvider = () => {
         setPortCreateAuth,
         editPortAuth,
         setEditPortAuth,
+        sendPortifolio,
       }}
     >
       <Outlet />
