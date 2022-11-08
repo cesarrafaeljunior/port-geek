@@ -6,12 +6,13 @@ import {
   iPortDataOrganized,
   PortifolioContext,
 } from "../../../contexts/PortifolioContext";
-import { useContext } from "react";
+import { ReactNode, useContext, useState } from "react";
 import { DashboardContext } from "../../../contexts/DashboardContext";
-import * as yup from "yup";
+
 import layout1 from "../../../assets/img/Layout-1.png";
 import layout2 from "../../../assets/img/Layout-2.png";
 import layout3 from "../../../assets/img/Layout-3.png";
+import { schemaPortModal } from "../../../schemas/portSchema";
 
 interface iPortFormModal {
   name: string;
@@ -38,72 +39,6 @@ interface iPortFormModal {
   selected_layout: string;
 }
 
-const schemaMaxDate = () => {
-  const date = new Date();
-  const dateArray = date.toLocaleDateString().split("/");
-  return `${dateArray[0]}/${dateArray[1]}/${+dateArray[2] - 18}`;
-};
-const schema = yup.object({
-  name: yup.string().required("Name is required"),
-  age: yup.number(),
-  birthDate: yup
-    .date()
-    .max(schemaMaxDate(), "Must be over 18 years old")
-    .required("Birth date is required")
-    .typeError("Birth date is required")
-    .nullable(),
-  aboutYou: yup.string().required("Description about you is required"),
-  city: yup
-    .string()
-    .required("City is required")
-    .matches(/[-]{1}[A-Z]{2}/g, "The format is City-STATE"),
-  country: yup.string().required("Country is required"),
-  email: yup
-    .string()
-    .email("Enter a valid email")
-    .required("Email is required"),
-  experience: yup.string().required("Experience is required"),
-  gender: yup.string().required("Gender is required"),
-  github_url: yup
-    .string()
-    .url("Enter a valid GitHub profile URL")
-    .required("GitHub profile URL is required"),
-  linkedin_url: yup
-    .string()
-    .url("Enter a valid Linkedin profile URL")
-    .required("Linkedin URL is required"),
-  projectDeploy_url: yup
-    .string()
-    .url("Enter a valid project deploy URL")
-    .required("Project deploy URL is required"),
-  projectImage_url: yup
-    .string()
-    .url("Enter a valid project image URL")
-    .required("Project image URL is required"),
-  projectRepository_url: yup
-    .string()
-    .url("Enter a valid project repository URL")
-    .required("Project repository URL is required"),
-  project_description: yup.string().required("Project description is required"),
-  project_title: yup.string().required("Project title is required"),
-  skills: yup.string().required("Skills is required"),
-  street: yup
-    .string()
-    .required("Street is required")
-    .matches(/[\d]+/g, "Must contain the address number")
-    .matches(
-      /([\d](,)[a-zA-Z]|[\d][\s]+[a-zA-Z])+|([\d](,)[\s]+[a-zA-Z]|[\d][\s]+[a-zA-Z])+|([\d][\s]+(,)[\s]+[a-zA-Z]|[\d][\s]+[a-zA-Z])/g,
-      "Must contain the address district"
-    ),
-  telephone: yup
-    .string()
-    .required("Telephone contact is required")
-    .matches(/([\d]{2})[\s][9][\d]{8}/g, "The format should be: DDD 9XXXXXXXX"),
-  training: yup.string().required("Training is required"),
-  zipCode: yup.string().required("ZipCode is required"),
-  selected_layout: yup.string(),
-});
-
 const PortFormModal = () => {
   const {
     register,
@@ -111,11 +46,13 @@ const PortFormModal = () => {
     reset,
     formState: { errors },
   } = useForm<iPortFormModal>({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(schemaPortModal),
   });
 
-  const { portCreateAuth, setPortCreateAuth } = useContext(DashboardContext);
+  const { portCreateAuth, setPortCreateAuth, editPortAuth, setEditPortAuth } =
+    useContext(DashboardContext);
   const { sendPortifolio } = useContext(PortifolioContext);
+  const [age, setAge] = useState<number>(0);
 
   function dataOrganize(data: iPortFormModal): iPortDataOrganized {
     let data2 = { ...data, adress: {}, user_profile: {}, project: {} } as any;
@@ -217,22 +154,20 @@ const PortFormModal = () => {
   }
 
   function setAgeValue(event: any) {
-    const inputAge = document.getElementById("age") as HTMLInputElement;
     const birthArray = event.target.value.split("-");
     const date = new Date();
-    const currentYear = date.getFullYear();
-    const currentMonth = date.getMonth();
-    const currentDay = date.getDate();
+    const localDate = date.toLocaleDateString().split("/").reverse();
+    const currentYear = +localDate[0];
+    const currentMonth = +localDate[1];
+    const currentDay = +localDate[2];
     let AgePreview = currentYear - +birthArray[0];
-
     if (
       currentMonth < +birthArray[1] ||
       (currentMonth == +birthArray[1] && currentDay < +birthArray[2])
     ) {
       AgePreview--;
     }
-    inputAge.value = String(AgePreview);
-    inputAge.classList.remove("invalid");
+    setAge(AgePreview);
   }
 
   function telOrganize(event: any) {
@@ -276,7 +211,7 @@ const PortFormModal = () => {
         }
       }
       // SEMELHANTES VALIDAÇÔES MAS NO EVENTO DE INPUT
-      input.addEventListener("input", (event) => {
+      input.addEventListener("input", () => {
         if (input.value.trim() == "") {
           input.classList.add("invalid");
         } else {
@@ -309,10 +244,15 @@ const PortFormModal = () => {
   function onSubmit(data: iPortFormModal) {
     const portfolio = dataOrganize(data);
     console.log(portfolio);
-    // sendPortifolio(portfolio);
+    if (portCreateAuth) {
+      // sendPortifolio(portfolio);
+    }
+    if (editPortAuth) {
+      console.log("EDITAR");
+    }
   }
 
-  if (!portCreateAuth) {
+  if (!portCreateAuth && !editPortAuth) {
     return null;
   }
 
@@ -324,12 +264,14 @@ const PortFormModal = () => {
           className="button-close"
           onClick={() => {
             setPortCreateAuth(false);
+            setEditPortAuth(false);
             reset();
           }}
         >
           <CgClose />
         </button>
-        <h2>Enter data to generate layout</h2>
+        {portCreateAuth && <h2>Enter data to generate your portfolio</h2>}
+        {editPortAuth && <h2>Edit the data of your portfolio</h2>}
         <div className="formInput">
           <label>
             <input
@@ -365,10 +307,9 @@ const PortFormModal = () => {
           <div className="formInput">
             <label>
               <input
-                id="age"
                 placeholder="Age"
+                value={age}
                 type="number"
-                defaultValue={0}
                 {...register("age")}
                 readOnly
               />
@@ -698,6 +639,7 @@ const PortFormModal = () => {
               className="button-default"
               onClick={() => {
                 setPortCreateAuth(false);
+                setEditPortAuth(false);
                 reset();
               }}
             >

@@ -3,13 +3,13 @@ import { Navigate, Outlet } from "react-router-dom";
 import { UserContext } from "../../contexts/userContext";
 
 const OpenRoutes = () => {
-  const { user } = useContext(UserContext);
+  const { user, loading } = useContext(UserContext);
 
-  // if (loading) {
-  //   return null;
-  // }
+  if (loading) {
+    return null;
+  }
 
-  return user ? <Navigate to="/dashboard" replace /> : <Outlet />;
+  return user != null ? <Navigate to="/dashboard" replace /> : <Outlet />;
 };
 
 export default OpenRoutes;
