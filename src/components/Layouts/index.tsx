@@ -130,11 +130,11 @@ export const LayoutComponent: any = async () => {
   };
 
   switch (selectedLayout) {
-    case "layout1":
+    case "layout-1":
       return <Teste1 children={children} />;
-    case "layout2":
+    case "layout-2":
       return <Teste2 children={children} />;
-    case "layout3":
+    case "layout-3":
       return <Teste3 children={children} />;
   }
 };
