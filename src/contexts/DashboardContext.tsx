@@ -1,8 +1,7 @@
 import { api } from "../services/api";
-import React, { useState, useEffect, createContext, useContext } from "react";
+import React, { useState, useEffect, createContext } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { UserContext } from "./userContext";
 
 interface IDashboardContext {
   token: string | null;
@@ -56,7 +55,6 @@ export const DashboardContext = createContext<IDashboardContext>(
 
 export const DashboardProvider = () => {
   const navigate = useNavigate();
-  // const { user } = useContext(UserContext);
   const [portCreateAuth, setPortCreateAuth] = useState<boolean>(false);
   const token: string | null = localStorage.getItem("@PortGeek:token");
   const idUser: string | null = localStorage.getItem("@PortGeek:id");

@@ -17,7 +17,7 @@ root.render(
               <App />
               <GlobalStyle />
             <ToastContainer
-              autoClose={1000}
+              autoClose={2000}
               toastStyle={{
                 background: "var(--color-grey-0)",
                 color: "var(--color-grey-3)",
