@@ -10,7 +10,7 @@ export const UserInfos = ({ fontSize, color, fontSizeP }: iUserInfos) => {
     >
       <div className="Header__Infos__User">
         <h1>Nome do usuário</h1>
-        <p>Data de nascimento</p>
+        <p>Data de nascimento/Idade</p>
       </div>
       <div className="Adress__Infos">
         <p>País</p>
