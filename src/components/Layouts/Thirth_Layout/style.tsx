@@ -7,7 +7,7 @@ export const ContainerThirthLayout = styled.div`
   max-width: 1000px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #efefef;
+  background-color: var(--titleLayout);
   header {
     position: relative;
 
@@ -18,7 +18,7 @@ export const ContainerThirthLayout = styled.div`
     gap: 1.2em;
 
     color: white;
-    background-color: var(--backgroundHeader);
+    background-color: var(--colorPrimaryL3);
 
     .Container__UserIcon {
       margin-top: 50px;
@@ -35,7 +35,7 @@ export const ContainerThirthLayout = styled.div`
 
       padding: 0.625em;
       border-radius: 0.625em;
-      background-color: var(--borderUserIcon);
+      background-color: var(--colorSecundaryL3);
     }
 
     .Header__Infos__User {
@@ -65,7 +65,7 @@ export const ContainerThirthLayout = styled.div`
 
         line-height: 1.9em;
         .Border--Bottom {
-          border-bottom: solid 1px var(--borderUserIcon);
+          border-bottom: solid 1px var(--colorSecundaryL3);
           width: max-content;
         }
       }
@@ -74,7 +74,7 @@ export const ContainerThirthLayout = styled.div`
         width: 100%;
         height: 50px;
         margin-bottom: 1.875em;
-        background-color: #efefef;
+        background-color: var(--titleLayout);
       }
     }
   }
@@ -110,23 +110,23 @@ export const ContainerThirthLayout = styled.div`
         width: max-content;
         padding: 10px;
 
-        background-color: var(--borderUserIcon);
+        background-color: var(--colorSecundaryL3);
         color: white;
       }
 
       .Title__Formation {
-        background-color: var(--backgroundHeader);
+        background-color: var(--colorPrimaryL3);
       }
 
       .Paragraph__Formation {
         padding: 15px;
         color: white;
         margin: 0 -35px 0 -17px;
-        background-color: var(--borderUserIcon);
+        background-color: var(--colorSecundaryL3);
       }
 
       .Project__Title {
-        background-color: var(--backgroundHeader);
+        background-color: var(--colorPrimaryL3);
       }
       
       .Container__Project {
@@ -253,8 +253,8 @@ export const ContainerThirthLayout = styled.div`
         button {
           &:hover {
             background-color: white;
-            color: var(--backgroundHeader);
-            border: solid 1px var(--backgroundHeader);
+            color: var(--colorPrimaryL3);
+            border: solid 1px var(--colorPrimaryL3);
           }
         }
       }

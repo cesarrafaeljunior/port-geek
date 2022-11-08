@@ -1,9 +1,10 @@
 import { iButtons, ProjectStyled } from "./style";
-import ProjectIcon from "../../../../assets/img/1092.png";
 
 interface IProject extends iButtons {
   deployLink: string;
   repositoryLink: string;
+  projectDescription: string;
+  projectImg: string;
 }
 
 export const Project = ({
@@ -14,7 +15,9 @@ export const Project = ({
   bgColor,
   borderColor,
   deployLink,
-  repositoryLink
+  repositoryLink,
+  projectDescription,
+  projectImg
 }: IProject) => {
   return (
     <ProjectStyled
@@ -30,7 +33,7 @@ export const Project = ({
       <div className="Project__Flex--Box">
         <div className="ProjectImage__Box">
           <figure>
-            <img src={ProjectIcon} alt="Imagem do projeto" />
+            <img src={projectImg} alt="Imagem do projeto" />
           </figure>
         </div>
         <div className="Buttons__Box">

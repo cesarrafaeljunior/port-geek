@@ -10,6 +10,7 @@ interface IHeader {
 
 export const HeaderFirstLayout = styled.header<IHeader>`
     position: fixed;
+<<<<<<< Updated upstream
     z-index: 1;
     top: 0;
     left: ${(props) => props.seeInfo ? "0" : "-240px"};
@@ -17,6 +18,14 @@ export const HeaderFirstLayout = styled.header<IHeader>`
     width: 280px;
     min-height: 100vh;
     
+=======
+
+    min-height: 100vh;
+
+    top: 0;
+    left: ${(props) => props.seeInfo ? "0" : "-180px"};
+
+>>>>>>> Stashed changes
     transition: 1s ease;
 
     background-color: #0F3267;
@@ -38,7 +47,11 @@ export const HeaderFirstLayout = styled.header<IHeader>`
     }
 
     .div-infos {
+<<<<<<< Updated upstream
         width: 250px;
+=======
+        width: 90%;
+>>>>>>> Stashed changes
 
         margin-left: 6px;
     }
@@ -47,18 +60,28 @@ export const HeaderFirstLayout = styled.header<IHeader>`
         position: absolute;
 
         top: 50%;
+<<<<<<< Updated upstream
         transform: translateY(-50%);
         right: 4px;
 
         width: 30px;
         height: 30px;
         font-size: 100%;
+=======
+         transform: translateY(-50%);
+        right: 0px;
+
+        font-size: 2rem;
+>>>>>>> Stashed changes
 
         background: none;
         border: none;
         color: white;
+<<<<<<< Updated upstream
         
         padding: 0;
+=======
+>>>>>>> Stashed changes
     }
 
     @media (min-width: 800px) {
@@ -68,11 +91,19 @@ export const HeaderFirstLayout = styled.header<IHeader>`
             left: 0;
 
             width: 25%;
+<<<<<<< Updated upstream
             min-width: 280px;
         }
 
         .show-user-infos {
             /* display: none; */
+=======
+            min-width: 200px;
+        }
+
+        .show-user-infos {
+            display: none;
+>>>>>>> Stashed changes
         }
     }
 `

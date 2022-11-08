@@ -84,6 +84,8 @@ export const FirstLayout = ({ portfInfos }: ILayout) => {
           borderColor={""} 
           deployLink={project.projectDeploy_url}
           repositoryLink={project.projectRepository_url}
+          projectDescription={project.project_description}
+          projectImg={project.projectImage_url}
         />
       </BodyFirstLayout>
     </ContainerFirstLayout>

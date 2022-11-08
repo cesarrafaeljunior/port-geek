@@ -7,7 +7,7 @@ export const ContainerSecondLayout = styled.div`
   max-width: 1000px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #efefef;
+  background-color: var(--colorSecundaryL2);
   header {
     width: 100%;
 
@@ -16,7 +16,7 @@ export const ContainerSecondLayout = styled.div`
     align-items: center;
     .Section__User__Header {
       width: 100%;
-      border: solid 1px #393939;
+      border: solid 1px var(--colorPrimaryL2);
       .Container__UserIcon {
         display: flex;
         justify-content: center;
@@ -34,8 +34,8 @@ export const ContainerSecondLayout = styled.div`
       display: flex;
       flex-direction: column;
       align-items: center;
-      background-color: #393939;
-      color: white;
+      background-color: var(--colorPrimaryL2);
+      color: var(--colorSecundaryL2);
       font-weight: 500;
       .Container__UserInfos {
         display: flex;
@@ -113,7 +113,7 @@ export const ContainerSecondLayout = styled.div`
       @media (min-width: 768px) {
         flex-direction: row;
         .LineMid {
-          border-right: 2px solid black;
+          border-right: 2px solid var(--colorPrimaryL2);
         }
       }
     }
@@ -133,7 +133,7 @@ export const ContainerSecondLayout = styled.div`
           align-self: center;
           width: 200px;
           height: 200px;
-          border: solid 2px var(--font-color);
+          border: solid 2px var(--colorPrimaryL2);
           figure {
             width: 100%;
             height: 100%;
@@ -148,8 +148,8 @@ export const ContainerSecondLayout = styled.div`
           button {
             border: solid 1px black;
             &:hover {
-              background-color: black;
-              color: white;
+              background-color: var(--colorPrimaryL2);
+              color: var(--colorSecundaryL2);
             }
           }
         }

@@ -48,10 +48,17 @@ const GlobalStyle = createGlobalStyle`
     --font-color: #000000;
 
     /*LayoutsColor*/
-    --backgroundHeader: #09002D;
-    --borderUserIcon: #A52F2F;
+
+
+    /*Layout-2*/
+    --colorPrimaryL2:#393939;
+    --colorSecundaryL2:#efefef;
+    --titleLayout2: #E4E1E1;
+
+    /*Layout-3*/
+    --colorPrimaryL3:#09002D;
+    --colorSecundaryL3:#A52F2F;
     --titleLayout: #E4E1E1;
-    --colorParagraph: #09002D;
     
     /* Size Elements */
     --button-height-default: 48px;
