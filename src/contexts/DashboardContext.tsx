@@ -15,6 +15,7 @@ interface IDashboardContext {
   editPortAuth: boolean;
   setEditPortAuth: React.Dispatch<React.SetStateAction<boolean>>;
   sendPortifolio: (data: iPortDataOrganized) => Promise<void>;
+  editPortfolio: (data: iPortDataOrganized) => Promise<void>;
 }
 
 export interface IPortfolioInfo {
@@ -96,7 +97,7 @@ export const DashboardProvider = () => {
 
   async function deletePort() {
     try {
-      await api.delete(`/portfolio/${portfolioInfo && portfolioInfo.id}`);
+      await api.delete(`/portfolio/${portfolioInfo?.id}`);
       toast.success("Portfolio successfully deleted!");
       setIsShowModalDelete(false);
       setPortfolioInfo(null);
@@ -106,12 +107,23 @@ export const DashboardProvider = () => {
   }
 
   const sendPortifolio = async (data: iPortDataOrganized) => {
-    const data2 = { ...data, userId: 1 };
+    const data2 = { ...data, userId: idUser };
     try {
       const response = await api.post("/portfolio", data2);
       console.log(await response);
       toast.success("Portfolio created successfully");
-      // setPortCreateAuth(false);
+      setPortCreateAuth(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const editPortfolio = async (data: iPortDataOrganized) => {
+    try {
+      const response = await api.patch(`/portfolio/${portfolioInfo?.id}`, data);
+      console.log(await response);
+      toast.success("Portfolio deleted successfully");
+      setPortCreateAuth(false);
     } catch (error) {
       console.log(error);
     }
@@ -129,6 +141,7 @@ export const DashboardProvider = () => {
         editPortAuth,
         setEditPortAuth,
         sendPortifolio,
+        editPortfolio,
       }}
     >
       <Outlet />
