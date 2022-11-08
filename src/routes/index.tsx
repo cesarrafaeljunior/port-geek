@@ -9,7 +9,7 @@ const RoutesMain = () => (
     <Route index element={<LandingPage />} />
     <Route element={<DashboardProvider />}>
       <Route path="dashboard" element={<Dashboard />} />
-      <Route path="portfolio" element={<LayoutPage />} />
+      <Route path="portfolio/:portfId" element={<LayoutPage />} />
     </Route>
     <Route path="*" element={<Navigate to="/" />} />
   </Routes>
