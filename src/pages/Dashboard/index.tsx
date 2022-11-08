@@ -65,13 +65,28 @@ export const Dashboard = () => {
         {portfolioInfo?.id ? (
           <main>
             {portfolioInfo.project.selected_layout === "layout-1" && (
-              <img className="mini-port" src={imgPortfolio1} alt="" />
+              <img
+                className="mini-port"
+                src={imgPortfolio1}
+                alt=""
+                onClick={() => window.location.assign(shareLink)}
+              />
             )}
             {portfolioInfo.project.selected_layout === "layout-2" && (
-              <img className="mini-port" src={imgPortfolio2} alt="" />
+              <img
+                className="mini-port"
+                src={imgPortfolio2}
+                alt=""
+                onClick={() => window.location.assign(shareLink)}
+              />
             )}
             {portfolioInfo.project.selected_layout === "layout-3" && (
-              <img className="mini-port" src={imgPortfolio3} alt="" />
+              <img
+                className="mini-port"
+                src={imgPortfolio3}
+                alt=""
+                onClick={() => window.location.assign(shareLink)}
+              />
             )}
             <div className="buttons">
               <IconEdit onClick={() => setEditPortAuth(true)} />
