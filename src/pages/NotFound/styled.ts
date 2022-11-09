@@ -7,8 +7,8 @@ const StyledNotFound = styled.div`
   justify-content: center;
   img {
     width: 100%;
-    height: 100%;
-    min-height: 100vh;
+    height: 100vh;
+    max-height: 100%;
   }
   div {
     position: fixed;
@@ -20,7 +20,7 @@ const StyledNotFound = styled.div`
     gap: 40px;
     h1 {
       color: var(--color-primary);
-      font-size: 80px;
+      font-size: var(--font-grand-60);
       text-align: center;
       font-weight: 800;
       text-shadow: 4px 12px 12px var(--blur-effect-02);
@@ -50,6 +50,16 @@ const StyledNotFound = styled.div`
   @media (min-width: 592px) {
     div {
       top: 35%;
+      h1 {
+        font-size: 80px;
+      }
+    }
+  }
+  @media (min-width: 375px) {
+    div {
+      h1 {
+        font-size: 70px;
+      }
     }
   }
 `;
