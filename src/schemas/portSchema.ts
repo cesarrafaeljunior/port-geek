@@ -1,4 +1,5 @@
 import * as yup from "yup";
+
 export const schemaMaxDate = () => {
   const date = new Date();
   const dateArray = date.toLocaleDateString().split("/");
@@ -43,7 +44,7 @@ export const schemaPortModal = yup.object({
     .required("Project deploy URL is required"),
   projectImage_url: yup
     .string()
-    .url("Enter a valid project image URL")
+    .url("Enter a valid profile image URL")
     .required("Project image URL is required"),
   projectRepository_url: yup
     .string()

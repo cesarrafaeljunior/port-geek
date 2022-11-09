@@ -239,12 +239,13 @@ const PortFormModal = () => {
     setAge(AgePreview);
   }
 
-  function telOrganize(event: any) {
-    event.target.maxLength = 12;
+  function inputWithNumbers(event: any) {
     event.target.value = event.target.value.replace(/[^\s\d]+/g, "");
-
-    if (event.target.value.length == 3 && !event.target.value.includes(" ")) {
-      event.target.value = `${event.target.value[0]}${event.target.value[1]} ${event.target.value[2]}`;
+    if (event.target.name == "telephone") {
+      event.target.maxLength = 12;
+      if (event.target.value.length == 3 && !event.target.value.includes(" ")) {
+        event.target.value = `${event.target.value[0]}${event.target.value[1]} ${event.target.value[2]}`;
+      }
     }
   }
 
@@ -457,8 +458,9 @@ const PortFormModal = () => {
           <div className="formInput">
             <label>
               <input
-                placeholder="zipCode"
-                type="number"
+                onInput={(event) => inputWithNumbers(event)}
+                placeholder="ZipCode"
+                type="text"
                 {...register("zipCode")}
               />
               {!errors.zipCode ? (
@@ -505,7 +507,7 @@ const PortFormModal = () => {
               placeholder="ex: DDD 9XXXXXXXX"
               type="text"
               max="12"
-              onInput={(event) => telOrganize(event)}
+              onInput={(event) => inputWithNumbers(event)}
               {...register("telephone")}
             />
             {!errors.telephone ? (
