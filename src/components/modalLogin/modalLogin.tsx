@@ -21,7 +21,6 @@ export function ModalLogin() {
     resolver: yupResolver(loginSchema),
   });
 
-
   if (!isOpenModalLogin) {
     return null;
   }
@@ -38,7 +37,7 @@ export function ModalLogin() {
             <InputComponent
               labelRefer="Email"
               labelText="email"
-              placeholder="Digite seu email"
+              placeholder="Type your e-mail"
               autoComplete="email"
               register={register}
               registerkey={"email"}
@@ -49,7 +48,7 @@ export function ModalLogin() {
               labelRefer="password"
               labelText="password"
               type="password"
-              placeholder="Digite sua senha"
+              placeholder="Type your password"
               autoComplete="current-password"
               register={register}
               registerkey={"password"}

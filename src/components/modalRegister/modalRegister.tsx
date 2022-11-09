@@ -15,11 +15,8 @@ interface iModal {
 
 export function Modal({ setModal }: iModal) {
   const modalRef = createRef<HTMLDivElement>();
-  const {
-    handleRegister,
-    emaiDefault,
-    isOpenModalRegister,
-  } = useContext(UserContext);
+  const { handleRegister, emaiDefault, isOpenModalRegister } =
+    useContext(UserContext);
 
   const {
     register,
@@ -43,9 +40,7 @@ export function Modal({ setModal }: iModal) {
         </Header>
 
         <Main>
-          <Form
-            onSubmit={handleSubmit(handleRegister)}
-          >
+          <Form onSubmit={handleSubmit(handleRegister)}>
             <InputComponent
               labelRefer="Name"
               labelText="Name"

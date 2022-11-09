@@ -70,7 +70,7 @@ export function UserProvider({ children }: iUserProvider): JSX.Element {
       navigate("/dashboard");
     } catch (error: any) {
       console.log(error);
-      errorToast("Credenciais Incorretas");
+      errorToast("Incorrect Credentials!");
     }
   };
 
