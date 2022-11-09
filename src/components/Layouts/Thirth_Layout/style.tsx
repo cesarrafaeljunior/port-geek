@@ -20,6 +20,7 @@ export const ContainerThirthLayout = styled.div`
     color: white;
     background-color: var(--colorPrimaryL3);
 
+    max-width: 30%;
     .Container__UserIcon {
       margin-top: 50px;
     }
@@ -259,15 +260,15 @@ export const ContainerThirthLayout = styled.div`
       }
 
       .Container__Formation {
-        width: 116%;
+        width: 100%;
         margin-top: 85px;
+
         .Title__Formation {
           width: 230px;
           text-align: center;
         }
         .Paragraph__Formation {
-          margin: 0;
-          min-height: 200px;
+          min-width: 100%;
         }
       }
       .Container__Project {
