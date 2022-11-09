@@ -19,21 +19,19 @@ import { useState } from "react";
 
 export const SecondLayout = ({ portfInfos }: ILayout) => {
   const { user_profile, adress, project } = portfInfos;
-  const [isSeeingModal, setIsSeeingModal] = useState<boolean>(false)
+  const [isSeeingModal, setIsSeeingModal] = useState<boolean>(false);
 
   return (
     <ContainerSecondLayout>
-      {isSeeingModal ? 
-        <ModalDescription 
-          projectDescription={project.project_description} 
-          bgColor={""} 
-          color={""} 
-          borderColor={""} 
+      {isSeeingModal ? (
+        <ModalDescription
+          projectDescription={project.project_description}
+          bgColor={"--colorPrimaryL2"}
+          color={"--titleLayout2"}
+          borderColor={"--colorPrimaryL2"}
           toggleMenu={setIsSeeingModal}
-        /> 
-        : 
-          null
-      }
+        />
+      ) : null}
       <header>
         <section className="Section__User__Header">
           <UserIcon width={8} height={8} borderR={50} border={"none"} />

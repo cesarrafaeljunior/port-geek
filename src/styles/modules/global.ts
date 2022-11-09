@@ -49,7 +49,6 @@ const GlobalStyle = createGlobalStyle`
 
     /*LayoutsColor*/
 
-
     /*Layout-2*/
     --colorPrimaryL2:#393939;
     --colorSecundaryL2:#efefef;

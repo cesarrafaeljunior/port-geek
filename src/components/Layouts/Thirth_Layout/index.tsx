@@ -13,21 +13,19 @@ import { ContainerThirthLayout } from "./style";
 
 export const ThirthLayout = ({ portfInfos }: ILayout) => {
   const { user_profile, adress, project } = portfInfos;
-  const [isSeeingModal, setIsSeeingModal] = useState<boolean>(false)
+  const [isSeeingModal, setIsSeeingModal] = useState<boolean>(false);
 
   return (
     <ContainerThirthLayout>
-      {isSeeingModal ? 
-        <ModalDescription 
-          projectDescription={""} 
-          bgColor={""} 
-          color={""} 
-          borderColor={""} 
+      {isSeeingModal ? (
+        <ModalDescription
+          projectDescription={""}
+          bgColor={"--colorPrimaryL3"}
+          color={"--titleLayout"}
+          borderColor={"--colorSecundaryL3"}
           toggleMenu={setIsSeeingModal}
-        /> 
-        : 
-          null
-      }
+        />
+      ) : null}
       <header>
         <UserIcon width={8} height={8} borderR={50} border={"borderUserIcon"} />
         <UserInfos

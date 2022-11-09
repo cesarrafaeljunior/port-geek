@@ -13,7 +13,7 @@ export const ProjectStyled = styled.section<iButtons>`
   position: relative;
   .ProjectImage__Box {
     display: flex;
-    width: 80%;
+    width: 90%;
     height: max-content;
     max-width: 18.75em;
     border: solid 2px var(--borderUserIcon);

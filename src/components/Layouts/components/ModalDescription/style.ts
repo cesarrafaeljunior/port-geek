@@ -27,7 +27,7 @@ export const ContainerModalDescription = styled.div<IContainerModal>`
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    
+
     gap: 20px;
 
     width: 90%;
@@ -56,11 +56,14 @@ export const ContainerModalDescription = styled.div<IContainerModal>`
 
       &:hover {
         opacity: 1;
+        filter: brightness(0.8);
+        transform: scale(1.2);
       }
 
       & > svg {
         width: 30px;
         height: 30px;
+        color: white;
       }
     }
     h2 {

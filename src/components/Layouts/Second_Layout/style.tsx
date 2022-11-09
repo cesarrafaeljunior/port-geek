@@ -73,6 +73,7 @@ export const ContainerSecondLayout = styled.div`
         }
       }
       .Section__Infos__Header {
+        max-height: 218px;
         .Container__UserInfos {
           gap: 0;
           margin-left: 1.5em;
@@ -161,6 +162,9 @@ export const ContainerSecondLayout = styled.div`
           justify-content: space-around;
           gap: 20px;
           button {
+            color: var(--colorPrimaryL2);
+            height: 50px;
+            width: 200px;
             border: solid 1px black;
             &:hover {
               background-color: var(--colorPrimaryL2);
@@ -168,6 +172,10 @@ export const ContainerSecondLayout = styled.div`
             }
           }
           a {
+            color: var(--colorPrimaryL2);
+            padding: 0;
+            height: 50px;
+            width: 200px;
             border: solid 1px black;
             &:hover {
               background-color: var(--colorPrimaryL2);

@@ -16,7 +16,6 @@ import backGroundBtn from "../../assets/img/backgroundBtn.png";
 import logo from "../../assets/logo/logo.png";
 import { ModalDelete } from "../../components/ModalDelete";
 
-
 export const Dashboard = () => {
   const {
     token,

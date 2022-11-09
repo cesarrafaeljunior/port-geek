@@ -150,11 +150,19 @@ export const ContainerThirthLayout = styled.div`
         }
       }
 
-      @media (min-width: 480px) {
+      @media (min-width: 768px) {
         .Container__Project {
           .Project__Flex--Box {
             flex-direction: row;
           }
+        }
+        a {
+          width: 12.5em;
+          height: 50px;
+        }
+        button {
+          width: 12.5em;
+          height: 50px;
         }
       }
     }
@@ -285,6 +293,7 @@ export const ContainerThirthLayout = styled.div`
           }
         }
         a {
+          padding: 0;
           &:hover {
             background-color: white;
             color: var(--colorPrimaryL3);
