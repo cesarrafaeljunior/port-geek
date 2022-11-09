@@ -135,6 +135,11 @@ export const Links = styled.button`
     border: 1px solid var(--color-white-mode);
     border-radius: var(--radius-8);
   }
+
+  &:hover {
+    background-color: var(--color-grey-2);
+    border: 1px solid var(--color-grey-3);
+  }
 `;
 export const BrazilButton = styled.button`
   width: 80px;
@@ -147,6 +152,7 @@ export const BrazilButton = styled.button`
   border: 1px solid var(--color-grey-3);
   border-radius: var(--radius-8);
 
+  &:hover,
   &:focus {
     opacity: 0.4;
     border: 2px solid var(--color-tertiary);
@@ -163,6 +169,7 @@ export const UsaButton = styled.button`
   border: 1px solid var(--color-grey-3);
   border-radius: var(--radius-8);
 
+  &:hover,
   &:focus {
     opacity: 0.8;
     border: 2px solid var(--color-tertiary);

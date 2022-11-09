@@ -350,15 +350,15 @@ export const TransitionAbout = styled.button`
     left: 47%;
   }
   @media (min-width: 1200px) {
-    top: 90vh;
+    top: 85vh;
     left: 46%;
   }
   @media (min-width: 1366px) {
-    top: 90vh;
+    top: 85vh;
     left: 46.5%;
   }
   @media (min-width: 1500px) {
-    top: 90vh;
+    top: 85vh;
     left: 47.5%;
   }
   @media (max-width: 1920px) {
@@ -367,16 +367,17 @@ export const TransitionAbout = styled.button`
 
 export const ImageCarouselDiv = styled.div`
   width: 100%;
-  height: 100%;
+  height: 90%;
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 10px;
 
   & > img {
-    width: 26%;
-    height: 26%;
-    transform: scale(0.8);
+    width: 50%;
+    height: 100%;
+    transform: scale(0.9);
   }
 `;
 
@@ -388,6 +389,27 @@ export const ShowCase = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  .CarouselCenter {
+    width: 80%;
+    height: 100%;
+    z-index: 1000;
+  }
+
+  .carousel-slider {
+    width: 100%;
+    height: 100%;
+  }
+
+  .slider-wrapper {
+    width: 80%;
+    height: 100%;
+  }
+
+  .slider {
+    width: 100%;
+    height: 100%;
+  }
 
   @media screen and (max-width: 480px) {
     height: 40%;
@@ -424,10 +446,14 @@ export const BtnDiv = styled.div`
   & > form > input {
     width: 68%;
     height: 40px;
-    border: 1px solid var(--color-primary);
+    border: 1px solid var(--color-grey-3);
     border-radius: var(--radius-8);
     padding-left: 20px;
     background-color: var(--color-grey-1);
+  }
+
+  & > form > input:focus {
+    border: 2px solid var(--color-primary);
   }
 
   @media screen and (max-width: 480px) {
@@ -521,6 +547,24 @@ export const BtnDiv = styled.div`
     }
   }
   @media screen and (max-width: 1920px) {
+    width: 80%;
+    height: 100px;
+
+    & > form {
+      flex-flow: row nowrap;
+    }
+
+    & > form > input {
+      width: 68%;
+      height: 45px;
+    }
+
+    & > form > button {
+      width: 28%;
+      height: 45px;
+    }
+  }
+  @media screen and (max-width: 2500px) {
     width: 80%;
     height: 100px;
 

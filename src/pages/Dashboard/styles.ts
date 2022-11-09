@@ -76,12 +76,12 @@ export const Container = styled.div`
 
     display: flex;
     justify-content: center;
-    gap: 60rem;
 
     width: 100%;
     height: 6rem;
 
     background-color: var(--color-primary);
+    border-bottom: 2px solid var(--color-black-mode);
 
     @media (max-width: 768px) {
       height: 8rem;
@@ -103,6 +103,10 @@ export const Container = styled.div`
     .logo {
       margin-left: 10rem;
 
+      @media (max-width: 1516px) {
+        margin-left: 0;
+      }
+
       @media (max-width: 768px) {
         margin-left: 0;
       }
@@ -114,6 +118,10 @@ export const Container = styled.div`
 
       margin-right: 5rem;
 
+      @media (max-width: 1344px) {
+        margin-right: 1rem;
+      }
+
       @media (max-width: 768px) {
         margin-right: 0;
       }
@@ -122,6 +130,31 @@ export const Container = styled.div`
         color: var(--color-grey-3);
 
         font-weight: var(--font-weight-600);
+      }
+    }
+
+    .div-link {
+      :hover {
+        div {
+          border-bottom: 2px solid black;
+          animation: showBar 0.3s;
+        }
+      }
+      div {
+        border-bottom: 2px solid transparent;
+        width: 100%;
+      }
+    }
+
+    @keyframes showBar {
+      0% {
+        width: 10%;
+      }
+      50% {
+        width: 50%;
+      }
+      100% {
+        width: 100%;
       }
     }
   }
@@ -185,9 +218,22 @@ export const Container = styled.div`
 
       .mini-port {
         width: 90%;
-        height: auto;
+        height: auto;   
 
-        margin-top: 1rem;
+        display: block;
+        margin: 1rem auto 0;
+
+        cursor: pointer;
+
+        transition: 0.5s;
+
+        :active {
+          scale: 0.95;
+        }
+
+        :hover {
+          opacity: 0.6;
+        }
       }
 
       .buttons {
@@ -215,8 +261,11 @@ export const Container = styled.div`
       .background-btn {
         width: 500px;
 
-        @media (max-width: 907px) {
+        @media (max-width: 1040px) {
           width: 400px;
+        }
+        @media (max-width: 851px) {
+          width: 350px;
         }
 
         @media (max-width: 768px) {

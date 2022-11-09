@@ -3,7 +3,13 @@ import { useContext } from "react";
 import { DashboardContext } from "../../contexts/DashboardContext";
 
 export const ModalDelete = () => {
-  const { setIsShowModalDelete, deletePort } = useContext(DashboardContext);
+  const { setIsShowModalDelete, deletePort, isShowModalDelete } =
+    useContext(DashboardContext);
+
+  if (!isShowModalDelete) {
+    return null;
+  }
+
   return (
     <Container>
       <div className="modal">

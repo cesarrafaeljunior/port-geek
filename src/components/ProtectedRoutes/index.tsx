@@ -1,16 +1,14 @@
 import { useContext } from "react";
-import { Navigate, Outlet, useLocation } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import { UserContext } from "../../contexts/userContext";
 
 const ProtectedRoutes = () => {
-  const { user } = useContext(UserContext);
+  const { user, loading } = useContext(UserContext);
+  if (loading) {
+    return null;
+  }
 
-  const location = useLocation();
-  // if (loading) {
-  //   return null;
-  // }
-  // state={{ from: location }}
-  return user ? <Outlet /> : <Navigate to="/login" replace />;
+  return user ? <Outlet /> : <Navigate to="/" replace />;
 };
 
 export default ProtectedRoutes;
