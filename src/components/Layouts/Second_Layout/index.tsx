@@ -15,17 +15,25 @@ import FormationIcon from "../../../assets/logo/Formation.png";
 import ProjectIcon from "../../../assets/logo/Project.png";
 import { ILayout } from "../../../pages/Layout";
 import { ModalDescription } from "../components/ModalDescription";
+import { useState } from "react";
 
 export const SecondLayout = ({ portfInfos }: ILayout) => {
   const { user_profile, adress, project } = portfInfos;
+  const [isSeeingModal, setIsSeeingModal] = useState<boolean>(false)
 
   return (
     <ContainerSecondLayout>
-      {/* <ModalDescription
-        bgColor={"--colorPrimaryL2"}
-        color={"--titleLayout2"}
-        borderColor={"--colorSecundaryL2"}
-      /> */}
+      {isSeeingModal ? 
+        <ModalDescription 
+          projectDescription={project.project_description} 
+          bgColor={""} 
+          color={""} 
+          borderColor={""} 
+          toggleMenu={setIsSeeingModal}
+        /> 
+        : 
+          null
+      }
       <header>
         <section className="Section__User__Header">
           <UserIcon width={8} height={8} borderR={50} border={"none"} />
@@ -38,6 +46,7 @@ export const SecondLayout = ({ portfInfos }: ILayout) => {
             color={"red"}
             personName={user_profile.name}
             birthDate={user_profile.birthDate}
+            age={user_profile.age}
             adress={adress}
           />
           <Contacts
@@ -96,12 +105,13 @@ export const SecondLayout = ({ portfInfos }: ILayout) => {
           <img src={ProjectIcon} alt="Project Icon" />
         </figure>
         <Project
-          width={13}
-          heigth={3.5}
+          padding={0.5}
           fontSize={0.875}
+          titleSize={1.5}
           color={"black"}
           borderColor={"--colorPrimaryL2"}
           bgColor={"--titleLayout"}
+          toggleMenu={setIsSeeingModal}
           deployLink={project.projectDeploy_url}
           repositoryLink={project.projectRepository_url}
           projectDescription={project.project_description}

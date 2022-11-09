@@ -4,10 +4,11 @@ import { iStyledInfos, UserInfosStyled } from "./style";
 interface IUserInfos extends iStyledInfos{
   personName: string;
   birthDate: string;
+  age: string;
   adress: IAdress;
 }
 
-export const UserInfos = ({ fontSize, color, fontSizeP, personName, birthDate, adress }: IUserInfos) => {
+export const UserInfos = ({ fontSize, color, fontSizeP, personName, birthDate, adress, age }: IUserInfos) => {
   return (
     <UserInfosStyled
       fontSize={fontSize}
@@ -18,6 +19,7 @@ export const UserInfos = ({ fontSize, color, fontSizeP, personName, birthDate, a
       <div className="Header__Infos__User">
         <h1>{personName}</h1>
         <p>{birthDate}</p>
+        <p>{`${age} anos`}</p>
       </div>
       <div className="Adress__Infos">
         <p>{adress.country}</p>

@@ -27,13 +27,13 @@ interface IProject {
   project_description: string;
   projectDeploy_url: string;
   projectRepository_url: string;
+  selected_layout: string;
 }
 export interface IPortifolioInfos {
   userId: number;
   adress: IAdress;
   user_profile: IUserProfile;
   project: IProject;
-  selectedLayout: string;
   id: number;
 }
 

@@ -10,22 +10,13 @@ interface IHeader {
 
 export const HeaderFirstLayout = styled.header<IHeader>`
     position: fixed;
-<<<<<<< Updated upstream
     z-index: 1;
     top: 0;
-    left: ${(props) => props.seeInfo ? "0" : "-240px"};
+    left: ${(props) => props.seeInfo ? "0" : "-265px"};
 
-    width: 280px;
+    width: 290px;
     min-height: 100vh;
     
-=======
-
-    min-height: 100vh;
-
-    top: 0;
-    left: ${(props) => props.seeInfo ? "0" : "-180px"};
-
->>>>>>> Stashed changes
     transition: 1s ease;
 
     background-color: #0F3267;
@@ -40,18 +31,27 @@ export const HeaderFirstLayout = styled.header<IHeader>`
         }
     }
 
+    .Container__UserInfos {
+        & p, & h1 {
+            margin: 0.6em 0;
+        }
+    }
+
     .Container__Contacts {
-        padding: 1.25em 0.5em;
+        padding: 0.5em 0.5em;
 
         flex-direction: column;
+
+        border-top: 2px solid var(--color-grey-0);
+        border-bottom: 2px solid var(--color-grey-0);
+    }
+
+    .Header__Infos__User {
+        border-bottom: 2px solid var(--color-grey-0);
     }
 
     .div-infos {
-<<<<<<< Updated upstream
         width: 250px;
-=======
-        width: 90%;
->>>>>>> Stashed changes
 
         margin-left: 6px;
     }
@@ -60,28 +60,23 @@ export const HeaderFirstLayout = styled.header<IHeader>`
         position: absolute;
 
         top: 50%;
-<<<<<<< Updated upstream
         transform: translateY(-50%);
         right: 4px;
 
-        width: 30px;
-        height: 30px;
-        font-size: 100%;
-=======
-         transform: translateY(-50%);
-        right: 0px;
-
-        font-size: 2rem;
->>>>>>> Stashed changes
+        width: 20px;
+        height: 100%;
+        font-size: 1.5em;
 
         background: none;
         border: none;
         color: white;
-<<<<<<< Updated upstream
         
         padding: 0;
-=======
->>>>>>> Stashed changes
+    }
+
+    .Modal {
+        background-color: white;
+        color: red;
     }
 
     @media (min-width: 800px) {
@@ -91,19 +86,11 @@ export const HeaderFirstLayout = styled.header<IHeader>`
             left: 0;
 
             width: 25%;
-<<<<<<< Updated upstream
-            min-width: 280px;
-        }
-
-        .show-user-infos {
-            /* display: none; */
-=======
-            min-width: 200px;
+            min-width: 260px;
         }
 
         .show-user-infos {
             display: none;
->>>>>>> Stashed changes
         }
     }
 `
@@ -112,6 +99,7 @@ export const BodyFirstLayout = styled.main`
     background-color: #B6D1FA;
 
     min-height: 100vh;
+    width: 100%;
 
     & > section {
         width: 95%;
@@ -142,15 +130,33 @@ export const BodyFirstLayout = styled.main`
         }
     }
 
-    @media (max-width: 800px) {
-        & {
-            padding-left: 40px;
+    .Project__Flex--Box {
+        display: flex;
+        align-items: center;
+    }
+
+    .Buttons__Box {
+        display: flex;
+        flex-direction: column;
+
+        margin-left: 1rem;
+
+        & > button, & > a {
+            margin: 1em 0;
+
+            width: 100%;
         }
     }
 
-    @media (min-width: 800px) {
+    @media (max-width: 590px) {
+        .Project__Flex--Box {
+            flex-direction: column;
+        }
+    }
+
+    @media (max-width: 800px) {
         & {
-            width: auto;
+            padding-left: 40px;
         }
     }
 `

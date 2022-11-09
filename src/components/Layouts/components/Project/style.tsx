@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export interface iButtons {
-  width: number;
-  heigth: number;
+  padding: number;
   fontSize: number;
+  titleSize: number;
   color: string;
   bgColor: string;
   borderColor: string;
@@ -18,41 +18,57 @@ export const ProjectStyled = styled.section<iButtons>`
     max-width: 18.75em;
     border: solid 2px var(--borderUserIcon);
     transition: all 0.3s;
-    &:hover {
-      cursor: pointer;
 
-      transform: scale(1.5);
-    }
     img {
       width: 100%;
       height: 100%;
     }
   }
+
+  h2 {
+    font-size: ${({ titleSize }) => `${titleSize}em`};
+    color: ${({ color }) => `var(${color})`};
+    font-weight: 700;
+  }
+
   a {
     display: flex;
     align-items: center;
     justify-content: center;
     text-decoration: none;
     text-align: center;
-    width: ${({ width }) => `${width}em`};
-    height: ${({ heigth }) => `${heigth}em`};
+    padding: ${({ padding }) => `${padding}em`};
 
     font-size: ${({ fontSize }) => `${fontSize}em`};
     font-weight: bold;
-    color: ${({ color }) => color};
+    color: ${({ color }) => `var(${color})`};
     background-color: ${({ bgColor }) => `var(${bgColor})`};
-    border: ${({ borderColor }) => `var(${borderColor})`};
+    border: 2px solid ${({ borderColor }) => `var(${borderColor})`};
     border-radius: 8px;
+    opacity: 0.6;
+
+    transition: 1s ease;
+
+    &:hover {
+      opacity: 1;
+    }
   }
+
   button {
-    width: ${({ width }) => `${width}em`};
-    height: ${({ heigth }) => `${heigth}em`};
+    padding: ${({ padding }) => `${padding}em`};
 
     font-size: ${({ fontSize }) => `${fontSize}em`};
     font-weight: bold;
-    color: ${({ color }) => color};
+    color: ${({ color }) => `var(${color})`};
     background-color: ${({ bgColor }) => `var(${bgColor})`};
-    border: ${({ borderColor }) => `var(${borderColor})`};
+    border: 2px solid ${({ borderColor }) => `var(${borderColor})`};
     border-radius: 8px;
+    opacity: 0.6;
+
+    transition: 1s ease;
+
+    &:hover {
+      opacity: 1;
+    }
   }
 `;

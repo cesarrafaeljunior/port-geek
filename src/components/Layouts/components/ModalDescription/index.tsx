@@ -1,11 +1,19 @@
-import { ContainerModalDescription, iModalDescription } from "./style";
+import { ContainerModalDescription, IContainerModal } from "./style";
 import { AiFillCloseCircle } from "react-icons/ai";
+import { Dispatch, SetStateAction } from "react";
+
+interface IModalDescription extends IContainerModal {
+  projectDescription: string;
+  toggleMenu: Dispatch<SetStateAction<boolean>>;
+}
 
 export const ModalDescription = ({
   bgColor,
   color,
   borderColor,
-}: iModalDescription) => {
+  projectDescription,
+  toggleMenu
+}: IModalDescription) => {
   return (
     <ContainerModalDescription
       bgColor={bgColor}
@@ -13,13 +21,15 @@ export const ModalDescription = ({
       borderColor={borderColor}
     >
       <div className="Modal">
-        <AiFillCloseCircle className="IconClose" />
+        <button 
+          type="button"
+          className="IconClose"
+          onClick={() => {toggleMenu(false)}}
+        >
+          <AiFillCloseCircle />
+        </button>
         <h2>Descrição do projeto</h2>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias
-          explicabo quas quis quia, odio minima quisquam nulla omnis nesciunt
-          earum, sint officiis eaque. Eos numquam debitis unde, nihil fuga a?
-        </p>
+        <p>{projectDescription}</p>
       </div>
     </ContainerModalDescription>
   );

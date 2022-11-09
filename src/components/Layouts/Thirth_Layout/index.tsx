@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { ILayout } from "../../../pages/Layout";
 import { About } from "../components/About";
 import { Contacts } from "../components/Contacts";
@@ -12,14 +13,21 @@ import { ContainerThirthLayout } from "./style";
 
 export const ThirthLayout = ({ portfInfos }: ILayout) => {
   const { user_profile, adress, project } = portfInfos;
+  const [isSeeingModal, setIsSeeingModal] = useState<boolean>(false)
 
   return (
     <ContainerThirthLayout>
-      {/* <ModalDescription
-        bgColor={"--colorPrimaryL3"}
-        color={"--titleLayout"}
-        borderColor={"--colorSecundaryL3"}
-      /> */}
+      {isSeeingModal ? 
+        <ModalDescription 
+          projectDescription={""} 
+          bgColor={""} 
+          color={""} 
+          borderColor={""} 
+          toggleMenu={setIsSeeingModal}
+        /> 
+        : 
+          null
+      }
       <header>
         <UserIcon width={8} height={8} borderR={50} border={"borderUserIcon"} />
         <UserInfos
@@ -28,6 +36,7 @@ export const ThirthLayout = ({ portfInfos }: ILayout) => {
           color={"red"}
           personName={user_profile.name}
           birthDate={user_profile.birthDate}
+          age={user_profile.age}
           adress={adress}
         />
         <section className="Section__Header">
@@ -67,12 +76,13 @@ export const ThirthLayout = ({ portfInfos }: ILayout) => {
             formationDescription={user_profile.training}
           />
           <Project
-            width={13}
-            heigth={3.5}
+            padding={0.5}
             fontSize={0.875}
-            color={"white"}
+            titleSize={1.5}
+            color={"--color-grey-0"}
             borderColor={"--colorPrimaryL3"}
             bgColor={"--colorPrimaryL3"}
+            toggleMenu={setIsSeeingModal}
             deployLink={project.projectDeploy_url}
             repositoryLink={project.projectRepository_url}
             projectDescription={project.project_description}

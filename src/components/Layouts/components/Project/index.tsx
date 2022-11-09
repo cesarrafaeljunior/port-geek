@@ -1,3 +1,4 @@
+import { Dispatch, SetStateAction } from "react";
 import { iButtons, ProjectStyled } from "./style";
 
 interface IProject extends iButtons {
@@ -5,11 +6,11 @@ interface IProject extends iButtons {
   repositoryLink: string;
   projectDescription: string;
   projectImg: string;
+  toggleMenu: Dispatch<SetStateAction<boolean>>;
 }
 
 export const Project = ({
-  width,
-  heigth,
+  padding,
   fontSize,
   color,
   bgColor,
@@ -17,13 +18,15 @@ export const Project = ({
   deployLink,
   repositoryLink,
   projectDescription,
-  projectImg
+  titleSize,
+  projectImg,
+  toggleMenu
 }: IProject) => {
   return (
     <ProjectStyled
-      width={width}
-      heigth={heigth}
+      padding={padding}
       fontSize={fontSize}
+      titleSize={titleSize}
       color={color}
       bgColor={bgColor}
       borderColor={borderColor}
@@ -37,9 +40,20 @@ export const Project = ({
           </figure>
         </div>
         <div className="Buttons__Box">
-          <a href={deployLink}>Deploy do projeto</a>
-          <a href={repositoryLink}>Repositório do projeto</a>
-          <button type="button">Descrição do projeto</button>
+          <a 
+            href={deployLink} 
+            target="_blank" 
+            rel="noreferrer"
+          >Deploy do projeto</a>
+          <a 
+            href={repositoryLink} 
+            target="_blank" 
+            rel="noreferrer"
+          >Repositório do projeto</a>
+          <button 
+            type="button"
+            onClick={() => {toggleMenu(true)}}
+          >Descrição do projeto</button>
         </div>
       </div>
     </ProjectStyled>

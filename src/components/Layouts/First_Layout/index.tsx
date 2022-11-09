@@ -5,6 +5,7 @@ import { About } from "../components/About";
 import { Contacts } from "../components/Contacts";
 import { Experience } from "../components/Experience";
 import { Formation } from "../components/Formation";
+import { ModalDescription } from "../components/ModalDescription";
 import { Project } from "../components/Project";
 import { Skills } from "../components/Skills";
 import { UserIcon } from "../components/UserIcon";
@@ -14,11 +15,23 @@ import { BodyFirstLayout, ContainerFirstLayout, HeaderFirstLayout } from "./styl
 
 export const FirstLayout = ({ portfInfos }: ILayout) => {
   const [isSeeingInfos, setIsSeeingInfos] = useState<boolean>(false)
+  const [isSeeingModal, setIsSeeingModal] = useState<boolean>(false)
 
   const {user_profile, adress, project} = portfInfos
 
   return(
     <ContainerFirstLayout>
+      {isSeeingModal ? 
+        <ModalDescription 
+          projectDescription={project.project_description} 
+          bgColor={"--color-grey-0"} 
+          color={"--color-grey-3"} 
+          borderColor={"--color-grey-0"}
+          toggleMenu={setIsSeeingModal}
+        /> 
+        : 
+          null
+      }
       <HeaderFirstLayout seeInfo={isSeeingInfos} >
         <div className="div-infos">
           <UserIcon
@@ -39,6 +52,7 @@ export const FirstLayout = ({ portfInfos }: ILayout) => {
             color={"red"} 
             personName={user_profile.name}
             birthDate={user_profile.birthDate}
+            age={user_profile.age}
             adress={adress}
           />
         </div>
@@ -76,12 +90,13 @@ export const FirstLayout = ({ portfInfos }: ILayout) => {
           experienceDescription={user_profile.experience}
         />
         <Project 
-          fontSize={1.5} 
+          fontSize={1} 
+          titleSize={1.5}
           color={"--font-color"} 
-          width={0} 
-          heigth={0} 
-          bgColor={""} 
-          borderColor={""} 
+          padding={0.5}
+          bgColor={"--color-grey-0"} 
+          borderColor={"--color-grey-3"} 
+          toggleMenu={setIsSeeingModal}
           deployLink={project.projectDeploy_url}
           repositoryLink={project.projectRepository_url}
           projectDescription={project.project_description}

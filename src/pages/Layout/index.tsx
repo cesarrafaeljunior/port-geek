@@ -30,8 +30,8 @@ export const LayoutPage = () => {
   if (!portfInfos) {
     return <h1>loading</h1>;
   }
-
-  switch (portfInfos.selectedLayout) {
+  
+  switch (portfInfos.project.selected_layout) {
     case "layout-1":
       return <FirstLayout portfInfos={portfInfos} />;
     case "layout-2":
