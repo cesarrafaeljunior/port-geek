@@ -19,6 +19,8 @@ import PortfolioProvider from "../../contexts/PortifolioContext";
 import PortFormModal from "../../components/Modals/PortFormModal";
 import { Navigate } from "react-router-dom";
 
+
+
 export const Dashboard = () => {
   const {
     token,
@@ -31,6 +33,7 @@ export const Dashboard = () => {
     setIsShowModalDelete,
     nameUser,
   } = useContext(DashboardContext);
+  
 
   return (
     <>

@@ -51,7 +51,7 @@ import {
   MemberCardImg,
   MemberCardInfo,
 } from "../../components/MemberCard/styles";
-import Carousel from "react-bootstrap/Carousel";
+import { Carousel } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Modal } from "../../components/modalRegister/modalRegister";
 import { ModalLogin } from "../../components/modalLogin/modalLogin";
