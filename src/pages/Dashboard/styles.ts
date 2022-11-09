@@ -217,6 +217,12 @@ export const Container = styled.div`
 
         cursor: pointer;
 
+        transition: 0.5s;
+
+        :active {
+          scale: 0.95;
+        }
+
         :hover {
           opacity: 0.6;
         }
