@@ -12,7 +12,7 @@ import { string } from "yup";
 
 export interface iPortFormModal {
   name: string;
-  age: string;
+  age: number;
   birthDate: string;
   aboutYou: string;
   city: string;
@@ -85,6 +85,7 @@ const PortFormModal = () => {
   } = useForm<iPortFormModal>({
     resolver: yupResolver(schemaPortModal),
   });
+  const [age, setAge] = useState<number>(0);
 
   useEffect(() => {
     reset({
@@ -117,8 +118,6 @@ const PortFormModal = () => {
     changeInputLayout();
   }, [portfolioInfo]);
 
-  const [age, setAge] = useState<number>(0);
-
   function dataOrganize(data: iPortFormModal): iPortDataOrganized {
     let data2 = { ...data, adress: {}, user_profile: {}, project: {} } as any;
     for (let key in data) {
@@ -144,7 +143,7 @@ const PortFormModal = () => {
           delete data2.name;
           break;
         case "age":
-          data2.user_profile.age = data[key];
+          data2.user_profile.age = age || portfolioInfo?.user_profile.age;
           delete data2.age;
           break;
         case "birthDate":
@@ -311,7 +310,7 @@ const PortFormModal = () => {
       ".layoutSelect"
     ) as NodeListOf<HTMLInputElement>;
     inputsLayout.forEach((input) => {
-      console.log({ input });
+      // console.log({ input });
       if (portfolioInfo?.project.selected_layout === String(input.value)) {
         console.log(input.value);
         input.checked = !input.checked;
@@ -386,8 +385,8 @@ const PortFormModal = () => {
             <label>
               <input
                 placeholder="Age"
-                value={age}
                 type="text"
+                value={age}
                 {...register("age")}
                 readOnly
               />
