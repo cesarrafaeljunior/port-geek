@@ -43,7 +43,7 @@ export const ProjectStyled = styled.section<iButtons>`
     font-weight: bold;
     color: ${({ color }) => `var(${color})`};
     background-color: ${({ bgColor }) => `var(${bgColor})`};
-    border: 2px solid ${({ borderColor }) => `var(${borderColor})`};
+    border: 1px solid ${({ borderColor }) => `var(${borderColor})`};
     border-radius: 8px;
     opacity: 0.6;
 
@@ -61,7 +61,7 @@ export const ProjectStyled = styled.section<iButtons>`
     font-weight: bold;
     color: ${({ color }) => `var(${color})`};
     background-color: ${({ bgColor }) => `var(${bgColor})`};
-    border: 2px solid ${({ borderColor }) => `var(${borderColor})`};
+    border: 1px solid ${({ borderColor }) => `var(${borderColor})`};
     border-radius: 8px;
     opacity: 0.6;
 

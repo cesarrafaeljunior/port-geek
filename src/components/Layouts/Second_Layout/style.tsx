@@ -165,7 +165,6 @@ export const ContainerSecondLayout = styled.div`
             color: var(--colorPrimaryL2);
             height: 50px;
             width: 200px;
-            border: solid 1px black;
             &:hover {
               background-color: var(--colorPrimaryL2);
               color: var(--colorSecundaryL2);
@@ -176,7 +175,6 @@ export const ContainerSecondLayout = styled.div`
             padding: 0;
             height: 50px;
             width: 200px;
-            border: solid 1px black;
             &:hover {
               background-color: var(--colorPrimaryL2);
               color: var(--colorSecundaryL2);

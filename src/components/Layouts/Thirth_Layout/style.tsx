@@ -20,7 +20,9 @@ export const ContainerThirthLayout = styled.div`
     color: white;
     background-color: var(--colorPrimaryL3);
 
-    max-width: 30%;
+    width: 90%;
+    margin: 0 auto;
+    
     .Container__UserIcon {
       margin-top: 50px;
     }
@@ -202,6 +204,8 @@ export const ContainerThirthLayout = styled.div`
     flex-direction: row;
     header {
       justify-content: flex-start;
+
+      max-width: 30%;
     }
     .Container__UserIcon {
       align-self: center;

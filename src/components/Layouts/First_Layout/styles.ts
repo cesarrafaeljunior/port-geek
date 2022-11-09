@@ -41,7 +41,7 @@ export const HeaderFirstLayout = styled.header<IHeader>`
   .Container__UserInfos {
     & p,
     & h1 {
-      margin: 0.6em 0;
+      margin: 0.6em 0.2em;
     }
   }
 
@@ -60,8 +60,6 @@ export const HeaderFirstLayout = styled.header<IHeader>`
 
   .div-infos {
     width: 250px;
-
-    margin-left: 6px;
   }
 
   .show-user-infos {
@@ -95,6 +93,10 @@ export const HeaderFirstLayout = styled.header<IHeader>`
 
       width: 25%;
       min-width: 260px;
+    }
+
+    .div-infos {
+      width: unset;
     }
 
     .show-user-infos {
