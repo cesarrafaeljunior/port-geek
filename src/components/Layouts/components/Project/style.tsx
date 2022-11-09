@@ -38,6 +38,7 @@ export const ProjectStyled = styled.section<iButtons>`
     text-decoration: none;
     text-align: center;
     padding: ${({ padding }) => `${padding}em`};
+    min-height: 50px;
 
     font-size: ${({ fontSize }) => `${fontSize}em`};
     font-weight: bold;
@@ -56,6 +57,7 @@ export const ProjectStyled = styled.section<iButtons>`
 
   button {
     padding: ${({ padding }) => `${padding}em`};
+    min-height: 50px;
 
     font-size: ${({ fontSize }) => `${fontSize}em`};
     font-weight: bold;

@@ -55,10 +55,14 @@ export const ContainerSecondLayout = styled.div`
           align-self: flex-end;
         }
       }
+    }
+
+    @media (max-width: 610px) {
       .Container__Contacts {
         flex-direction: column;
       }
     }
+
     @media (min-width: 768px) {
       flex-direction: row;
       .Section__User__Header {

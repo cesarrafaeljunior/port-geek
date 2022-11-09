@@ -52,6 +52,10 @@ export const HeaderFirstLayout = styled.header<IHeader>`
 
     border-top: 2px solid var(--color-grey-0);
     border-bottom: 2px solid var(--color-grey-0);
+
+    & > li {
+      width: 90%;
+    }
   }
 
   .Header__Infos__User {

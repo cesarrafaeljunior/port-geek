@@ -2,6 +2,7 @@ import { BsGithub } from "react-icons/bs";
 import { BsLinkedin } from "react-icons/bs";
 import { BsWhatsapp } from "react-icons/bs";
 import { MdEmail } from "react-icons/md";
+import { toast } from "react-toastify";
 
 import { ContactsStyled } from "./style";
 
@@ -32,20 +33,30 @@ export const Contacts = ({githubLink, linkedInLink, userEmail, phoneNumber}: ICo
         </a>
       </li>
       <li>
-        <a href={`mailto:${userEmail}`} target="_blank" rel="noreferrer">
+        <button
+          onClick={() => {
+            navigator.clipboard.writeText(userEmail)
+            toast.success(`E-mail copiado com sucesso!`)
+          }}
+        >
           <figure>
             <MdEmail className="Contact__Icon Email" />
           </figure>
           <p>{userEmail}</p>
-        </a>
+        </button>
       </li>
       <li>
-        <a href={`tel:${phoneNumber}`} target="_blank" rel="noreferrer">
+        <button
+          onClick={() => {
+            navigator.clipboard.writeText(phoneNumber)
+            toast.success(`Telefone copiado com sucesso!`)
+          }}
+        >
           <figure>
             <BsWhatsapp className="Contact__Icon Whatsapp" />
           </figure>
           <p>{phoneNumber}</p>
-        </a>
+        </button>
       </li>
     </ContactsStyled>
   );

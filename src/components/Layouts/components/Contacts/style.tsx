@@ -17,20 +17,29 @@ export const ContactsStyled = styled.ul`
   }
 
   li {
-    width: 46%;
-    max-width: 205px;
+    /* width: 46%;
+    max-width: 205px; */
     height: 3.125em;
     display: flex;
     gap: 0.313em;
     align-items: center;
     justify-content: flex-start;
 
-    & > a  {
+    & > button {
+      background: none;
+      border: none;
+
+      padding: 0;
+    }
+
+    & > a, & > button  {
       display: flex;
       align-items: center;
       gap: var(--gap-8);
 
       text-decoration: none;
+
+      font-size: 1em;
 
       color: unset;
     }
