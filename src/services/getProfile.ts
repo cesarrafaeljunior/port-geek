@@ -6,7 +6,7 @@ export interface iAPIData {
     email: string,
 }
 
-export default function getProfile(): AxiosPromise<iAPIData> {
+export  function getProfile(): AxiosPromise<iAPIData> {
     const response = api.get('profile')
 
     return response

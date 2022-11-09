@@ -214,6 +214,18 @@ export const Container = styled.div`
         height: auto;
 
         margin-top: 1rem;
+
+        cursor: pointer;
+
+        transition: 0.5s;
+
+        :active {
+          scale: 0.95;
+        }
+
+        :hover {
+          opacity: 0.6;
+        }
       }
 
       .buttons {

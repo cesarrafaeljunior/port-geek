@@ -1,6 +1,6 @@
 import { Container, Contem, Header, Main, Form } from "./style";
 import { MdOutlineClose } from "react-icons/md";
-import { createRef, useContext, useEffect } from "react";
+import { createRef, useContext } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { InputComponent, PasswordInputComponent } from "../Inputs";
@@ -18,8 +18,6 @@ export function Modal({ setModal }: iModal) {
   const {
     handleRegister,
     emaiDefault,
-    setIsOpenModalRegister,
-    setIsOpenModalLogin,
     isOpenModalRegister,
   } = useContext(UserContext);
 
@@ -31,20 +29,6 @@ export function Modal({ setModal }: iModal) {
     resolver: yupResolver(registerSchema),
     defaultValues: { email: emaiDefault },
   });
-
-  useEffect(() => {
-    const handleOnClick = (event: MouseEvent) => {
-      if (!modalRef.current?.contains(event.target as Element)) {
-        setModal(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleOnClick);
-
-    return () => {
-      document.removeEventListener("mousedown", handleOnClick);
-    };
-  }, []);
 
   if (!isOpenModalRegister) {
     return null;
@@ -61,9 +45,6 @@ export function Modal({ setModal }: iModal) {
         <Main>
           <Form
             onSubmit={handleSubmit(handleRegister)}
-
-            // setIsOpenModalRegister(false)
-            // setIsOpenModalLogin(true)
           >
             <InputComponent
               labelRefer="Name"
@@ -100,7 +81,6 @@ export function Modal({ setModal }: iModal) {
             <PasswordInputComponent
               labelRefer="Confirm Password"
               labelText="Confirm Password"
-              type="password"
               placeholder="Enter your password"
               autoComplete="new-password"
               register={register}

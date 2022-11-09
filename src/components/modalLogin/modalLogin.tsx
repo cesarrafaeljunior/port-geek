@@ -1,6 +1,6 @@
 import { Container, Contem, Header, Main, Form } from "./style";
 import { MdOutlineClose } from "react-icons/md";
-import { createRef, useContext, useEffect } from "react";
+import { createRef, useContext } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { InputComponent, PasswordInputComponent } from "../Inputs";
@@ -8,7 +8,6 @@ import { ButtonComponent } from "../Buttons";
 import { UserContext } from "../../contexts/userContext";
 import { loginSchema } from "../../schemas/userSchema";
 import { iUserLogin } from "../../services/postLogin";
-
 export function ModalLogin() {
   const modalRef = createRef<HTMLDivElement>();
   const { handleLogin, isOpenModalLogin, setIsOpenModalLogin } =
@@ -22,19 +21,6 @@ export function ModalLogin() {
     resolver: yupResolver(loginSchema),
   });
 
-  // useEffect(() => {
-  //   const handleOnClick = (event: MouseEvent) => {
-  //     if (!modalRef.current?.contains(event.target as Element)) {
-  //       setIsOpenModalLogin(false);
-  //     }
-  //   };
-
-  //   document.addEventListener("mousedown", handleOnClick);
-
-  //   return () => {
-  //     document.removeEventListener("mousedown", handleOnClick);
-  //   };
-  // }, []);
 
   if (!isOpenModalLogin) {
     return null;
