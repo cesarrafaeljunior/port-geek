@@ -46,8 +46,9 @@ export function UserProvider({ children }: iUserProvider): JSX.Element {
       successToast("Usuário cadastrado!");
       setIsOpenModalRegister(false);
       setIsOpenModalLogin(true);
-    } catch (error) {
-      errorToast("Ocorreu um erro!");
+    } catch (error: any) {
+      const message: string = `${error.response.data}!`;
+      errorToast(message);
     }
   };
 

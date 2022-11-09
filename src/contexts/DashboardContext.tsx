@@ -19,7 +19,8 @@ interface IDashboardContext {
 }
 
 export interface IPortfolioInfo {
-  userId: number | string;
+  userId: number;
+  id?: number;
   adress: {
     city: string;
     country: string;
@@ -48,7 +49,6 @@ export interface IPortfolioInfo {
     telephone: string;
     training: string;
   };
-  id: number;
 }
 
 export const DashboardContext = createContext<IDashboardContext>(
@@ -82,21 +82,17 @@ export const DashboardProvider = () => {
     getPort();
   }, []);
 
-  const sendPortifolio = async (data: iPortDataOrganized) => {
-    const data2 = { ...data, userId: idUser };
-    console.log(data2);
+  async function deletePort() {
     try {
-      const response = await api.post("/portfolio", data2);
-      console.log(await response);
-      toast.success("Portfolio created successfully");
-      setPortfolioInfo(response.data);
-      setPortCreateAuth(false);
+      await api.delete(`/portfolio/${portfolioInfo?.id}`);
+      toast.success("Portfolio successfully deleted!");
+      setIsShowModalDelete(false);
+      setPortfolioInfo(null);
     } catch (error) {
       error && toast.error("Something wrong!");
       console.log(error);
     }
-  };
-
+  }
   const editPortfolio = async (data: iPortDataOrganized) => {
     try {
       const response = await api.patch(`/portfolio/${portfolioInfo?.id}`, data);
@@ -124,7 +120,7 @@ export const DashboardProvider = () => {
       setPortfolioInfo(response.data);
       setPortCreateAuth(false);
     } catch (error) {
-      error && toast.error("Something wrong!");
+      console.log(error);
     }
   };
 
