@@ -9,121 +9,127 @@ import {
 import { DashboardContext } from "../../contexts/DashboardContext";
 import { useContext } from "react";
 import { toast } from "react-toastify";
-import imgPortfolio1 from "../../assets/img/05_resume_template.png";
-import imgPortfolio2 from "../../assets/img/1092.png";
-import imgPortfolio3 from "../../assets/img/5215985.png";
+import imgPortfolio1 from "../../assets/img/Layout-1.png";
+import imgPortfolio2 from "../../assets/img/Layout-2.png";
+import imgPortfolio3 from "../../assets/img/Layout-3.png";
 import backGroundBtn from "../../assets/img/backgroundBtn.png";
 import logo from "../../assets/logo/logo.png";
 import { ModalDelete } from "../../components/ModalDelete";
-import PortfolioProvider from "../../contexts/PortifolioContext";
 import PortFormModal from "../../components/Modals/PortFormModal";
-import { Navigate } from "react-router-dom";
+
+import { UserContext } from "../../contexts/userContext";
 
 
 
 export const Dashboard = () => {
   const {
-    token,
     portfolioInfo,
     portCreateAuth,
     setPortCreateAuth,
-    isShowModalFormEdit,
-    setIsShowModalFormEdit,
     isShowModalDelete,
     setIsShowModalDelete,
-    nameUser,
+    setEditPortAuth,
   } = useContext(DashboardContext);
   
 
+  const baseLink: string = window.location.href;
+  const shareLink: string = `${baseLink.slice(
+    0,
+    baseLink.length - 9
+  )}portfolio/${portfolioInfo?.id}`;
+
+  const { user, setUser } = useContext(UserContext);
   return (
-    <>
-      {token ? (
-        <Container>
-          <header>
-            <div className="div-header">
-              <img className="logo" src={logo} alt="" />
+    <Container>
+      <header>
+        <div className="div-header">
+          <img className="logo" src={logo} alt="" />
 
-              <div className="container-user">
-                <span>{nameUser}</span>
-                <div className="div-link">
-                  <Link
-                    to={"/"}
-                    onClick={() => {
-                      window.localStorage.clear();
-                      toast.success("Logout Successfully!");
-                    }}
-                  >
-                    Logout
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </header>
-
-          <div className="container-secondary">
-            {portfolioInfo && portfolioInfo.id ? (
-              <main>
-                {portfolioInfo.selectedLayout === "layout-1" && (
-                  <img className="mini-port" src={imgPortfolio1} alt="" />
-                )}
-                {portfolioInfo.selectedLayout === "layout-2" && (
-                  <img className="mini-port" src={imgPortfolio2} alt="" />
-                )}
-                {portfolioInfo.selectedLayout === "layout-3" && (
-                  <img className="mini-port" src={imgPortfolio3} alt="" />
-                )}
-                <div className="buttons">
-                  <IconEdit onClick={() => setPortCreateAuth(true)} />
-                  <IconTrash onClick={() => setIsShowModalDelete(true)} />
-                  <IconShare
-                    onClick={() => {
-                      toast.success("Link copiado com sucesso!");
-                      navigator.clipboard.writeText(
-                        `${window.location.href}/portfolio/${portfolioInfo.id}`
-                      );
-                    }}
-                  />
-                </div>
-              </main>
-            ) : (
-              <div className="div-alert">
-                <p>You don't have created a Portfolio yet!</p>
-              </div>
-            )}
-            <div className="container-final">
-              <ButtonNewLayout
-                backgroundColor={
-                  portfolioInfo && portfolioInfo.id
-                    ? "var(--color-grey-2)"
-                    : "var(--color-grey-3)"
-                }
-                cursorPointer={
-                  portfolioInfo && portfolioInfo.id ? "unset" : "pointer"
-                }
-                setScale={portfolioInfo && portfolioInfo.id ? "unset" : "0.95"}
-                type="button"
+          <div className="container-user">
+            <span>{user?.name}</span>
+            <div className="div-link">
+              <Link
+                to={"/"}
                 onClick={() => {
-                  portfolioInfo && portfolioInfo.id
-                    ? toast.warning(
-                        "You need to delete the current Portfolio to create a new one!"
-                      )
-                    : setPortCreateAuth(true);
+                  window.localStorage.clear();
+                  toast.success("Logout Successfully!");
+                  setUser(null);
                 }}
               >
-                Create Portfolio
-              </ButtonNewLayout>
-              <img className="background-btn" src={backGroundBtn} alt="" />
+                Logout
+              </Link>
+              <div></div>
             </div>
           </div>
-          {isShowModalDelete && <ModalDelete />}
-          {portCreateAuth && <PortFormModal />}
-          <PortfolioProvider>
-            <PortFormModal />
-          </PortfolioProvider>
-        </Container>
-      ) : (
-        <Navigate to={"/"} />
-      )}
-    </>
+        </div>
+      </header>
+
+      <div className="container-secondary">
+        {portfolioInfo?.id ? (
+          <main>
+            {portfolioInfo.project.selected_layout === "layout-1" && (
+              <img
+                className="mini-port"
+                src={imgPortfolio1}
+                alt=""
+                onClick={() => window.location.assign(shareLink)}
+              />
+            )}
+            {portfolioInfo.project.selected_layout === "layout-2" && (
+              <img
+                className="mini-port"
+                src={imgPortfolio2}
+                alt=""
+                onClick={() => window.location.assign(shareLink)}
+              />
+            )}
+            {portfolioInfo.project.selected_layout === "layout-3" && (
+              <img
+                className="mini-port"
+                src={imgPortfolio3}
+                alt=""
+                onClick={() => window.location.assign(shareLink)}
+              />
+            )}
+            <div className="buttons">
+              <IconEdit onClick={() => setEditPortAuth(true)} />
+              <IconTrash onClick={() => setIsShowModalDelete(true)} />
+              <IconShare
+                onClick={() => {
+                  toast.success("Link copiado com sucesso!");
+                  navigator.clipboard.writeText(`${shareLink}`);
+                }}
+              />
+            </div>
+          </main>
+        ) : (
+          <div className="div-alert">
+            <p>You don't have created a Portfolio yet!</p>
+          </div>
+        )}
+        <div className="container-final">
+          <ButtonNewLayout
+            backgroundColor={
+              portfolioInfo?.id ? "var(--color-grey-2)" : "var(--color-grey-3)"
+            }
+            cursorPointer={portfolioInfo?.id ? "unset" : "pointer"}
+            setScale={portfolioInfo?.id ? "unset" : "0.95"}
+            type="button"
+            onClick={() => {
+              portfolioInfo
+                ? toast.warning(
+                    "You need to delete the current Portfolio to create a new one!"
+                  )
+                : setPortCreateAuth(true);
+            }}
+          >
+            Create Portfolio
+          </ButtonNewLayout>
+          <img className="background-btn" src={backGroundBtn} alt="" />
+        </div>
+      </div>
+      <ModalDelete />
+      <PortFormModal />
+    </Container>
   );
 };

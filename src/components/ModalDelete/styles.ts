@@ -7,6 +7,7 @@ export const Container = styled.div`
   position: fixed;
   width: 100%;
   min-height: 100vh;
+  z-index: 1;
   background-color: rgba(0, 0, 0, 0.5);
 
   button {

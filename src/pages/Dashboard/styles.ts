@@ -82,6 +82,7 @@ export const Container = styled.div`
     height: 6rem;
 
     background-color: var(--color-primary);
+    border-bottom: 2px solid var(--color-black-mode);
 
     @media (max-width: 768px) {
       height: 8rem;
@@ -122,6 +123,31 @@ export const Container = styled.div`
         color: var(--color-grey-3);
 
         font-weight: var(--font-weight-600);
+      }
+    }
+
+    .div-link {
+      :hover {
+        div {
+          border-bottom: 2px solid black;
+          animation: showBar 0.3s;
+        }
+      }
+      div {
+        border-bottom: 2px solid transparent;
+        width: 100%;
+      }
+    }
+
+    @keyframes showBar {
+      0% {
+        width: 10%;
+      }
+      50% {
+        width: 50%;
+      }
+      100% {
+        width: 100%;
       }
     }
   }
@@ -188,6 +214,18 @@ export const Container = styled.div`
         height: auto;
 
         margin-top: 1rem;
+
+        cursor: pointer;
+
+        transition: 0.5s;
+
+        :active {
+          scale: 0.95;
+        }
+
+        :hover {
+          opacity: 0.6;
+        }
       }
 
       .buttons {

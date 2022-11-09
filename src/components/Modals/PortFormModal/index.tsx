@@ -2,20 +2,17 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import PortFormModalStyled from "./styles";
 import { CgClose } from "react-icons/cg";
-import {
-  iPortDataOrganized,
-  PortifolioContext,
-} from "../../../contexts/PortifolioContext";
-import { useContext } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import { DashboardContext } from "../../../contexts/DashboardContext";
-import * as yup from "yup";
 import layout1 from "../../../assets/img/Layout-1.png";
 import layout2 from "../../../assets/img/Layout-2.png";
 import layout3 from "../../../assets/img/Layout-3.png";
+import { schemaPortModal } from "../../../schemas/portSchema";
+import { string } from "yup";
 
-interface iPortFormModal {
+export interface iPortFormModal {
   name: string;
-  age: number;
+  age: string;
   birthDate: string;
   aboutYou: string;
   city: string;
@@ -38,84 +35,89 @@ interface iPortFormModal {
   selected_layout: string;
 }
 
-const schemaMaxDate = () => {
-  const date = new Date();
-  const dateArray = date.toLocaleDateString().split("/");
-  return `${dateArray[0]}/${dateArray[1]}/${+dateArray[2] - 18}`;
-};
-const schema = yup.object({
-  name: yup.string().required("Name is required"),
-  age: yup.number(),
-  birthDate: yup
-    .date()
-    .max(schemaMaxDate(), "Must be over 18 years old")
-    .required("Birth date is required")
-    .typeError("Birth date is required")
-    .nullable(),
-  aboutYou: yup.string().required("Description about you is required"),
-  city: yup
-    .string()
-    .required("City is required")
-    .matches(/[-]{1}[A-Z]{2}/g, "The format is City-STATE"),
-  country: yup.string().required("Country is required"),
-  email: yup
-    .string()
-    .email("Enter a valid email")
-    .required("Email is required"),
-  experience: yup.string().required("Experience is required"),
-  gender: yup.string().required("Gender is required"),
-  github_url: yup
-    .string()
-    .url("Enter a valid GitHub profile URL")
-    .required("GitHub profile URL is required"),
-  linkedin_url: yup
-    .string()
-    .url("Enter a valid Linkedin profile URL")
-    .required("Linkedin URL is required"),
-  projectDeploy_url: yup
-    .string()
-    .url("Enter a valid project deploy URL")
-    .required("Project deploy URL is required"),
-  projectImage_url: yup
-    .string()
-    .url("Enter a valid project image URL")
-    .required("Project image URL is required"),
-  projectRepository_url: yup
-    .string()
-    .url("Enter a valid project repository URL")
-    .required("Project repository URL is required"),
-  project_description: yup.string().required("Project description is required"),
-  project_title: yup.string().required("Project title is required"),
-  skills: yup.string().required("Skills is required"),
-  street: yup
-    .string()
-    .required("Street is required")
-    .matches(/[\d]+/g, "Must contain the address number")
-    .matches(
-      /([\d](,)[a-zA-Z]|[\d][\s]+[a-zA-Z])+|([\d](,)[\s]+[a-zA-Z]|[\d][\s]+[a-zA-Z])+|([\d][\s]+(,)[\s]+[a-zA-Z]|[\d][\s]+[a-zA-Z])/g,
-      "Must contain the address district"
-    ),
-  telephone: yup
-    .string()
-    .required("Telephone contact is required")
-    .matches(/([\d]{2})[\s][9][\d]{8}/g, "The format should be: DDD 9XXXXXXXX"),
-  training: yup.string().required("Training is required"),
-  zipCode: yup.string().required("ZipCode is required"),
-  selected_layout: yup.string(),
-});
+export interface iPortDataOrganized {
+  adress: {
+    city: string;
+    country: string;
+    street: string;
+    zipCode: string;
+  };
+  project: {
+    projectDeploy_url: string;
+    projectImage_url: string;
+    projectRepository_url: string;
+    project_description: string;
+    project_title: string;
+    selected_layout: string;
+  };
+  user_profile: {
+    aboutYou: string;
+    age: string;
+    birthDate: string | any;
+    email: string;
+    experience: string;
+    genre: string;
+    github_url: string;
+    linkedin_url: string;
+    name: string;
+    skills: string;
+    telephone: string;
+    training: string;
+  };
+}
 
 const PortFormModal = () => {
+  const {
+    portCreateAuth,
+    setPortCreateAuth,
+    editPortAuth,
+    setEditPortAuth,
+    sendPortifolio,
+    portfolioInfo,
+    editPortfolio,
+  } = useContext(DashboardContext);
+
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
   } = useForm<iPortFormModal>({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(schemaPortModal),
   });
 
-  const { portCreateAuth, setPortCreateAuth } = useContext(DashboardContext);
-  const { sendPortifolio } = useContext(PortifolioContext);
+  useEffect(() => {
+    reset({
+      name: portfolioInfo?.user_profile.name,
+      age: portfolioInfo?.user_profile.age,
+      birthDate: portfolioInfo?.user_profile.birthDate
+        .split("/")
+        .reverse()
+        .join("-"),
+      aboutYou: portfolioInfo?.user_profile.aboutYou,
+      city: portfolioInfo?.adress.city,
+      country: portfolioInfo?.adress.country,
+      email: portfolioInfo?.user_profile.email,
+      experience: portfolioInfo?.user_profile.experience,
+      gender: portfolioInfo?.user_profile.gender,
+      github_url: portfolioInfo?.user_profile.github_url,
+      linkedin_url: portfolioInfo?.user_profile.linkedin_url,
+      projectDeploy_url: portfolioInfo?.project.projectDeploy_url,
+      projectImage_url: portfolioInfo?.project.projectImage_url,
+      projectRepository_url: portfolioInfo?.project.projectRepository_url,
+      project_description: portfolioInfo?.project.project_description,
+      project_title: portfolioInfo?.project.project_title,
+      skills: portfolioInfo?.user_profile.skills,
+      street: portfolioInfo?.adress.street,
+      telephone: portfolioInfo?.user_profile.telephone,
+      training: portfolioInfo?.user_profile.training,
+      zipCode: portfolioInfo?.adress.zipCode,
+      selected_layout: portfolioInfo?.project.selected_layout,
+    });
+    changeInputLayout();
+  }, [portfolioInfo]);
+
+  const [age, setAge] = useState<number>(0);
 
   function dataOrganize(data: iPortFormModal): iPortDataOrganized {
     let data2 = { ...data, adress: {}, user_profile: {}, project: {} } as any;
@@ -217,22 +219,20 @@ const PortFormModal = () => {
   }
 
   function setAgeValue(event: any) {
-    const inputAge = document.getElementById("age") as HTMLInputElement;
     const birthArray = event.target.value.split("-");
     const date = new Date();
-    const currentYear = date.getFullYear();
-    const currentMonth = date.getMonth();
-    const currentDay = date.getDate();
+    const localDate = date.toLocaleDateString().split("/").reverse();
+    const currentYear = +localDate[0];
+    const currentMonth = +localDate[1];
+    const currentDay = +localDate[2];
     let AgePreview = currentYear - +birthArray[0];
-
     if (
       currentMonth < +birthArray[1] ||
       (currentMonth == +birthArray[1] && currentDay < +birthArray[2])
     ) {
       AgePreview--;
     }
-    inputAge.value = String(AgePreview);
-    inputAge.classList.remove("invalid");
+    setAge(AgePreview);
   }
 
   function telOrganize(event: any) {
@@ -276,7 +276,7 @@ const PortFormModal = () => {
         }
       }
       // SEMELHANTES VALIDAÇÔES MAS NO EVENTO DE INPUT
-      input.addEventListener("input", (event) => {
+      input.addEventListener("input", () => {
         if (input.value.trim() == "") {
           input.classList.add("invalid");
         } else {
@@ -306,13 +306,31 @@ const PortFormModal = () => {
     });
   }
 
+  function changeInputLayout() {
+    const inputsLayout = document.querySelectorAll(
+      ".layoutSelect"
+    ) as NodeListOf<HTMLInputElement>;
+    inputsLayout.forEach((input) => {
+      console.log({ input });
+      if (portfolioInfo?.project.selected_layout === String(input.value)) {
+        console.log(input.value);
+        input.checked = !input.checked;
+      }
+    });
+  }
+
   function onSubmit(data: iPortFormModal) {
     const portfolio = dataOrganize(data);
     console.log(portfolio);
-    // sendPortifolio(portfolio);
+    if (portCreateAuth) {
+      sendPortifolio(portfolio);
+    }
+    if (editPortAuth) {
+      editPortfolio(portfolio);
+    }
   }
 
-  if (!portCreateAuth) {
+  if (!portCreateAuth && !editPortAuth) {
     return null;
   }
 
@@ -324,12 +342,14 @@ const PortFormModal = () => {
           className="button-close"
           onClick={() => {
             setPortCreateAuth(false);
+            setEditPortAuth(false);
             reset();
           }}
         >
           <CgClose />
         </button>
-        <h2>Enter data to generate layout</h2>
+        {portCreateAuth && <h2>Enter data to generate your portfolio</h2>}
+        {editPortAuth && <h2>Edit the data of your portfolio</h2>}
         <div className="formInput">
           <label>
             <input
@@ -365,10 +385,9 @@ const PortFormModal = () => {
           <div className="formInput">
             <label>
               <input
-                id="age"
                 placeholder="Age"
-                type="number"
-                defaultValue={0}
+                value={age}
+                type="text"
                 {...register("age")}
                 readOnly
               />
@@ -661,6 +680,7 @@ const PortFormModal = () => {
               <label>
                 <img src={layout1} alt="layout 1" />
                 <input
+                  className="layoutSelect"
                   type="radio"
                   value={"layout-1"}
                   {...register("selected_layout")}
@@ -673,6 +693,7 @@ const PortFormModal = () => {
               <label>
                 <img src={layout2} alt="layout 2" />
                 <input
+                  className="layoutSelect"
                   type="radio"
                   value={"layout-2"}
                   {...register("selected_layout")}
@@ -684,6 +705,7 @@ const PortFormModal = () => {
               <label>
                 <img src={layout3} alt="layout 3" />
                 <input
+                  className="layoutSelect"
                   type="radio"
                   value={"layout-3"}
                   {...register("selected_layout")}
@@ -698,6 +720,7 @@ const PortFormModal = () => {
               className="button-default"
               onClick={() => {
                 setPortCreateAuth(false);
+                setEditPortAuth(false);
                 reset();
               }}
             >
