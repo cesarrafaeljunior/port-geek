@@ -15,7 +15,6 @@ import AnchorLink from "react-anchor-link-smooth-scroll";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IconContext } from "react-icons";
 import { GeneralContext } from "../../contexts/GeneralContext";
-import { ButtonComponent } from "../Buttons";
 import { UserContext } from "../../contexts/userContext";
 
 
@@ -36,7 +35,7 @@ const HeaderSpace = () => {
       .then(() => {
         setCurrentLanguage(value);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.error(err));
   };
   return (
     <>

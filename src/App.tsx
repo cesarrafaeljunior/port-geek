@@ -1,6 +1,3 @@
-import { useContext } from "react";
-import { UserProvider } from "./contexts/userContext";
-
 import RoutesMain from "./routes";
 import GeneralProvider from "./contexts/GeneralContext";
 import GlobalStyle from "./styles/modules/global";

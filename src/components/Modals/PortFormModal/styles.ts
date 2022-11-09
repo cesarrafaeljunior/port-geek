@@ -73,6 +73,7 @@ const PortFormModalStyled = styled.div`
       font-size: var(--font-text-16);
       border: 2px solid transparent;
       transition: 0.3s;
+      outline: none;
     }
     input:focus,
     select:focus,

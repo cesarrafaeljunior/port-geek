@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import PortFormModalStyled from "./styles";
 import { CgClose } from "react-icons/cg";
-import { useContext, useEffect, useMemo, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { DashboardContext } from "../../../contexts/DashboardContext";
 import layout1 from "../../../assets/img/Layout-1.png";
 import layout2 from "../../../assets/img/Layout-2.png";
@@ -328,7 +328,6 @@ const PortFormModal = () => {
 
   function onSubmit(data: iPortFormModal) {
     const portfolio = dataOrganize(data);
-    console.log(portfolio);
     if (portCreateAuth) {
       sendPortifolio(portfolio);
     }
@@ -378,6 +377,7 @@ const PortFormModal = () => {
               <input
                 placeholder="Birth date"
                 type="date"
+                pattern="[0-9]{4}-[0-1]{1}[0-9]{1}-[0-9]{2}"
                 {...register("birthDate")}
                 onInput={(event) => setAgeValue(event)}
               />

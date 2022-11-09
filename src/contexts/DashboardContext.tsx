@@ -1,5 +1,5 @@
 import { api } from "../services/api";
-import React, { useState, useEffect, createContext, useContext } from "react";
+import React, { useState, useEffect, createContext } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { iPortDataOrganized } from "../components/Modals/PortFormModal";
@@ -71,10 +71,13 @@ export const DashboardProvider = () => {
           localStorage.getItem("@PortGeek:id")
         );
         const response = await api.get(`/portfolio?userId=${idUser}`);
+
         const { data } = response;
+
         setPortfolioInfo(data[0]);
       } catch (error) {
         window.localStorage.removeItem("@PortGeek:token");
+
         navigate("/");
       }
     }
@@ -85,25 +88,31 @@ export const DashboardProvider = () => {
   async function deletePort() {
     try {
       await api.delete(`/portfolio/${portfolioInfo?.id}`);
+
       toast.success("Portfolio successfully deleted!");
+
       setIsShowModalDelete(false);
+
       setPortfolioInfo(null);
     } catch (error) {
-      console.log(error);
+      console.error(error);
       toast.error("Something wrong! Try to reload the page");
     }
   }
+  
   const editPortfolio = async (data: iPortDataOrganized) => {
-    try {
+    try {            
       const response = await api.patch(`/portfolio/${portfolioInfo?.id}`, data);
-      console.log(await response);
+
       toast.success("Portfolio successfully edited", {
         autoClose: 2000,
       });
+
       setPortfolioInfo(response.data);
+
       setEditPortAuth(false);
     } catch (error) {
-      console.log(error);
+      console.error(error);
       toast.error("Something wrong! Try to reload the page");
     }
   };
@@ -114,14 +123,14 @@ export const DashboardProvider = () => {
     );
     const data2 = { userId: idUser, ...data };
     try {
-      console.log(data2);
       const response = await api.post("/portfolio", data2);
-      console.log(await response);
       toast.success("Portfolio created successfully");
+
       setPortfolioInfo(response.data);
+
       setPortCreateAuth(false);
     } catch (error) {
-      console.log(error);
+      console.error(error);
       toast.error("Something wrong! Try to reload the page");
     }
   };

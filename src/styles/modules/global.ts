@@ -48,6 +48,19 @@ const GlobalStyle = createGlobalStyle`
     --color-transparent: #00000090;
     --color-transparent-01: rgba( 255, 255, 255, 0.18 );
 
+    --font-color: #000000;
+
+    /*LayoutsColor*/
+
+    /*Layout-2*/
+    --colorPrimaryL2:#393939;
+    --colorSecundaryL2:#efefef;
+    --titleLayout2: #E4E1E1;
+
+    /*Layout-3*/
+    --colorPrimaryL3:#09002D;
+    --colorSecundaryL3:#A52F2F;
+    --titleLayout: #E4E1E1;
     
     /* Size Elements */
     --button-height-default: 48px;
@@ -60,7 +73,7 @@ const GlobalStyle = createGlobalStyle`
 
     /* Font Family */
     --font-primary-nunito: 'Nunito';
-    --font-secondary-inter: 'Inter';
+    --font-secondary-inter: 'Inter',sans-serif;
 
     /*  Text Sizes */
     --font-grand-60: 3.875rem;
@@ -121,6 +134,7 @@ const GlobalStyle = createGlobalStyle`
     --gap-24: 24px;
     --gap-20: 20px; 
     --gap-16: 16px; 
+    --gap-8: 8px; 
     }
 
     html, body, div, span, applet, object, iframe,
@@ -143,7 +157,11 @@ const GlobalStyle = createGlobalStyle`
         font: inherit;
         font-family:var(--font-secondary-inter) ;
         vertical-align: baseline;
+<<<<<<< HEAD
         outline: none;
+=======
+        font-family: var(--font-secondary-inter);
+>>>>>>> cesar-criacao/layouts
     }
 
     textarea {

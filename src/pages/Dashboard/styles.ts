@@ -76,7 +76,6 @@ export const Container = styled.div`
 
     display: flex;
     justify-content: center;
-    gap: 60rem;
 
     width: 100%;
     height: 6rem;
@@ -104,6 +103,10 @@ export const Container = styled.div`
     .logo {
       margin-left: 10rem;
 
+      @media (max-width: 1516px) {
+        margin-left: 0;
+      }
+
       @media (max-width: 768px) {
         margin-left: 0;
       }
@@ -114,6 +117,10 @@ export const Container = styled.div`
       gap: 40px;
 
       margin-right: 5rem;
+
+      @media (max-width: 1344px) {
+        margin-right: 1rem;
+      }
 
       @media (max-width: 768px) {
         margin-right: 0;
@@ -211,9 +218,10 @@ export const Container = styled.div`
 
       .mini-port {
         width: 90%;
-        height: auto;
+        height: auto;   
 
-        margin-top: 1rem;
+        display: block;
+        margin: 1rem auto 0;
 
         cursor: pointer;
 
@@ -253,8 +261,11 @@ export const Container = styled.div`
       .background-btn {
         width: 500px;
 
-        @media (max-width: 907px) {
+        @media (max-width: 1040px) {
           width: 400px;
+        }
+        @media (max-width: 851px) {
+          width: 350px;
         }
 
         @media (max-width: 768px) {
