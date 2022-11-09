@@ -3,7 +3,6 @@ import React, { useState, useEffect, createContext, useContext } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { iPortDataOrganized } from "../components/Modals/PortFormModal";
-import { UserContext } from "./userContext";
 
 interface IDashboardContext {
   portfolioInfo: IPortfolioInfo | null;
@@ -48,6 +47,7 @@ export interface IPortfolioInfo {
     skills: string;
     telephone: string;
     training: string;
+    userImage_url: string;
   };
 }
 

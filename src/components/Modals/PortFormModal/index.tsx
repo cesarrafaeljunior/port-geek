@@ -8,7 +8,6 @@ import layout1 from "../../../assets/img/Layout-1.png";
 import layout2 from "../../../assets/img/Layout-2.png";
 import layout3 from "../../../assets/img/Layout-3.png";
 import { schemaPortModal } from "../../../schemas/portSchema";
-import { string } from "yup";
 
 export interface iPortFormModal {
   name: string;
@@ -33,6 +32,7 @@ export interface iPortFormModal {
   training: string;
   zipCode: string;
   selected_layout: string;
+  userImage_url: string;
 }
 
 export interface iPortDataOrganized {
@@ -63,6 +63,7 @@ export interface iPortDataOrganized {
     skills: string;
     telephone: string;
     training: string;
+    userImage_url: string;
   };
 }
 
@@ -114,6 +115,7 @@ const PortFormModal = () => {
       training: portfolioInfo?.user_profile.training,
       zipCode: portfolioInfo?.adress.zipCode,
       selected_layout: portfolioInfo?.project.selected_layout,
+      userImage_url: portfolioInfo?.user_profile.userImage_url,
     });
     changeInputLayout();
   }, [portfolioInfo]);
@@ -179,6 +181,10 @@ const PortFormModal = () => {
         case "telephone":
           data2.user_profile.telephone = data[key];
           delete data2.telephone;
+          break;
+        case "userImage_url":
+          data2.user_profile.userImage_url = data[key];
+          delete data2.userImage_url;
           break;
         case "github_url":
           data2.user_profile.github_url = data[key];
@@ -313,7 +319,7 @@ const PortFormModal = () => {
       // console.log({ input });
       if (portfolioInfo?.project.selected_layout === String(input.value)) {
         console.log(input.value);
-        input.checked = !input.checked;
+        input.checked = true;
       }
     });
   }
@@ -511,6 +517,20 @@ const PortFormModal = () => {
         <div className="formInput">
           <label>
             <input
+              placeholder="Your profile image(URL)"
+              type="url"
+              {...register("userImage_url")}
+            />
+            {!errors.userImage_url ? (
+              <span className="label">Profile Image</span>
+            ) : (
+              <span>{errors.userImage_url?.message}</span>
+            )}
+          </label>
+        </div>
+        <div className="formInput">
+          <label>
+            <input
               placeholder="Github profile(URL)"
               type="url"
               {...register("github_url")}
@@ -556,12 +576,12 @@ const PortFormModal = () => {
         <div className="formInput">
           <label>
             <input
-              placeholder="Training"
+              placeholder="Formation"
               type="text"
               {...register("training")}
             />
             {!errors.training ? (
-              <span className="label">Training</span>
+              <span className="label">Formation</span>
             ) : (
               <span>{errors.training.message}</span>
             )}

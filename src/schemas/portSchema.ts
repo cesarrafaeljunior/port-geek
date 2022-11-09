@@ -64,7 +64,11 @@ export const schemaPortModal = yup.object({
     .string()
     .required("Telephone contact is required")
     .matches(/([\d]{2})[\s][9][\d]{8}/g, "The format should be: DDD 9XXXXXXXX"),
-  training: yup.string().required("Training is required"),
+  userImage_url: yup
+    .string()
+    .url("Enter a valid project image URL")
+    .required("Project image URL is required"),
+  training: yup.string().required("Formation is required"),
   zipCode: yup.string().required("ZipCode is required"),
   selected_layout: yup.string(),
 });
