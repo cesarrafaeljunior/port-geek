@@ -141,6 +141,7 @@ const GlobalStyle = createGlobalStyle`
         border: 0;
         font-size: 100%;
         font: inherit;
+        font-family:var(--font-secondary-inter) ;
         vertical-align: baseline;
         outline: none;
     }

@@ -1,5 +1,5 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { successToast, errorToast } from "../../toast/toast";
 import { api, token } from "../../services/api";
 import { postLogin, iUserLogin } from "../../services/postLogin";
@@ -116,7 +116,7 @@ export function UserProvider({ children }: iUserProvider): JSX.Element {
         setLoading,
       }}
     >
-      {children}
+      <Outlet />
     </UserContext.Provider>
   );
 }

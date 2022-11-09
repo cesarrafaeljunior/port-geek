@@ -10,9 +10,7 @@ function App() {
   return (
     <>
       <GeneralProvider>
-        <UserProvider>
-          <RoutesMain />
-        </UserProvider>
+        <RoutesMain />
       </GeneralProvider>
       <GlobalStyle />
       <ToastContainer

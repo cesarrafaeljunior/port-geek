@@ -4,6 +4,7 @@ import ProtectedRoutes from "../components/ProtectedRoutes";
 import { DashboardProvider } from "../contexts/DashboardContext";
 import { Dashboard } from "../pages/Dashboard";
 import LandingPage from "../pages/LandingPage/LandingPage";
+import NotFoundPage from "../pages/NotFound";
 
 const RoutesMain = () => (
   <Routes>
@@ -16,7 +17,7 @@ const RoutesMain = () => (
       </Route>
     </Route>
 
-    <Route path="*" element={<Navigate to="/" />} />
+    <Route path="*" element={<NotFoundPage />} />
   </Routes>
 );
 
