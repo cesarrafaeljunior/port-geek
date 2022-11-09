@@ -117,7 +117,6 @@ const PortFormModal = () => {
       selected_layout: portfolioInfo?.project.selected_layout,
       userImage_url: portfolioInfo?.user_profile.userImage_url,
     });
-    changeInputLayout();
   }, [portfolioInfo]);
 
   function dataOrganize(data: iPortFormModal): iPortDataOrganized {
@@ -311,18 +310,20 @@ const PortFormModal = () => {
     });
   }
 
-  function changeInputLayout() {
-    const inputsLayout = document.querySelectorAll(
-      ".layoutSelect"
-    ) as NodeListOf<HTMLInputElement>;
-    inputsLayout.forEach((input) => {
-      // console.log({ input });
-      if (portfolioInfo?.project.selected_layout === String(input.value)) {
-        console.log(input.value);
-        input.checked = true;
-      }
-    });
-  }
+  useEffect(() => {
+    function changeInputLayout() {
+      const inputsLayout = document.querySelectorAll(
+        ".layoutSelect"
+      ) as NodeListOf<HTMLInputElement>;
+      inputsLayout.forEach((input) => {
+        if (portfolioInfo?.project.selected_layout === String(input.value)) {
+          input.checked = true;
+        }
+      });
+    }
+
+    changeInputLayout();
+  }, [editPortAuth]);
 
   function onSubmit(data: iPortFormModal) {
     const portfolio = dataOrganize(data);
