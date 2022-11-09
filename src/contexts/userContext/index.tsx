@@ -43,29 +43,33 @@ export function UserProvider({ children }: iUserProvider): JSX.Element {
     try {
       const response = await postRegister(data);
       console.log(await response);
-      successToast("Usuário cadastrado!");
+      successToast("Successfully registered!");
       setIsOpenModalRegister(false);
       setIsOpenModalLogin(true);
-    } catch (error) {
-      errorToast("Ocorreu um erro!");
+    } catch (error: any) {
+      console.log(error);
+      const message: string = error.response.data;
+      errorToast(`${message}!`);
     }
   };
 
   const handleLogin = async (data: iUserLogin) => {
-    const response = await postLogin(data)
-      .then((response) => {
-        successToast("Login realizado!");
-        setUser(response.data.user);
-        localStorage.setItem("@PortGeek:token", response.data.accessToken);
-        localStorage.setItem("@PortGeek:id", response.data.user.id);
-        navigate("/dashboard", { replace: true });
-        setIsOpenModalLogin(false);
-        api.defaults.headers.common[
-          "Authorization"
-        ] = `Bearer ${response.data.accessToken}`;
-        console.log(response);
-      })
-      .catch(() => errorToast("Usuário não encontrado!"));
+    try {
+      const response = await postLogin(data);
+      console.log(await response);
+      successToast("Login successfully!");
+      setUser(response.data.user);
+      localStorage.setItem("@PortGeek:token", response.data.accessToken);
+      localStorage.setItem("@PortGeek:id", response.data.user.id);
+      navigate("/dashboard", { replace: true });
+      setIsOpenModalLogin(false);
+      api.defaults.headers.common[
+        "Authorization"
+      ] = `Bearer ${response.data.accessToken}`;
+    } catch (error: any) {
+      console.log(error);
+      errorToast("Credenciais Incorretas");
+    }
   };
 
   useEffect(() => {

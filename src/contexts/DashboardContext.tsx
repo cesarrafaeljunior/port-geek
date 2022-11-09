@@ -89,8 +89,8 @@ export const DashboardProvider = () => {
       setIsShowModalDelete(false);
       setPortfolioInfo(null);
     } catch (error) {
-      error && toast.error("Something wrong!");
       console.log(error);
+      toast.error("Something wrong! Try to reload the page");
     }
   }
   const editPortfolio = async (data: iPortDataOrganized) => {
@@ -104,6 +104,7 @@ export const DashboardProvider = () => {
       setEditPortAuth(false);
     } catch (error) {
       console.log(error);
+      toast.error("Something wrong! Try to reload the page");
     }
   };
 
@@ -121,6 +122,7 @@ export const DashboardProvider = () => {
       setPortCreateAuth(false);
     } catch (error) {
       console.log(error);
+      toast.error("Something wrong! Try to reload the page");
     }
   };
 
