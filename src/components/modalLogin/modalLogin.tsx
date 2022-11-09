@@ -1,17 +1,25 @@
 import { Container, Contem, Header, Main, Form } from "./style";
 import { MdOutlineClose } from "react-icons/md";
-import { createRef, useContext } from "react";
+import { useRef, useContext,useEffect } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { InputComponent, PasswordInputComponent } from "../Inputs";
 import { ButtonComponent } from "../Buttons";
 import { UserContext } from "../../contexts/userContext";
-import { loginSchema } from "../../schemas/userSchema";
 import { iUserLogin } from "../../services/postLogin";
+import { useTranslation } from "react-i18next";
+import * as yup from "yup";
+
 export function ModalLogin() {
-  const modalRef = createRef<HTMLDivElement>();
+  const { t } = useTranslation();
   const { handleLogin, isOpenModalLogin, setIsOpenModalLogin } =
     useContext(UserContext);
+    const error = t("Required field!")
+    const errorMensage = t ("Invalid email!")
+      const loginSchema = yup.object().shape({
+      email: yup.string().email(errorMensage).required(error),
+      password: yup.string().required(error),
+    });
 
   const {
     register,
@@ -20,6 +28,20 @@ export function ModalLogin() {
   } = useForm<iUserLogin>({
     resolver: yupResolver(loginSchema),
   });
+  const modalRef = useRef<HTMLHeadingElement>(null);
+  useEffect(() => {
+    function handleOutClick(event:any) {
+      const value = modalRef?.current;
+      if (value && !value.contains(event.target)) {
+        setIsOpenModalLogin(false);
+        
+      }
+    }
+    document.addEventListener("mousedown", handleOutClick);
+    return () => {
+      document.removeEventListener("mousedown", handleOutClick);
+    };
+  }, []);
 
 
   if (!isOpenModalLogin) {
@@ -38,24 +60,33 @@ export function ModalLogin() {
             <InputComponent
               labelRefer="Email"
               labelText="email"
-              placeholder="Digite seu email"
+              placeholder={t(
+                "Enter your email"
+              )}
               autoComplete="email"
               register={register}
               registerkey={"email"}
-            />
-            {errors.email && <p className="error">{errors.email?.message}</p>}
-
+              color={errors.email?"color-secondary":"color-primary"}
+              />
+              {errors.email && <p className="error">{errors.email?.message}</p>}
+                
+              
+                
             <PasswordInputComponent
               labelRefer="password"
-              labelText="password"
-              type="password"
-              placeholder="Digite sua senha"
+              labelText={t(
+                "Password"
+              )}
+              placeholder={t(
+                "Enter your password"
+              )}
               autoComplete="current-password"
               register={register}
               registerkey={"password"}
+              color={errors.password?"color-secondary":"color-primary"}
             />
             {errors.password && (
-              <p className="error">{errors.email?.message}</p>
+              <p className="error">{errors.password?.message}</p>
             )}
 
             <ButtonComponent

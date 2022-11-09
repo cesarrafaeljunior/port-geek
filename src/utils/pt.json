@@ -6,6 +6,18 @@
     "A new way to show who you are.": "Um jeito novo para mostrar quem você é.",
     "To make you a": "Para fazer de você um",
     "We are students from Kenzie Academy Brazil and we would like to present our final Front-end project for you all. Developed by our team, our project was inspired by a deeply necessity of helping our developer community into creating their first portolio in hands with the objetive to get their first job. Below we present our team:": "Nós somos estudantes da Kenzie Academy Brazil e nós gostariamos de apresentar nosso projeto final de Front-end. Desenvolvido por nós, nosso projeto foi inspirado por uma enorme necessidade de auxiliar nossa comunidade de desenvolvedores em criar seu primeiro portifólio, no qual será possível conseguir seu primeiro emprego. Abaixo apresento nosso time:",
-    "Group Members": "Integrantes"
+    "Group Members": "Integrantes",
+    "Name":"Nome",
+    "Enter your name":"Digite seu nome",
+    "Enter your email":"Digite seu email",
+    "Enter your password":"Digite sua senha",
+    "Password":"Senha",
+    "Confirm password":"Confirme a Senha",
+    "Required field!" :"Campo obrigatorio!",
+    "Invalid email!":"Email invalido!",
+    "The name needs at least 3 digits!":"O nome precisa de pelo menos 3 dígitos!",
+    "The password must contain at least 8 digits!":"A senha deve conter pelo menos 8 dígitos!",
+    "The password must contain at least one capital letter, one special character and a number":"A senha deve conter pelo menos uma letra maiúscula, um caractere especial e um número",
+    "Passwords are not the same!":"Senhas não são as mesmas"
   }
 }

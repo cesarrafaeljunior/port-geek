@@ -43,9 +43,9 @@ import { ButtonComponent } from "../../components/Buttons";
 import { iRegisterData } from "../../services/postRegister";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-import { registerSchema } from "../../schemas/userSchema";
 import { UserContext } from "../../contexts/userContext";
 import { type } from "os";
+import * as yup from "yup";
 import {
   MemberCard,
   MemberCardImg,
@@ -63,6 +63,30 @@ const LandingPage = () => {
     setIsOpenModalRegister,
     isOpenModalRegister,
   } = useContext(UserContext);
+  const minimoTres = t("The name needs at least 3 digits!")
+  const error = t("Required field!")
+  const errorMensage = t("Invalid email!")
+  const minimoOito = t("The password must contain at least 8 digits!")
+  const errorLimitacao = t("The password must contain at least one capital letter, one special character and a number")
+  const senhasIguais = t("Passwords are not the same!")
+   const registerSchema = yup.object().shape({
+    name: yup
+      .string()
+      .min(3, minimoTres)
+      .required(error),
+    email: yup.string().email(errorMensage).required(error),
+    password: yup
+      .string()
+      .min(8, minimoOito)
+      .matches(
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
+        errorLimitacao
+      )
+      .required(error),
+    confirmPassword: yup
+      .string()
+      .oneOf([yup.ref("password")], senhasIguais),
+  });
   const {
     register,
     reset,
@@ -104,7 +128,9 @@ const LandingPage = () => {
             <form onSubmit={handleSubmit(handleRegister)}>
               <input
                 id="emailLanding"
-                placeholder="Enter your email"
+                placeholder={t(
+                  "Enter your email"
+                )}
                 {...register("email")}
               />
               <ButtonComponent

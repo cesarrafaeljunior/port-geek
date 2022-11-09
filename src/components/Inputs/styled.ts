@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 interface IStyledDiv {
   bordercolor?: string;
+  color?:string,
 }
 
 export const StyledDiv = styled.div<IStyledDiv>`
@@ -33,9 +34,11 @@ export const StyledDiv = styled.div<IStyledDiv>`
       padding: 0 10px;
     }
 
-    &:focus {
-      border: 1px solid var(--color-secondary);
-    }
+    
+      border:${({color}:IStyledDiv)=> `1px solid var(--${color})`};
+    
+    
+
   }
 `;
 
