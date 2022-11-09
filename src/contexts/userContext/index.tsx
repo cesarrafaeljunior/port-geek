@@ -79,7 +79,11 @@ export function UserProvider({ children }: iUserProvider): JSX.Element {
       if (token) {
         try {
           const idUser = await Number(localStorage.getItem("@PortGeek:id"));
-          const response = await api.get(`/users/${idUser}`, {});
+          const response = await api.get(`/users/${idUser}`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
           console.log(await response);
           setUser(response.data);
         } catch (error) {
