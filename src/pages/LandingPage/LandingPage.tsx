@@ -215,7 +215,7 @@ const LandingPage = () => {
               </MemberCardImg>
               <MemberCardInfo>
                 <h1>César Rafael - Front-end Developer</h1>
-                <h2>Product Owner - PO</h2>
+                <h2>Product Owner</h2>
               </MemberCardInfo>
             </MemberCard>
             <MemberCard>
@@ -223,8 +223,8 @@ const LandingPage = () => {
                 <img src={AriImg} alt="Ariosvaldo Rodrigues" />
               </MemberCardImg>
               <MemberCardInfo>
-                <h1>Lucas Mitori - Front-end Developer</h1>
-                <h2>Scrum Master - SM</h2>
+                <h1>Ari Júnior - Front-end Developer</h1>
+                <h2>Scrum Master</h2>
               </MemberCardInfo>
             </MemberCard>
             <MemberCard>
@@ -233,7 +233,7 @@ const LandingPage = () => {
               </MemberCardImg>
               <MemberCardInfo>
                 <h1>Henrique Sadim - Front-end Developer</h1>
-                <h2>Tech Leader - TL</h2>
+                <h2>Tech Leader</h2>
               </MemberCardInfo>
             </MemberCard>
             <MemberCard>
@@ -242,7 +242,7 @@ const LandingPage = () => {
               </MemberCardImg>
               <MemberCardInfo>
                 <h1>Lucas Mitori - Front-end Developer</h1>
-                <h2>Quality Assurance - QA</h2>
+                <h2>Quality Assurance</h2>
               </MemberCardInfo>
             </MemberCard>
             <MemberCard>
@@ -251,7 +251,7 @@ const LandingPage = () => {
               </MemberCardImg>
               <MemberCardInfo>
                 <h1>Lucas Cruz - Front-end Developer</h1>
-                <h2>Quality Assurance - QA</h2>
+                <h2>Quality Assurance</h2>
               </MemberCardInfo>
             </MemberCard>
             <MemberCard>
@@ -260,7 +260,7 @@ const LandingPage = () => {
               </MemberCardImg>
               <MemberCardInfo>
                 <h1>Jalles Batista - Front-end Developer</h1>
-                <h2>Quality Assurance - QA</h2>
+                <h2>Quality Assurance</h2>
               </MemberCardInfo>
             </MemberCard>
           </GroupMemberSpace>

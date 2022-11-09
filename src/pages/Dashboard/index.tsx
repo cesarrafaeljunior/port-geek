@@ -19,18 +19,13 @@ import PortFormModal from "../../components/Modals/PortFormModal";
 
 import { UserContext } from "../../contexts/userContext";
 
-
-
 export const Dashboard = () => {
   const {
     portfolioInfo,
-    portCreateAuth,
     setPortCreateAuth,
-    isShowModalDelete,
     setIsShowModalDelete,
     setEditPortAuth,
   } = useContext(DashboardContext);
-  
 
   const baseLink: string = window.location.href;
   const shareLink: string = `${baseLink.slice(
@@ -118,7 +113,10 @@ export const Dashboard = () => {
             onClick={() => {
               portfolioInfo
                 ? toast.warning(
-                    "You need to delete the current Portfolio to create a new one!"
+                    "You need to delete the current Portfolio to create a new one!",
+                    {
+                      autoClose: 3000,
+                    }
                   )
                 : setPortCreateAuth(true);
             }}

@@ -8,11 +8,10 @@ import layout1 from "../../../assets/img/Layout-1.png";
 import layout2 from "../../../assets/img/Layout-2.png";
 import layout3 from "../../../assets/img/Layout-3.png";
 import { schemaPortModal } from "../../../schemas/portSchema";
-import { string } from "yup";
 
 export interface iPortFormModal {
   name: string;
-  age: string;
+  age: number;
   birthDate: string;
   aboutYou: string;
   city: string;
@@ -33,6 +32,7 @@ export interface iPortFormModal {
   training: string;
   zipCode: string;
   selected_layout: string;
+  userImage_url: string;
 }
 
 export interface iPortDataOrganized {
@@ -63,6 +63,7 @@ export interface iPortDataOrganized {
     skills: string;
     telephone: string;
     training: string;
+    userImage_url: string;
   };
 }
 
@@ -85,6 +86,7 @@ const PortFormModal = () => {
   } = useForm<iPortFormModal>({
     resolver: yupResolver(schemaPortModal),
   });
+  const [age, setAge] = useState<number>(0);
 
   useEffect(() => {
     reset({
@@ -113,11 +115,9 @@ const PortFormModal = () => {
       training: portfolioInfo?.user_profile.training,
       zipCode: portfolioInfo?.adress.zipCode,
       selected_layout: portfolioInfo?.project.selected_layout,
+      userImage_url: portfolioInfo?.user_profile.userImage_url,
     });
-    changeInputLayout();
   }, [portfolioInfo]);
-
-  const [age, setAge] = useState<number>(0);
 
   function dataOrganize(data: iPortFormModal): iPortDataOrganized {
     let data2 = { ...data, adress: {}, user_profile: {}, project: {} } as any;
@@ -144,7 +144,7 @@ const PortFormModal = () => {
           delete data2.name;
           break;
         case "age":
-          data2.user_profile.age = data[key];
+          data2.user_profile.age = age || portfolioInfo?.user_profile.age;
           delete data2.age;
           break;
         case "birthDate":
@@ -180,6 +180,10 @@ const PortFormModal = () => {
         case "telephone":
           data2.user_profile.telephone = data[key];
           delete data2.telephone;
+          break;
+        case "userImage_url":
+          data2.user_profile.userImage_url = data[key];
+          delete data2.userImage_url;
           break;
         case "github_url":
           data2.user_profile.github_url = data[key];
@@ -306,18 +310,20 @@ const PortFormModal = () => {
     });
   }
 
-  function changeInputLayout() {
-    const inputsLayout = document.querySelectorAll(
-      ".layoutSelect"
-    ) as NodeListOf<HTMLInputElement>;
-    inputsLayout.forEach((input) => {
-      console.log({ input });
-      if (portfolioInfo?.project.selected_layout === String(input.value)) {
-        console.log(input.value);
-        input.checked = !input.checked;
-      }
-    });
-  }
+  useEffect(() => {
+    function changeInputLayout() {
+      const inputsLayout = document.querySelectorAll(
+        ".layoutSelect"
+      ) as NodeListOf<HTMLInputElement>;
+      inputsLayout.forEach((input) => {
+        if (portfolioInfo?.project.selected_layout === String(input.value)) {
+          input.checked = true;
+        }
+      });
+    }
+
+    changeInputLayout();
+  }, [editPortAuth]);
 
   function onSubmit(data: iPortFormModal) {
     const portfolio = dataOrganize(data);
@@ -386,8 +392,8 @@ const PortFormModal = () => {
             <label>
               <input
                 placeholder="Age"
-                value={age}
                 type="text"
+                value={age}
                 {...register("age")}
                 readOnly
               />
@@ -512,6 +518,20 @@ const PortFormModal = () => {
         <div className="formInput">
           <label>
             <input
+              placeholder="Your profile image(URL)"
+              type="url"
+              {...register("userImage_url")}
+            />
+            {!errors.userImage_url ? (
+              <span className="label">Profile Image</span>
+            ) : (
+              <span>{errors.userImage_url?.message}</span>
+            )}
+          </label>
+        </div>
+        <div className="formInput">
+          <label>
+            <input
               placeholder="Github profile(URL)"
               type="url"
               {...register("github_url")}
@@ -557,12 +577,12 @@ const PortFormModal = () => {
         <div className="formInput">
           <label>
             <input
-              placeholder="Training"
+              placeholder="Formation"
               type="text"
               {...register("training")}
             />
             {!errors.training ? (
-              <span className="label">Training</span>
+              <span className="label">Formation</span>
             ) : (
               <span>{errors.training.message}</span>
             )}

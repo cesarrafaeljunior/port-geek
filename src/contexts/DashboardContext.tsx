@@ -3,7 +3,6 @@ import React, { useState, useEffect, createContext, useContext } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { iPortDataOrganized } from "../components/Modals/PortFormModal";
-import { UserContext } from "./userContext";
 
 interface IDashboardContext {
   portfolioInfo: IPortfolioInfo | null;
@@ -37,7 +36,7 @@ export interface IPortfolioInfo {
   };
   user_profile: {
     aboutYou: string;
-    age: string;
+    age: number;
     birthDate: string;
     email: string;
     experience: string;
@@ -48,6 +47,7 @@ export interface IPortfolioInfo {
     skills: string;
     telephone: string;
     training: string;
+    userImage_url: string;
   };
 }
 
@@ -59,7 +59,6 @@ export const DashboardProvider = () => {
   const navigate = useNavigate();
   const [portCreateAuth, setPortCreateAuth] = useState<boolean>(false);
   const [editPortAuth, setEditPortAuth] = useState<boolean>(false);
-  const idUser: number | null = Number(localStorage.getItem("@PortGeek:id"));
   const [isShowModalDelete, setIsShowModalDelete] = useState<boolean>(false);
   const [portfolioInfo, setPortfolioInfo] = useState<IPortfolioInfo | null>(
     null
@@ -68,6 +67,9 @@ export const DashboardProvider = () => {
   useEffect(() => {
     async function getPort() {
       try {
+        const idUser: number | null = await Number(
+          localStorage.getItem("@PortGeek:id")
+        );
         const response = await api.get(`/portfolio?userId=${idUser}`);
         const { data } = response;
         setPortfolioInfo(data[0]);
@@ -87,24 +89,32 @@ export const DashboardProvider = () => {
       setIsShowModalDelete(false);
       setPortfolioInfo(null);
     } catch (error) {
-      error && toast.error("Something wrong!");
+      console.log(error);
+      toast.error("Something wrong! Try to reload the page");
     }
   }
   const editPortfolio = async (data: iPortDataOrganized) => {
     try {
       const response = await api.patch(`/portfolio/${portfolioInfo?.id}`, data);
       console.log(await response);
-      toast.success("Portfolio successfully edited");
+      toast.success("Portfolio successfully edited", {
+        autoClose: 2000,
+      });
       setPortfolioInfo(response.data);
       setEditPortAuth(false);
     } catch (error) {
       console.log(error);
+      toast.error("Something wrong! Try to reload the page");
     }
   };
 
   const sendPortifolio = async (data: iPortDataOrganized) => {
-    const data2 = { ...data, userId: idUser };
+    const idUser: number | null = await Number(
+      localStorage.getItem("@PortGeek:id")
+    );
+    const data2 = { userId: idUser, ...data };
     try {
+      console.log(data2);
       const response = await api.post("/portfolio", data2);
       console.log(await response);
       console.log(data2)
@@ -113,6 +123,7 @@ export const DashboardProvider = () => {
       setPortCreateAuth(false);
     } catch (error) {
       console.log(error);
+      toast.error("Something wrong! Try to reload the page");
     }
   };
 

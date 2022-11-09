@@ -82,9 +82,7 @@ export function Modal({ setModal }: iModal) {
         </Header>
 
         <Main>
-          <Form
-            onSubmit={handleSubmit(handleRegister)}
-          >
+          <Form onSubmit={handleSubmit(handleRegister)}>
             <InputComponent
               labelRefer="Name"
               labelText={t

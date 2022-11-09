@@ -43,7 +43,6 @@ export function ModalLogin() {
     };
   }, []);
 
-
   if (!isOpenModalLogin) {
     return null;
   }
