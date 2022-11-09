@@ -24,33 +24,31 @@ import HeaderSpace from "../../components/Header/Header";
 import { IconContext } from "react-icons";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import AnchorLink from "react-anchor-link-smooth-scroll";
-import lucasMitoriImg from "../../assets/members/lucasmitori.png";
+
+import lucasMitoriImg from "../../assets/members/lucasmitori.jpg";
 import cesarRafaelImg from "../../assets/members/cesarrafael.jpg";
 import lucasCruzImg from "../../assets/members/lucascruz.jpg";
-import henriqueSadimImg from "../../assets/members/henriqueSadim.jpeg";
+import henriqueSadimImg from "../../assets/members/henriqueSadim.jpg";
 import AriImg from "../../assets/members/Ari.jpg";
 import jallesImg from "../../assets/members/jalles.jpg";
 
-import portfolio01 from "../../assets/img/05_resume_template.png";
-import portfolio02 from "../../assets/img/1092.png";
-import portfolio03 from "../../assets/img/5215985.png";
+import portfolio01 from "../../assets/img/Layout-1.png";
+import portfolio02 from "../../assets/img/Layout-2.png";
+import portfolio03 from "../../assets/img/Layout-3.png";
 
-import teste from "../../assets/icons/iconBrazil.png";
-
-import { DashboardContext } from "../../contexts/DashboardContext";
-import { Navigate } from "react-router-dom";
 import { ButtonComponent } from "../../components/Buttons";
 import { iRegisterData } from "../../services/postRegister";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { UserContext } from "../../contexts/userContext";
-import { type } from "os";
 import * as yup from "yup";
 import {
   MemberCard,
   MemberCardImg,
   MemberCardInfo,
 } from "../../components/MemberCard/styles";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Modal } from "../../components/modalRegister/modalRegister";
 import { ModalLogin } from "../../components/modalLogin/modalLogin";
 
@@ -91,7 +89,6 @@ const LandingPage = () => {
     register,
     reset,
     handleSubmit,
-    formState: { errors },
   } = useForm<iRegisterData>({
     resolver: yupResolver(registerSchema),
   });
@@ -103,26 +100,34 @@ const LandingPage = () => {
 
   return (
     <>
-      <HeaderSpace />
-      <HomeSection id="section-home">
-        <DescriptionSection>
-          <h1>
-            {t(
-              "Imagine being able to show you with 100% of your potential and skills, Port Geek can offer this to you!"
-            )}
-          </h1>
-          <ShowCase>
-            <ImageCarouselDiv>
-              <img src={portfolio01} alt="portfolio 01" />
-            </ImageCarouselDiv>
+          <HeaderSpace />
+          <HomeSection id="section-home">
+            <DescriptionSection>
+              <h1>
+                {t(
+                  "Imagine being able to show you with 100% of your potential and skills, Port Geek can offer this to you!"
+                )}
+              </h1>
+              <ShowCase>
+                <Carousel
+                  className="CarouselCenter"
+                  autoPlay={true}
+                  interval={2000}
+                  infiniteLoop={true}
+                  showThumbs={false}
+                >
+                  <ImageCarouselDiv>
+                    <img src={portfolio01} alt="portfolio 01" />
+                  </ImageCarouselDiv>
 
-            <ImageCarouselDiv>
-              <img src={portfolio02} alt="portfolio 02" />
-            </ImageCarouselDiv>
+                  <ImageCarouselDiv>
+                    <img src={portfolio02} alt="portfolio 02" />
+                  </ImageCarouselDiv>
 
-            <ImageCarouselDiv>
-              <img src={portfolio01} alt="portfolio 03" />
-            </ImageCarouselDiv>
+                  <ImageCarouselDiv>
+                    <img src={portfolio03} alt="portfolio 03" />
+                  </ImageCarouselDiv>
+                </ Carousel >
           </ShowCase>
           <BtnDiv>
             <form onSubmit={handleSubmit(handleRegister)}>

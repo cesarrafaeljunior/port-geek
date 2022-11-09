@@ -1,12 +1,11 @@
-import { createContext, ReactNode, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+
+import { createContext, useEffect, useState } from "react";
+import { Outlet, useNavigate } from "react-router-dom";
 import { successToast, errorToast } from "../../toast/toast";
 import { api, token } from "../../services/api";
 import { postLogin, iUserLogin } from "../../services/postLogin";
 import { postRegister, iRegisterData } from "../../services/postRegister";
 import { iAPIData } from "./../../services/getProfile";
-import { useContext } from "react";
-import { truncate } from "fs";
 
 export const UserContext = createContext<iUserContext>({} as iUserContext);
 
@@ -25,11 +24,7 @@ interface iUserContext {
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-interface iUserProvider {
-  children: ReactNode;
-}
-
-export function UserProvider({ children }: iUserProvider): JSX.Element {
+export function UserProvider(): JSX.Element {
   const [user, setUser] = useState<iAPIData | null>(null);
   const [emaiDefault, setEmailDefault] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(true);
@@ -42,13 +37,15 @@ export function UserProvider({ children }: iUserProvider): JSX.Element {
     delete data.confirmPassword;
 
     try {
-      const response = await postRegister(data);
-      console.log(await response);
+      await postRegister(data);
+
       successToast("Successfully registered!");
+
       setIsOpenModalRegister(false);
+      
       setIsOpenModalLogin(true);
     } catch (error: any) {
-      console.log(error);
+      console.error(error);
       const message: string = error.response.data;
       errorToast(`${message}!`);
     }
@@ -57,19 +54,17 @@ export function UserProvider({ children }: iUserProvider): JSX.Element {
   const handleLogin = async (data: iUserLogin) => {
     try {
       const response = await postLogin(data);
-      console.log(await response);
       successToast("Login successfully!");
       setUser(response.data.user);
       localStorage.setItem("@PortGeek:token", response.data.accessToken);
       localStorage.setItem("@PortGeek:id", response.data.user.id);
 
       setIsOpenModalLogin(false);
-      api.defaults.headers.common[
-        "Authorization"
-      ] = `Bearer ${response.data.accessToken}`;
+      
+      api.defaults.headers.common.authorization = `Bearer ${response.data.accessToken}`;
       navigate("/dashboard");
     } catch (error: any) {
-      console.log(error);
+      console.error(error);
       errorToast("Incorrect Credentials!");
     }
   };
@@ -78,18 +73,19 @@ export function UserProvider({ children }: iUserProvider): JSX.Element {
     async function getUser() {
       if (token) {
         try {
-          const idUser = await Number(localStorage.getItem("@PortGeek:id"));
-          const response = await api.get(`/users/${idUser}`, {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          });
-          console.log(await response);
+          const idUser = Number(localStorage.getItem("@PortGeek:id"));       
+
+          api.defaults.headers.common.authorization = `Bearer ${token}`;
+      
+          const response = await api.get(`/users/${idUser}`);
+          
           setUser(response.data);
         } catch (error) {
           localStorage.removeItem("@PortGeek:token");
           localStorage.removeItem("@PortGeek:id");
-          console.log(error);
+
+          console.error(error);
+
           navigate("/");
         }
       }
@@ -116,7 +112,7 @@ export function UserProvider({ children }: iUserProvider): JSX.Element {
         setLoading,
       }}
     >
-      {children}
+      <Outlet />
     </UserContext.Provider>
   );
 }

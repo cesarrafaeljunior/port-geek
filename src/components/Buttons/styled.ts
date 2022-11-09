@@ -14,6 +14,11 @@ export const StyledButton = styled.button<IStyledButton>`
   color: ${(props) => props.lettercolor};
   height: 50px;
 
+  &:hover {
+    background-color: var(--color-grey-2);
+    border: 1px solid var(--color-grey-3);
+  }
+
   border: var(--border-size-2) solid transparent;
   border-radius: var(--radius-6);
 

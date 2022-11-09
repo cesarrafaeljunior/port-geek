@@ -14,6 +14,5 @@ interface iLoginData {
 
 export function postLogin(data: iUserLogin): AxiosPromise<iLoginData> {
   const response = api.post("login", data);
-  console.log(data);
   return response;
 }

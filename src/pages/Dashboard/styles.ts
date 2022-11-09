@@ -218,9 +218,10 @@ export const Container = styled.div`
 
       .mini-port {
         width: 90%;
-        height: auto;
+        height: auto;   
 
-        margin-top: 1rem;
+        display: block;
+        margin: 1rem auto 0;
 
         cursor: pointer;
 
