@@ -37,14 +37,13 @@ const StyledNotFound = styled.div`
       box-shadow: 4px 4px 12px var(--blur-effect-02);
       text-decoration: none;
     }
-
-    a:active {
-      scale: 0.9;
-    }
     a:hover {
       border: 2px solid white;
       scale: 1.1;
       box-shadow: 2px 12px 16px var(--blur-effect-02);
+    }
+    a:active {
+      scale: 0.95;
     }
   }
 

@@ -99,8 +99,11 @@ const PortFormModalStyled = styled.div`
     button {
       transition: 0.3s;
     }
+    button:hover {
+      scale: 1.1;
+    }
     button:active {
-      scale: 0.9;
+      scale: 0.95;
     }
     .button-close {
       position: absolute;
@@ -113,6 +116,10 @@ const PortFormModalStyled = styled.div`
     }
     .button-close:hover {
       color: var(--color-primary);
+      scale: 1.3;
+    }
+    .button-close:active {
+      scale: 0.95;
     }
 
     .formButtons {
