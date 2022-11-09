@@ -328,7 +328,6 @@ const PortFormModal = () => {
 
   function onSubmit(data: iPortFormModal) {
     const portfolio = dataOrganize(data);
-
     if (portCreateAuth) {
       sendPortifolio(portfolio);
     }

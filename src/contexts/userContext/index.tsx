@@ -1,3 +1,4 @@
+
 import { createContext, useEffect, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { successToast, errorToast } from "../../toast/toast";
@@ -77,12 +78,14 @@ export function UserProvider(): JSX.Element {
           api.defaults.headers.common.authorization = `Bearer ${token}`;
       
           const response = await api.get(`/users/${idUser}`);
-
+          
           setUser(response.data);
         } catch (error) {
           localStorage.removeItem("@PortGeek:token");
           localStorage.removeItem("@PortGeek:id");
+
           console.error(error);
+
           navigate("/");
         }
       }

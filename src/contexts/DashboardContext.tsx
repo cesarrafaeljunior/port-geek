@@ -70,7 +70,6 @@ export const DashboardProvider = () => {
         const idUser: number | null = await Number(
           localStorage.getItem("@PortGeek:id")
         );
-
         const response = await api.get(`/portfolio?userId=${idUser}`);
 
         const { data } = response;
