@@ -41,8 +41,8 @@ export function UserProvider({ children }: iUserProvider): JSX.Element {
     delete data.confirmPassword;
 
     try {
-      await postRegister(data);
-
+      const response = await postRegister(data);
+      console.log(await response);
       successToast("Usuário cadastrado!");
       setIsOpenModalRegister(false);
       setIsOpenModalLogin(true);
@@ -51,8 +51,8 @@ export function UserProvider({ children }: iUserProvider): JSX.Element {
     }
   };
 
-  const handleLogin = (data: iUserLogin) => {
-    postLogin(data)
+  const handleLogin = async (data: iUserLogin) => {
+    const response = await postLogin(data)
       .then((response) => {
         successToast("Login realizado!");
         setUser(response.data.user);
@@ -60,6 +60,10 @@ export function UserProvider({ children }: iUserProvider): JSX.Element {
         localStorage.setItem("@PortGeek:id", response.data.user.id);
         navigate("/dashboard", { replace: true });
         setIsOpenModalLogin(false);
+        api.defaults.headers.common[
+          "Authorization"
+        ] = `Bearer ${response.data.accessToken}`;
+        console.log(response);
       })
       .catch(() => errorToast("Usuário não encontrado!"));
   };
