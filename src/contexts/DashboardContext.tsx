@@ -19,8 +19,7 @@ interface IDashboardContext {
 }
 
 export interface IPortfolioInfo {
-  userId: number;
-  id?: number;
+  userId: number | string;
   adress: {
     city: string;
     country: string;
@@ -49,6 +48,7 @@ export interface IPortfolioInfo {
     telephone: string;
     training: string;
   };
+  id: number;
 }
 
 export const DashboardContext = createContext<IDashboardContext>(
@@ -59,7 +59,7 @@ export const DashboardProvider = () => {
   const navigate = useNavigate();
   const [portCreateAuth, setPortCreateAuth] = useState<boolean>(false);
   const [editPortAuth, setEditPortAuth] = useState<boolean>(false);
-  const idUser: number | null = Number(localStorage.getItem("@PortGeek:id"));
+  const idUser = localStorage.getItem("@PortGeek:id");
   const [isShowModalDelete, setIsShowModalDelete] = useState<boolean>(false);
   const [portfolioInfo, setPortfolioInfo] = useState<IPortfolioInfo | null>(
     null
@@ -80,16 +80,20 @@ export const DashboardProvider = () => {
     getPort();
   }, []);
 
-  async function deletePort() {
+  const sendPortifolio = async (data: iPortDataOrganized) => {
+    const data2 = { ...data, userId: idUser };
+    console.log(data2);
     try {
-      await api.delete(`/portfolio/${portfolioInfo?.id}`);
-      toast.success("Portfolio successfully deleted!");
-      setIsShowModalDelete(false);
-      setPortfolioInfo(null);
+      const response = await api.post("/portfolio", data2);
+      console.log(await response);
+      toast.success("Portfolio created successfully");
+      setPortfolioInfo(response.data);
+      setPortCreateAuth(false);
     } catch (error) {
-      error && toast.error("Something wrong!");
+      console.log(error);
     }
-  }
+  };
+
   const editPortfolio = async (data: iPortDataOrganized) => {
     try {
       const response = await api.patch(`/portfolio/${portfolioInfo?.id}`, data);
@@ -102,18 +106,16 @@ export const DashboardProvider = () => {
     }
   };
 
-  const sendPortifolio = async (data: iPortDataOrganized) => {
-    const data2 = { ...data, userId: idUser };
+  async function deletePort() {
     try {
-      const response = await api.post("/portfolio", data2);
-      console.log(await response);
-      toast.success("Portfolio created successfully");
-      setPortfolioInfo(response.data);
-      setPortCreateAuth(false);
+      await api.delete(`/portfolio/${portfolioInfo?.id}`);
+      toast.success("Portfolio successfully deleted!");
+      setIsShowModalDelete(false);
+      setPortfolioInfo(null);
     } catch (error) {
-      console.log(error);
+      error && toast.error("Something wrong!");
     }
-  };
+  }
 
   return (
     <DashboardContext.Provider
