@@ -7,6 +7,7 @@ import { postRegister, iRegisterData } from "../../services/postRegister";
 import { iAPIData } from "./../../services/getProfile";
 import { useContext } from "react";
 import { truncate } from "fs";
+
 export const UserContext = createContext<iUserContext>({} as iUserContext);
 
 interface iUserContext {
@@ -61,11 +62,12 @@ export function UserProvider({ children }: iUserProvider): JSX.Element {
       setUser(response.data.user);
       localStorage.setItem("@PortGeek:token", response.data.accessToken);
       localStorage.setItem("@PortGeek:id", response.data.user.id);
-      navigate("/dashboard", { replace: true });
+
       setIsOpenModalLogin(false);
       api.defaults.headers.common[
         "Authorization"
       ] = `Bearer ${response.data.accessToken}`;
+      navigate("/dashboard");
     } catch (error: any) {
       console.log(error);
       errorToast("Credenciais Incorretas");
@@ -76,14 +78,14 @@ export function UserProvider({ children }: iUserProvider): JSX.Element {
     async function getUser() {
       if (token) {
         try {
-          const idUser = Number(localStorage.getItem("@PortGeek:id"));
-          const response = await api.get(`/users/${idUser}`);
-          const { data } = response;
-          // setNameUser(data.name);
-          setUser(data);
+          const idUser = await Number(localStorage.getItem("@PortGeek:id"));
+          const response = await api.get(`/users/${idUser}`, {});
+          console.log(await response);
+          setUser(response.data);
         } catch (error) {
           localStorage.removeItem("@PortGeek:token");
           localStorage.removeItem("@PortGeek:id");
+          console.log(error);
           navigate("/");
         }
       }

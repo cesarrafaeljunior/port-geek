@@ -22,9 +22,7 @@ import { UserContext } from "../../contexts/userContext";
 export const Dashboard = () => {
   const {
     portfolioInfo,
-    portCreateAuth,
     setPortCreateAuth,
-    isShowModalDelete,
     setIsShowModalDelete,
     setEditPortAuth,
   } = useContext(DashboardContext);
