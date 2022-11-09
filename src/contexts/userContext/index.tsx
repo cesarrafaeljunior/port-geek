@@ -47,14 +47,9 @@ export function UserProvider({ children }: iUserProvider): JSX.Element {
       setIsOpenModalRegister(false);
       setIsOpenModalLogin(true);
     } catch (error: any) {
-<<<<<<< HEAD
-      const message: string = `${error.response.data}!`;
-      errorToast(message);
-=======
       console.log(error);
       const message: string = error.response.data;
       errorToast(`${message}!`);
->>>>>>> 8d78d5e5365f2263b476a0b5368bb7e9c2043ae0
     }
   };
 
