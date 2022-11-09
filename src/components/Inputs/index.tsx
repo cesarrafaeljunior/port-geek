@@ -15,12 +15,13 @@ export const InputComponent = ({
   labelRefer,
   labelText,
   bordercolor,
+  color,
   register,
   registerkey,
   ...rest
 }: IInput) => {
   return (
-    <StyledDiv bordercolor={bordercolor}>
+    <StyledDiv bordercolor={bordercolor} color={color}>
       <label htmlFor={labelRefer}>{labelText}</label>
       <input id={labelRefer} {...register(registerkey)} {...rest} />
     </StyledDiv>
@@ -31,6 +32,7 @@ export const PasswordInputComponent = ({
   labelRefer,
   labelText,
   bordercolor,
+  color,
   register,
   registerkey,
   ...rest
@@ -38,7 +40,7 @@ export const PasswordInputComponent = ({
   const [isSeeingPassword, setIsSeeingPassword] = useState<boolean>(false);
 
   return (
-    <StyledDivPassword bordercolor={bordercolor}>
+    <StyledDivPassword bordercolor={bordercolor} color = {color}>
       <label htmlFor={labelRefer}>{labelText}</label>
       <div>
         <input

@@ -117,6 +117,7 @@ export const DashboardProvider = () => {
       console.log(data2);
       const response = await api.post("/portfolio", data2);
       console.log(await response);
+      console.log(data2)
       toast.success("Portfolio created successfully");
       setPortfolioInfo(response.data);
       setPortCreateAuth(false);
