@@ -166,7 +166,7 @@ const LandingPage = () => {
             </IconContext.Provider>
           </AboutArrow>
         <AsideSpace>
-          <h1>{t("A new way to show who you are.")}</h1>
+          <h2>{t("A new way to show who you are.")}</h2>
           <TypingEffect>
             <h2>
               {t("To make you a")}{" "}
@@ -189,7 +189,7 @@ const LandingPage = () => {
       </HomeSection>
       <AboutSection id="section-about">
         <AboutDescriptionSpace>
-          <h1>{t("About us")}</h1>
+          <h2>{t("About us")}</h2>
           <p>
             {t(
               "We are students from Kenzie Academy Brazil and we would like to present our final Front-end project for you all. Developed by our team, our project was inspired by a deeply necessity of helping our developer community into creating their first portolio in hands with the objetive to get their first job. Below we present our team:"
@@ -208,15 +208,15 @@ const LandingPage = () => {
             </IconContext.Provider>
           </LandingArrow>
         <CompanionSection>
-          <h1>{t("Group Members")}</h1>
+          <h2>{t("Group Members")}</h2>
           <GroupMemberSpace>
             <MemberCard>
               <MemberCardImg href="https://www.linkedin.com/in/cesarrafaeldevstudent">
                 <img src={cesarRafaelImg} alt="Cesar Rafael" />
               </MemberCardImg>
               <MemberCardInfo>
-                <h1>César Rafael - Front-end Developer</h1>
-                <h2>Product Owner</h2>
+                <h3>César Rafael - Front-end Developer</h3>
+                <h4>Product Owner</h4>
               </MemberCardInfo>
             </MemberCard>
             <MemberCard>
@@ -224,8 +224,8 @@ const LandingPage = () => {
                 <img src={AriImg} alt="Ariosvaldo Rodrigues" />
               </MemberCardImg>
               <MemberCardInfo>
-                <h1>Ari Júnior - Front-end Developer</h1>
-                <h2>Scrum Master</h2>
+                <h3>Ari Júnior - Front-end Developer</h3>
+                <h4>Scrum Master</h4>
               </MemberCardInfo>
             </MemberCard>
             <MemberCard>
@@ -233,8 +233,8 @@ const LandingPage = () => {
                 <img src={henriqueSadimImg} alt="Henrique Sadim" />
               </MemberCardImg>
               <MemberCardInfo>
-                <h1>Henrique Sadim - Front-end Developer</h1>
-                <h2>Tech Leader</h2>
+                <h3>Henrique Sadim - Front-end Developer</h3>
+                <h4>Tech Leader</h4>
               </MemberCardInfo>
             </MemberCard>
             <MemberCard>
@@ -242,8 +242,8 @@ const LandingPage = () => {
                 <img src={lucasMitoriImg} alt="Lucas Mitori" />
               </MemberCardImg>
               <MemberCardInfo>
-                <h1>Lucas Mitori - Front-end Developer</h1>
-                <h2>Quality Assurance</h2>
+                <h3>Lucas Mitori - Front-end Developer</h3>
+                <h4>Quality Assurance</h4>
               </MemberCardInfo>
             </MemberCard>
             <MemberCard>
@@ -251,8 +251,8 @@ const LandingPage = () => {
                 <img src={lucasCruzImg} alt="Lucas Cruz" />
               </MemberCardImg>
               <MemberCardInfo>
-                <h1>Lucas Cruz - Front-end Developer</h1>
-                <h2>Quality Assurance</h2>
+                <h3>Lucas Cruz - Front-end Developer</h3>
+                <h4>Quality Assurance</h4>
               </MemberCardInfo>
             </MemberCard>
             <MemberCard>
@@ -260,8 +260,8 @@ const LandingPage = () => {
                 <img src={jallesImg} alt="Jalles Batista" />
               </MemberCardImg>
               <MemberCardInfo>
-                <h1>Jalles Batista - Front-end Developer</h1>
-                <h2>Quality Assurance</h2>
+                <h3>Jalles Batista - Front-end Developer</h3>
+                <h4>Quality Assurance</h4>
               </MemberCardInfo>
             </MemberCard>
           </GroupMemberSpace>

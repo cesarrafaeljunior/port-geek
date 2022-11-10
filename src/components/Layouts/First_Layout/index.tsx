@@ -99,7 +99,7 @@ export const FirstLayout = ({ portfInfos }: ILayout) => {
           toggleMenu={setIsSeeingModal}
           deployLink={project.projectDeploy_url}
           repositoryLink={project.projectRepository_url}
-          projectDescription={project.project_description}
+          projectName={project.project_title}
           projectImg={project.projectImage_url}
         />
       </BodyFirstLayout>

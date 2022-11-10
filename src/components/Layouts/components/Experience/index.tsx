@@ -11,7 +11,7 @@ export const Experience = ({ fontSize, color, fontSizeP, experienceDescription }
       color={color} 
       fontSizeP={fontSizeP}
     >
-      <h2 className="Title__Experience">Experiência</h2>
+      <h2 className="Title__Experience">Experience</h2>
       <p className="Paragraph__Experience">{experienceDescription}</p>
     </ExperienceStyled>
   );

@@ -28,7 +28,7 @@ export const ModalDescription = ({
         >
           <AiFillCloseCircle />
         </button>
-        <h2>Descrição do projeto</h2>
+        <h2>Description</h2>
         <p>{projectDescription}</p>
       </div>
     </ContainerModalDescription>

@@ -7,7 +7,7 @@ interface ISkills extends iUserSkills {
 export const Skills = ({ fontSize, color, fontSizeP, skillDescription }: ISkills) => {
   return (
     <SkillsStyled fontSize={fontSize} color={color} fontSizeP={fontSizeP}>
-      <h2 className="Border--Bottom">Habilidades</h2>
+      <h2 className="Border--Bottom">Skills</h2>
       <p>{skillDescription}</p>
     </SkillsStyled>
   );

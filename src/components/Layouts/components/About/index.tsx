@@ -7,7 +7,7 @@ interface IABout extends iUserAbout {
 export const About = ({ fontSize, color, fontSizeP, aboutYou }: IABout) => {
   return (
     <AboutStyled fontSize={fontSize} color={color} fontSizeP={fontSizeP}>
-      <h2 className="Border--Bottom">Sobre mim</h2>
+      <h2 className="Border--Bottom">About me</h2>
       <p>
         {aboutYou}
       </p>
