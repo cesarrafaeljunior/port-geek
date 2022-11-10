@@ -183,7 +183,7 @@ const LandingPage = () => {
           <h2>{t("About us")}</h2>
           <p>
             {t(
-              "We are students from Kenzie Academy Brazil and we would like to present our final Front-end project for you all. Developed by our team, our project was inspired by a deeply necessity of helping our developer community into creating their first portolio in hands with the objetive to get their first job. Below we present our team:"
+              "We are Students at Kenzie Academy Brazil and we would like to present our final Front-end project. Developed from start to finish exclusively by our group of 6 members, the project was inspired by a huge need to help the developer community to create their first portfolio quickly and practically, helping to get their first job."
             )}
           </p>
         </AboutDescriptionSpace>
