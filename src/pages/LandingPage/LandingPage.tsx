@@ -61,17 +61,16 @@ const LandingPage = () => {
     setIsOpenModalRegister,
     isOpenModalRegister,
   } = useContext(UserContext);
-  const minimoTres = t("The name needs at least 3 digits!")
-  const error = t("Required field!")
-  const errorMensage = t("Invalid email!")
-  const minimoOito = t("The password must contain at least 8 digits!")
-  const errorLimitacao = t("The password must contain at least one capital letter, one special character and a number")
-  const senhasIguais = t("Passwords are not the same!")
-   const registerSchema = yup.object().shape({
-    name: yup
-      .string()
-      .min(3, minimoTres)
-      .required(error),
+  const minimoTres = t("The name needs at least 3 digits!");
+  const error = t("Required field!");
+  const errorMensage = t("Invalid email!");
+  const minimoOito = t("The password must contain at least 8 digits!");
+  const errorLimitacao = t(
+    "The password must contain at least one capital letter, one special character and a number"
+  );
+  const senhasIguais = t("Passwords are not the same!");
+  const registerSchema = yup.object().shape({
+    name: yup.string().min(3, minimoTres).required(error),
     email: yup.string().email(errorMensage).required(error),
     password: yup
       .string()
@@ -81,15 +80,9 @@ const LandingPage = () => {
         errorLimitacao
       )
       .required(error),
-    confirmPassword: yup
-      .string()
-      .oneOf([yup.ref("password")], senhasIguais),
+    confirmPassword: yup.string().oneOf([yup.ref("password")], senhasIguais),
   });
-  const {
-    register,
-    reset,
-    handleSubmit,
-  } = useForm<iRegisterData>({
+  const { register, reset, handleSubmit } = useForm<iRegisterData>({
     resolver: yupResolver(registerSchema),
   });
 
@@ -100,42 +93,40 @@ const LandingPage = () => {
 
   return (
     <>
-          <HeaderSpace />
-          <HomeSection id="section-home">
-            <DescriptionSection>
-              <h1>
-                {t(
-                  "Imagine being able to show you with 100% of your potential and skills, Port Geek can offer this to you!"
-                )}
-              </h1>
-              <ShowCase>
-                <Carousel
-                  className="CarouselCenter"
-                  autoPlay={true}
-                  interval={2000}
-                  infiniteLoop={true}
-                  showThumbs={false}
-                >
-                  <ImageCarouselDiv>
-                    <img src={portfolio01} alt="portfolio 01" />
-                  </ImageCarouselDiv>
+      <HeaderSpace />
+      <HomeSection id="section-home">
+        <DescriptionSection>
+          <h1>
+            {t(
+              "Imagine being able to show you with 100% of your potential and skills, Port Geek can offer this to you!"
+            )}
+          </h1>
+          <ShowCase>
+            <Carousel
+              className="CarouselCenter"
+              autoPlay={true}
+              interval={2000}
+              infiniteLoop={true}
+              showThumbs={false}
+            >
+              <ImageCarouselDiv>
+                <img src={portfolio01} alt="portfolio 01" />
+              </ImageCarouselDiv>
 
-                  <ImageCarouselDiv>
-                    <img src={portfolio02} alt="portfolio 02" />
-                  </ImageCarouselDiv>
+              <ImageCarouselDiv>
+                <img src={portfolio02} alt="portfolio 02" />
+              </ImageCarouselDiv>
 
-                  <ImageCarouselDiv>
-                    <img src={portfolio03} alt="portfolio 03" />
-                  </ImageCarouselDiv>
-                </ Carousel >
+              <ImageCarouselDiv>
+                <img src={portfolio03} alt="portfolio 03" />
+              </ImageCarouselDiv>
+            </Carousel>
           </ShowCase>
           <BtnDiv>
             <form onSubmit={handleSubmit(handleRegister)}>
               <input
                 id="emailLanding"
-                placeholder={t(
-                  "Enter your email"
-                )}
+                placeholder={t("Enter your email")}
                 {...register("email")}
               />
               <ButtonComponent
@@ -155,16 +146,16 @@ const LandingPage = () => {
           </BtnDiv>
         </DescriptionSection>
         <Border />
-          <AboutArrow href="#section-about" offset={100}>
-            <IconContext.Provider
-              value={{
-                color: "var(--color-grey-3)",
-                size: "7em",
-              }}
-            >
-              <IoIosArrowDown />
-            </IconContext.Provider>
-          </AboutArrow>
+        <AboutArrow href="#section-about" offset={100}>
+          <IconContext.Provider
+            value={{
+              color: "var(--color-grey-3)",
+              size: "7em",
+            }}
+          >
+            <IoIosArrowDown />
+          </IconContext.Provider>
+        </AboutArrow>
         <AsideSpace>
           <h1>{t("A new way to show who you are.")}</h1>
           <TypingEffect>
@@ -197,16 +188,16 @@ const LandingPage = () => {
           </p>
         </AboutDescriptionSpace>
         <SecondBorder />
-          <LandingArrow href="#section-home" offset={100}>
-            <IconContext.Provider
-              value={{
-                color: "var(--color-grey-3)",
-                size: "7em",
-              }}
-            >
-              <IoIosArrowUp />
-            </IconContext.Provider>
-          </LandingArrow>
+        <LandingArrow href="#section-home" offset={100}>
+          <IconContext.Provider
+            value={{
+              color: "var(--color-grey-3)",
+              size: "7em",
+            }}
+          >
+            <IoIosArrowUp />
+          </IconContext.Provider>
+        </LandingArrow>
         <CompanionSection>
           <h1>{t("Group Members")}</h1>
           <GroupMemberSpace>
