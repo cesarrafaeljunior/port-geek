@@ -9,7 +9,6 @@ import { ThirthLayout } from "../../components/Layouts/Thirth_Layout";
 import { Loading } from "../../components/Loading";
 import { LoadingContext } from "../../contexts/LoadingContext";
 import { IPortifolioInfos, portfRequest } from "../../services/portfRequest";
-import NotFoundPage from "../NotFound";
 
 export interface ILayout {
   portfInfos: IPortifolioInfos;
