@@ -521,115 +521,65 @@ export const BtnDiv = styled.div`
 export const AboutSection = styled.main`
   width: 100%;
   height: 100vh;
+
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: flex-start;
+
   background-color: royalblue;
 
-  @media screen and (max-width: 480px) {
-    height: 180vh;
-    width: 100%;
-    flex-flow: column nowrap;
-  }
-  @media screen and (max-width: 600px) {
-    height: 180vh;
-    width: 100%;
-    flex-flow: column nowrap;
-  }
-  @media screen and (max-width: 768px) {
-    height: 180vh;
-    width: 100%;
-    flex-flow: column nowrap;
-  }
-  @media screen and (max-width: 1024px) {
-    height: 180vh;
-    width: 100%;
-    flex-flow: column nowrap;
-  }
+  
   @media screen and (max-width: 1200px) {
     height: 180vh;
     width: 100%;
     flex-flow: column nowrap;
-  }
-  @media screen and (max-width: 1920px) {
   }
 `;
 
 export const CompanionSection = styled.section`
   width: 50%;
   height: 100%;
+  padding: 30px 0;
+
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-start;
   align-items: center;
+
   background-image: url(${groupSection});
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+
   border-top: 2px solid var(--color-grey-3);
 
   & > h2 {
-    margin-top: 100px;
+    margin-top: 70px;
+
     font-size: var(--font-subtitle-28);
     font-family: var(--font-secondary-inter);
     font-weight: var(--font-weight-700);
     letter-spacing: 2px;
     line-height: var(--font-line-height-32);
+
     color: var(--color-grey-3);
+
     width: 50%;
     height: 5%;
+
     display: flex;
     justify-content: center;
     align-items: flex-start;
   }
-
-  @media screen and (max-width: 480px) {
-    width: 100%;
-    height: 90vh;
-    padding-top: 30px;
-
-    & > h2 {
-      width: 80%;
-    }
-  }
-  @media screen and (max-width: 600px) {
-    width: 100%;
-    height: 90vh;
-    padding-top: 30px;
-
-    & > h2 {
-      width: 80%;
-    }
-  }
-  @media screen and (max-width: 768px) {
-    width: 100%;
-    height: 90vh;
-    padding-top: 30px;
-
-    & > h2 {
-      width: 80%;
-    }
-  }
-  @media screen and (max-width: 1024px) {
-    width: 100%;
-    height: 90vh;
-    padding-top: 30px;
-
-    & > h2 {
-      width: 80%;
-    }
-  }
+  
   @media screen and (max-width: 1200px) {
     width: 100%;
     height: 90vh;
-    padding-top: 30px;
 
     & > h2 {
       width: 80%;
     }
-  }
-  @media screen and (max-width: 1920px) {
   }
 `;
 

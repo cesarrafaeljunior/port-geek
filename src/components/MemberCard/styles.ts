@@ -20,9 +20,11 @@ export const MemberCard = styled.div`
 export const MemberCardImg = styled.a`
   width: 15%;
   height: 90%;
+
   display: flex;
   justify-content: center;
   align-items: center;
+  
   padding-left: 2%;
 
   & > img {
@@ -53,7 +55,7 @@ export const MemberCardImg = styled.a`
   @media screen and (max-width: 1200px) {
     width: 100px;
     transform: scale(0.9);
-  }
+  } 
 `;
 
 export const MemberCardInfo = styled.div`
@@ -61,12 +63,12 @@ export const MemberCardInfo = styled.div`
   height: 100%;
 
   display: flex;
-  flex-flow: column nowrap;
+  flex-flow: column;
   justify-content: space-evenly;
   align-items: flex-start;
 
   & > h3 {
-    font-size: var(--font-subtitle-20);
+    font-size: var(--font-text-16);
     font-family: var(--font-secondary-inter);
     font-weight: var(--font-weight-600);
 
@@ -75,7 +77,7 @@ export const MemberCardInfo = styled.div`
     margin-bottom: 0.5em;
   }
   & > h4 {
-    font-size: var(--font-text-16);
+    font-size: var(--font-text-14);
     font-family: var(--font-secondary-inter);
     font-weight: var(--font-weight-400);
     
