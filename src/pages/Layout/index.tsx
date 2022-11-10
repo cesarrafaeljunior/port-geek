@@ -2,10 +2,13 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import { FirstLayout } from "../../components/Layouts/First_Layout";
 import { SecondLayout } from "../../components/Layouts/Second_Layout";
 import { ThirthLayout } from "../../components/Layouts/Thirth_Layout";
+import { Loading } from "../../components/Loading";
 import { IPortifolioInfos, portfRequest } from "../../services/portfRequest";
+import NotFoundPage from "../NotFound";
 
 export interface ILayout {
   portfInfos: IPortifolioInfos
@@ -17,16 +20,21 @@ export const LayoutPage = () => {
 
   useEffect(() => {
     const getPortfInfos = async () => {
-      const { data } = await portfRequest(Number(portfId));
+      try {
+        const { data } = await portfRequest(Number(portfId));
 
-      setPortfInfos(data);
+        setPortfInfos(data);
+      } catch (error) {
+        toast.error("This portfolio doesn't exist")
+        console.error(error)
+      } 
     };
 
     getPortfInfos();
   }, []);
 
   if (!portfInfos) {
-    return <h1>loading</h1>;
+    return <Loading />;
   }
   
   switch (portfInfos.project.selected_layout) {
@@ -39,7 +47,7 @@ export const LayoutPage = () => {
     default:
       return (
         <>
-          <h3>Layout não encontrado</h3>
+          <NotFoundPage />
         </>
       );
   }

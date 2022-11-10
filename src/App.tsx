@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <GeneralProvider>
-          <RoutesMain />
+        <RoutesMain />
       </GeneralProvider>
       <GlobalStyle />
       <ToastContainer

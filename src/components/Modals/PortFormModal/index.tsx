@@ -377,6 +377,7 @@ const PortFormModal = () => {
               <input
                 placeholder="Birth date"
                 type="date"
+                pattern="[0-9]{4}-[0-1]{1}[0-9]{1}-[0-9]{2}"
                 {...register("birthDate")}
                 onInput={(event) => setAgeValue(event)}
               />

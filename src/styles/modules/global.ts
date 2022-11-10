@@ -154,13 +154,10 @@ const GlobalStyle = createGlobalStyle`
         padding: 0;
         border: 0;
         font-size: 100%;
-        font: inherit;
+        font: inherit;;
         vertical-align: baseline;
-<<<<<<< HEAD
         outline: none;
-=======
         font-family: var(--font-secondary-inter);
->>>>>>> cesar-criacao/layouts
     }
 
     textarea {

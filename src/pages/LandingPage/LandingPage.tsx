@@ -9,15 +9,15 @@ import {
   AnimatedLogo,
   Border,
   BtnDiv,
-  TransitionAbout,
   AboutSection,
   CompanionSection,
   AboutDescriptionSpace,
   SecondBorder,
-  TransitionHome,
   GroupMemberSpace,
   ShowCase,
   ImageCarouselDiv,
+  AboutArrow,
+  LandingArrow,
 } from "./styles";
 import { useContext } from "react";
 import HeaderSpace from "../../components/Header/Header";
@@ -155,8 +155,7 @@ const LandingPage = () => {
           </BtnDiv>
         </DescriptionSection>
         <Border />
-        <TransitionAbout>
-          <AnchorLink href="#section-about" offset={100}>
+          <AboutArrow href="#section-about" offset={100}>
             <IconContext.Provider
               value={{
                 color: "var(--color-grey-3)",
@@ -165,8 +164,7 @@ const LandingPage = () => {
             >
               <IoIosArrowDown />
             </IconContext.Provider>
-          </AnchorLink>
-        </TransitionAbout>
+          </AboutArrow>
         <AsideSpace>
           <h1>{t("A new way to show who you are.")}</h1>
           <TypingEffect>
@@ -199,8 +197,7 @@ const LandingPage = () => {
           </p>
         </AboutDescriptionSpace>
         <SecondBorder />
-        <TransitionHome>
-          <AnchorLink href="#section-home" offset={100}>
+          <LandingArrow href="#section-home" offset={100}>
             <IconContext.Provider
               value={{
                 color: "var(--color-grey-3)",
@@ -209,8 +206,7 @@ const LandingPage = () => {
             >
               <IoIosArrowUp />
             </IconContext.Provider>
-          </AnchorLink>
-        </TransitionHome>
+          </LandingArrow>
         <CompanionSection>
           <h1>{t("Group Members")}</h1>
           <GroupMemberSpace>

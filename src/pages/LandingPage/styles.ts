@@ -4,6 +4,7 @@ import descriptionImg from "../../assets/img/wallpaper12.jpg";
 import AsideImg from "../../assets/img/wallpaper11.jpg";
 import aboutImage from "../../assets/img/about-02.png";
 import groupSection from "../../assets/img/wallpaper04.jpg";
+import AnchorLink from "react-anchor-link-smooth-scroll";
 
 /****************************************
 
@@ -21,34 +22,18 @@ import groupSection from "../../assets/img/wallpaper04.jpg";
 export const HomeSection = styled.main`
   width: 100%;
   height: 90vh;
+
   display: flex;
   flex-flow: row nowrap;
   justify-content: flex-start;
   align-items: flex-start;
+
   background-color: #c2e0f9;
   margin-top: 120px;
 
-  @media screen and (max-width: 480px) {
-    height: 180vh;
-    flex-flow: column nowrap;
-  }
-  @media screen and (max-width: 600px) {
-    height: 180vh;
-    flex-flow: column nowrap;
-  }
-  @media screen and (max-width: 768px) {
-    height: 180vh;
-    flex-flow: column nowrap;
-  }
-  @media screen and (max-width: 1024px) {
-    height: 180vh;
-    flex-flow: column nowrap;
-  }
   @media screen and (max-width: 1200px) {
     height: 180vh;
     flex-flow: column nowrap;
-  }
-  @media screen and (max-width: 1920px) {
   }
 `;
 
@@ -64,7 +49,7 @@ export const DescriptionSection = styled.section`
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  padding-top: 100px;
+  padding-top: 20px;
 
   & > h1 {
     font-size: var(--font-subtitle-28);
@@ -74,7 +59,6 @@ export const DescriptionSection = styled.section`
     line-height: var(--font-line-height-32);
     color: var(--color-grey-3);
     width: 60%;
-    height: 20%;
     margin-bottom: 50px;
   }
 
@@ -318,60 +302,19 @@ export const Border = styled.div`
   }
 `;
 
-export const TransitionAbout = styled.button`
-  position: absolute;
-  top: 90vh;
-  left: 47%;
-  width: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: none;
-  background-color: transparent;
-
-  @media (min-width: 340px) {
-    top: 185vh;
-    left: 37%;
-  }
-  @media (min-width: 480px) {
-    top: 180vh;
-    left: 40%;
-  }
-  @media (min-width: 600px) {
-    top: 180vh;
-    left: 43%;
-  }
-  @media (min-width: 768px) {
-    top: 180vh;
-    left: 45%;
-  }
-  @media (min-width: 1024px) {
-    top: 180vh;
-    left: 47%;
-  }
-  @media (min-width: 1200px) {
-    top: 85vh;
-    left: 46%;
-  }
-  @media (min-width: 1366px) {
-    top: 85vh;
-    left: 46.5%;
-  }
-  @media (min-width: 1500px) {
-    top: 85vh;
-    left: 47.5%;
-  }
-  @media (max-width: 1920px) {
-  }
-`;
-
 export const ImageCarouselDiv = styled.div`
-  width: 100%;
+  
+  width: 90%;
+  max-width: 190px;
+
   height: 90%;
+
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
+      
+  margin: 0 auto;
   margin-top: 10px;
 
   & > img {
@@ -827,7 +770,88 @@ export const SecondBorder = styled.div`
   }
 `;
 
-export const TransitionHome = styled.button`
+export const GroupMemberSpace = styled.div`
+  width: 80%;
+  height: 90%;
+  margin-top: 20px;
+  background-color: var(--blur-effect-02);
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  border: 2px solid var(--color-grey-3);
+  border-radius: var(--radius-8);
+  overflow: auto;
+
+  @media screen and (max-width: 480px) {
+    width: 90%;
+  }
+  @media screen and (max-width: 600px) {
+    width: 90%;
+  }
+  @media screen and (max-width: 768px) {
+    width: 90%;
+  }
+  @media screen and (max-width: 1024px) {
+    width: 90%;
+  }
+  @media screen and (max-width: 1200px) {
+    width: 90%;
+  }
+  @media screen and (max-width: 1920px) {
+  }
+`;
+
+export const AboutArrow = styled(AnchorLink)`
+  color: red;
+
+  position: absolute;
+  top: 90vh;
+  left: 47%;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background-color: transparent;
+
+  @media (min-width: 340px) {
+    top: 185vh;
+    left: 37%;
+  }
+  @media (min-width: 480px) {
+    top: 180vh;
+    left: 40%;
+  }
+  @media (min-width: 600px) {
+    top: 180vh;
+    left: 43%;
+  }
+  @media (min-width: 768px) {
+    top: 180vh;
+    left: 45%;
+  }
+  @media (min-width: 1024px) {
+    top: 180vh;
+    left: 47%;
+  }
+  @media (min-width: 1200px) {
+    top: 85vh;
+    left: 46%;
+  }
+  @media (min-width: 1366px) {
+    top: 85vh;
+    left: 46.5%;
+  }
+  @media (min-width: 1500px) {
+    top: 85vh;
+    left: 47.5%;
+  }
+  @media (max-width: 1920px) {
+  }
+`
+
+export const LandingArrow = styled(AboutArrow)`
   position: absolute;
   top: 105vh;
   left: 47%;
@@ -870,36 +894,4 @@ export const TransitionHome = styled.button`
     top: 110vh;
     left: 47.5%;
   }
-`;
-
-export const GroupMemberSpace = styled.div`
-  width: 80%;
-  height: 90%;
-  margin-top: 20px;
-  background-color: var(--blur-effect-02);
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: flex-start;
-  align-items: center;
-  border: 2px solid var(--color-grey-3);
-  border-radius: var(--radius-8);
-  overflow: auto;
-
-  @media screen and (max-width: 480px) {
-    width: 90%;
-  }
-  @media screen and (max-width: 600px) {
-    width: 90%;
-  }
-  @media screen and (max-width: 768px) {
-    width: 90%;
-  }
-  @media screen and (max-width: 1024px) {
-    width: 90%;
-  }
-  @media screen and (max-width: 1200px) {
-    width: 90%;
-  }
-  @media screen and (max-width: 1920px) {
-  }
-`;
+`

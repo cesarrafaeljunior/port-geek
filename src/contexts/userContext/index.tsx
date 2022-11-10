@@ -1,4 +1,3 @@
-
 import { createContext, useEffect, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { successToast, errorToast } from "../../toast/toast";
@@ -42,7 +41,7 @@ export function UserProvider(): JSX.Element {
       successToast("Successfully registered!");
 
       setIsOpenModalRegister(false);
-      
+
       setIsOpenModalLogin(true);
     } catch (error: any) {
       console.error(error);
@@ -60,7 +59,7 @@ export function UserProvider(): JSX.Element {
       localStorage.setItem("@PortGeek:id", response.data.user.id);
 
       setIsOpenModalLogin(false);
-      
+
       api.defaults.headers.common.authorization = `Bearer ${response.data.accessToken}`;
       navigate("/dashboard");
     } catch (error: any) {
@@ -73,19 +72,17 @@ export function UserProvider(): JSX.Element {
     async function getUser() {
       if (token) {
         try {
-          const idUser = Number(localStorage.getItem("@PortGeek:id"));       
+          const idUser = Number(localStorage.getItem("@PortGeek:id"));
 
           api.defaults.headers.common.authorization = `Bearer ${token}`;
-      
+
           const response = await api.get(`/users/${idUser}`);
           
           setUser(response.data);
         } catch (error) {
           localStorage.removeItem("@PortGeek:token");
           localStorage.removeItem("@PortGeek:id");
-
           console.error(error);
-
           navigate("/");
         }
       }
