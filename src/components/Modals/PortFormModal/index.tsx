@@ -705,8 +705,8 @@ const PortFormModal = () => {
                   className="layoutSelect"
                   type="radio"
                   value={"layout-1"}
+                  defaultChecked={portCreateAuth}
                   {...register("selected_layout")}
-                  defaultChecked
                 />
               </label>
               <span></span>

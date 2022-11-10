@@ -4,7 +4,7 @@ import { iButtons, ProjectStyled } from "./style";
 interface IProject extends iButtons {
   deployLink: string;
   repositoryLink: string;
-  projectDescription: string;
+  projectName: string;
   projectImg: string;
   toggleMenu: Dispatch<SetStateAction<boolean>>;
 }
@@ -17,7 +17,7 @@ export const Project = ({
   borderColor,
   deployLink,
   repositoryLink,
-  projectDescription,
+  projectName,
   titleSize,
   projectImg,
   toggleMenu
@@ -32,7 +32,7 @@ export const Project = ({
       borderColor={borderColor}
       className="Container__Project"
     >
-      <h2 className="Project__Title">Projeto Principal</h2>
+      <h2 className="Project__Title">{projectName}</h2>
       <div className="Project__Flex--Box">
         <div className="ProjectImage__Box">
           <figure>
@@ -44,16 +44,16 @@ export const Project = ({
             href={deployLink} 
             target="_blank" 
             rel="noreferrer"
-          >Deploy do projeto</a>
+          >Project Deploy</a>
           <a 
             href={repositoryLink} 
             target="_blank" 
             rel="noreferrer"
-          >Repositório do projeto</a>
+          >Project Repository</a>
           <button 
             type="button"
             onClick={() => {toggleMenu(true)}}
-          >Descrição do projeto</button>
+          >Project Description</button>
         </div>
       </div>
     </ProjectStyled>

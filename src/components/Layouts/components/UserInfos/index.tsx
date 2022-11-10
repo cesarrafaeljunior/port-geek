@@ -19,7 +19,7 @@ export const UserInfos = ({ fontSize, color, fontSizeP, personName, birthDate, a
       <div className="Header__Infos__User">
         <h1>{personName}</h1>
         <p>{birthDate}</p>
-        <p>{`${age} anos`}</p>
+        <p>{`${age} years`}</p>
       </div>
       <div className="Adress__Infos">
         <p>{adress.country}</p>

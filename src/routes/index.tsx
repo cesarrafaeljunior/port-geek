@@ -8,6 +8,7 @@ import { Dashboard } from "../pages/Dashboard";
 import LandingPage from "../pages/LandingPage/LandingPage";
 import NotFoundPage from "../pages/NotFound";
 import { LayoutPage } from "../pages/Layout";
+import LoadingProvider from "../contexts/LoadingContext";
 
 const RoutesMain = () => (
   <Routes>
@@ -23,7 +24,7 @@ const RoutesMain = () => (
     </Route>
 
     <Route path="*" element={<NotFoundPage />} />
-    <Route path="portfolio/:portfId" element={<LayoutPage />} />
+    <Route path="/portfolio/:portfId" element={<LayoutPage />} />
   </Routes>
 );
 

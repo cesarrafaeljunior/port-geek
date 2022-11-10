@@ -36,7 +36,7 @@ export const Contacts = ({githubLink, linkedInLink, userEmail, phoneNumber}: ICo
         <button
           onClick={() => {
             navigator.clipboard.writeText(userEmail)
-            toast.success(`E-mail copiado com sucesso!`)
+            toast.success(`E-mail copied successfully!`)
           }}
         >
           <figure>
@@ -49,7 +49,7 @@ export const Contacts = ({githubLink, linkedInLink, userEmail, phoneNumber}: ICo
         <button
           onClick={() => {
             navigator.clipboard.writeText(phoneNumber)
-            toast.success(`Telefone copiado com sucesso!`)
+            toast.success(`Phone number copied successfully!`)
           }}
         >
           <figure>

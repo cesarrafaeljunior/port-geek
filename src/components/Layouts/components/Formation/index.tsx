@@ -12,7 +12,7 @@ export const Formation = ({ fontSize, color, fontSizeP, formationDescription }: 
       fontSizeP={fontSizeP}
       className="Container__Formation"
     >
-      <h2 className="Title__Formation">Formação</h2>
+      <h2 className="Title__Formation">Academic degree</h2>
       <p className="Paragraph__Formation">{formationDescription}</p>
     </FormationStyled>
   );
