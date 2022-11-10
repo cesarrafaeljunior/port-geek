@@ -1,6 +1,6 @@
 import { Container, Contem, Header, Main, Form } from "./style";
 import { MdOutlineClose } from "react-icons/md";
-import { useRef, useContext,useEffect } from "react";
+import { useRef, useContext, useEffect } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { InputComponent, PasswordInputComponent } from "../Inputs";
@@ -14,12 +14,12 @@ export function ModalLogin() {
   const { t } = useTranslation();
   const { handleLogin, isOpenModalLogin, setIsOpenModalLogin } =
     useContext(UserContext);
-    const error = t("Required field!")
-    const errorMensage = t ("Invalid email!")
-      const loginSchema = yup.object().shape({
-      email: yup.string().email(errorMensage).required(error),
-      password: yup.string().required(error),
-    });
+  const error = t("Required field!");
+  const errorMensage = t("Invalid email!");
+  const loginSchema = yup.object().shape({
+    email: yup.string().email(errorMensage).required(error),
+    password: yup.string().required(error),
+  });
 
   const {
     register,
@@ -30,11 +30,10 @@ export function ModalLogin() {
   });
   const modalRef = useRef<HTMLHeadingElement>(null);
   useEffect(() => {
-    function handleOutClick(event:any) {
+    function handleOutClick(event: any) {
       const value = modalRef?.current;
       if (value && !value.contains(event.target)) {
         setIsOpenModalLogin(false);
-        
       }
     }
     document.addEventListener("mousedown", handleOutClick);
@@ -58,31 +57,23 @@ export function ModalLogin() {
           <Form onSubmit={handleSubmit(handleLogin)}>
             <InputComponent
               labelRefer="Email"
-              labelText="email"
-              placeholder={t(
-                "Enter your email"
-              )}
+              labelText="Email"
+              placeholder={t("Enter your email")}
               autoComplete="email"
               register={register}
               registerkey={"email"}
-              color={errors.email?"color-secondary":"color-primary"}
-              />
-              {errors.email && <p className="error">{errors.email?.message}</p>}
-                
-              
-                
+              color={errors.email ? "color-secondary" : "color-primary"}
+            />
+            {errors.email && <p className="error">{errors.email?.message}</p>}
+
             <PasswordInputComponent
               labelRefer="password"
-              labelText={t(
-                "Password"
-              )}
-              placeholder={t(
-                "Enter your password"
-              )}
+              labelText={t("Password")}
+              placeholder={t("Enter your password")}
               autoComplete="current-password"
               register={register}
               registerkey={"password"}
-              color={errors.password?"color-secondary":"color-primary"}
+              color={errors.password ? "color-secondary" : "color-primary"}
             />
             {errors.password && (
               <p className="error">{errors.password?.message}</p>
