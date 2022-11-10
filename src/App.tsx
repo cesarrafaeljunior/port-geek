@@ -2,12 +2,15 @@ import RoutesMain from "./routes";
 import GeneralProvider from "./contexts/GeneralContext";
 import GlobalStyle from "./styles/modules/global";
 import { ToastContainer } from "react-toastify";
+import LoadingProvider from "./contexts/LoadingContext";
 
 function App() {
   return (
     <>
       <GeneralProvider>
-        <RoutesMain />
+        <LoadingProvider>
+          <RoutesMain />
+        </LoadingProvider>
       </GeneralProvider>
       <GlobalStyle />
       <ToastContainer

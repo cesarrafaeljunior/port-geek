@@ -1,10 +1,11 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { successToast, errorToast } from "../../toast/toast";
 import { api, token } from "../../services/api";
 import { postLogin, iUserLogin } from "../../services/postLogin";
 import { postRegister, iRegisterData } from "../../services/postRegister";
 import { iAPIData } from "./../../services/getProfile";
+import { LoadingContext } from "../LoadingContext";
 
 export const UserContext = createContext<iUserContext>({} as iUserContext);
 
@@ -19,38 +20,37 @@ interface iUserContext {
   isOpenModalRegister: boolean;
   setIsOpenModalLogin: (value: boolean) => void;
   setIsOpenModalRegister: (value: boolean) => void;
-  loading: boolean;
-  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export function UserProvider(): JSX.Element {
   const [user, setUser] = useState<iAPIData | null>(null);
   const [emaiDefault, setEmailDefault] = useState<string>("");
-  const [loading, setLoading] = useState<boolean>(true);
   const [isOpenModalLogin, setIsOpenModalLogin] = useState<boolean>(false);
   const [isOpenModalRegister, setIsOpenModalRegister] =
     useState<boolean>(false);
+  const { loading, setLoading } = useContext(LoadingContext);
   const navigate = useNavigate();
 
   const handleRegister = async (data: iRegisterData) => {
     delete data.confirmPassword;
-
+    setLoading(true);
     try {
       await postRegister(data);
 
       successToast("Successfully registered!");
 
       setIsOpenModalRegister(false);
-
       setIsOpenModalLogin(true);
     } catch (error: any) {
       console.error(error);
       const message: string = error.response.data;
       errorToast(`${message}!`);
     }
+    setLoading(false);
   };
 
   const handleLogin = async (data: iUserLogin) => {
+    setLoading(true);
     try {
       const response = await postLogin(data);
       successToast("Login successfully!");
@@ -66,11 +66,13 @@ export function UserProvider(): JSX.Element {
       console.error(error);
       errorToast("Incorrect Credentials!");
     }
+    setLoading(false);
   };
 
   useEffect(() => {
     async function getUser() {
       if (token) {
+        setLoading(true);
         try {
           const idUser = Number(localStorage.getItem("@PortGeek:id"));
 
@@ -95,7 +97,6 @@ export function UserProvider(): JSX.Element {
   return (
     <UserContext.Provider
       value={{
-        loading,
         setUser,
         user,
         handleLogin,
@@ -106,7 +107,6 @@ export function UserProvider(): JSX.Element {
         isOpenModalRegister,
         setIsOpenModalLogin,
         setIsOpenModalRegister,
-        setLoading,
       }}
     >
       <Outlet />
