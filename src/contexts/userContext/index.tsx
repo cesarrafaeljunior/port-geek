@@ -77,7 +77,7 @@ export function UserProvider(): JSX.Element {
           api.defaults.headers.common.authorization = `Bearer ${token}`;
 
           const response = await api.get(`/users/${idUser}`);
-          
+
           setUser(response.data);
         } catch (error) {
           localStorage.removeItem("@PortGeek:token");
