@@ -303,7 +303,6 @@ export const Border = styled.div`
 `;
 
 export const ImageCarouselDiv = styled.div`
-  
   width: 90%;
   max-width: 190px;
 
@@ -313,7 +312,7 @@ export const ImageCarouselDiv = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-      
+
   margin: 0 auto;
   margin-top: 10px;
 
@@ -847,9 +846,10 @@ export const AboutArrow = styled(AnchorLink)`
     top: 85vh;
     left: 47.5%;
   }
-  @media (max-width: 1920px) {
+  @media (max-width: 1200px) {
+    display: none;
   }
-`
+`;
 
 export const LandingArrow = styled(AboutArrow)`
   position: absolute;
@@ -894,4 +894,7 @@ export const LandingArrow = styled(AboutArrow)`
     top: 110vh;
     left: 47.5%;
   }
-`
+  @media (max-width: 1200px) {
+    display: none;
+  }
+`;
