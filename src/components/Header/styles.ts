@@ -142,37 +142,47 @@ export const Links = styled.button`
   }
 `;
 export const BrazilButton = styled.button`
-  width: 80px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
+
   background-image: url(${IconBrazil});
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
+
   text-decoration: none;
-  border: 1px solid var(--color-grey-3);
-  border-radius: var(--radius-8);
+
+  border: none;
+
+  border-radius: 50%;
+
+  background-color: var(--color-grey-3);
 
   &:hover,
   &:focus {
     opacity: 0.4;
-    border: 2px solid var(--color-tertiary);
+    background-color: var(--color-grey-3);
   }
 `;
 export const UsaButton = styled.button`
-  width: 80px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
+
   background-image: url(${IconUSA});
   background-repeat: no-repeat;
   background-position: center;
-  background-size: contain;
+  background-size: cover;
+
   text-decoration: none;
-  border: 1px solid var(--color-grey-3);
-  border-radius: var(--radius-8);
+
+  border-radius: 50%;
+
+  background-color: var(--color-grey-3);
 
   &:hover,
   &:focus {
-    opacity: 0.8;
-    border: 2px solid var(--color-tertiary);
+    opacity: 0.4;
+    background-color: var(--color-grey-3);
   }
 `;
 /*------------------------- Skip line -------------------------*/
