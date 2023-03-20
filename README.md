@@ -53,3 +53,6 @@ Jalles Batista
 Lucas Cruz
 <a href="https://www.linkedin.com/in/lucascruzdesouza0103/">Linkedin</a>
 <br/>
+Lucas Okumura
+<a href="https://www.linkedin.com/in/lucas-mitori/">Linkedin</a>
+
